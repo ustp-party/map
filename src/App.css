@@ -1,28 +1,16 @@
-#map {
-  height: 380px;
-}
-
-#App {
-  font-family: sans-serif;
-  text-align: center;
-}
-
-#map-wrapper {
-  position: relative;
-}
-
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
+body {
+  height: 100vh;
+}
+
 #root {
   font-family: "Roboto", sans-serif;
   color: #333;
-}
-body {
-  height: 100vh;
 }
 
 .searchbar-container {
