@@ -18,6 +18,8 @@ export default defineConfig({
       "@components": "/src/components",
       "@utils": "/src/utils",
       "@assets": "/src/assets",
+      "@lib": "/src/lib",
+      "@types": "/src/types",
     },
   },
 });
