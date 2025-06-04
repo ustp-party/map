@@ -15,7 +15,6 @@ export default function SearchIcon() {
       />
     );
   }
-  console.log("Using light mode search icon");
 
   return (
     <img
