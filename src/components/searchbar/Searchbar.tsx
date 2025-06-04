@@ -1,8 +1,8 @@
-import './Searchbar.css';
+import styles from "./Searchbar.module.css";
 
 export default function Searchbar() {
   return (
-    <div className="searchbar">
+    <div className={styles.searchbar}>
       <input
         type="text"
         placeholder="Search..."
