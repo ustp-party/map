@@ -23,10 +23,8 @@
   outline: none;
 }
 
-
 @media (prefers-color-scheme: dark) {
   .searchbar {
     background-color: rgba(0, 0, 0, 1);
-    box-shadow: 1px 2px 4px rgba(255, 255, 255, 0.3);
   }
 }
