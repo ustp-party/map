@@ -46,3 +46,9 @@ body {
     justify-content: center;
   }
 }
+
+@media (prefers-color-scheme: dark) {
+  * {
+    color: white;
+  }
+}

@@ -5,7 +5,7 @@
   pointer-events: visibleFill;
   background-color: rgba(255, 255, 255, 1);
   border-radius: 25px;
-  padding-left: 16px;
+  padding-left: 24px;
   padding-right: 16px;
   align-items: center;
   width: clamp(80px, 100%, 400px);
@@ -21,4 +21,12 @@
   background-color: transparent;
   font-size: 1em;
   outline: none;
+}
+
+
+@media (prefers-color-scheme: dark) {
+  .searchbar {
+    background-color: rgba(0, 0, 0, 1);
+    box-shadow: 1px 2px 4px rgba(255, 255, 255, 0.3);
+  }
 }
