@@ -2,7 +2,7 @@
   import L from "leaflet";
   import "leaflet/dist/leaflet.css";
   import { onDestroy, onMount, setContext } from "svelte";
-  import { get } from "svelte/store";
+  import { base } from "$app/paths";
 
   export let bounds: L.LatLngBounds | undefined = undefined;
   export let view: L.LatLngExpression | undefined = undefined;
@@ -29,7 +29,7 @@
       })
       .addTo(map);
 
-    fetch("/data/ustp-buildings.geojson")
+    fetch(`${base}/data/ustp-buildings.geojson`)
       .then((res) => res.json())
       .then((data) => {
         L.geoJSON(data, {
