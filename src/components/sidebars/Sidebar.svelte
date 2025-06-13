@@ -2,7 +2,9 @@
   import { createViewportWidth } from "$lib/stores/viewport";
   import { setContext } from "svelte";
   import SidebarBtn from "$components/buttons/SidebarBtn.svelte";
-  import { get, writable } from "svelte/store";
+  import { writable } from "svelte/store";
+  import { slide } from "svelte/transition";
+  import { quintInOut } from "svelte/easing";
 
   const viewportWidth = createViewportWidth();
   const collapsed = writable(true);
@@ -12,7 +14,10 @@
 </script>
 
 {#if $viewportWidth > 600 && !$collapsed}
-  <div class="sidebar">
+  <div
+    class="sidebar"
+    transition:slide={{ axis: "x", duration: 300, easing: quintInOut }}
+  >
     <div class="spacer"></div>
     <div class="divider"></div>
   </div>

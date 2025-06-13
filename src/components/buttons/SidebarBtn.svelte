@@ -32,6 +32,7 @@
     display: flex;
     align-items: center;
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.32);
+    transition: left 0.24s ease-in-out;
   }
 
   .open {
