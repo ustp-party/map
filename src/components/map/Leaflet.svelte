@@ -3,6 +3,7 @@
   import "leaflet/dist/leaflet.css";
   import { onDestroy, onMount, setContext } from "svelte";
   import { base } from "$app/paths";
+  import features from "$lib/utils/features";
 
   export let bounds: L.LatLngBounds | undefined = undefined;
   export let view: L.LatLngExpression | undefined = undefined;
@@ -18,7 +19,7 @@
       "https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png",
       {
         attribution:
-          '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+          '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors | &copy; <a href="https://carto.com/attributions">CARTO</a>',
         maxZoom: 20,
       }
     ).addTo(map);
@@ -29,19 +30,10 @@
       })
       .addTo(map);
 
-    fetch(`${base}/data/ustp-buildings.geojson`)
-      .then((res) => res.json())
-      .then((data) => {
-        L.geoJSON(data, {
-          onEachFeature: (feature, layer) => {
-            const props = feature.properties;
-            if (props) {
-              layer.bindPopup(`Name: ${props.name}`);
-            }
-          },
-        }).addTo(map!);
-      })
-      .catch((err) => console.error("Failed to load GeoJSON:", err));
+    features.buildings(map, base);
+    features.benches(map, base);
+    features.parking(map, base);
+    features.pointsOfInterest(map, base);
   });
 
   onDestroy(() => {
