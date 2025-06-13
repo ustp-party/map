@@ -58,12 +58,6 @@
   }
 
   @media (prefers-color-scheme: dark) {
-    .sidebar-btn-close {
-      background-color: rgba(41, 41, 41, 1);
-    }
-  }
-
-  @media (prefers-color-scheme: dark) {
     .searchbar {
       background-color: rgba(0, 0, 0, 1);
     }
