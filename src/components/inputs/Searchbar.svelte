@@ -1,5 +1,5 @@
 <script lang="ts">
-  import MaterialIcon from "@components/icons/MaterialIcon.svelte";
+  import MaterialIcon from "$components/icons/MaterialIcon.svelte";
 </script>
 
 <div class="searchbar-container">

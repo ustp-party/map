@@ -1,8 +1,8 @@
 <script lang="ts">
-  import Leaflet from "@components/map/Leaflet.svelte";
-  import Searchbar from "@components/inputs/Searchbar.svelte";
-  import Sidebar from "@components/sidebars/Sidebar.svelte";
-  
+  import Leaflet from "$components/map/Leaflet.svelte";
+  import Searchbar from "$components/inputs/Searchbar.svelte";
+  import Sidebar from "$components/sidebars/Sidebar.svelte";
+
   import type { LatLngExpression } from "leaflet";
 
   const initialView: LatLngExpression = [8.484975, 124.656662];

@@ -1,7 +1,7 @@
 <script lang="ts">
-  import { createViewportWidth } from "@lib/stores/viewport";
+  import { createViewportWidth } from "$lib/stores/viewport";
   import { setContext } from "svelte";
-  import SidebarBtn from "@components/buttons/SidebarBtn.svelte";
+  import SidebarBtn from "$components/buttons/SidebarBtn.svelte";
   import { get, writable } from "svelte/store";
 
   const viewportWidth = createViewportWidth();

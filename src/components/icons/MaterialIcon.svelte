@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { prefersDarkMode } from "@lib/utils/theme";
+  import { prefersDarkMode } from "$lib/utils/theme";
   import { onMount } from "svelte";
 
   let props = $props<{
