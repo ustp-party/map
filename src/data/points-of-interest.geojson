@@ -1,0 +1,148 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [124.6562165, 8.48595509]
+      },
+      "properties": {
+        "id": 1,
+        "description": "Document printing",
+        "type": "Printing Service",
+        "level": "1"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [124.65581477, 8.48563409]
+      },
+      "properties": {
+        "id": 2,
+        "description": "Document printing",
+        "type": "Printing Service",
+        "level": "1"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [124.65728939, 8.48573225]
+      },
+      "properties": {
+        "id": 3,
+        "description": "Document printing",
+        "type": "Printing Service",
+        "level": "1"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [124.65733498, 8.48633475]
+      },
+      "properties": {
+        "id": 4,
+        "description": "Male & Female restroom",
+        "type": "Restroom",
+        "level": "1-4"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [124.65651641, 8.4859259]
+      },
+      "properties": {
+        "id": 5,
+        "description": "Male Restroom",
+        "type": "Restroom",
+        "level": "1"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [124.65674758, 8.48601875]
+      },
+      "properties": {
+        "id": 6,
+        "description": "Female Restroom",
+        "type": "Restroom",
+        "level": "1"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [124.655691, 8.48652]
+      },
+      "properties": {
+        "id": 7,
+        "description": "Male Restroom",
+        "type": "Restroom",
+        "level": "1, 4"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [124.655989, 8.486624]
+      },
+      "properties": {
+        "id": 7,
+        "description": "Female Restroom",
+        "type": "Restroom",
+        "level": "1, 4"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [124.65642, 8.485127]
+      },
+      "properties": {
+        "id": 8,
+        "description": "I <3 USTP",
+        "type": "Landmark",
+        "level": "1"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [124.656321, 8.486051]
+      },
+      "properties": {
+        "id": 9,
+        "description": "Philippine Flag",
+        "type": "Landmark",
+        "level": "1"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [124.65715, 8.485931]
+      },
+      "properties": {
+        "id": 10,
+        "description": "Statue",
+        "type": "Landmark",
+        "level": "1"
+      }
+    }
+  ]
+}
