@@ -2,41 +2,32 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: 'master'
+    branches: ['master'] # or 'main', depending on your default branch
 
 jobs:
   build_site:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      # If you're using pnpm, add this step then change the commands and cache key below to use `pnpm`
-      # - name: Install pnpm
-      #   uses: pnpm/action-setup@v3
-      #   with:
-      #     version: 8
-
-      - name: Install Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
- node-version: 20
- cache: npm
+          node-version: 20
+          cache: npm
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci # faster and more reliable for CI
 
-      - name: build
-        env:
- BASE_PATH: '/${{ github.event.repository.name }}'
-        run: |
- npm run build
+      - name: Build
+        run: npm run build
 
-      - name: Upload Artifacts
+      - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
- # this should match the `pages` option in your adapter-static options
- path: 'build/'
+          path: build # must match `pages: 'build'` in svelte.config.js
 
   deploy:
     needs: build_site
@@ -51,6 +42,6 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
-      - name: Deploy
+      - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
