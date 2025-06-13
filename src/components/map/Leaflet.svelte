@@ -29,7 +29,7 @@
       })
       .addTo(map);
 
-    fetch("src/data/ustp-buildings.geojson")
+    fetch("/data/ustp-buildings.geojson")
       .then((res) => res.json())
       .then((data) => {
         L.geoJSON(data, {
