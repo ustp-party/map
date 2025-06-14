@@ -4,13 +4,22 @@
   import { onDestroy, onMount, setContext } from "svelte";
   import { base } from "$app/paths";
   import features from "$lib/utils/features";
-
-  export let bounds: L.LatLngBounds | undefined = undefined;
-  export let view: L.LatLngExpression | undefined = undefined;
-  export let zoom: number | undefined = undefined;
+  import { type Snippet } from "svelte";
 
   let mapElement: HTMLDivElement;
-  let map: L.Map | undefined;
+  let map: L.Map | undefined = $state();
+
+  let {
+    children,
+    bounds,
+    view,
+    zoom,
+  }: {
+    children: Snippet;
+    bounds?: L.LatLngBounds | undefined;
+    view: L.LatLngExpression | undefined;
+    zoom: number | undefined;
+  } = $props();
 
   onMount(() => {
     map = L.map(mapElement, { zoomControl: false });
@@ -42,18 +51,20 @@
     getMap: () => map,
   });
 
-  $: if (map) {
-    if (bounds) {
-      map.fitBounds(bounds);
-    } else if (view && zoom) {
-      map.setView(view, zoom);
+  $effect(() => {
+    if (map) {
+      if (bounds) {
+        map.fitBounds(bounds);
+      } else if (view && zoom) {
+        map.setView(view, zoom);
+      }
     }
-  }
+  });
 </script>
 
 <div bind:this={mapElement} id="map"></div>
 {#if map}
-  <slot />
+  {@render children()}
 {/if}
 
 <style>
