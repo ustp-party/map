@@ -44,7 +44,7 @@
     display: flex;
     flex-direction: column;
     gap: 2px;
-    z-index: 9000;
+    z-index: 1000;
   }
 
   .zoom {
@@ -69,13 +69,25 @@
   .zoom:hover {
     background-color: rgba(255, 255, 255, 1);
   }
-  .zoom:focus {
-    outline: none;
-    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.5);
+  .zoom:active {
+    background-color: rgba(200, 200, 200, 1);
   }
 
   .zoom:disabled {
     cursor: not-allowed;
     opacity: 0.5;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .zoom {
+      background-color: rgba(0, 0, 0, 1);
+      box-shadow: 0 0px 4px rgba(255, 255, 255, 0.8);
+    }
+    .zoom:hover {
+      background-color: rgba(50, 50, 50, 1);
+    }
+    .zoom:active {
+      background-color: rgba(30, 30, 30, 1);
+    }
   }
 </style>

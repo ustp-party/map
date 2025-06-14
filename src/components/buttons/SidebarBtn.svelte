@@ -53,6 +53,8 @@
   @media (prefers-color-scheme: dark) {
     .sidebar_btn {
       background-color: rgba(41, 41, 41, 1);
+      box-shadow: 0 0px 8px rgba(255, 255, 255, 0.32);
+
     }
   }
 </style>
