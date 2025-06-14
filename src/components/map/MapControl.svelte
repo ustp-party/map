@@ -5,23 +5,22 @@
   import type { Map } from "leaflet";
   import type { LatLngExpression } from "leaflet";
   import { currentZoom } from "$lib/stores/map";
-  import { currentCenter } from "$lib/stores/map";
+  import { defaultCenter } from "$lib/stores/map";
+  import { defaultZoom } from "$lib/stores/map";
 
   const mapContext = getContext<{
     getMap: () => Map;
   }>("map");
 
   let map: Map = mapContext.getMap();
-  let defaultLocation: LatLngExpression = $derived($currentCenter);
-  let defaultZoom: number = $derived($currentZoom);
 
   function centerMapOnLocation() {
     if (map) {
-      map.setView(defaultLocation, defaultZoom, {
+      map.setView($defaultCenter, $defaultZoom, {
         animate: true,
-        duration: 0.4,
+        duration: 0.8,
       });
-      currentZoom.set(defaultZoom);
+      currentZoom.set($defaultZoom);
     }
   }
 </script>
