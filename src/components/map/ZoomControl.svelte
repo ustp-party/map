@@ -1,5 +1,6 @@
 <script lang="ts">
-  import MaterialIcon from "$components/icons/MaterialIcon.svelte";
+  import AddIcon from "$components/icons/AddIcon.svelte";
+  import RemoveIcon from "$components/icons/RemoveIcon.svelte";
   import { getContext } from "svelte";
   import type { Map } from "leaflet";
 
@@ -20,7 +21,7 @@
     }}
     disabled={zoomInDisabled}
   >
-    <MaterialIcon name="add" alt="+" />
+    <AddIcon alt="Zoom in" />
   </button>
   <button
     class="zoom out"
@@ -31,7 +32,7 @@
     }}
     disabled={zoomOutDisabled}
   >
-    <MaterialIcon name="remove" alt="-" />
+    <RemoveIcon alt="Zoom out" />
   </button>
 </div>
 

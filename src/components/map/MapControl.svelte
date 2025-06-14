@@ -1,5 +1,6 @@
 <script lang="ts">
-  import MaterialIcon from "$components/icons/MaterialIcon.svelte";
+  import MyLocationIcon from "$components/icons/MyLocationIcon.svelte";
+  import LayersIcon from "$components/icons/LayersIcon.svelte";
   import { getContext } from "svelte";
   import type { Map } from "leaflet";
   import type { LatLngExpression } from "leaflet";
@@ -31,10 +32,10 @@
     aria-label="Locate Me"
     onclick={centerMapOnLocation}
   >
-    <MaterialIcon name="my-location" alt="+" />
+    <MyLocationIcon alt="My Location" />
   </button>
   <button class="control layer" aria-label="Select Layer">
-    <MaterialIcon name="layers" alt="-" />
+    <LayersIcon alt="Select map layer" />
   </button>
 </div>
 

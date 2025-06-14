@@ -1,10 +1,10 @@
 <script lang="ts">
-  import MaterialIcon from "$components/icons/MaterialIcon.svelte";
+  import SearchIcon from "$components/icons/SearchIcon.svelte";
 </script>
 
 <div class="searchbar">
   <input type="text" placeholder="Search..." />
-  <MaterialIcon name="search" />
+  <SearchIcon />
 </div>
 
 <style>

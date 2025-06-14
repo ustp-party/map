@@ -1,5 +1,5 @@
 <script lang="ts">
-  import MaterialIcon from "$components/icons/MaterialIcon.svelte";
+  import ArrowIcon from "$components/icons/ArrowIcon.svelte";
   import { getContext } from "svelte";
   import type { Writable } from "svelte/store";
 
@@ -12,9 +12,9 @@
 >
   <div class="icon">
     {#if $collapsed}
-      <MaterialIcon name="arrow-right" />
+      <ArrowIcon direction="right" />
     {:else}
-      <MaterialIcon name="arrow-left" />
+       <ArrowIcon direction="left" />
     {/if}
   </div>
 </button>
