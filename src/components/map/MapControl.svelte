@@ -4,24 +4,24 @@
   import { getContext } from "svelte";
   import type { Map } from "leaflet";
   import type { LatLngExpression } from "leaflet";
+  import { currentZoom } from "$lib/stores/map";
+  import { currentCenter } from "$lib/stores/map";
 
-  const mapContext = getContext<{ getMap: () => Map }>("map");
+  const mapContext = getContext<{
+    getMap: () => Map;
+  }>("map");
+
   let map: Map = mapContext.getMap();
-
-  let {
-    defaultLocation,
-    defaultZoom,
-  }: {
-    defaultLocation: LatLngExpression;
-    defaultZoom: number;
-  } = $props();
+  let defaultLocation: LatLngExpression = $derived($currentCenter);
+  let defaultZoom: number = $derived($currentZoom);
 
   function centerMapOnLocation() {
     if (map) {
       map.setView(defaultLocation, defaultZoom, {
         animate: true,
-        duration: 0.2,
+        duration: 0.4,
       });
+      currentZoom.set(defaultZoom);
     }
   }
 </script>

@@ -5,20 +5,20 @@
   import { base } from "$app/paths";
   import features from "$lib/utils/features";
   import { type Snippet } from "svelte";
+  import { currentZoom } from "$lib/stores/map";
+  import { currentCenter } from "$lib/stores/map";
 
   let mapElement: HTMLDivElement;
   let map: L.Map | undefined = $state();
+  let view: L.LatLngExpression = $derived($currentCenter);
+  let zoom: number = $derived($currentZoom);
 
   let {
     children,
     bounds,
-    view,
-    zoom,
   }: {
     children: Snippet;
     bounds?: L.LatLngBounds | undefined;
-    view: L.LatLngExpression | undefined;
-    zoom: number | undefined;
   } = $props();
 
   onMount(() => {

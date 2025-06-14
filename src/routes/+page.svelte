@@ -4,18 +4,13 @@
   import Sidebar from "$components/sidebars/Sidebar.svelte";
   import ZoomControl from "$components/map/ZoomControl.svelte";
   import MapControl from "$components/map/MapControl.svelte";
-
-  import type { LatLngExpression } from "leaflet";
-
-  const initialView: LatLngExpression = [8.486001, 124.656645];
-  const initialZoom: number = 18;
 </script>
 
-<Leaflet view={initialView} zoom={initialZoom}>
+<Leaflet>
   <Sidebar />
   <div class="top-bar">
     <Searchbar />
-    <MapControl defaultLocation={initialView} defaultZoom={initialZoom} />
+    <MapControl />
   </div>
   <ZoomControl />
 </Leaflet>
