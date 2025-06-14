@@ -1,9 +1,11 @@
 import type { FeatureCollection } from "$types/features";
 import { base } from "$app/paths";
 
-async function buildings(): Promise<FeatureCollection | null> {
+async function buildings(
+  svelteFetch: Function
+): Promise<FeatureCollection | null> {
   try {
-    const res = await fetch(`${base}/data/ustp-buildings.geojson`);
+    const res = await svelteFetch(`${base}/data/ustp-buildings.geojson`);
     if (!res.ok) {
       throw new Error(`HTTP error ${res.status}`);
     }
@@ -15,9 +17,11 @@ async function buildings(): Promise<FeatureCollection | null> {
   }
 }
 
-async function benches(): Promise<FeatureCollection | null> {
+async function benches(
+  svelteFetch: Function
+): Promise<FeatureCollection | null> {
   try {
-    const res = await fetch(`${base}/data/benches.geojson`);
+    const res = await svelteFetch(`${base}/data/benches.geojson`);
     if (!res.ok) {
       throw new Error(`HTTP error ${res.status}`);
     }
@@ -29,9 +33,11 @@ async function benches(): Promise<FeatureCollection | null> {
   }
 }
 
-async function parking(): Promise<FeatureCollection | null> {
+async function parking(
+  svelteFetch: Function
+): Promise<FeatureCollection | null> {
   try {
-    const res = await fetch(`${base}/data/parking-spaces.geojson`);
+    const res = await svelteFetch(`${base}/data/parking-spaces.geojson`);
     if (!res.ok) {
       throw new Error(`HTTP error ${res.status}`);
     }
@@ -43,9 +49,11 @@ async function parking(): Promise<FeatureCollection | null> {
   }
 }
 
-async function pointsOfInterest(): Promise<FeatureCollection | null> {
+async function pointsOfInterest(
+  svelteFetch: Function
+): Promise<FeatureCollection | null> {
   try {
-    const res = await fetch(`${base}/data/points-of-interest.geojson`);
+    const res = await svelteFetch(`${base}/data/points-of-interest.geojson`);
     if (!res.ok) {
       throw new Error(`HTTP error ${res.status}`);
     }
