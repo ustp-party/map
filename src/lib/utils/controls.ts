@@ -31,7 +31,7 @@ async function locateMe(
     // Create and store new marker
     userLocationMarker = L.marker([lat, lng])
       .addTo(map)
-      .bindPopup("You are here!")
+      .bindPopup("<b>You are here!</b><br>Note: Using Wi-Fi or Ethernet has lower accuracy.")
       .openPopup();
 
     // Optionally pan to location
