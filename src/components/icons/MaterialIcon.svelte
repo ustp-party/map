@@ -12,7 +12,6 @@
   let icon = $state<string>("");
 
   onMount(() => {
-    console.log(base);
     icon = prefersDarkMode()
       ? `${base}/${ICONS_DIR}/${props.name}-24-dark.svg`
       : `${base}/${ICONS_DIR}/${props.name}-24-light.svg`;
