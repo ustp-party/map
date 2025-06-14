@@ -29,7 +29,7 @@
     position: sticky;
     top: 0;
     pointer-events: visibleFill;
-    background-color: rgba(255, 255, 255, 1);
+    background-color: var(--bg);
     border-radius: 25px;
     padding-left: 24px;
     padding-right: 16px;
@@ -47,6 +47,11 @@
     background-color: transparent;
     font-size: 1em;
     outline: none;
+    color: var(--text);
+  }
+
+  .searchbar input::placeholder {
+    color: var(--text);
   }
 
   /* General Mobile Phone resolution */
@@ -59,7 +64,7 @@
 
   @media (prefers-color-scheme: dark) {
     .searchbar {
-      background-color: rgba(0, 0, 0, 1);
+      background-color: var(--bg);
     }
   }
 </style>

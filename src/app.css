@@ -8,13 +8,38 @@ body {
   height: 100vh;
 }
 
+:root {
+  --primary: rgba(25, 25, 79, 1);
+  --secondary: rgba(255, 179, 57, 1);
+
+  --accent: rgb(0, 80, 157, 1);
+
+  --text: rgb(0, 80, 157, 1);
+  --text-accent: rgba(25, 25, 79, 1);
+  --bg: rgba(202, 240, 248, 1);
+
+  --btn-hover: rgb(184, 222, 230);
+  --btn-active: rgb(134, 163, 168);
+}
+
 #root {
   font-family: "Roboto", sans-serif;
-  color: #333;
+  color: var(--text);
 }
 
 @media (prefers-color-scheme: dark) {
-  * {
-    color: white;
+  :root {
+    --primary: rgba(25, 25, 79, 1);
+    --secondary: rgba(255, 179, 57, 1);
+
+    --accent: rgba(20, 20, 20, 0.8);
+
+    --text: rgba(249, 249, 249, 1);
+    --text-accent: rgb(165, 165, 165);
+    --bg: rgba(41, 41, 41, 1);
+    --bg-accent: rgba(20, 20, 20, 1);
+
+    --btn-hover: rgba(60, 60, 60, 1);
+    --btn-active: rgba(90, 90, 90, 1);
   }
 }

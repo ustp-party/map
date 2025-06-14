@@ -27,7 +27,7 @@
     height: 50px;
     z-index: 998;
     border-radius: 0 8px 8px 0;
-    background-color: rgba(255, 255, 255, 1);
+    background-color: var(--bg);
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -54,7 +54,6 @@
 
   @media (prefers-color-scheme: dark) {
     .sidebar_btn {
-      background-color: rgba(41, 41, 41, 1);
       box-shadow: 0 0px 8px rgba(255, 255, 255, 0.32);
     }
   }

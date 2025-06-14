@@ -48,7 +48,7 @@
   }
 
   .zoom {
-    background-color: rgba(255, 255, 255, 1);
+    background-color: var(--bg);
     border: none;
     width: 40px;
     height: 40px;
@@ -67,10 +67,10 @@
   }
 
   .zoom:hover {
-    background-color: rgba(255, 255, 255, 1);
+    background-color: var(--btn-hover);
   }
   .zoom:active {
-    background-color: rgba(200, 200, 200, 1);
+    background-color: var(--btn-active);
   }
 
   .zoom:disabled {
@@ -80,14 +80,7 @@
 
   @media (prefers-color-scheme: dark) {
     .zoom {
-      background-color: rgba(0, 0, 0, 1);
       box-shadow: 0 0px 4px rgba(255, 255, 255, 0.8);
-    }
-    .zoom:hover {
-      background-color: rgba(50, 50, 50, 1);
-    }
-    .zoom:active {
-      background-color: rgba(30, 30, 30, 1);
     }
   }
 </style>

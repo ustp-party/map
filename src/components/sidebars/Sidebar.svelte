@@ -41,7 +41,7 @@
     overflow: auto;
     height: 100%;
     z-index: 999;
-    background-color: rgba(255, 255, 255, 1);
+    background-color: var(--bg);
     border-right: 2px solid rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
