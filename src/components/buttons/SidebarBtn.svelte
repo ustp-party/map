@@ -31,15 +31,17 @@
     cursor: pointer;
     display: flex;
     align-items: center;
+    justify-content: right;
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.32);
     transition: left 0.24s ease-in-out;
+    width: 460px;
   }
 
   .open {
-    left: 435px;
+    left: 0px;
   }
   .close {
-    left: 0px;
+    left: -440px;
   }
 
   .icon {
@@ -54,7 +56,6 @@
     .sidebar_btn {
       background-color: rgba(41, 41, 41, 1);
       box-shadow: 0 0px 8px rgba(255, 255, 255, 0.32);
-
     }
   }
 </style>
