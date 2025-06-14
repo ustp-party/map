@@ -3,7 +3,7 @@
 </script>
 
 <div class="searchbar">
-  <input type="text" placeholder="Search..." />
+  <input type="text" placeholder="Search" />
   <SearchIcon />
 </div>
 
@@ -14,6 +14,7 @@
     top: 0;
     pointer-events: visibleFill;
     background-color: var(--bg-accent);
+    border: 1px solid var(--accent-2);
     border-radius: 25px;
     padding-left: 24px;
     padding-right: 16px;
@@ -21,7 +22,6 @@
     width: clamp(80px, 100%, 400px);
     height: 48px;
     gap: 8px;
-    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.3);
   }
 
   .searchbar input {

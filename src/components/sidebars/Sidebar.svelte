@@ -66,12 +66,12 @@
   .divider {
     min-height: 1px;
     width: 100%;
-    background-color: var(--bg-accent);
+    background-color: var(--accent-2);
     margin: clamp(4px, 2vw, 8px) 0;
   }
 
   .spacer {
-    height: 100px;
+    min-height: 100px;
   }
 
   @media (prefers-color-scheme: dark) {
