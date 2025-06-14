@@ -24,7 +24,7 @@
     align-self: center;
     justify-self: center;
     width: var(--icon-size, 24px);
-    height: var(--icon-size, 24px);
+    height: 100%;
     color: var(--icon-color, #00509d); /* fallback */
     transition: color 0.1s ease;
   }
