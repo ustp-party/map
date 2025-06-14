@@ -2,8 +2,6 @@
   import L from "leaflet";
   import "leaflet/dist/leaflet.css";
   import { onDestroy, onMount, setContext } from "svelte";
-  import { base } from "$app/paths";
-  import features from "$lib/utils/features";
   import { type Snippet } from "svelte";
   import { currentZoom } from "$lib/stores/map";
   import { currentCenter } from "$lib/stores/map";
@@ -34,10 +32,6 @@
       }
     ).addTo(map);
 
-    features.buildings(map, base);
-    features.benches(map, base);
-    features.parking(map, base);
-    features.pointsOfInterest(map, base);
   });
 
   onDestroy(() => {

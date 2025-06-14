@@ -4,6 +4,24 @@
   import Sidebar from "$components/sidebars/Sidebar.svelte";
   import ZoomControl from "$components/map/ZoomControl.svelte";
   import MapControl from "$components/map/MapControl.svelte";
+
+  import {
+    buildings,
+    benches,
+    parking,
+    pointsOfInterest,
+  } from "$lib/stores/map";
+
+  import { type PageData } from "./$types";
+
+  let { data }: { data: PageData } = $props();
+
+  $effect(() => {
+    buildings.set(data.buildings);
+    benches.set(data.benches);
+    parking.set(data.parking);
+    pointsOfInterest.set(data.pointsOfInterest);
+  });
 </script>
 
 <Leaflet>

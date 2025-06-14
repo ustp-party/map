@@ -1,104 +1,69 @@
-import L from "leaflet";
+import type { FeatureCollection } from "$types/features";
+import { base } from "$app/paths";
 
-function buildings(map: L.Map, base_url: string) {
-  fetch(`${base_url}/data/ustp-buildings.geojson`)
-    .then((res) => res.json())
-    .then((data) => {
-      L.geoJSON(data, {
-        style: {
-          color: "#5790fc",
-          weight: 1,
-          opacity: 1,
-          fillOpacity: 0.4,
-        },
-        onEachFeature: (feature, layer) => {
-          const props = feature.properties;
-          if (props) {
-            layer.bindPopup(`Name: ${props.name}`);
-          }
-        },
-      }).addTo(map!);
-    })
-    .catch((err) => console.error("Failed to load GeoJSON:", err));
+async function buildings(): Promise<FeatureCollection | null> {
+  try {
+    const res = await fetch(`${base}/data/ustp-buildings.geojson`);
+    if (!res.ok) {
+      throw new Error(`HTTP error ${res.status}`);
+    }
+    const data = await res.json();
+    return data as FeatureCollection;
+  } catch (err) {
+    console.error("Failed to load GeoJSON:", err);
+    return null;
+  }
 }
 
-function benches(map: L.Map, base_url: string) {
-  fetch(`${base_url}/data/benches.geojson`)
-    .then((res) => res.json())
-    .then((data) => {
-      L.geoJSON(data, {
-        style: {
-          color: "#e42536",
-          weight: 0,
-          opacity: 1,
-          fillOpacity: 0.4,
-        },
-        onEachFeature: (feature, layer) => {
-          const props = feature.properties;
-          if (props) {
-            layer.bindPopup(`Name: ${props.name}`);
-          }
-        },
-      }).addTo(map!);
-    })
-    .catch((err) => console.error("Failed to load GeoJSON:", err));
+async function benches(): Promise<FeatureCollection | null> {
+  try {
+    const res = await fetch(`${base}/data/benches.geojson`);
+    if (!res.ok) {
+      throw new Error(`HTTP error ${res.status}`);
+    }
+    const data = await res.json();
+    return data as FeatureCollection;
+  } catch (err) {
+    console.error("Failed to load GeoJSON:", err);
+    return null;
+  }
 }
 
-function parking(map: L.Map, base_url: string) {
-  fetch(`${base_url}/data/parking-spaces.geojson`)
-    .then((res) => res.json())
-    .then((data) => {
-      L.geoJSON(data, {
-        style: {
-          color: "#964a8b",
-          weight: 0,
-          opacity: 1,
-          fillOpacity: 0.4,
-        },
-        onEachFeature: (feature, layer) => {
-          const props = feature.properties;
-          if (props) {
-            layer.bindPopup(`Name: ${props.name}`);
-          }
-        },
-      }).addTo(map!);
-    })
-    .catch((err) => console.error("Failed to load GeoJSON:", err));
+async function parking(): Promise<FeatureCollection | null> {
+  try {
+    const res = await fetch(`${base}/data/parking-spaces.geojson`);
+    if (!res.ok) {
+      throw new Error(`HTTP error ${res.status}`);
+    }
+    const data = await res.json();
+    return data as FeatureCollection;
+  } catch (err) {
+    console.error("Failed to load GeoJSON:", err);
+    return null;
+  }
 }
 
-function pointsOfInterest(map: L.Map, base_url: string) {
-  fetch(`${base_url}/data/points-of-interest.geojson`)
-    .then((res) => res.json())
-    .then((data) => {
-      L.geoJSON(data, {
-        pointToLayer: (feature, latlng) => {
-          return L.circleMarker(latlng, {
-            radius: 8,
-            fillColor: "#ff7800",
-            color: "#000",
-            weight: 1,
-            opacity: 1,
-            fillOpacity: 1,
-          });
-        },
-        onEachFeature: (feature, layer) => {
-          const props = feature.properties;
-          if (props) {
-            layer.bindPopup(`Name: ${props.name}`);
-          }
-        },
-      }).addTo(map!);
-    })
-    .catch((err) => console.error("Failed to load GeoJSON:", err));
+async function pointsOfInterest(): Promise<FeatureCollection | null> {
+  try {
+    const res = await fetch(`${base}/data/points-of-interest.geojson`);
+    if (!res.ok) {
+      throw new Error(`HTTP error ${res.status}`);
+    }
+    const data = await res.json();
+    return data as FeatureCollection;
+  } catch (err) {
+    console.error("Failed to load GeoJSON:", err);
+    return null;
+  }
 }
 
-const features = {
+const featuresCallbacks = {
   buildings: buildings,
   benches: benches,
   parking: parking,
   pointsOfInterest: pointsOfInterest,
 };
 
-export default features;
+export default featuresCallbacks;
 
-export type FeatureType = keyof typeof features;
+export type FeatureType = keyof typeof featuresCallbacks;

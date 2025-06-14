@@ -24,6 +24,9 @@ body {
 
   --btn-hover: rgb(0, 80, 157, 1);
   --btn-active: rgb(0, 62, 119);
+
+  font-family: "Roboto", sans-serif;
+  color: var(--text);
 }
 
 :root button:hover {
@@ -36,10 +39,6 @@ body {
 :root button:disabled {
   cursor: not-allowed;
   opacity: 0.5;
-}
-#root {
-  font-family: "Roboto", sans-serif;
-  color: var(--text);
 }
 
 @media (prefers-color-scheme: dark) {
