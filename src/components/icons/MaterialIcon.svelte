@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { prefersDarkMode } from "$lib/utils/theme";
+  import { darkMode } from "$lib/stores/theme";
   import { onMount } from "svelte";
   import { base } from "$app/paths";
 
@@ -13,7 +13,7 @@
   let icon = $state<string>("");
 
   onMount(() => {
-    icon = prefersDarkMode()
+    icon = darkMode
       ? `${base}/${ICONS_DIR}/${props.name}-24-dark.svg`
       : `${base}/${ICONS_DIR}/${props.name}-24-light.svg`;
   });
