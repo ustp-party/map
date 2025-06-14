@@ -66,18 +66,6 @@
     border-radius: 0 0 8px 8px;
   }
 
-  .zoom:hover {
-    background-color: var(--btn-hover);
-  }
-  .zoom:active {
-    background-color: var(--btn-active);
-  }
-
-  .zoom:disabled {
-    cursor: not-allowed;
-    opacity: 0.5;
-  }
-
   @media (prefers-color-scheme: dark) {
     .zoom {
       box-shadow: 0 0px 4px rgba(255, 255, 255, 0.8);

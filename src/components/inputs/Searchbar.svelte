@@ -2,28 +2,12 @@
   import MaterialIcon from "$components/icons/MaterialIcon.svelte";
 </script>
 
-<div class="searchbar-container">
-  <div class="searchbar">
-    <input type="text" placeholder="Search..." />
-    <MaterialIcon name="search" />
-  </div>
+<div class="searchbar">
+  <input type="text" placeholder="Search..." />
+  <MaterialIcon name="search" />
 </div>
 
 <style>
-  .searchbar-container {
-    position: absolute;
-    top: 0;
-    display: flex;
-    align-items: center;
-    justify-content: left;
-    background-color: none;
-    z-index: 1000;
-    padding-left: clamp(4px, 5vw, 16px);
-    padding-right: clamp(4px, 5vw, 16px);
-    padding-top: clamp(4px, 2vw, 8px);
-    width: 100%;
-  }
-
   .searchbar {
     display: flex;
     position: sticky;
@@ -52,14 +36,6 @@
 
   .searchbar input::placeholder {
     color: var(--text);
-  }
-
-  /* General Mobile Phone resolution */
-  @media (max-width: 600px) {
-    .searchbar-container {
-      align-items: center;
-      justify-content: center;
-    }
   }
 
   @media (prefers-color-scheme: dark) {
