@@ -24,12 +24,6 @@
       }
     ).addTo(map);
 
-    L.control
-      .zoom({
-        position: "bottomright",
-      })
-      .addTo(map);
-
     features.buildings(map, base);
     features.benches(map, base);
     features.parking(map, base);
@@ -56,11 +50,10 @@
   }
 </script>
 
-<div bind:this={mapElement} id="map">
-  {#if map}
-    <slot />
-  {/if}
-</div>
+<div bind:this={mapElement} id="map"></div>
+{#if map}
+  <slot />
+{/if}
 
 <style>
   #map {

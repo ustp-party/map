@@ -2,6 +2,7 @@
   import Leaflet from "$components/map/Leaflet.svelte";
   import Searchbar from "$components/inputs/Searchbar.svelte";
   import Sidebar from "$components/sidebars/Sidebar.svelte";
+  import ZoomControl from "$components/map/ZoomControl.svelte";
 
   import type { LatLngExpression } from "leaflet";
 
@@ -12,7 +13,9 @@
 <div id="map"></div>
 <Searchbar />
 <Sidebar />
-<Leaflet view={initialView} zoom={initialZoom} />
+<Leaflet view={initialView} zoom={initialZoom} >
+  <ZoomControl />
+</Leaflet>
 
 <style>
   #map {
