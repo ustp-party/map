@@ -22,6 +22,7 @@ const config = {
       $utils: "src/lib/utils",
       $routes: "src/routes",
       $types: "src/lib/types",
+      $icons: "src/assets/material-icons",
     },
   },
   paths: {
