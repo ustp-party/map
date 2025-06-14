@@ -16,18 +16,25 @@
   const direction = props.direction || "left";
 </script>
 
-<div
-  class={`svg-icon ${direction}`}
-  style="width: {size}px; height: {size}px; color: {fillColor};"
-  aria-label={props.alt}
->
+<div class={`svg-icon ${direction}`} aria-label={props.alt}>
   {@html iconRaw}
 </div>
 
 <style>
   .svg-icon {
-    display: inline-block;
-    fill: currentColor;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    justify-self: center;
+    width: var(--icon-size, 24px);
+    height: var(--icon-size, 24px);
+    color: var(--icon-color, #00509d); /* fallback */
+    transition: color 0.1s ease;
+  }
+
+  .svg-icon:hover {
+    color: var(--bg-accent);
   }
   .svg-icon.right {
     transform: rotate(180deg);

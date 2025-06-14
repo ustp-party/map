@@ -1,30 +1,25 @@
 <script lang="ts">
-  import { darkTheme, lightTheme } from "$lib/theme";
   import iconRaw from "$icons/my-location-24.svg?raw";
-  import { darkMode } from "$lib/stores/theme";
+  import MaterialIcon from "./MaterialIcon.svelte";
+  import { type Snippet } from "svelte";
 
-  let props = $props<{
+  let {
+    children,
+    size = 24,
+    color,
+    alt,
+  }: {
+    children?: Snippet;
     size?: number;
     color?: string;
     alt?: string | undefined;
-  }>();
-
-  const fillColor =
-    props.color || ($darkMode ? darkTheme.text : lightTheme.text);
-
-  const size = $state(props.size || 24);
+  } = $props();
 </script>
 
-<div
-  class="svg-icon"
-  style="width: {size}px; height: {size}px; color: {fillColor};"
-  aria-label={props.alt}
->
+<MaterialIcon {size} {color} {alt}>
   {@html iconRaw}
-</div>
+  {#if children}
+    {@render children()}
+  {/if}
+</MaterialIcon>
 
-<style>
-  .svg-icon {
-    display: inline-block;
-  }
-</style>
