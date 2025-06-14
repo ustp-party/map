@@ -9,10 +9,6 @@
     alt?: string | undefined;
     direction?: "left" | "right" | "up" | "down";
   }>();
-
-  const fillColor =
-    props.color || ($darkMode ? darkTheme.text : lightTheme.text);
-  const size = props.size || 24;
   const direction = props.direction || "left";
 </script>
 

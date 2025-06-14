@@ -49,7 +49,7 @@
     align-items: center;
     justify-content: center;
     width: 24px;
-    height: 30px;
+    height: 100%;
   }
 
   @media (prefers-color-scheme: dark) {
