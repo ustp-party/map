@@ -22,6 +22,17 @@ body {
   --btn-active: rgb(134, 163, 168);
 }
 
+:root button:hover {
+  background-color: var(--btn-hover);
+}
+:root button:active {
+  background-color: var(--btn-active);
+}
+
+:root button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
 #root {
   font-family: "Roboto", sans-serif;
   color: var(--text);
