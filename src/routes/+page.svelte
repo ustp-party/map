@@ -7,34 +7,24 @@
 
   import type { LatLngExpression } from "leaflet";
 
-  const initialView: LatLngExpression = [8.484975, 124.656662];
-  const initialZoom: number = 19;
+  const initialView: LatLngExpression = [8.486001, 124.656645];
+  const initialZoom: number = 18;
 </script>
 
-<div id="map"></div>
-<div class="top-bar">
-  <Searchbar />
-  <MapControl />
-</div>
-<Sidebar />
 <Leaflet view={initialView} zoom={initialZoom}>
+  <Sidebar />
+  <div class="top-bar">
+    <Searchbar />
+    <MapControl defaultLocation={initialView} defaultZoom={initialZoom} />
+  </div>
   <ZoomControl />
 </Leaflet>
 
 <style>
-  #map {
-    width: 100vh;
-    height: 100vh;
-    margin: 0;
-    padding: 0;
-    position: absolute;
-    top: 0;
-    left: 0;
-  }
-
   .top-bar {
     position: absolute;
     top: 0;
+    display: flex;
     background-color: none;
     z-index: 1000;
     padding-left: clamp(4px, 5vw, 16px);
@@ -45,12 +35,5 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-  }
-
-  @media (max-width: 600px) {
-    .top-bar {
-      align-items: center;
-      justify-content: center;
-    }
   }
 </style>

@@ -1,9 +1,36 @@
 <script lang="ts">
   import MaterialIcon from "$components/icons/MaterialIcon.svelte";
+  import { getContext } from "svelte";
+  import type { Map } from "leaflet";
+  import type { LatLngExpression } from "leaflet";
+
+  const mapContext = getContext<{ getMap: () => Map }>("map");
+  let map: Map = mapContext.getMap();
+
+  let {
+    defaultLocation,
+    defaultZoom,
+  }: {
+    defaultLocation: LatLngExpression;
+    defaultZoom: number;
+  } = $props();
+
+  function centerMapOnLocation() {
+    if (map) {
+      map.setView(defaultLocation, defaultZoom, {
+        animate: true,
+        duration: 0.2,
+      });
+    }
+  }
 </script>
 
 <div class="control-panel">
-  <button class="control location" aria-label="Locate Me">
+  <button
+    class="control location"
+    aria-label="Locate Me"
+    onclick={centerMapOnLocation}
+  >
     <MaterialIcon name="my-location" alt="+" />
   </button>
   <button class="control layer" aria-label="Select Layer">
