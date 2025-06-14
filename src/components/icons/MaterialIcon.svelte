@@ -5,6 +5,7 @@
 
   let props = $props<{
     name: string;
+    alt?: string | undefined;
   }>();
 
   const ICONS_DIR = "material-icons";
@@ -18,7 +19,7 @@
   });
 </script>
 
-<img src={icon} alt="Search" class="material-icons" />
+<img src={icon} class="material-icons" alt={props.alt} />
 
 <style>
   .material-icons {
