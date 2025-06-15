@@ -51,7 +51,8 @@
     pointer-events: auto;
     position: absolute;
     bottom: clamp(32px, 4vw, 44px);
-    right: clamp(10px, 2vw, 20px);
+    right: 0px;
+    margin-right: clamp(4px, 5vw, 16px);
     display: flex;
     flex-direction: column;
     gap: 2px;
