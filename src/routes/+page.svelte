@@ -13,6 +13,7 @@
   } from "$lib/stores/map";
 
   import { type PageData } from "./$types";
+  import SearchOptions from "$components/inputs/SearchOptions.svelte";
 
   let { data }: { data: PageData } = $props();
 
@@ -27,13 +28,16 @@
 <Leaflet>
   <Sidebar />
   <div class="top-bar">
-    <Searchbar />
+    <div class="search">
+      <Searchbar />
+      <SearchOptions />
+    </div>
     <MapControl />
   </div>
   <ZoomControl />
 </Leaflet>
 
-<style>
+<style lang="scss">
   .top-bar {
     position: absolute;
     top: 0;
@@ -46,7 +50,14 @@
     width: 100%;
 
     display: flex;
-    align-items: center;
+    align-items: top;
     justify-content: space-between;
+
+    .search {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      gap: 8px;
+    }
   }
 </style>
