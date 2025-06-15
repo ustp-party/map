@@ -33,7 +33,7 @@ async function locateMe(
     userLocationMarker = L.marker([lat, lng], { icon: fa.LocationCrosshairs })
       .addTo(map)
       .bindPopup(
-        "<b>You are here!</b><br>Note: Using Wi-Fi or Ethernet has lower accuracy."
+        "<b>You are here!</b><br>Note: Use GPS for better accuracy."
       )
       .openPopup();
 

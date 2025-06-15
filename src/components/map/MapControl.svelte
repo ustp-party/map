@@ -15,7 +15,7 @@
   }>("map");
 
   let map: Map = mapContext.getMap();
-  let userLocationMarker: L.Marker | null = null;
+  let userLocationMarker: L.Marker | null = $state(null);
 
   function locateUserHandler() {
     controls.locateMe(map, userLocationMarker);
