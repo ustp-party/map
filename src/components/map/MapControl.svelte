@@ -8,7 +8,7 @@
   import { defaultCenter } from "$lib/stores/map";
   import { defaultZoom } from "$lib/stores/map";
   import controls from "$lib/utils/mapControls";
-  import spinnerSVG from "$assets/animated/spinner.svg?raw";
+  import spinnerSVG from "$assets/animated/spinner2.svg?raw";
   import SvgIcon from "$components/icons/SVGIcon.svelte";
 
   const mapContext = getContext<{
