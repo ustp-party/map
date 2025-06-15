@@ -14,6 +14,7 @@
 
   import { type PageData } from "./$types";
   import SearchOptions from "$components/inputs/SearchOptions.svelte";
+  import { getViewportWidthState } from "$lib/stores/ViewportWidthState.svelte";
 
   let { data }: { data: PageData } = $props();
 
@@ -23,6 +24,8 @@
     parking.set(data.parking);
     pointsOfInterest.set(data.pointsOfInterest);
   });
+
+  const viewportWidth = getViewportWidthState();
 </script>
 
 <Leaflet>
@@ -32,9 +35,18 @@
       <Searchbar />
       <SearchOptions />
     </div>
-    <MapControl />
+    {#if viewportWidth.value >= 600}
+      <MapControl />
+    {/if}
   </div>
-  <ZoomControl />
+  {#if viewportWidth.value > 600}
+    <ZoomControl />
+  {/if}
+  <div class="bottom-bar">
+    {#if viewportWidth.value < 600}
+      <MapControl />
+    {/if}
+  </div>
 </Leaflet>
 
 <style lang="scss">
@@ -60,5 +72,26 @@
       width: 100%;
       gap: 8px;
     }
+  }
+
+  @media (max-width: 599px) {
+    .search {
+      width: 100%;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  .bottom-bar {
+    position: absolute;
+    bottom: clamp(32px, 10vw, 64px);
+    display: flex;
+    background-color: none;
+    z-index: 1000;
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 </style>
