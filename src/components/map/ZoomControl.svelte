@@ -60,7 +60,7 @@
   }
 
   .zoom {
-    background-color: var(--bg);
+    background-color: var(--icon-bg);
     border: none;
     width: 40px;
     height: 40px;
