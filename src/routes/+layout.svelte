@@ -7,6 +7,10 @@
   import { prefersDarkMode } from "$lib/utils/theme";
   import { onMount } from "svelte";
 
+  import { setSearchbarInputState } from "$lib/stores/SearchInputState.svelte";
+
+  setSearchbarInputState();
+
   onMount(() => {
     if (prefersDarkMode()) {
       darkMode.set(true);

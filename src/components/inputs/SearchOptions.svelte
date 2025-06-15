@@ -1,35 +1,25 @@
 <script lang="ts">
   import SearchOption from "$components/buttons/SearchOption.svelte";
-  import SearchOptionIcon from "$components/icons/SearchOptionIcon.svelte";
   import StarSVG from "$assets/font-awesome/star.svg?raw";
   import BuildingSVG from "$assets/font-awesome/building.svg?raw";
   import RestroomSVG from "$assets/font-awesome/restroom.svg?raw";
 </script>
 
 <div class="options">
-  <SearchOption>
-    <SearchOptionIcon>
-      {@html StarSVG}
-    </SearchOptionIcon>
-    Gymnasium
+  <SearchOption name="Gymnasium" value="Gymnasium">
+    {@html StarSVG}
   </SearchOption>
-  <SearchOption>
-    <SearchOptionIcon>
-      {@html StarSVG}
-    </SearchOptionIcon>
-    AVR Room
+  <SearchOption name="AVR" value="Audio Visual Room">
+    {@html StarSVG}
   </SearchOption>
-  <SearchOption>
-    <SearchOptionIcon>
-      {@html BuildingSVG}
-    </SearchOptionIcon>
-    LRC Bldg
+  <SearchOption
+    name="LRC Bldg"
+    value="Learner's Resource Center (LRC) building"
+  >
+    {@html BuildingSVG}
   </SearchOption>
-  <SearchOption>
-    <SearchOptionIcon>
-      {@html RestroomSVG}
-    </SearchOptionIcon>
-    Restroom
+  <SearchOption name="Restrooms" value="Restrooms">
+    {@html RestroomSVG}
   </SearchOption>
 </div>
 

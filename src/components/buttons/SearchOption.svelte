@@ -1,22 +1,33 @@
 <script lang="ts">
   import type { Snippet } from "svelte";
 
+  import { getSearchbarInputState } from "$lib/stores/SearchInputState.svelte";
+  import SearchOptionIcon from "$components/icons/SearchOptionIcon.svelte";
+
   let props = $props<{
     children?: Snippet;
-    alt?: string;
-    icon?: string;
+    name?: string;
+    value?: string;
   }>();
+
+  const searchbarInputState = getSearchbarInputState();
+  function btnHandler() {
+    searchbarInputState.update(props.value);
+  }
 </script>
 
-<button class="option" aria-label={props.alt}>
-  {@render props.children()}
+<button class="option" aria-label={props.value} onclick={btnHandler}>
+  <SearchOptionIcon>
+    {@render props.children()}
+  </SearchOptionIcon>
+  {props.name}
 </button>
 
 <style lang="scss">
   .option {
     all: unset;
     user-select: none;
-    font-weight: 500;
+    font-weight: 600;
     font-size: 0.8em;
     text-wrap: nowrap;
     color: var(--text);

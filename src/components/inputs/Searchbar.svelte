@@ -1,9 +1,12 @@
 <script lang="ts">
   import SearchIcon from "$components/icons/SearchIcon.svelte";
+  import { getSearchbarInputState } from "$lib/stores/SearchInputState.svelte";
+
+  const searchbarInputState = getSearchbarInputState();
 </script>
 
 <div class="searchbar">
-  <input type="text" placeholder="Search" />
+  <input type="text" placeholder="Search" bind:value={searchbarInputState.value} />
   <SearchIcon />
 </div>
 
