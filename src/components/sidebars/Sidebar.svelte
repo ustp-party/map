@@ -4,13 +4,16 @@
   import { writable } from "svelte/store";
   import { slide } from "svelte/transition";
   import { quintInOut } from "svelte/easing";
-  import { buildings } from "$lib/stores/map";
   import { getViewportWidthState } from "$lib/stores/ViewportWidthState.svelte";
+  import type { SearchResults} from "$lib/stores/SearchState.svelte";
+  import { getSearchbarInputState } from "$lib/stores/SearchState.svelte";
   import { onMount } from "svelte";
+
 
   const viewportWidth = getViewportWidthState();
   const collapsed = writable(true);
-  const features = $state($buildings?.features);
+  const searchbarInput = getSearchbarInputState();
+
 
   setContext("collapsed", collapsed);
 
@@ -18,6 +21,12 @@
     window.addEventListener("resize", viewportWidth.update);
     return () => window.removeEventListener("resize", viewportWidth.update);
   });
+
+  const searchHandler = (feature: SearchResults) => {
+    const lowercased = searchbarInput.value.toLowerCase();
+    const searchTerms = feature.searchTerms.toLowerCase();
+    return searchTerms.includes(lowercased);
+  };
 </script>
 
 {#if !$collapsed}
@@ -28,15 +37,11 @@
     <div class="spacer"></div>
     <div class="divider"></div>
     <div class="cards">
-      {#if features && features.length > 0}
-        {#each features as building}
-          <div class="card">
-            <h3>{building.properties.name}</h3>
-          </div>
-        {/each}
-      {:else}
-        <p>Loading buildings…</p>
-      {/if}
+      <div class="card">
+        <h3>
+          {JSON.stringify(searchbarInput.data.filter(searchHandler), null, 2)}
+        </h3>
+      </div>
     </div>
   </div>
 {/if}

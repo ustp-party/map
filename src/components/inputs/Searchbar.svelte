@@ -2,7 +2,7 @@
   import SvgIcon from "$components/icons/SVGIcon.svelte";
   import closeSVG from "$assets/material-icons/close.svg?raw";
   import searchSVG from "$assets/material-icons/search-24.svg?raw";
-  import { getSearchbarInputState } from "$lib/stores/SearchInputState.svelte";
+  import { getSearchbarInputState } from "$lib/stores/SearchState.svelte";
   import { fade } from "svelte/transition";
 
   const searchbarInputState = getSearchbarInputState();
