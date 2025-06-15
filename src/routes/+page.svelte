@@ -55,7 +55,8 @@
 
     .search {
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
+      flex-wrap: wrap;
       width: 100%;
       gap: 8px;
     }

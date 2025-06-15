@@ -15,9 +15,15 @@
   </SearchOption>
   <SearchOption>
     <SearchOptionIcon>
+      {@html StarSVG}
+    </SearchOptionIcon>
+    AVR Room
+  </SearchOption>
+  <SearchOption>
+    <SearchOptionIcon>
       {@html BuildingSVG}
     </SearchOptionIcon>
-    LRC
+    LRC Bldg
   </SearchOption>
   <SearchOption>
     <SearchOptionIcon>
