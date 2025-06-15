@@ -4,11 +4,10 @@
   import SchoolIcon from "$components/icons/SchoolIcon.svelte";
   import { getContext } from "svelte";
   import type { Map } from "leaflet";
-  import type { LatLngExpression } from "leaflet";
   import { currentZoom } from "$lib/stores/map";
   import { defaultCenter } from "$lib/stores/map";
   import { defaultZoom } from "$lib/stores/map";
-  import controls from "$lib/utils/controls";
+  import controls from "$lib/utils/mapControls";
 
   const mapContext = getContext<{
     getMap: () => Map;
@@ -17,6 +16,7 @@
   let map: Map = mapContext.getMap();
   let userLocationMarker: L.Marker | null = $state(null);
 
+  // BUG: The previous userLocationMarker is not being removed when a new one is created.
   function locateUserHandler() {
     controls.locateMe(map, userLocationMarker);
   }

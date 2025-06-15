@@ -1,5 +1,5 @@
-import L, { icon } from "leaflet";
-import fa from "$lib/utils/FontAwesome";
+import L from "leaflet";
+import fa from "$components/icons/CustomIcons";
 
 function getCurrentPosition(): Promise<GeolocationPosition> {
   return new Promise((resolve, reject) => {
@@ -25,6 +25,7 @@ async function locateMe(
     const lng = position.coords.longitude;
 
     // Remove existing marker if present
+    // BUG: The previous userLocationMarker is not being removed when a new one is created.
     if (userLocationMarker) {
       map.removeLayer(userLocationMarker);
     }
@@ -32,9 +33,7 @@ async function locateMe(
     // Create and store new marker
     userLocationMarker = L.marker([lat, lng], { icon: fa.LocationCrosshairs })
       .addTo(map)
-      .bindPopup(
-        "<b>You are here!</b><br>Note: Use GPS for better accuracy."
-      )
+      .bindPopup("<b>You are here!</b><br>Note: Use GPS for better accuracy.")
       .openPopup();
 
     // Optionally pan to location
