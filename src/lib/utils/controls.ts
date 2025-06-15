@@ -1,4 +1,5 @@
-import L from "leaflet";
+import L, { icon } from "leaflet";
+import fa from "$lib/utils/FontAwesome";
 
 function getCurrentPosition(): Promise<GeolocationPosition> {
   return new Promise((resolve, reject) => {
@@ -29,9 +30,11 @@ async function locateMe(
     }
 
     // Create and store new marker
-    userLocationMarker = L.marker([lat, lng])
+    userLocationMarker = L.marker([lat, lng], { icon: fa.LocationCrosshairs })
       .addTo(map)
-      .bindPopup("<b>You are here!</b><br>Note: Using Wi-Fi or Ethernet has lower accuracy.")
+      .bindPopup(
+        "<b>You are here!</b><br>Note: Using Wi-Fi or Ethernet has lower accuracy."
+      )
       .openPopup();
 
     // Optionally pan to location
