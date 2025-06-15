@@ -22,7 +22,6 @@
     align-items: center;
     justify-content: center;
     align-self: center;
-    justify-self: center;
     width: 12px;
     height: 12px;
     transition: color 0.1s ease;

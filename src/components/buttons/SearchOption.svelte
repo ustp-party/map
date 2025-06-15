@@ -19,7 +19,6 @@
     font-weight: 500;
     font-size: 0.8em;
     text-wrap: nowrap;
-    text-overflow: ellipsis;
     color: var(--text);
     fill: var(--text);
     background-color: var(--bg-accent);

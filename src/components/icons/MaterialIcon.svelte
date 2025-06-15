@@ -23,7 +23,6 @@
     align-items: center;
     justify-content: center;
     align-self: center;
-    justify-self: center;
     width: var(--icon-size, 24px);
     height: var(--icon-size, 24px);
     color: var(--icon-color, #00509d); /* fallback */

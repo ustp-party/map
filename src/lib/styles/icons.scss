@@ -1,5 +1,9 @@
 $blue: #2873fd;
 
 .location-crosshairs svg {
-    fill: $blue;
+    fill: none;
+    stroke: $blue;
+    color: $blue;
+
 }
+
