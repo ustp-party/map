@@ -17,6 +17,8 @@ body {
   --accent: rgb(0, 80, 157, 1);
   --accent-2: rgb(140, 171, 201);
   --icon-color: rgb(0, 80, 157, 1);
+  --icon-bg: rgba(202, 240, 248, 1);
+  --icon-hover: rgba(249, 249, 249, 1);
 
   --border: rgb(140, 171, 201);
 
@@ -29,7 +31,7 @@ body {
   --btn-hover: rgb(0, 80, 157, 1);
   --btn-active: rgb(0, 62, 119);
 
-  font-family: 'Roboto', 'Arial', sans-serif;
+  font-family: "Roboto", "Arial", sans-serif;
   color: var(--text);
 }
 
@@ -53,6 +55,8 @@ body {
     --accent: rgba(20, 20, 20, 0.8);
     --accent-2: rgb(120, 120, 120);
     --icon-color: rgba(202, 240, 248, 1);
+    --icon-bg: rgba(41, 41, 41, 1);
+    --icon-hover: rgba(249, 249, 249, 1);
 
     --border: rgb(120, 120, 120);
 

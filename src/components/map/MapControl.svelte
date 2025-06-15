@@ -8,6 +8,8 @@
   import { defaultCenter } from "$lib/stores/map";
   import { defaultZoom } from "$lib/stores/map";
   import controls from "$lib/utils/mapControls";
+  import spinnerSVG from "$assets/animated/spinner.svg?raw";
+  import SvgIcon from "$components/icons/SVGIcon.svelte";
 
   const mapContext = getContext<{
     getMap: () => Map;
@@ -15,10 +17,18 @@
 
   let map: Map = mapContext.getMap();
   let userLocationMarker: L.Marker | null = $state(null);
+  let loading = $state(false);
 
   // BUG: The previous userLocationMarker is not being removed when a new one is created.
-  function locateUserHandler() {
-    controls.locateMe(map, userLocationMarker);
+  async function locateUserHandler() {
+    try {
+      loading = true;
+      controls.locateMe(map, userLocationMarker);
+    } catch (error) {
+      console.error("Error locating user:", error);
+    } finally {
+      loading = false;
+    }
   }
 
   function centerMapOnCampus() {
@@ -38,7 +48,13 @@
     aria-label="My Location"
     onclick={locateUserHandler}
   >
-    <MyLocationIcon alt="My location" />
+    {#if loading}
+      <SvgIcon size={24} alt="Loading user location">
+        {@html spinnerSVG}
+      </SvgIcon>
+    {:else}
+      <MyLocationIcon alt="My location" />
+    {/if}
   </button>
   <button
     class="control campus"
@@ -52,7 +68,7 @@
   </button>
 </div>
 
-<style>
+<style lang="scss">
   .control-panel {
     bottom: clamp(32px, 4vw, 44px);
     right: clamp(10px, 2vw, 20px);
@@ -63,7 +79,8 @@
   }
 
   .control {
-    background-color: var(--bg);
+    background-color: var(--icon-bg);
+    color: var(--icon-color);
     border: none;
     width: 40px;
     height: 40px;
@@ -76,6 +93,10 @@
 
   .control.location {
     border-radius: 8px 0 0 8px;
+
+    &:hover {
+      color: var(--icon-hover);
+    }
   }
   .control.layer {
     border-radius: 0 8px 8px 0;
