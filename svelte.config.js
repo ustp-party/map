@@ -1,5 +1,6 @@
 import adapter from "@sveltejs/adapter-static";
 import { vitePreprocess } from "@sveltejs/vite-plugin-svelte";
+import { scss } from "svelte-preprocess";
 
 const dev = process.argv.includes("dev")
 const config = {
@@ -13,6 +14,9 @@ const config = {
       fallback: undefined,
       precompress: false,
       strict: true,
+      scss: {
+        prependData: '@import "src/lib/styles/app.scss";',
+      }
     }),
     alias: {
       $components: "src/components",
@@ -23,6 +27,8 @@ const config = {
       $routes: "src/routes",
       $types: "src/lib/types",
       $icons: "src/assets/material-icons",
+      $assets: "src/assets",
+      $styles: "src/lib/styles",
     },
   },
   paths: {
