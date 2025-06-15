@@ -88,7 +88,7 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    box-shadow: 0 0px 4px rgba(0, 0, 0, 0.8);
+    box-shadow: 0 0px 8px rgba(0, 0, 0, 0.25);
   }
 
   .control.location {

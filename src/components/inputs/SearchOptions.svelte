@@ -32,7 +32,7 @@
 
     overflow: auto;
     cursor: grab;
-
+    scrollbar-width: none;
     &:active {
       cursor: grabbing;
     }

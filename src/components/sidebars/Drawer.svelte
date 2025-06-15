@@ -76,10 +76,8 @@
 
 <style lang="scss">
   .pull-up-panel {
-    position: fixed;
+    position: absolute;
     bottom: 0;
-    left: 0;
-    right: 0;
     height: clamp(300px, 80vh, 80vh);
     background: var(--bg);
     border-top-left-radius: 12px;
