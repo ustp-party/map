@@ -35,6 +35,11 @@ body {
   color: var(--text);
 }
 
+:root button {
+  all: unset;
+  user-select: none;
+}
+
 :root button:hover {
   background-color: var(--btn-hover);
 }

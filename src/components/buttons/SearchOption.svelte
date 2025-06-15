@@ -25,7 +25,6 @@
 
 <style lang="scss">
   .option {
-    all: unset;
     user-select: none;
     font-weight: 600;
     font-size: 0.8em;

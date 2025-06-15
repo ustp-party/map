@@ -21,7 +21,7 @@
 
 <style>
   .sidebar_btn {
-    all: unset;
+    user-select: none;
     position: absolute;
     top: 50%;
     height: 50px;
