@@ -1,22 +1,26 @@
 <script lang="ts">
-  import { createViewportWidth } from "$lib/stores/viewport";
   import { setContext } from "svelte";
   import SidebarBtn from "$components/buttons/SidebarBtn.svelte";
   import { writable } from "svelte/store";
   import { slide } from "svelte/transition";
   import { quintInOut } from "svelte/easing";
   import { buildings } from "$lib/stores/map";
+  import { getViewportWidthState } from "$lib/stores/ViewportWidthState.svelte";
+  import { onMount } from "svelte";
 
-  const viewportWidth = createViewportWidth();
+  const viewportWidth = getViewportWidthState();
   const collapsed = writable(true);
+  const features = $state($buildings?.features);
 
-  setContext("viewportWidth", viewportWidth);
   setContext("collapsed", collapsed);
 
-  const features = $state($buildings?.features)
+  onMount(() => {
+    window.addEventListener("resize", viewportWidth.update);
+    return () => window.removeEventListener("resize", viewportWidth.update);
+  });
 </script>
 
-{#if $viewportWidth > 600 && !$collapsed}
+{#if viewportWidth.value > 600 && !$collapsed}
   <div
     class="sidebar"
     transition:slide={{ axis: "x", duration: 300, easing: quintInOut }}
@@ -36,7 +40,7 @@
     </div>
   </div>
 {/if}
-{#if $viewportWidth > 600}
+{#if viewportWidth.value > 600}
   <SidebarBtn />
 {/if}
 
@@ -54,9 +58,9 @@
     flex-direction: column;
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.8);
   }
-  
+
   .cards {
-    overflow: auto;;
+    overflow: auto;
     display: flex;
     flex-direction: column;
     padding: clamp(8px, 2vw, 16px);

@@ -8,8 +8,10 @@
   import { onMount } from "svelte";
 
   import { setSearchbarInputState } from "$lib/stores/SearchInputState.svelte";
+  import { setViewportWidthState } from "$lib/stores/ViewportWidthState.svelte";
 
   setSearchbarInputState();
+  setViewportWidthState();
 
   onMount(() => {
     if (prefersDarkMode()) {
