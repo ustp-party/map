@@ -21,9 +21,8 @@ export interface Feature {
 
 export interface Geometry {
   type: "Polygon" | "Point";
-  coordinates: Coordinates;
+  coordinates: Polygon[];
 }
 
-export type Coordinates =
-  | [number, number] // for Point
-  | [number, number][][]; // for Polygon
+export type Point = [number, number];
+export type Polygon = Point[];

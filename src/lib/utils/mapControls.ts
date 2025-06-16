@@ -1,5 +1,6 @@
 import L from "leaflet";
 import fa from "$components/icons/CustomIcons";
+import type { Point, Polygon } from "$lib/types/features";
 
 function getCurrentPosition(): Promise<GeolocationPosition> {
   return new Promise((resolve, reject) => {
@@ -46,10 +47,35 @@ async function locateMe(
   }
 }
 
+function polygonCentroid(coords: Polygon): Point {
+  let x = 0,
+    y = 0,
+    area = 0;
+
+  for (let i = 0, j = coords.length - 1; i < coords.length; j = i++) {
+    const [xi, yi] = coords[i];
+    const [xj, yj] = coords[j];
+
+    const f = xi * yj - xj * yi;
+    area += f;
+    x += (xi + xj) * f;
+    y += (yi + yj) * f;
+  }
+
+  area *= 0.5;
+  x /= 6 * area;
+  y /= 6 * area;
+
+  // Latitude, longitude
+  return [y, x];
+}
+
 const controls = {
+  getCurrentPosition,
   locateMe,
+  polygonCentroid,
 };
 
 export default controls;
 
-export { getCurrentPosition, locateMe };
+export { getCurrentPosition, locateMe, polygonCentroid };

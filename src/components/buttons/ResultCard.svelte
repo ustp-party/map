@@ -1,14 +1,34 @@
 <script lang="ts">
   import type { Feature } from "$lib/types/features";
+  import type { Map } from "leaflet";
+  import type { Polygon, Point } from "$lib/types/features";
+
   import SvgIcon from "$components/icons/SVGIcon.svelte";
   import buildingSVG from "$assets/free-icons/building.svg?raw";
+
+  import { getSearchState } from "$lib/stores/SearchState.svelte";
+  import { getContext } from "svelte";
+  import { polygonCentroid } from "$lib/utils/mapControls";
+
   let { feature }: { feature: Feature } = $props();
   let p = feature.properties;
 
+  const searchState = getSearchState();
+  const mapContext = getContext<{ getMap: () => Map }>("map");
+  const map = mapContext.getMap();
   const showImages = true;
+
+  function handleClick() {
+    let polygon: Polygon = feature.geometry.coordinates[0];
+    let centroid: Point = polygonCentroid(polygon);
+    map.setView(centroid, 19, {
+      animate: true,
+      duration: 0.8,
+    });
+  }
 </script>
 
-<button class="card" id={feature.id}>
+<button class="card" id={feature.id} onclick={handleClick}>
   <div class="container">
     <div class="body">
       <div class="icons">
