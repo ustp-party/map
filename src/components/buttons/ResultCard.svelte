@@ -6,14 +6,12 @@
   import SvgIcon from "$components/icons/SVGIcon.svelte";
   import buildingSVG from "$assets/free-icons/building.svg?raw";
 
-  import { getSearchState } from "$lib/stores/SearchState.svelte";
   import { getContext } from "svelte";
   import { polygonCentroid } from "$lib/utils/mapControls";
 
   let { feature }: { feature: Feature } = $props();
   let p = feature.properties;
 
-  const searchState = getSearchState();
   const mapContext = getContext<{ getMap: () => Map }>("map");
   const map = mapContext.getMap();
   const showImages = true;
