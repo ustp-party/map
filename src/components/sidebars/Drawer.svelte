@@ -41,6 +41,7 @@
     } else {
       // Snap open
       panel!.style.transform = `translateY(0)`;
+      collapsedSidebar.set(false);
     }
 
     offsetY = 0;
@@ -54,6 +55,7 @@
 
   $effect(() => {
     if ($collapsedSidebar) {
+      panel!.style.transition = "transform 0.3s ease";
       panel!.style.transform = `translateY(calc(100% - 40px))`;
     } else {
       panel!.style.transform = `translateY(0)`;
@@ -70,7 +72,7 @@
   >
     <div class="indicator"></div>
   </button>
-  <div class="content">
+  <div class="container" aria-label="drawer content">
     <h3>Results</h3>
     <ResultCards />
   </div>
@@ -109,11 +111,15 @@
       }
     }
 
-    .content {
+    .container {
       height: calc(100% - 40px);
       overflow: auto;
       padding-left: clamp(4px, 2vw + 1px, 8px);
       padding-right: clamp(4px, 2vw + 1px, 8px);
+
+      h3 {
+        margin-bottom: 8px;
+      }
     }
   }
 </style>

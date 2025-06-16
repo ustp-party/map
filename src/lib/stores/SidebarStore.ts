@@ -1,3 +1,3 @@
 import { writable } from "svelte/store";
 
-export let collapsedSidebar = writable<boolean>(false);
+export let collapsedSidebar = writable<boolean>(true);

@@ -12,7 +12,7 @@ const fuseOptions = {
   findAllMatches: true,
   shouldSort: true,
   useExtendedSearch: true,
-  ignoreFieldNorm: true
+  // ignoreFieldNorm: true
 };
 
 export function createSearchIndex(books: Feature[]) {

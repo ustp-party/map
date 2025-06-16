@@ -8,17 +8,23 @@
 
   import { getContext } from "svelte";
   import { polygonCentroid } from "$lib/utils/mapControls";
+  import { getViewportWidthState } from "$lib/stores/ViewportWidthState.svelte";
+  import { collapsedSidebar } from "$lib/stores/SidebarStore";
 
   let { feature }: { feature: Feature } = $props();
   let p = feature.properties;
 
   const mapContext = getContext<{ getMap: () => Map }>("map");
   const map = mapContext.getMap();
+  const viewportWidth = getViewportWidthState();
   const showImages = true;
 
   function handleClick() {
     let polygon: Polygon = feature.geometry.coordinates[0];
     let centroid: Point = polygonCentroid(polygon);
+    if (viewportWidth.value < 600) {
+      collapsedSidebar.set(true);
+    }
     map.setView(centroid, 19, {
       animate: true,
       duration: 0.8,

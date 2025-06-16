@@ -17,19 +17,22 @@
   });
 </script>
 
-{#if viewportWidth.value >= 600 && !$collapsedSidebar}
-  <div
-    class="sidebar"
-    transition:slide={{ axis: "x", duration: 300, easing: quintInOut }}
-  >
-    <div class="content">
-      <div class="spacer"></div>
-      <div class="divider"></div>
-      <ResultCards />
-    </div>
-  </div>
-{/if}
 {#if viewportWidth.value >= 600}
+  {#if !$collapsedSidebar}
+    <div
+      class="sidebar"
+      transition:slide={{ axis: "x", duration: 300, easing: quintInOut }}
+    >
+      <div class="content">
+        <div class="spacer"></div>
+        <div class="divider"></div>
+        <div class="container" aria-label="sidebar content">
+          <h3>Results</h3>
+          <ResultCards />
+        </div>
+      </div>
+    </div>
+  {/if}
   <SidebarBtn />
 {/if}
 
@@ -50,6 +53,12 @@
     .content {
       padding: 0 8px 0 8px;
       max-width: 100%;
+
+      .container {
+        display: flex;
+        flex-direction: column;
+        gap: 8px
+      }
     }
   }
 
