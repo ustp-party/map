@@ -38,7 +38,6 @@
         keepBuffer: 6,
       }
     ).addTo(map);
-    map.setView(view, zoom);
   });
 
   onDestroy(() => {
@@ -51,29 +50,42 @@
   setContext("map", {
     getMap: () => map,
   });
+  $effect(() => {
+    if (map) {
+      if (view && zoom) {
+        map.setView(view, zoom);
+      }
+    }
+  });
 
-  // Update the map to highlight search results
-  let debounceTimer: ReturnType<typeof setTimeout> | undefined = $state();
+  let debounceTimer: ReturnType<typeof setTimeout> | undefined = undefined;
 
   $effect(() => {
-    // Cancel previous update
-    // Debounce to prevent excessive updates
-    clearTimeout(debounceTimer);
-
-    // Set new debounce delay
-    debounceTimer = setTimeout(() => {
-      if (buildingsLayer) {
-        map?.removeLayer(buildingsLayer);
+    if (searchResults) {
+      // Clear previous timer
+      if (debounceTimer) {
+        clearTimeout(debounceTimer);
       }
 
-      buildingsLayer = L.geoJSON(searchResults, {
-        style: {
-          color: mapTheme.highlight,
-          weight: 1,
-          fillOpacity: 0.5,
-        },
-      }).addTo(map!);
-    }, 700); // only runs if 700ms pass with no new changes
+      // Set debounce to update after 700ms of inactivity
+      debounceTimer = setTimeout(() => {
+        if (buildingsLayer) {
+          map?.removeLayer(buildingsLayer);
+        }
+
+        buildingsLayer = L.geoJSON(searchResults, {
+          style: {
+            color: mapTheme.highlight,
+            weight: 1,
+            fillOpacity: 0.5,
+          },
+        }).addTo(map!);
+      }, 700);
+    }
+  });
+
+  onDestroy(() => {
+    if (debounceTimer) clearTimeout(debounceTimer);
   });
 </script>
 
