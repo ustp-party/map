@@ -103,9 +103,9 @@
       --c3: #d0d0d0;
 
       @media (prefers-color-scheme: dark) {
-        --c1: #20202d;
-        --c2: #1e232e;
-        --c3: #25242e;
+        --c1: #3c3c4e;
+        --c2: #464c5a;
+        --c3: #403f4d;
       }
       min-width: 80px;
       width: clamp(80px, 5vw + 10px, 100px);
