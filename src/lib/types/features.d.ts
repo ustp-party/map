@@ -14,6 +14,7 @@ export interface Feature {
     "addr:place"?: string;
     "building:levels"?: string;
     level?: string;
+    image?: string;
   };
   geometry: Geometry;
 }

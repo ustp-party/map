@@ -1,21 +1,15 @@
 <script lang="ts">
-  import type { Feature } from "$lib/types/features";
-  import { setContext } from "svelte";
   import { slide } from "svelte/transition";
   import { quintInOut } from "svelte/easing";
   import { onMount } from "svelte";
 
-  import ResultCard from "$components/buttons/ResultCard.svelte";
   import SidebarBtn from "$components/buttons/SidebarBtn.svelte";
+  import ResultCards from "./ResultCards.svelte";
 
   import { getViewportWidthState } from "$lib/stores/ViewportWidthState.svelte";
-  import { getSearchState } from "$lib/stores/SearchState.svelte";
-  import { buildings } from "$lib/stores/map";
   import { collapsedSidebar } from "$lib/stores/SidebarStore";
 
   const viewportWidth = getViewportWidthState();
-  const searchState = getSearchState();
-  const buildingsData: Feature[] = $buildings!;
 
   onMount(() => {
     window.addEventListener("resize", viewportWidth.update);
@@ -28,30 +22,10 @@
     class="sidebar"
     transition:slide={{ axis: "x", duration: 300, easing: quintInOut }}
   >
-    <div class="spacer"></div>
-    <div class="divider"></div>
-    <div class="cards">
-      {#if searchState.results.length === 0 && searchState.query.length > 0}
-        No results found for "{searchState.query}"
-      {:else if searchState.query.length === 0}
-        {#each buildingsData as feature}
-          <ResultCard
-            title={feature.properties.name}
-            description={feature.properties.description}
-            levels={feature.properties["building:levels"]}
-            bldg_no={feature.properties["addr:housenumber"]}
-          />
-        {/each}
-      {:else}
-        {#each searchState.results as feature}
-          <ResultCard
-            title={feature.properties.name}
-            description={feature.properties.description}
-            levels={feature.properties["building:levels"]}
-            bldg_no={feature.properties["addr:housenumber"]}
-          />
-        {/each}
-      {/if}
+    <div class="content">
+      <div class="spacer"></div>
+      <div class="divider"></div>
+      <ResultCards />
     </div>
   </div>
 {/if}
@@ -59,11 +33,11 @@
   <SidebarBtn />
 {/if}
 
-<style>
+<style lang="scss">
   .sidebar {
     position: absolute;
-    top: 0;
-    width: 438px;
+    width: 100%;
+    max-width: 438px;
     overflow: auto;
     height: 100%;
     z-index: 999;
@@ -72,14 +46,11 @@
     display: flex;
     flex-direction: column;
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.8);
-  }
 
-  .cards {
-    overflow: auto;
-    display: flex;
-    flex-direction: column;
-    padding: clamp(8px, 2vw, 16px);
-    gap: clamp(8px, 2vw, 16px);
+    .content {
+      padding: 0 8px 0 8px;
+      max-width: 100%;
+    }
   }
 
   .divider {

@@ -1,14 +1,7 @@
 <script lang="ts">
-  import type { Feature } from "$lib/types/features";
-
-  import ResultCard from "$components/buttons/ResultCard.svelte";
-
-  import { buildings } from "$lib/stores/map";
-  import { getSearchState } from "$lib/stores/SearchState.svelte";
+  import ResultCards from "./ResultCards.svelte";
   import { collapsedSidebar } from "$lib/stores/SidebarStore";
 
-  const searchState = getSearchState();
-  const buildingsData: Feature[] = $buildings!;
   let panel: HTMLElement | null = null;
   let startY = 0;
   let currentY = $state(0);
@@ -78,29 +71,8 @@
     <div class="indicator"></div>
   </button>
   <div class="content">
-    <div class="cards">
-      {#if searchState.results.length === 0 && searchState.query.length > 0}
-        No results found for "{searchState.query}"
-      {:else if searchState.query.length === 0}
-        {#each buildingsData as feature}
-          <ResultCard
-            title={feature.properties.name}
-            description={feature.properties.description}
-            levels={feature.properties["building:levels"]}
-            bldg_no={feature.properties["addr:housenumber"]}
-          />
-        {/each}
-      {:else}
-        {#each searchState.results as feature}
-          <ResultCard
-            title={feature.properties.name}
-            description={feature.properties.description}
-            levels={feature.properties["building:levels"]}
-            bldg_no={feature.properties["addr:housenumber"]}
-          />
-        {/each}
-      {/if}
-    </div>
+    <h3>Results</h3>
+    <ResultCards />
   </div>
 </div>
 
@@ -140,7 +112,8 @@
     .content {
       height: calc(100% - 40px);
       overflow: auto;
-      padding: 1rem;
+      padding-left: clamp(4px, 2vw + 1px, 8px);
+      padding-right: clamp(4px, 2vw + 1px, 8px);
     }
   }
 </style>

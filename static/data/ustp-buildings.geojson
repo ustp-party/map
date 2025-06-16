@@ -125,7 +125,7 @@
         "addr:place": "University of Science and Technology of Southern Philippines",
         "building": "college",
         "name": "Girl's Trade Building",
-        "building:levels":"1",
+        "building:levels": "1",
         "type": "building"
       },
       "geometry": {
@@ -220,6 +220,7 @@
         "addr:place": "University of Science and Technology of Southern Philippines",
         "building": "university",
         "name": "Culinary Building",
+        "type": "building",
         "building:levels": "1"
       },
       "geometry": {
@@ -260,6 +261,7 @@
         "building": "college",
         "building:levels": "1",
         "name": "Science Centrum",
+        "type": "building",
         "roof:levels": "1"
       },
       "geometry": {
@@ -366,7 +368,8 @@
         "addr:place": "University of Science and Technology of Southern Philippines",
         "building": "university",
         "building:levels": "2",
-        "name": "Senior High School Building"
+        "name": "Senior High School Building",
+        "type": "building"
       },
       "geometry": {
         "type": "Polygon",
@@ -468,7 +471,8 @@
         "addr:place": "University of Science and Technology of Southern Philippines",
         "building": "college",
         "building:levels": "4",
-        "name": "Information and Communications Technology Building"
+        "name": "Information and Communications Technology Building",
+        "type": "building"
       },
       "geometry": {
         "type": "Polygon",
@@ -639,7 +643,9 @@
         "addr:place": "University of Science and Technology of Southern Philippines",
         "building": "office",
         "name": "Administration Building",
-        "office": "educational_institution"
+        "office": "educational_institution",
+        "type": "building",
+        "building:levels": "1"
       },
       "geometry": {
         "type": "Polygon",
@@ -722,7 +728,8 @@
         "addr:place": "University of Science and Technology of Southern Philippines",
         "building": "college",
         "name": "Old Civil Engineering Building",
-        "building:levels": "1"
+        "building:levels": "1",
+        "type": "building"
       },
       "geometry": {
         "type": "Polygon",
@@ -761,7 +768,8 @@
         "addr:place": "University of Science and Technology of Southern Philippines",
         "building": "college",
         "name": "Arts and Culture Building",
-        "type": "building"
+        "type": "building",
+        "building:levels": "?"
       },
       "geometry": {
         "type": "Polygon",
@@ -886,7 +894,8 @@
         "addr:place": "University of Science and Technology of Southern Philippines",
         "building": "college",
         "name": "Food Innovation Center",
-        "building:levels": "2"
+        "building:levels": "2",
+        "type": "building"
       },
       "geometry": {
         "type": "Polygon",
@@ -924,7 +933,8 @@
         "addr:housenumber": "26",
         "addr:place": "University of Science and Technology of Southern Philippines",
         "building": "university",
-        "name": "Scholarship Building"
+        "name": "Scholarship Building",
+        "type": "building"
       },
       "geometry": {
         "type": "Polygon",
@@ -1017,7 +1027,8 @@
         "addr:housenumber": "36",
         "addr:place": "University of Science and Technology of Southern Philippines",
         "building": "college",
-        "name": "Student Center"
+        "name": "Student Center",
+        "type": "building"
       },
       "geometry": {
         "type": "Polygon",
@@ -1055,7 +1066,8 @@
         "addr:housenumber": "35",
         "addr:place": "University of Science and Technology of Southern Philippines",
         "building": "college",
-        "name": "BTED"
+        "name": "BTED",
+        "type": "building"
       },
       "geometry": {
         "type": "Polygon",
@@ -1093,7 +1105,8 @@
         "addr:housenumber": "37",
         "addr:place": "University of Science and Technology of Southern Philippines",
         "building": "college",
-        "name": "Civil Technology Building"
+        "name": "Civil Technology Building",
+        "type": "building"
       },
       "geometry": {
         "type": "Polygon",
@@ -1131,7 +1144,8 @@
         "addr:housenumber": "38",
         "addr:place": "University of Science and Technology of Southern Philippines",
         "building": "college",
-        "name": "Civil Technology Building"
+        "name": "Civil Technology Building",
+        "type": "building"
       },
       "geometry": {
         "type": "Polygon",
@@ -1170,7 +1184,8 @@
         "addr:housenumber": "42",
         "addr:place": "University of Science and Technology of Southern Philippines",
         "building": "college",
-        "name": "Engineering Complex I"
+        "name": "Engineering Complex I",
+        "type": "building"
       },
       "geometry": {
         "type": "Polygon",
@@ -1220,7 +1235,8 @@
         "addr:housenumber": "43",
         "addr:place": "University of Science and Technology of Southern Philippines",
         "building": "college",
-        "name": "Engineering Complex II"
+        "name": "Engineering Complex II",
+        "type": "building"
       },
       "geometry": {
         "type": "Polygon",
@@ -1316,7 +1332,8 @@
         "amenity": "food_court",
         "building": "college",
         "name": "Cafeteria",
-        "building:levels": "1"
+        "building:levels": "1",
+        "type": "building"
       },
       "geometry": {
         "type": "Polygon",
@@ -1359,10 +1376,10 @@
       },
       "id": "way/427550466"
     },
-        {
+    {
       "type": "Feature",
       "properties": {
-        "@id": "way/1182410487",      
+        "@id": "way/1182410487",
         "addr:housenumber": "?",
         "addr:place": "University of Science and Technology of Southern Philippines",
         "type": "building",
@@ -1451,7 +1468,7 @@
       },
       "id": "way/1182410488"
     },
-        {
+    {
       "type": "Feature",
       "properties": {
         "@id": "way/868872754",
@@ -1489,7 +1506,7 @@
       },
       "id": "way/868872754"
     },
-        {
+    {
       "type": "Feature",
       "properties": {
         "@id": "way/427550459",
@@ -1574,7 +1591,8 @@
         "building": "college",
         "name": "Unknown Building",
         "addr:place": "University of Science and Technology of Southern Philippines",
-        "addr:housenumber": "?"
+        "addr:housenumber": "?",
+        "type": "building"
       },
       "geometry": {
         "type": "Polygon",
@@ -1605,7 +1623,7 @@
       },
       "id": "way/427550461"
     },
-   {
+    {
       "type": "Feature",
       "properties": {
         "@id": "way/427545409",
