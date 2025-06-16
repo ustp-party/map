@@ -71,7 +71,6 @@
           max-width: 100%;
           gap: clamp(4px, 1vh + 1px, 8px);
 
-
           .card-title {
             font-weight: 600;
             font-size: 1.125rem;
@@ -102,17 +101,13 @@
       --c2: #e0e0e0;
       --c3: #d0d0d0;
 
-      @media (prefers-color-scheme: dark) {
-        --c1: #3c3c4e;
-        --c2: #464c5a;
-        --c3: #403f4d;
-      }
       min-width: 80px;
       width: clamp(80px, 5vw + 10px, 100px);
       height: 100%;
       aspect-ratio: 1;
       border-radius: 12px;
 
+      background-size: var(--s) calc(var(--s) * tan(30deg));
       background:
         repeating-conic-gradient(from 30deg, #0000 0 120deg, var(--c3) 0 50%)
           calc(var(--s) / 2) calc(var(--s) * tan(30deg) / 2),
@@ -122,7 +117,12 @@
           var(--c2) 0 120deg,
           var(--c3) 0 50%
         );
-      background-size: var(--s) calc(var(--s) * tan(30deg));
+
+      @media (prefers-color-scheme: dark) {
+        --c1: #3c3c4e;
+        --c2: #464c5a;
+        --c3: #403f4d;
+      }
     }
   }
 </style>
