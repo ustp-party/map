@@ -19,6 +19,14 @@
     } else {
       darkMode.set(false);
     }
+    
+    // Set initial viewport height, useful for mobile browsers
+    function setViewportHeight() {
+      const vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty("--vh", `${vh}px`);
+    }
+    window.addEventListener("resize", setViewportHeight);
+    setViewportHeight();
   });
 
   let { data, children }: { data: LayoutData; children: Snippet } = $props();
