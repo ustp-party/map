@@ -115,5 +115,11 @@
     .searchbar {
       background-color: var(--bg-accent);
     }
+    button {
+      &:hover {
+        color: var(--icon-color);
+        background-color: transparent;
+      }
+    }
   }
 </style>

@@ -14,7 +14,7 @@
   </SearchOption>
   <SearchOption
     name="LRC Bldg"
-    value="Learner's Resource Center (LRC) building"
+    value="Learning Resource Center"
   >
     {@html BuildingSVG}
   </SearchOption>

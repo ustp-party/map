@@ -107,7 +107,6 @@
       aspect-ratio: 1;
       border-radius: 12px;
 
-      background-size: var(--s) calc(var(--s) * tan(30deg));
       background:
         repeating-conic-gradient(from 30deg, #0000 0 120deg, var(--c3) 0 50%)
           calc(var(--s) / 2) calc(var(--s) * tan(30deg) / 2),
@@ -117,11 +116,12 @@
           var(--c2) 0 120deg,
           var(--c3) 0 50%
         );
+      background-size: var(--s) calc(var(--s) * tan(30deg));
 
       @media (prefers-color-scheme: dark) {
-        --c1: #3c3c4e;
-        --c2: #464c5a;
-        --c3: #403f4d;
+        --c1: #272736;
+        --c2: #333947;
+        --c3: #2d2c3b;
       }
     }
   }
