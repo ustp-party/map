@@ -24,7 +24,7 @@
   });
 </script>
 
-{#if !$collapsed}
+{#if (viewportWidth.value >= 600) && !$collapsed}
   <div
     class="sidebar"
     transition:slide={{ axis: "x", duration: 300, easing: quintInOut }}

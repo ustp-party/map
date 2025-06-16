@@ -31,7 +31,7 @@
 </script>
 
 <Leaflet>
-  <Sidebar />
+    <Sidebar />
   <div class="top-bar">
     <div class="search">
       <Searchbar />
