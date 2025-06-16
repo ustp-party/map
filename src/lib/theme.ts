@@ -23,3 +23,7 @@ export const darkTheme: Theme = {
   btnHover: "rgba(60, 60, 60, 1)",
   btnActive: "rgba(90, 90, 90, 1)",
 };
+
+export const mapTheme = {
+  highlight: "#5790fc"
+};
