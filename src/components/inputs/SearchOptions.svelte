@@ -1,8 +1,8 @@
 <script lang="ts">
   import SearchOption from "$components/buttons/SearchOption.svelte";
-  import StarSVG from "$assets/font-awesome/star.svg?raw";
-  import BuildingSVG from "$assets/font-awesome/building.svg?raw";
-  import RestroomSVG from "$assets/font-awesome/restroom.svg?raw";
+  import StarSVG from "$assets/free-icons/star.svg?raw";
+  import BuildingSVG from "$assets/free-icons/building.svg?raw";
+  import RestroomSVG from "$assets/free-icons/restroom.svg?raw";
 </script>
 
 <div class="options">

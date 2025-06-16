@@ -11,6 +11,8 @@ const fuseOptions = {
   //   includeScore: true,
   findAllMatches: true,
   shouldSort: true,
+  useExtendedSearch: true,
+  ignoreFieldNorm: true
 };
 
 export function createSearchIndex(books: Feature[]) {
