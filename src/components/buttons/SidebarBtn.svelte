@@ -1,20 +1,17 @@
 <script lang="ts">
   import ArrowIcon from "$components/icons/ArrowIcon.svelte";
-  import { getContext } from "svelte";
-  import type { Writable } from "svelte/store";
-
-  const collapsed = getContext<Writable<boolean>>("collapsed");
+  import { collapsedSidebar } from "$lib/stores/SidebarStore";
 </script>
 
 <button
-  class={"sidebar_btn" + ($collapsed ? " close" : " open")}
-  on:click={() => collapsed.update((value) => !value)}
+  class={"sidebar_btn" + ($collapsedSidebar ? " close" : " open")}
+  on:click={() => collapsedSidebar.update((value) => !value)}
 >
   <div class="icon">
-    {#if $collapsed}
+    {#if $collapsedSidebar}
       <ArrowIcon direction="right" />
     {:else}
-       <ArrowIcon direction="left" />
+      <ArrowIcon direction="left" />
     {/if}
   </div>
 </button>

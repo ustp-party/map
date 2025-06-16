@@ -1,8 +1,7 @@
 <script lang="ts">
   import type { Snippet } from "svelte";
-
-  import { getSearchState } from "$lib/stores/SearchState.svelte";
   import SearchOptionIcon from "$components/icons/SearchOptionIcon.svelte";
+  import { getSearchState } from "$lib/stores/SearchState.svelte";
 
   let props = $props<{
     children?: Snippet;

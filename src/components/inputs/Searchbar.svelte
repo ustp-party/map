@@ -1,12 +1,15 @@
 <script lang="ts">
+  import { fade } from "svelte/transition";
+  import { onMount } from "svelte";
+
   import SvgIcon from "$components/icons/SVGIcon.svelte";
   import closeSVG from "$assets/material-icons/close.svg?raw";
   import searchSVG from "$assets/material-icons/search-24.svg?raw";
-  import { getSearchState } from "$lib/stores/SearchState.svelte";
-  import { fade } from "svelte/transition";
-  import { onMount } from "svelte";
-  import { buildings } from "$lib/stores/map";
+
   import { createSearchIndex, searchBooks } from "$lib/utils/searchService";
+  import { getSearchState } from "$lib/stores/SearchState.svelte";
+  import { buildings } from "$lib/stores/map";
+  import { collapsedSidebar } from "$lib/stores/SidebarStore";
 
   const searchState = getSearchState();
   let searchIndex: any;
@@ -35,21 +38,18 @@
       searchState.updateResults([]);
     } else {
       handleSearch();
+      collapsedSidebar.set(false);
     }
   });
 </script>
 
 <div class="searchbar" transition:fade={{ duration: 200 }}>
-    <input
-      type="text"
-      placeholder="Search"
-      bind:value={searchState.query}
-    />
-    <button aria-label="Search">
-      <SvgIcon size={24} alt="Search">
-        {@html searchSVG}
-      </SvgIcon>
-    </button>
+  <input type="text" placeholder="Search" bind:value={searchState.query} />
+  <button aria-label="Search">
+    <SvgIcon size={24} alt="Search">
+      {@html searchSVG}
+    </SvgIcon>
+  </button>
   {#if searchState.query.length > 0}
     <div transition:fade={{ duration: 200 }}>
       <button

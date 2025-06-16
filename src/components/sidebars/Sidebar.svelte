@@ -1,22 +1,21 @@
 <script lang="ts">
+  import type { Feature } from "$lib/types/features";
   import { setContext } from "svelte";
-  import SidebarBtn from "$components/buttons/SidebarBtn.svelte";
-  import { writable } from "svelte/store";
   import { slide } from "svelte/transition";
   import { quintInOut } from "svelte/easing";
+  import { onMount } from "svelte";
+
+  import ResultCard from "$components/buttons/ResultCard.svelte";
+  import SidebarBtn from "$components/buttons/SidebarBtn.svelte";
+
   import { getViewportWidthState } from "$lib/stores/ViewportWidthState.svelte";
   import { getSearchState } from "$lib/stores/SearchState.svelte";
-  import { onMount } from "svelte";
   import { buildings } from "$lib/stores/map";
-  import type { Feature } from "$lib/types/features";
-  import ResultCard from "$components/buttons/ResultCard.svelte";
+  import { collapsedSidebar } from "$lib/stores/SidebarStore";
 
   const viewportWidth = getViewportWidthState();
-  const collapsed = writable(true);
   const searchState = getSearchState();
   const buildingsData: Feature[] = $buildings!;
-
-  setContext("collapsed", collapsed);
 
   onMount(() => {
     window.addEventListener("resize", viewportWidth.update);
@@ -24,7 +23,7 @@
   });
 </script>
 
-{#if (viewportWidth.value >= 600) && !$collapsed}
+{#if viewportWidth.value >= 600 && !$collapsedSidebar}
   <div
     class="sidebar"
     transition:slide={{ axis: "x", duration: 300, easing: quintInOut }}
@@ -32,7 +31,9 @@
     <div class="spacer"></div>
     <div class="divider"></div>
     <div class="cards">
-      {#if searchState.results.length === 0}
+      {#if searchState.results.length === 0 && searchState.query.length > 0}
+        No results found for "{searchState.query}"
+      {:else if searchState.query.length === 0}
         {#each buildingsData as feature}
           <ResultCard
             title={feature.properties.name}
