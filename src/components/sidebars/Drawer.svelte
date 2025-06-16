@@ -5,6 +5,7 @@
 
   import { buildings } from "$lib/stores/map";
   import { getSearchState } from "$lib/stores/SearchState.svelte";
+  import { collapsedSidebar } from "$lib/stores/SidebarStore";
 
   const searchState = getSearchState();
   const buildingsData: Feature[] = $buildings!;
@@ -43,6 +44,7 @@
     if (offsetY > 100) {
       // Close it fully (just show handle)
       panel!.style.transform = `translateY(calc(100% - 40px))`;
+      collapsedSidebar.set(true);
     } else {
       // Snap open
       panel!.style.transform = `translateY(0)`;
@@ -56,6 +58,14 @@
     window.removeEventListener("touchmove", onMove);
     window.removeEventListener("touchend", endGrab);
   }
+
+  $effect(() => {
+    if ($collapsedSidebar) {
+      panel!.style.transform = `translateY(calc(100% - 40px))`;
+    } else {
+      panel!.style.transform = `translateY(0)`;
+    }
+  });
 </script>
 
 <div class="pull-up-panel" bind:this={panel}>
