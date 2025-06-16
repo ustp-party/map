@@ -30,31 +30,40 @@
   const viewportWidth = getViewportWidthState();
 </script>
 
-<Leaflet>
+<div class="viewport">
+  <Leaflet>
     <Sidebar />
-  <div class="top-bar">
-    <div class="search">
-      <Searchbar />
-      <SearchOptions />
+    <div class="top-bar">
+      <div class="search">
+        <Searchbar />
+        <SearchOptions />
+      </div>
+      {#if viewportWidth.value >= 600}
+        <MapControl />
+      {/if}
     </div>
-    {#if viewportWidth.value >= 600}
-      <MapControl />
+    {#if viewportWidth.value > 600}
+      <ZoomControl />
     {/if}
-  </div>
-  {#if viewportWidth.value > 600}
-    <ZoomControl />
-  {/if}
-  <div class="bottom-bar">
+    <div class="bottom-bar">
+      {#if viewportWidth.value < 600}
+        <MapControl />
+      {/if}
+    </div>
     {#if viewportWidth.value < 600}
-      <MapControl />
+      <Drawer />
     {/if}
-  </div>
-  {#if viewportWidth.value < 600}
-    <Drawer />
-  {/if}
-</Leaflet>
+  </Leaflet>
+</div>
 
 <style lang="scss">
+  .viewport {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+
   .top-bar {
     position: absolute;
     top: 0;
