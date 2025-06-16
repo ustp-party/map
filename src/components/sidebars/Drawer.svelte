@@ -1,7 +1,13 @@
 <script lang="ts">
-  import { buildings } from "$lib/stores/map";
+  import type { Feature } from "$lib/types/features";
 
-  const features = $state($buildings?.features);
+  import ResultCard from "$components/buttons/ResultCard.svelte";
+
+  import { buildings } from "$lib/stores/map";
+  import { getSearchState } from "$lib/stores/SearchState.svelte";
+
+  const searchState = getSearchState();
+  const buildingsData: Feature[] = $buildings!;
   let panel: HTMLElement | null = null;
   let startY = 0;
   let currentY = $state(0);
@@ -62,15 +68,27 @@
     <div class="indicator"></div>
   </button>
   <div class="content">
-    {#if features && features.length > 0}
-      {#each features as building}
-        <div class="card">
-          <h3>{building.properties.name}</h3>
-        </div>
-      {/each}
-    {:else}
-      <p>Loading buildings…</p>
-    {/if}
+    <div class="cards">
+      {#if searchState.results.length === 0}
+        {#each buildingsData as feature}
+          <ResultCard
+            title={feature.properties.name}
+            description={feature.properties.description}
+            levels={feature.properties["building:levels"]}
+            bldg_no={feature.properties["addr:housenumber"]}
+          />
+        {/each}
+      {:else}
+        {#each searchState.results as feature}
+          <ResultCard
+            title={feature.properties.name}
+            description={feature.properties.description}
+            levels={feature.properties["building:levels"]}
+            bldg_no={feature.properties["addr:housenumber"]}
+          />
+        {/each}
+      {/if}
+    </div>
   </div>
 </div>
 
@@ -78,6 +96,8 @@
   .pull-up-panel {
     position: absolute;
     bottom: 0;
+    left: 0;
+    right: 0;
     height: clamp(300px, 80vh, 80vh);
     background: var(--bg);
     border-top-left-radius: 12px;
