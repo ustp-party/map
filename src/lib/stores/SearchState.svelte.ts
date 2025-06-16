@@ -1,49 +1,25 @@
 import { getContext, setContext } from "svelte";
-import type { FeatureCollection } from "$lib/types/features";
-import type { Feature } from "$lib/types/features";
+import type { SearchResults, SearchState } from "$lib/types/search";
+import type { FuseResult } from "fuse.js";
 
-export interface SearchResults extends Feature {
-  searchTerms: string;
-}
-export interface SearchbarInputState {
-  value: string;
-  update: (text: string) => void;
-  data: SearchResults[];
-  populateData: (data: FeatureCollection) => void;
-}
-
-class SearchbarInputStateClass implements SearchbarInputState {
-  value = $state("");
-  update = (text: string) => {
-    this.value = text;
+class SearchStateClass implements SearchState {
+  query: string = $state("");
+  results: FuseResult<SearchResults>[] = $state([]);
+  updateQuery = (text: string) => {
+    this.query = text;
   };
-  data = <SearchResults[]>([]);
-  populateData = (input_data: FeatureCollection) => {
-    try {
-      this.data = input_data.features.map((feature: Feature) => {
-        const { name, description, type, level } = feature.properties;
-        const buildingLevels = feature.properties["building:levels"];
-
-        return {
-          ...feature,
-          searchTerms: [name, description, type, level, buildingLevels]
-            .filter(Boolean)
-            .join(" "),
-        };
-      });
-    } catch (error) {
-      console.error("Error populating search results data:", error);
-    }
+  updateResults = (results: FuseResult<SearchResults>[]) => {
+    this.results = results;
   };
 }
 
-const DEFAULT_KEY = "$_text_input_state";
+const DEFAULT_KEY = "$_search_state";
 
-export const getSearchbarInputState = (key = DEFAULT_KEY) => {
-  return getContext<SearchbarInputState>(key);
+export const getSearchState = (key = DEFAULT_KEY) => {
+  return getContext<SearchState>(key);
 };
 
-export const setSearchbarInputState = (key = DEFAULT_KEY) => {
-  const searchbarState = new SearchbarInputStateClass();
-  return setContext(key, searchbarState);
+export const setSearchState = (key = DEFAULT_KEY) => {
+  const searchState = new SearchStateClass();
+  return setContext(key, searchState);
 };

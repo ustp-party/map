@@ -1,7 +1,7 @@
 <script lang="ts">
   import type { Snippet } from "svelte";
 
-  import { getSearchbarInputState } from "$lib/stores/SearchState.svelte";
+  import { getSearchState } from "$lib/stores/SearchState.svelte";
   import SearchOptionIcon from "$components/icons/SearchOptionIcon.svelte";
 
   let props = $props<{
@@ -10,9 +10,9 @@
     value?: string;
   }>();
 
-  const searchbarInputState = getSearchbarInputState();
+  const searchState = getSearchState();
   function btnHandler() {
-    searchbarInputState.update(props.value);
+    searchState.updateQuery(props.value);
   }
 </script>
 

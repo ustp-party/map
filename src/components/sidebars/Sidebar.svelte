@@ -5,15 +5,16 @@
   import { slide } from "svelte/transition";
   import { quintInOut } from "svelte/easing";
   import { getViewportWidthState } from "$lib/stores/ViewportWidthState.svelte";
-  import type { SearchResults} from "$lib/stores/SearchState.svelte";
-  import { getSearchbarInputState } from "$lib/stores/SearchState.svelte";
+  import { getSearchState } from "$lib/stores/SearchState.svelte";
   import { onMount } from "svelte";
-
+  import { buildings } from "$lib/stores/map";
+  import type { Feature } from "$lib/types/features";
+  import ResultCard from "$components/buttons/ResultCard.svelte";
 
   const viewportWidth = getViewportWidthState();
   const collapsed = writable(true);
-  const searchbarInput = getSearchbarInputState();
-
+  const searchState = getSearchState();
+  const buildingsData: Feature[] = $buildings!;
 
   setContext("collapsed", collapsed);
 
@@ -21,12 +22,6 @@
     window.addEventListener("resize", viewportWidth.update);
     return () => window.removeEventListener("resize", viewportWidth.update);
   });
-
-  const searchHandler = (feature: SearchResults) => {
-    const lowercased = searchbarInput.value.toLowerCase();
-    const searchTerms = feature.searchTerms.toLowerCase();
-    return searchTerms.includes(lowercased);
-  };
 </script>
 
 {#if !$collapsed}
@@ -37,11 +32,25 @@
     <div class="spacer"></div>
     <div class="divider"></div>
     <div class="cards">
-      <div class="card">
-        <h3>
-          {JSON.stringify(searchbarInput.data.filter(searchHandler), null, 2)}
-        </h3>
-      </div>
+      {#if searchState.results.length === 0}
+        {#each buildingsData as feature}
+          <ResultCard
+            title={feature.properties.name}
+            description={feature.properties.description}
+            levels={feature.properties["building:levels"]}
+            bldg_no={feature.properties["addr:housenumber"]}
+          />
+        {/each}
+      {:else}
+        {#each searchState.results as feature}
+          <ResultCard
+            title={feature.properties.name}
+            description={feature.properties.description}
+            levels={feature.properties["building:levels"]}
+            bldg_no={feature.properties["addr:housenumber"]}
+          />
+        {/each}
+      {/if}
     </div>
   </div>
 {/if}

@@ -16,20 +16,15 @@
 
   import { type PageData } from "./$types";
   import { getViewportWidthState } from "$lib/stores/ViewportWidthState.svelte";
-  import { getSearchbarInputState } from "$lib/stores/SearchState.svelte";
   import { onMount } from "svelte";
 
   let { data }: { data: PageData } = $props();
 
-  $effect(() => {
-    buildings.set(data.buildings);
+  onMount(() => {
+    buildings.set(data.buildings!.features);
     benches.set(data.benches);
     parking.set(data.parking);
     pointsOfInterest.set(data.pointsOfInterest);
-  });
-
-  onMount(() => {
-    getSearchbarInputState().populateData(data.buildings!)
   });
 
   const viewportWidth = getViewportWidthState();

@@ -2,29 +2,60 @@
   import SvgIcon from "$components/icons/SVGIcon.svelte";
   import closeSVG from "$assets/material-icons/close.svg?raw";
   import searchSVG from "$assets/material-icons/search-24.svg?raw";
-  import { getSearchbarInputState } from "$lib/stores/SearchState.svelte";
+  import { getSearchState } from "$lib/stores/SearchState.svelte";
   import { fade } from "svelte/transition";
+  import { onMount } from "svelte";
+  import { buildings } from "$lib/stores/map";
+  import { createSearchIndex, searchBooks } from "$lib/utils/searchService";
 
-  const searchbarInputState = getSearchbarInputState();
+  const searchState = getSearchState();
+  let searchIndex: any;
+  const query = $derived(searchState.query);
+
+  onMount(() => {
+    searchIndex = createSearchIndex($buildings!);
+
+    buildings.subscribe((newBooks) => {
+      searchIndex = createSearchIndex(newBooks!);
+    });
+  });
+
+  function handleSearch() {
+    const results = searchBooks(searchIndex, query);
+    searchState.updateResults(
+      results.map((result) => ({
+        ...result.item,
+        score: result.score,
+      }))
+    );
+  }
+
+  $effect(() => {
+    if (query.length === 0) {
+      searchState.updateResults([]);
+    } else {
+      handleSearch();
+    }
+  });
 </script>
 
 <div class="searchbar" transition:fade={{ duration: 200 }}>
-  <input
-    type="text"
-    placeholder="Search"
-    bind:value={searchbarInputState.value}
-  />
-  <button aria-label="Search">
-    <SvgIcon size={24} alt="Search">
-      {@html searchSVG}
-    </SvgIcon>
-  </button>
-  {#if searchbarInputState.value.length > 0}
+    <input
+      type="text"
+      placeholder="Search"
+      bind:value={searchState.query}
+    />
+    <button aria-label="Search">
+      <SvgIcon size={24} alt="Search">
+        {@html searchSVG}
+      </SvgIcon>
+    </button>
+  {#if searchState.query.length > 0}
     <div transition:fade={{ duration: 200 }}>
       <button
         class="clear-input"
         aria-label="Clear search input"
-        onclick={() => searchbarInputState.update("")}
+        onclick={() => searchState.updateQuery("")}
       >
         <SvgIcon size={24} alt="Clear search input">
           {@html closeSVG}
