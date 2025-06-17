@@ -1,6 +1,5 @@
 import adapter from "@sveltejs/adapter-static";
 import { vitePreprocess } from "@sveltejs/vite-plugin-svelte";
-import { scss } from "svelte-preprocess";
 
 const dev = process.argv.includes("dev")
 const config = {
@@ -13,11 +12,11 @@ const config = {
       assets: "build",
       fallback: undefined,
       precompress: false,
-      strict: true,
-      scss: {
-        prependData: '@import "src/lib/styles/app.scss";',
-      }
+      strict: true
     }),
+    paths: {
+			base: dev ? '' : process.env.BASE_PATH
+		},
     alias: {
       $components: "src/components",
       $lib: "src/lib",
