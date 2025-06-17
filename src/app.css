@@ -1,3 +1,5 @@
+
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -54,9 +56,6 @@ body {
   opacity: 0.5;
 }
 
-.polygon-text .polygon-label {
-  color: var(--primary);
-}
 
 @media (prefers-color-scheme: dark) {
   :root {

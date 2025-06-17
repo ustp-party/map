@@ -2,7 +2,7 @@
   import L from "leaflet";
   import "leaflet/dist/leaflet.css";
   import { onDestroy, onMount, setContext } from "svelte";
-  import type { Feature } from "$lib/types/features";
+  import type { Feature, Properties } from "$lib/types/features";
   import type { Position } from "geojson";
   import type { Snippet } from "svelte";
   import type { LatLngExpression } from "leaflet";
@@ -83,10 +83,20 @@
           },
           onEachFeature: (feature, layer) => {
             if (feature.geometry.type === "Polygon") {
-              if (feature.properties && feature.properties.name) {
-                layer.bindTooltip(feature.properties.name, {
-                  // permanent: true, // always visible
-                  // direction: "center", // show in center of polygon
+              const {
+                name,
+                ["addr:housenumber"]: bldg_no,
+                ["building:levels"]: levels,
+              }: Properties = feature.properties;
+              if (feature.properties && name) {
+                let html = `<div class="building-tooltip">`;
+                html += `<h3 class="tooltip-title">${name}</h3>`;
+                html += '<div class="tooltip-content">';
+                html += `<div class="tooltip-label">Building</div><div>${bldg_no}</div>`;
+                html += `<div class="tooltip-label">Levels</div><div> ${levels}</div>`;
+                html += "</div></div>";
+
+                layer.bindTooltip(html, {
                   className: "polygon-label", // optional CSS class
                 });
               }
@@ -109,16 +119,27 @@
         if (feature.geometry.type === "Polygon") {
           const coords: Position[][] = feature.geometry.coordinates;
           const centroid: LatLngExpression = geometricCentroid(coords[0]);
+          const {
+            name,
+            ["addr:housenumber"]: bldg_no,
+            ["building:levels"]: levels,
+          }: Properties = feature.properties;
+
           const label = L.marker(centroid, {
             icon: L.divIcon({
               className: "polygon-text",
               html: feature.properties["addr:housenumber"],
             }),
           }).addTo(map!);
-          if (feature.properties && feature.properties.name) {
-            layer.bindTooltip(feature.properties.name, {
-              // permanent: true, // always visible
-              // direction: "center", // show in center of polygon
+          if (feature.properties && name) {
+            let html = `<div class="building-tooltip">`;
+            html += `<h3 class="tooltip-title">${name}</h3>`;
+            html += '<div class="tooltip-content">';
+            html += `<div class="tooltip-label">Building</div><div>${bldg_no}</div>`;
+            html += `<div class="tooltip-label">Levels</div><div> ${levels}</div>`;
+            html += "</div></div>";
+
+            layer.bindTooltip(html, {
               className: "polygon-label", // optional CSS class
             });
           }
