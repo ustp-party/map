@@ -1,5 +1,21 @@
 <h1 align="center">map.ustp.party</h1>
-<h3 align="center"><a href="https://map.ustp.party"> <img src="/static/ustp.map.party-64x64.png" style="margin-right: 1em;">map.ustp.party</a></h3>
+<h3 align="center"><a href="https://map.ustp.party"> <img src="/static/ustp.map.party-64x64.png" width="24px" >map.ustp.party</a></h3>
+
+
+
+
+
+## Tech Stack
+
+- Frontend: [Svelte](https://svelte.dev/) with Github Pages
+- Backend: None
+- Development: [Node.js](https://github.com/nvm-sh/nvm) and [npm](https://www.npmjs.com/)
+
+
+### Libraries
+- [Leaflet.js](https://leafletjs.com/) for mapping and tiling. Special thanks to the [OpenStreetMap](https://www.openstreetmap.org/) community and [Carto](https://carto.com/).
+- [Fuse.js](https://www.fusejs.io/) for the fuzzy search engine.
+
 
 ## Developing
 
