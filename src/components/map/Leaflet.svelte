@@ -79,8 +79,9 @@
         buildingsLayer = L.geoJSON(searchResults, {
           style: {
             color: mapTheme.highlight,
-            weight: 1,
-            fillOpacity: 0.81,
+            weight: 2,
+            fillOpacity: 0.2,
+            stroke: true,
           },
           onEachFeature: (feature, layer) => {
             if (feature.geometry.type === "Polygon") {
