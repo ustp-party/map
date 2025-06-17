@@ -12,10 +12,7 @@
   <SearchOption name="AVR" value="Audio Visual Room">
     {@html StarSVG}
   </SearchOption>
-  <SearchOption
-    name="LRC Bldg"
-    value="Learning Resource Center"
-  >
+  <SearchOption name="LRC Bldg" value="Learning Resource Center">
     {@html BuildingSVG}
   </SearchOption>
   <SearchOption name="Restrooms" value="Restrooms">
@@ -33,8 +30,16 @@
     overflow: auto;
     cursor: grab;
     scrollbar-width: none;
+    padding-left: clamp(4px, 5vw, 16px);
     &:active {
       cursor: grabbing;
+    }
+  }
+
+  @media (max-width: 599px) {
+    .options {
+      padding-left: clamp(4px, 5vw, 16px);
+      padding-right: clamp(4px, 5vw, 16px);
     }
   }
 </style>

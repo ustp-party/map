@@ -70,8 +70,8 @@
     display: flex;
     background-color: none;
     z-index: 1000;
-    padding-left: clamp(4px, 5vw, 16px);
-    padding-right: clamp(4px, 5vw, 16px);
+    // padding-left: clamp(4px, 5vw, 16px);
+    // padding-right: clamp(4px, 5vw, 16px);
     padding-top: clamp(4px, 2vw, 8px);
     width: 100%;
 
@@ -85,7 +85,6 @@
       flex-wrap: wrap;
       width: 100%;
       row-gap: 8px;
-      column-gap: 32px;
     }
   }
 

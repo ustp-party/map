@@ -76,6 +76,7 @@
     flex-direction: row;
     gap: 2px;
     z-index: 1000;
+    margin-right: clamp(4px, 5vw, 16px);
   }
 
   .control {

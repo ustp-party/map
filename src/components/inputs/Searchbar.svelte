@@ -79,6 +79,8 @@
     width: clamp(80px, 100%, 400px);
     height: 48px;
     gap: 8px;
+    margin-left: clamp(4px, 5vw, 16px);
+    margin-right: clamp(4px, 5vw, 16px);
 
     input {
       width: 100%;
