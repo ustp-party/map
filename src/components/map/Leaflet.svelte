@@ -22,6 +22,7 @@
 
   let buildingsLayer: L.GeoJSON | undefined = $state();
   let allbuildings = $derived($buildings);
+  let allBuildingsLayer: L.GeoJSON | undefined = undefined;
 
   let {
     children,
@@ -109,7 +110,10 @@
 
   // Data viz of all buildings
   $effect(() => {
-    L.geoJSON(allbuildings, {
+    if (allBuildingsLayer) {
+      map?.removeLayer(allBuildingsLayer);
+    }
+    allBuildingsLayer = L.geoJSON(allbuildings, {
       style: {
         color: mapTheme.building,
         weight: 1,
@@ -150,6 +154,14 @@
 
   onDestroy(() => {
     if (debounceTimer) clearTimeout(debounceTimer);
+    if (buildingsLayer) {
+      map?.removeLayer(buildingsLayer);
+      buildingsLayer = undefined;
+    }
+    if (allBuildingsLayer) {
+      map?.removeLayer(allBuildingsLayer);
+      allBuildingsLayer = undefined;
+    }
   });
 </script>
 
