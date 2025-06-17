@@ -1,22 +1,25 @@
-# sv
+<h1 align="center">
+    <img src="/static/ustp.map.party-64x64.png">
+    <a href="https://map.ustp.party">
+        <div align="center">map.ustp.party</div>
+    </a>
+</h1>
+<h3 align="center" >Unofficial community made map of USTP-CDO</h3>
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+## Tech Stack
 
-## Creating a project
+- Frontend: [Svelte](https://svelte.dev/) with Github Pages
+- Backend: None
+- Development: [Node.js](https://github.com/nvm-sh/nvm) and [npm](https://www.npmjs.com/)
 
-If you're seeing this, you've probably already done this step. Congrats!
+### Libraries
 
-```bash
-# create a new project in the current directory
-npx sv create
-
-# create a new project in my-app
-npx sv create my-app
-```
+- [Leaflet.js](https://leafletjs.com/) for mapping and tiling. Special thanks to the [OpenStreetMap](https://www.openstreetmap.org/) community and [Carto](https://carto.com/).
+- [Fuse.js](https://www.fusejs.io/) for the fuzzy search engine.
 
 ## Developing
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+Install dependencies with `npm install` (or `pnpm install` or `yarn`), then start a development server:
 
 ```bash
 npm run dev
@@ -27,12 +30,16 @@ npm run dev -- --open
 
 ## Building
 
-To create a production version of your app:
+To create a production version to test how it might look on production.
+
+1. Build and compile the app.
 
 ```bash
 npm run build
 ```
 
-You can preview the production build with `npm run preview`.
+2. Serve the app locally.
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+```bash
+npm run preview
+```

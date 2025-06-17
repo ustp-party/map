@@ -84,7 +84,8 @@
       flex-direction: row;
       flex-wrap: wrap;
       width: 100%;
-      gap: 8px;
+      row-gap: 8px;
+      column-gap: 32px;
     }
   }
 
