@@ -1,6 +1,7 @@
 import L from "leaflet";
 import fa from "$components/icons/CustomIcons";
-import type { Point, Polygon } from "$lib/types/features";
+import type { Position } from "geojson";
+import type { LatLngExpression } from "leaflet";
 
 function getCurrentPosition(): Promise<GeolocationPosition> {
   return new Promise((resolve, reject) => {
@@ -47,7 +48,10 @@ async function locateMe(
   }
 }
 
-function polygonCentroid(coords: Polygon): Point {
+// This is a ChatGPT implementation of weighted centroid, seems like a wrong implementation
+// We'll be using geometric centroid for polygons since it is easier to implement
+// https://en.wikipedia.org/wiki/Centroid
+function polygonCentroid(coords: Position[]): LatLngExpression {
   let x = 0,
     y = 0,
     area = 0;
@@ -70,12 +74,29 @@ function polygonCentroid(coords: Polygon): Point {
   return [y, x];
 }
 
+function geometricCentroid(coordinates: Position[]): [number, number] {
+  let x = 0;
+  let y = 0;
+  const total = coordinates.length;
+
+  for (const [lng, lat] of coordinates) {
+    x += lng;
+    y += lat;
+  }
+
+  const meanLng = x / total;
+  const meanLat = y / total;
+
+  // [lat, lng] for Leaflet
+  return [meanLat, meanLng];
+}
+
 const controls = {
   getCurrentPosition,
   locateMe,
-  polygonCentroid,
+  geometricCentroid,
 };
 
 export default controls;
 
-export { getCurrentPosition, locateMe, polygonCentroid };
+export { getCurrentPosition, locateMe, geometricCentroid };

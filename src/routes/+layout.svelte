@@ -1,5 +1,6 @@
 <script lang="ts">
   import "../app.css";
+  import "$styles/custom-tooltip.scss";
   import type { Snippet } from "svelte";
   import type { LayoutData } from "./$types";
 

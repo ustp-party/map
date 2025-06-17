@@ -54,6 +54,7 @@ body {
   opacity: 0.5;
 }
 
+
 @media (prefers-color-scheme: dark) {
   :root {
     --primary: rgba(25, 25, 79, 1);

@@ -8,16 +8,18 @@
 </script>
 
 <div class="cards">
-  {#if searchState.results.length === 0 && searchState.query.length > 0}
-    No results found for "{searchState.query}"
-  {:else if searchState.query.length === 0}
-    {#each buildingsData as feature}
-      <ResultCard {feature} />
-    {/each}
-  {:else}
+  {#if searchState.results.length === 0 && searchState.query.length > 2}
+    <p class="message">No results found for "{searchState.query}"</p>
+  {:else if searchState.results.length > 0 && searchState.query.length > 2}
     {#each searchState.results as feature}
       <ResultCard {feature} />
     {/each}
+  {:else if searchState.query.length > 0}
+    <p class="message">
+      Type at least 3 characters to search for better accuracy.
+    </p>
+  {:else}
+    <p class="message">Start typing to search for places.</p>
   {/if}
 </div>
 
@@ -29,5 +31,12 @@
     border-radius: 12px;
     width: 100%;
     overflow: hidden;
+  }
+
+  .message {
+    padding: 10px;
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 14px;
   }
 </style>
