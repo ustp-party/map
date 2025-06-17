@@ -82,6 +82,7 @@
     gap: 8px;
     margin-left: clamp(4px, 5vw, 16px);
     margin-right: clamp(4px, 5vw, 16px);
+    box-shadow: var(--box-shadow);
 
     input {
       width: 100%;

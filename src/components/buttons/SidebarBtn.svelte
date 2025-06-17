@@ -29,7 +29,7 @@
     display: flex;
     align-items: center;
     justify-content: right;
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.32);
+    box-shadow: var(--box-shadow);
     transition: left 0.24s ease-in-out;
     width: 460px;
   }

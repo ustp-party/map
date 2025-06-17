@@ -45,6 +45,8 @@
     justify-content: center;
     gap: 8px;
 
+    box-shadow: var(--box-shadow);
+
     &:hover {
       color: var(--text-hover);
       fill: var(--text-hover);

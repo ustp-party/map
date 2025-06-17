@@ -48,7 +48,7 @@
     border-right: 2px solid rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
-    box-shadow: 0 0 4px rgba(0, 0, 0, 0.8);
+    box-shadow: var(--box-shadow);
 
     .content {
       padding: 0 8px 0 8px;
@@ -57,7 +57,7 @@
       .container {
         display: flex;
         flex-direction: column;
-        gap: 8px
+        gap: 8px;
       }
     }
   }

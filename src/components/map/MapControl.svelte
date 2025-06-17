@@ -70,7 +70,6 @@
 
 <style lang="scss">
   .control-panel {
-    margin-left: auto;
     bottom: clamp(32px, 4vw, 44px);
     right: clamp(10px, 2vw, 20px);
     display: flex;
@@ -89,7 +88,7 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    box-shadow: 0 0px 8px rgba(0, 0, 0, 0.25);
+    box-shadow: var(--box-shadow);
   }
 
   .control.location {
@@ -112,6 +111,7 @@
   @media (min-width: 600px) {
     .control-panel {
       margin-right: clamp(4px, 5vw, 16px);
+      margin-left: auto;
     }
   }
 </style>

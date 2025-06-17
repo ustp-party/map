@@ -107,10 +107,13 @@
     align-items: center;
     gap: 8px;
 
-    overflow: auto;
+    overflow-x: auto;
     cursor: grab;
     scrollbar-width: none;
     margin-left: clamp(4px, 5vw, 16px);
+
+    padding-top: 4px;
+    padding-bottom: 4px;
     &:active {
       cursor: grabbing;
     }
@@ -143,10 +146,10 @@
     color: var(--bg);
     border: none;
     background-color: var(--text);
-    box-shadow: 0 1px 2px rgba(60,64,67,0.3),0 1px 3px 1px rgba(60,64,67,0.15);
+    box-shadow: var(--box-shadow);
 
     @media (prefers-color-scheme: dark) {
-      box-shadow: 0 1px 2px rgba(255,255,255,0.3),0 1px 3px 1px rgba(255,255,255,0.15);
+      box-shadow: none;
     }
 
     &:hover {
