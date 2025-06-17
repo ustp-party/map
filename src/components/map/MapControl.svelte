@@ -70,6 +70,7 @@
 
 <style lang="scss">
   .control-panel {
+    margin-left: auto;
     bottom: clamp(32px, 4vw, 44px);
     right: clamp(10px, 2vw, 20px);
     display: flex;

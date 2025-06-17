@@ -67,6 +67,7 @@
 
 <style lang="scss">
   .searchbar {
+    flex-shrink: 7;
     display: flex;
     position: sticky;
     top: 0;

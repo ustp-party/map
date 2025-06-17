@@ -33,6 +33,9 @@ body {
   --btn-hover: rgb(0, 80, 157, 1);
   --btn-active: rgb(0, 62, 119);
 
+  --box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3),
+    0 1px 3px 1px rgba(60, 64, 67, 0.15);
+
   font-family: "Roboto", "Arial", sans-serif;
   color: var(--text);
 }
@@ -53,7 +56,6 @@ body {
   cursor: not-allowed;
   opacity: 0.5;
 }
-
 
 @media (prefers-color-scheme: dark) {
   :root {
@@ -79,5 +81,8 @@ body {
 
     --btn-hover: rgb(184, 222, 230);
     --btn-active: rgb(134, 163, 168);
+
+    --box-shadow: 0 1px 2px rgba(255,255,255,0.3),0 1px 3px 1px rgba(255,255,255,0.15);
+    
   }
 }
