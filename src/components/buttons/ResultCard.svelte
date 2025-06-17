@@ -1,7 +1,8 @@
 <script lang="ts">
   import type { Feature } from "$lib/types/features";
   import type { Map } from "leaflet";
-  import type { Polygon, Point } from "$lib/types/features";
+  import type { Position } from "geojson";
+  import type { LatLngExpression } from "leaflet";
 
   import SvgIcon from "$components/icons/SVGIcon.svelte";
   import buildingSVG from "$assets/free-icons/building.svg?raw";
@@ -20,8 +21,8 @@
   const showImages = true;
 
   function handleClick() {
-    let polygon: Polygon = feature.geometry.coordinates[0];
-    let centroid: Point = polygonCentroid(polygon);
+    let polygon: Position[] = feature.geometry.coordinates[0];
+    let centroid: LatLngExpression = polygonCentroid(polygon);
     if (viewportWidth.value < 600) {
       collapsedSidebar.set(true);
     }

@@ -1,6 +1,7 @@
 import L from "leaflet";
 import fa from "$components/icons/CustomIcons";
-import type { Point, Polygon } from "$lib/types/features";
+import type { Position } from "geojson";
+import type { LatLngExpression } from "leaflet";
 
 function getCurrentPosition(): Promise<GeolocationPosition> {
   return new Promise((resolve, reject) => {
@@ -47,7 +48,7 @@ async function locateMe(
   }
 }
 
-function polygonCentroid(coords: Polygon): Point {
+function polygonCentroid(coords: Position[]): LatLngExpression {
   let x = 0,
     y = 0,
     area = 0;
