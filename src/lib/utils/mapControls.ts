@@ -94,10 +94,9 @@ function geometricCentroid(coordinates: Position[]): [number, number] {
 const controls = {
   getCurrentPosition,
   locateMe,
-  polygonCentroid,
   geometricCentroid,
 };
 
 export default controls;
 
-export { getCurrentPosition, locateMe, polygonCentroid, geometricCentroid };
+export { getCurrentPosition, locateMe, geometricCentroid };
