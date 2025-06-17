@@ -37,10 +37,10 @@
       <div class="search">
         <Searchbar />
         <SearchOptions />
+        {#if viewportWidth.value >= 600}
+          <MapControl />
+        {/if}
       </div>
-      {#if viewportWidth.value >= 600}
-        <MapControl />
-      {/if}
     </div>
     {#if viewportWidth.value > 600}
       <ZoomControl />
@@ -70,28 +70,23 @@
     display: flex;
     background-color: none;
     z-index: 1000;
-    padding-left: clamp(4px, 5vw, 16px);
-    padding-right: clamp(4px, 5vw, 16px);
     padding-top: clamp(4px, 2vw, 8px);
     width: 100%;
 
-    display: flex;
-    align-items: top;
-    justify-content: space-between;
 
     .search {
       display: flex;
       flex-direction: row;
-      flex-wrap: wrap;
+      align-items: center;
       width: 100%;
       row-gap: 8px;
-      column-gap: 32px;
     }
   }
 
   @media (max-width: 599px) {
     .search {
       width: 100%;
+      flex-wrap: wrap;
       justify-content: center;
       align-items: center;
     }

@@ -67,6 +67,7 @@
 
 <style lang="scss">
   .searchbar {
+    flex-shrink: 7;
     display: flex;
     position: sticky;
     top: 0;
@@ -79,6 +80,9 @@
     width: clamp(80px, 100%, 400px);
     height: 48px;
     gap: 8px;
+    margin-left: clamp(4px, 5vw, 16px);
+    margin-right: clamp(4px, 5vw, 16px);
+    box-shadow: var(--box-shadow);
 
     input {
       width: 100%;
@@ -114,6 +118,7 @@
   @media (prefers-color-scheme: dark) {
     .searchbar {
       background-color: var(--bg-accent);
+      box-shadow: none;;
     }
     button {
       &:hover {

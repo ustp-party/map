@@ -68,7 +68,7 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    box-shadow: 0 0px 4px rgba(0, 0, 0, 0.8);
+    box-shadow: var(--box-shadow);
   }
 
   .zoom.in {
@@ -80,7 +80,7 @@
 
   @media (prefers-color-scheme: dark) {
     .zoom {
-      box-shadow: 0 0px 4px rgba(255, 255, 255, 0.8);
+      box-shadow: var(--box-shadow);
     }
   }
 </style>

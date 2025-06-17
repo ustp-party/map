@@ -36,6 +36,7 @@
     border-radius: 12px;
     height: fit-content;
     width: fit-content;
+    min-width: none;
     max-width: 100%;
     cursor: pointer;
 
@@ -43,6 +44,8 @@
     align-items: center;
     justify-content: center;
     gap: 8px;
+
+    box-shadow: var(--box-shadow);
 
     &:hover {
       color: var(--text-hover);
