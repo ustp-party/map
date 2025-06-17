@@ -8,7 +8,7 @@
   import buildingSVG from "$assets/free-icons/building.svg?raw";
 
   import { getContext } from "svelte";
-  import { polygonCentroid } from "$lib/utils/mapControls";
+  import { geometricCentroid } from "$lib/utils/mapControls";
   import { getViewportWidthState } from "$lib/stores/ViewportWidthState.svelte";
   import { collapsedSidebar } from "$lib/stores/SidebarStore";
 
@@ -22,7 +22,7 @@
 
   function handleClick() {
     let polygon: Position[] = feature.geometry.coordinates[0];
-    let centroid: LatLngExpression = polygonCentroid(polygon);
+    let centroid: LatLngExpression = geometricCentroid(polygon);
     if (viewportWidth.value < 600) {
       collapsedSidebar.set(true);
     }

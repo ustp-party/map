@@ -54,6 +54,10 @@ body {
   opacity: 0.5;
 }
 
+.polygon-text .polygon-label {
+  color: var(--primary);
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --primary: rgba(25, 25, 79, 1);

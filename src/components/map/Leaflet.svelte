@@ -2,23 +2,26 @@
   import L from "leaflet";
   import "leaflet/dist/leaflet.css";
   import { onDestroy, onMount, setContext } from "svelte";
-  import { type Snippet } from "svelte";
+  import type { Feature } from "$lib/types/features";
+  import type { Position } from "geojson";
+  import type { Snippet } from "svelte";
+  import type { LatLngExpression } from "leaflet";
   import { currentZoom } from "$lib/stores/map";
   import { currentCenter } from "$lib/stores/map";
   import { getSearchState } from "$lib/stores/SearchState.svelte";
-  import type { FeatureCollection } from "geojson";
   import { mapTheme } from "$lib/theme";
+  import { buildings } from "$lib/stores/map";
+  import { geometricCentroid } from "$lib/utils/mapControls";
 
   let mapElement: HTMLDivElement;
   let map: L.Map | undefined = $state();
   let view: L.LatLngExpression = $derived($currentCenter);
   let zoom: number = $derived($currentZoom);
   let searchState = getSearchState();
-  let searchResults = $derived<FeatureCollection>({
-    type: "FeatureCollection",
-    features: searchState.results.slice(0, 5), // Return only top 5
-  });
+  let searchResults = $derived<Feature[]>(searchState.results.slice(0, 5)); // Return only top 5
+
   let buildingsLayer: L.GeoJSON | undefined = $state();
+  let allbuildings = $derived($buildings);
 
   let {
     children,
@@ -38,6 +41,12 @@
         keepBuffer: 6,
       }
     ).addTo(map);
+
+    if (map) {
+      if (view && zoom) {
+        map.setView(view, zoom);
+      }
+    }
   });
 
   onDestroy(() => {
@@ -50,16 +59,9 @@
   setContext("map", {
     getMap: () => map,
   });
-  $effect(() => {
-    if (map) {
-      if (view && zoom) {
-        map.setView(view, zoom);
-      }
-    }
-  });
 
+  // Update map when there are search results
   let debounceTimer: ReturnType<typeof setTimeout> | undefined = undefined;
-
   $effect(() => {
     if (searchResults) {
       // Clear previous timer
@@ -77,11 +79,52 @@
           style: {
             color: mapTheme.highlight,
             weight: 1,
-            fillOpacity: 0.5,
+            fillOpacity: 0.81,
+          },
+          onEachFeature: (feature, layer) => {
+            if (feature.geometry.type === "Polygon") {
+              if (feature.properties && feature.properties.name) {
+                layer.bindTooltip(feature.properties.name, {
+                  // permanent: true, // always visible
+                  // direction: "center", // show in center of polygon
+                  className: "polygon-label", // optional CSS class
+                });
+              }
+            }
           },
         }).addTo(map!);
       }, 700);
     }
+  });
+
+  // Data viz of all buildings
+  $effect(() => {
+    L.geoJSON(allbuildings, {
+      style: {
+        color: mapTheme.building,
+        weight: 1,
+        fillOpacity: 0.5,
+      },
+      onEachFeature: (feature, layer) => {
+        if (feature.geometry.type === "Polygon") {
+          const coords: Position[][] = feature.geometry.coordinates;
+          const centroid: LatLngExpression = geometricCentroid(coords[0]);
+          const label = L.marker(centroid, {
+            icon: L.divIcon({
+              className: "polygon-text",
+              html: feature.properties["addr:housenumber"],
+            }),
+          }).addTo(map!);
+          if (feature.properties && feature.properties.name) {
+            layer.bindTooltip(feature.properties.name, {
+              // permanent: true, // always visible
+              // direction: "center", // show in center of polygon
+              className: "polygon-label", // optional CSS class
+            });
+          }
+        }
+      },
+    }).addTo(map!);
   });
 
   onDestroy(() => {

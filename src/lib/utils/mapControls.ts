@@ -48,6 +48,9 @@ async function locateMe(
   }
 }
 
+// This is a ChatGPT implementation of weighted centroid, seems like a wrong implementation
+// We'll be using geometric centroid for polygons since it is easier to implement
+// https://en.wikipedia.org/wiki/Centroid
 function polygonCentroid(coords: Position[]): LatLngExpression {
   let x = 0,
     y = 0,
@@ -71,12 +74,30 @@ function polygonCentroid(coords: Position[]): LatLngExpression {
   return [y, x];
 }
 
+function geometricCentroid(coordinates: Position[]): [number, number] {
+  let x = 0;
+  let y = 0;
+  const total = coordinates.length;
+
+  for (const [lng, lat] of coordinates) {
+    x += lng;
+    y += lat;
+  }
+
+  const meanLng = x / total;
+  const meanLat = y / total;
+
+  // [lat, lng] for Leaflet
+  return [meanLat, meanLng];
+}
+
 const controls = {
   getCurrentPosition,
   locateMe,
   polygonCentroid,
+  geometricCentroid,
 };
 
 export default controls;
 
-export { getCurrentPosition, locateMe, polygonCentroid };
+export { getCurrentPosition, locateMe, polygonCentroid, geometricCentroid };

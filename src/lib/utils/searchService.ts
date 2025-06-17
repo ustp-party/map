@@ -10,8 +10,8 @@ const fuseOptions = {
   //   threshold: 0.0,
   //   includeScore: true,
   findAllMatches: true,
-  shouldSort: true,
-  useExtendedSearch: true,
+  // shouldSort: true,
+  // useExtendedSearch: true,
   // ignoreFieldNorm: true
 };
 

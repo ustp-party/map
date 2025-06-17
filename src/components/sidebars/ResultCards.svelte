@@ -10,10 +10,6 @@
 <div class="cards">
   {#if searchState.results.length === 0 && searchState.query.length > 0}
     No results found for "{searchState.query}"
-  {:else if searchState.query.length === 0}
-    {#each buildingsData as feature}
-      <ResultCard {feature} />
-    {/each}
   {:else}
     {#each searchState.results as feature}
       <ResultCard {feature} />
