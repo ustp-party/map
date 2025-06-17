@@ -76,7 +76,6 @@
     flex-direction: row;
     gap: 2px;
     z-index: 1000;
-    margin-right: clamp(4px, 5vw, 16px);
   }
 
   .control {
@@ -106,6 +105,12 @@
   @media (prefers-color-scheme: dark) {
     .control {
       box-shadow: 0 0px 4px rgba(255, 255, 255, 0.8);
+    }
+  }
+
+  @media (min-width: 600px) {
+    .control-panel {
+      margin-right: clamp(4px, 5vw, 16px);
     }
   }
 </style>
