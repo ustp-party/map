@@ -8,7 +8,7 @@
   import StarSVG from "$assets/free-icons/star.svg?raw";
   import BuildingSVG from "$assets/free-icons/building.svg?raw";
   import RestroomSVG from "$assets/free-icons/restroom.svg?raw";
-  import burderSodaSVG from "$assets/free-icons/burger-soda.svg?raw";
+  import burgerSodaSVG from "$assets/free-icons/burger-soda.svg?raw";
 
   import { getViewportWidthState } from "$lib/stores/ViewportWidthState.svelte";
   let divRef: HTMLDivElement | undefined = $state(undefined);
@@ -37,26 +37,29 @@
         left: -scrollStep,
         behavior: "smooth",
       });
+      scrollLeft = el.scrollLeft;
     }
   }
 
+  function overflowHandler() {
+    isOverflowing = checkOverflow(divRef);
+  }
+
+  function scrollHandler() {
+    scrollLeft = divRef!.scrollLeft;
+  }
   onMount(() => {
     if (divRef) {
       isOverflowing = checkOverflow(divRef);
-      divRef.addEventListener("scroll", () => {
-        scrollLeft = divRef!.scrollLeft;
-      });
+      divRef.addEventListener("scroll", scrollHandler);
     }
 
-    window.addEventListener("resize", () => {
-      isOverflowing = checkOverflow(divRef);
-    });
+    window.addEventListener("resize", overflowHandler);
   });
 
   onDestroy(() => {
-    window.removeEventListener("resize", () => {
-      isOverflowing = checkOverflow(divRef);
-    });
+    window.removeEventListener("scroll", scrollHandler);
+    window.removeEventListener("resize", overflowHandler);
   });
 </script>
 
@@ -77,7 +80,7 @@
   {@render featured("AVR", "Audio Visual Room", StarSVG)}
   {@render featured("LRC Bldg", "Learning Resource Center", BuildingSVG)}
   {@render featured("Restrooms", "Restrooms", RestroomSVG)}
-  {@render featured("Cafeteria", "Cafeteria", burderSodaSVG)}
+  {@render featured("Cafeteria", "Cafeteria", burgerSodaSVG)}
 
   {#if isOverflowing && viewportWidth.value >= 600}
     <button
