@@ -1,5 +1,10 @@
-<h1 align="center">map.ustp.party</h1>
-<h3 align="center" ><a href="https://map.ustp.party"><div align="center">map.ustp.party</div> <img src="/static/ustp.map.party-64x64.png" width="24px" ></a></h3>
+<h1 align="center">
+    <img src="/static/ustp.map.party-64x64.png" width="24px">
+    <a href="https://map.ustp.party">
+        <div align="center">map.ustp.party</div>
+    </a>
+</h1>
+<h3 align="center" >Unofficial community made map of USTP-CDO</h3>
 
 ## Tech Stack
 
