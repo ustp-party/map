@@ -20,7 +20,7 @@
     } else {
       darkMode.set(false);
     }
-    
+
     // Set initial viewport height, useful for mobile browsers
     function setViewportHeight() {
       const vh = window.innerHeight * 0.01;
@@ -32,5 +32,20 @@
 
   let { data, children }: { data: LayoutData; children: Snippet } = $props();
 </script>
+
+<svelte:head>
+  <title>USTP CDO Campus Map</title>
+  <meta name="description" content="Interactive campus map of USTP." />
+  <meta
+    name="keywords"
+    content="USTP, map, campus, university, university of science and technology of southern philippines, cdo, cagayan de oro"
+  />
+  <meta property="og:title" content="map.ustp.party" />
+  <meta property="og:description" content="Interactive campus map of USTP." />
+  <meta property="og:image" content="/images/social-preview.png" />
+  <meta property="og:url" content="https://map.ustp.party" />
+  <meta property="og:type" content="website" />
+  <meta name="author" content="ustp.party" />
+</svelte:head>
 
 {@render children()}
