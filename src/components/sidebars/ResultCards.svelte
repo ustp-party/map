@@ -2,20 +2,17 @@
   import ResultCard from "$components/buttons/ResultCard.svelte";
   import { getSearchState } from "$lib/stores/SearchState.svelte";
   const searchState = getSearchState();
+  const queryLength = $derived(searchState.query.length > 0);
 </script>
 
 <div class="cards">
   {#key searchState.results}
-    {#if searchState.results.length === 0 && searchState.query.length > 2}
+    {#if searchState.results.length === 0 && queryLength}
       <p class="message">No results found for "{searchState.query}"</p>
-    {:else if searchState.results.length > 0 && searchState.query.length > 2}
+    {:else if searchState.results.length > 0 && queryLength}
       {#each searchState.results as feature}
         <ResultCard {feature} />
       {/each}
-    {:else if searchState.query.length > 0}
-      <p class="message">
-        Type at least 3 characters to search for better accuracy.
-      </p>
     {:else}
       <p class="message">Start typing to search for places.</p>
     {/if}
