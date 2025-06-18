@@ -22,11 +22,11 @@ body:
   - type: textarea
     id: drawbacks
     attributes:
-      label: "Drawbacks"
+      label: "Potential Drawbacks"
       description: What are the drawbacks/impacts of your feature request?
-      placeholder: Identify the drawbacks and impacts while being neutral on your feature request
+      placeholder: Identify the potential drawbacks and impacts while being neutral on your feature request
     validations:
-      required: true
+      required: false
   - type: textarea
     id: implementation_pr
     attributes:
