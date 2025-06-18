@@ -84,11 +84,7 @@
     bottom: 0;
     left: 0;
     right: 0;
-    height: clamp(
-      300px,
-      calc(var(--viewport) * 0.8),
-      calc(var(--viewport) * 0.8)
-    );
+    height: max(300px, calc(var(--viewport) * 0.8));
     background: var(--bg);
     border-top-left-radius: 12px;
     border-top-right-radius: 12px;
