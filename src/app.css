@@ -24,6 +24,7 @@ body {
   --border: rgb(140, 171, 201);
 
   --text: rgb(0, 80, 157, 1);
+  --text-placeholder: rgba(0, 81, 157, 0.5);
   --text-accent: rgba(25, 25, 79, 1);
   --text-hover: rgba(249, 249, 249, 1);
   --bg: rgba(202, 240, 248, 1);
@@ -72,6 +73,7 @@ body {
     --border: rgb(120, 120, 120);
 
     --text: rgba(202, 240, 248, 1);
+    --text-placeholder: rgba(202, 240, 248, 0.5);
     --text-accent: rgba(249, 249, 249, 1);
     --text-hover: rgba(41, 41, 41, 1);
 

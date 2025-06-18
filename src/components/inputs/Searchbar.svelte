@@ -95,7 +95,8 @@
       color: var(--text);
 
       &::placeholder {
-        color: var(--text);
+        color: var(--text-placeholder);
+        font-weight: 400;
       }
     }
   }
