@@ -31,7 +31,7 @@ If you have already implemented it then that is okay too.
 
 ### 4. Refactoring / debloating
 
-You can help be refactoring code or pointing out inefficiences in the codebase. Not just in performance but also in maintainability.
+You can help be refactoring code or pointing out inefficiencies in the codebase. Not just in performance but also in maintainability.
 
 #### Memory Optimization
 As it stands now (June 18, 2025), memory snapshots in the browser show we use an average 5-8 megabytes of memory.
