@@ -1,0 +1,33 @@
+name: 🚀 Enhancement
+description: Suggest or add an improvement to an existing feature
+title: "🚀 [Enhancement]: "
+labels: [enhancement]
+body:
+  - type: input
+    id: existing-feature
+    attributes:
+      label: Existing Feature
+      description: What feature are you suggesting or adding an enhancement for?
+      placeholder: e.g., "The search functionality"
+    validations:
+      required: true
+
+  - type: textarea
+    id: enhancement-description
+    attributes:
+      label: What is the enhancement?
+      description: Describe what you're suggesting should be improved or added.
+      placeholder: |
+        e.g., "Add filters to the search results for sorting by date, relevance, etc."
+    validations:
+      required: true
+
+  - type: textarea
+    id: implementation-suggestion
+    attributes:
+      label: How could this be implemented?
+      description: Describe a possible approach, UI design, or technical solution.
+      placeholder: |
+        e.g., "Use query parameters to pass filter values and update the search component."
+    validations:
+      required: false

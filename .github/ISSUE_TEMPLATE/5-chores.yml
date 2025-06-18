@@ -1,0 +1,48 @@
+name: 🔧 CI / Chore Task / GitHub Actions
+description: File a CI/CD task, infrastructure change, or maintenance chore
+title: "🔧 [Chore]: "
+labels: [ci]
+body:
+  - type: dropdown
+    id: chore-type
+    attributes:
+      label: Type of Chore
+      description: Select the type of task
+      options:
+        - CI/CD Pipeline
+        - Dependency update
+        - Build system
+        - Code cleanup
+        - Infrastructure
+        - Other
+    validations:
+      required: true
+
+  - type: input
+    id: task-summary
+    attributes:
+      label: Task Summary
+      placeholder: e.g., "Update GitHub Actions workflows to use Node 20"
+    validations:
+      required: true
+
+  - type: textarea
+    id: task-details
+    attributes:
+      label: Details
+      description: Provide more context, links to failing builds, specific changes, or tools involved.
+      placeholder: |
+        What needs to be done? Why is this important?
+        Include relevant links, file paths, or tools if applicable.
+    validations:
+      required: true
+
+  - type: textarea
+    id: implementation-notes
+    attributes:
+      label: Implementation Notes (optional)
+      description: Include any tips or steps to help whoever picks up this task.
+      placeholder: |
+        e.g., "See `.github/workflows/deploy.yml` for the job definition."
+    validations:
+      required: false
