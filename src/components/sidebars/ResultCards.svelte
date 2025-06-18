@@ -13,6 +13,14 @@
       {#each searchState.results as feature}
         <ResultCard {feature} />
       {/each}
+      <p class="message">
+        Not what you were looking for?<br />Contact us by posting an
+        <a href="https://github.com/ustp-party/map/issues">issue</a>
+        or by sending an email to
+        <a href="mailto:chrisandrei.irag@1.ustp.edu.ph"
+          >chrisandrei.irag@1.ustp.edu.ph</a
+        >
+      </p>
     {:else}
       <p class="message">Start typing to search for places.</p>
     {/if}
@@ -33,6 +41,6 @@
     padding: 10px;
     text-align: center;
     color: var(--text-secondary);
-    font-size: 14px;
+    font-size: 0.875rem;
   }
 </style>
