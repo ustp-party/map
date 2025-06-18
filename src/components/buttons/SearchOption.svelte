@@ -11,6 +11,7 @@
 
   const searchState = getSearchState();
   function btnHandler() {
+    searchState.updateResults([]);
     searchState.updateQuery(props.value);
   }
 </script>
