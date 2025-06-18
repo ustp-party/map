@@ -1,6 +1,6 @@
 name: 🚀 Enhancement
 description: Suggest or add an improvement to an existing feature
-title: "🚀 [Enhancement]: "
+title: "🚀 [ENHANCEMENT]: "
 labels: [enhancement]
 body:
   - type: input

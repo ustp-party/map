@@ -1,6 +1,6 @@
 name: 🪲 Bug Report
 description: You have noticed a general issue or regression, and would like to report it
-title: "🪲 [BUG] - <title>"
+title: "🪲 [BUG]: "
 labels:
   - bug
 body:

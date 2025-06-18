@@ -1,6 +1,6 @@
 name: 🔧 CI / Chore Task / GitHub Actions / Documentation
 description: File a CI/CD task, infrastructure change, or maintenance chore
-title: "🔧 [Chore]: "
+title: "🔧 [CHORE]: "
 labels: [ci]
 body:
   - type: dropdown
