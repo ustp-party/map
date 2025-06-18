@@ -1,0 +1,13 @@
+name: "❓ Question"
+description: Create a new ticket for a new feature or request
+title: "❓ [QUESTION] - <title>"
+labels: ["question"]
+body:
+  - type: textarea
+    id: question
+    attributes:
+      label: "Question"
+      description: Provide a brief explanation of your question or feature request.
+      placeholder: What is this project about? How can I contribute? What are the main features?
+    validations:
+      required: true
