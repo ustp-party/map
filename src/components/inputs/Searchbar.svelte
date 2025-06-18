@@ -119,7 +119,7 @@
   @media (prefers-color-scheme: dark) {
     .searchbar {
       background-color: var(--bg-accent);
-      box-shadow: none;;
+      box-shadow: none;
     }
     button {
       &:hover {
