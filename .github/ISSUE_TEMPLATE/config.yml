@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Contact me on Messenger
+    url: https://www.facebook.com/chris.andrei.e.irag/
+    about: Contact me for more personal help or questions that can't be answered in an issue.
+  - name: Contact me by email
+    url: mailto:chrisandrei.irag@1.ustp.edu.ph
+    about: Contact me by email for more personal help or questions that can't be answered in an issue.

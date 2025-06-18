@@ -51,5 +51,9 @@
       color: var(--text-hover);
       fill: var(--text-hover);
     }
+
+    @media (prefers-color-scheme: dark) {
+      box-shadow: none;
+    }
   }
 </style>

@@ -95,7 +95,8 @@
       color: var(--text);
 
       &::placeholder {
-        color: var(--text);
+        color: var(--text-placeholder);
+        font-weight: 400;
       }
     }
   }
@@ -118,7 +119,7 @@
   @media (prefers-color-scheme: dark) {
     .searchbar {
       background-color: var(--bg-accent);
-      box-shadow: none;;
+      box-shadow: none;
     }
     button {
       &:hover {

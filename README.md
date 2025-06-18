@@ -4,7 +4,12 @@
         <div align="center">map.ustp.party</div>
     </a>
 </h1>
-<h3 align="center" >Unofficial community made map of USTP-CDO</h3>
+<h3 align="center" >Unofficial community made interactive map of USTP-CDO</h3>
+
+
+## Quick Links
+
+- [How to Contribute](/.github/CONTRIBUTING.md)
 
 ## Tech Stack
 
