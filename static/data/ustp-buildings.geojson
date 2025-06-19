@@ -17,6 +17,7 @@
         "layer": "1",
         "leisure": "sports_hall",
         "name": "Gymnasium",
+        "accessibility_options": ["ramp", "stairs"],
         "building:levels": "2",
         "sport": "multi"
       },
@@ -45,6 +46,7 @@
         "building": "university",
         "name": "Learning Resource Center",
         "building:levels": "5",
+        "accessibility_options": ["ramp", "elevator", "stairs"],
         "type": "building"
       },
       "geometry": {
@@ -178,6 +180,7 @@
         "addr:place": "University of Science and Technology of Southern Philippines",
         "building": "university",
         "name": "Science Complex",
+        "accessibility_options": ["ramp", "elevator", "stairs"],
         "type": "building"
       },
       "geometry": {
@@ -238,7 +241,8 @@
         "addr:place": "University of Science and Technology of Southern Philippines",
         "type": "building",
         "name": "Gymnasium Lobby",
-        "building:levels": "1"
+        "building:levels": "1",
+        "accessibility_options": ["stairs"]
       },
       "geometry": {
         "type": "Polygon",
@@ -265,7 +269,8 @@
         "building": "college",
         "building:levels": "4",
         "name": "Information and Communications Technology Building",
-        "type": "building"
+        "type": "building",
+        "accessibility_options": ["ramp", "elevator", "stairs"]
       },
       "geometry": {
         "type": "Polygon",
@@ -323,6 +328,7 @@
         "building": "office",
         "name": "Administration Building",
         "office": "educational_institution",
+        "accessibility_options": ["ramp", "elevator", "stairs"],
         "type": "building",
         "building:levels": "1"
       },
@@ -633,6 +639,7 @@
         "addr:place": "University of Science and Technology of Southern Philippines",
         "building": "college",
         "name": "Engineering Complex I",
+        "accessibility_options": ["elevator", "stairs"],
         "type": "building"
       },
       "geometry": {
@@ -660,6 +667,7 @@
         "addr:place": "University of Science and Technology of Southern Philippines",
         "building": "college",
         "name": "Engineering Complex II",
+        "accessibility_options": ["elevator", "stairs"],
         "type": "building"
       },
       "geometry": {
@@ -700,6 +708,7 @@
         "building": "college",
         "name": "Cafeteria",
         "building:levels": "1",
+        "accessibility_options": ["ramp"],
         "type": "building"
       },
       "geometry": {
@@ -907,7 +916,7 @@
             [124.6580369, 8.4862201],
             [124.6580584, 8.4859052],
             [124.6585924, 8.4859407],
-            [124.6585830, 8.4860793],
+            [124.658583, 8.4860793],
             [124.6581996, 8.4860537],
             [124.6581875, 8.4862301],
             [124.6580369, 8.4862201]
