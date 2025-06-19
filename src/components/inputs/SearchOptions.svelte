@@ -4,10 +4,9 @@
   import SvgIcon from "$components/icons/SVGIcon.svelte";
   import chevronRightSVG from "$assets/material-icons/chevron-right.svg?raw";
   import chevronLeftSVG from "$assets/material-icons/chevron-left.svg?raw";
+  import rotcSVG from "$assets/free-icons/person-military-rifle.svg?raw";
   import SearchOption from "$components/buttons/SearchOption.svelte";
-  import StarSVG from "$assets/free-icons/star.svg?raw";
   import BuildingSVG from "$assets/free-icons/building.svg?raw";
-  import RestroomSVG from "$assets/free-icons/restroom.svg?raw";
   import burgerSodaSVG from "$assets/free-icons/burger-soda.svg?raw";
 
   import { getViewportWidthState } from "$lib/stores/ViewportWidthState.svelte";
@@ -76,11 +75,18 @@
       </SvgIcon>
     </button>
   {/if}
-  {@render featured("Gymnasium", "Gymnasium", StarSVG)}
-  {@render featured("AVR", "Audio Visual Room", StarSVG)}
-  {@render featured("LRC Bldg", "Learning Resource Center", BuildingSVG)}
-  {@render featured("Restrooms", "Restrooms", RestroomSVG)}
   {@render featured("Cafeteria", "Cafeteria", burgerSodaSVG)}
+  {@render featured(
+    "CITC Bldg",
+    "Information and Communications Technology Building",
+    BuildingSVG
+  )}
+  {@render featured("CEA Bldg", "Engineering Complex I/II", BuildingSVG)}
+  {@render featured(
+    "ROTC Field",
+    "Reserve Officers Training Corps Field",
+    rotcSVG
+  )}
 
   {#if isOverflowing && viewportWidth.value >= 600}
     <button
