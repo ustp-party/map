@@ -15,7 +15,7 @@
       {/each}
       <p class="message">
         Not what you were looking for?<br />Contact us by posting an
-        <a href="https://github.com/ustp-party/map/issues">issue</a>
+        <a href="https://github.com/ustp-party/map/issues/new/choose">issue</a>
         or by sending an email to
         <a href="mailto:chrisandrei.irag@1.ustp.edu.ph"
           >chrisandrei.irag@1.ustp.edu.ph</a

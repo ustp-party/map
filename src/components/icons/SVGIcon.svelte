@@ -12,7 +12,7 @@
   } = $props();
 </script>
 
-<div class="svg-icon" aria-label={alt}>
+<div class="svg-icon" aria-label={alt} style="width: {size}px; height: {size}px;">
   {@render children()}
 </div>
 
@@ -23,8 +23,6 @@
     justify-content: center;
     align-self: center;
     transition: color 0.1s ease;
-    width: 24px;
-    height: 24px;
     padding: 0;
     overflow: visible;
   }
