@@ -43,7 +43,7 @@
   });
 </script>
 
-<div class="searchbar" transition:fade={{ duration: 200 }}>
+<div class="searchbar">
   <input type="text" placeholder="Search" bind:value={searchState.query} />
   <button aria-label="Search">
     <SvgIcon size={24} alt="Search">
