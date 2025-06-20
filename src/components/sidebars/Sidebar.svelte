@@ -24,7 +24,6 @@
       transition:slide={{ axis: "x", duration: 300, easing: quintInOut }}
     >
       <div class="content">
-        <div class="spacer"></div>
         <div class="container" aria-label="sidebar content">
           <SidebarContent />
         </div>
@@ -49,18 +48,15 @@
     box-shadow: var(--box-shadow);
 
     .content {
-      padding: 0 8px 0 8px;
+      padding: 0 8px 8px 8px;
       max-width: 100%;
       .container {
         display: flex;
         flex-direction: column;
         gap: 8px;
+        padding-top: 64px;
       }
     }
-  }
-
-  .spacer {
-    min-height: 64px;
   }
 
   @media (prefers-color-scheme: dark) {
