@@ -10,6 +10,7 @@
   import { getContext } from "svelte";
   import { geometricCentroid } from "$lib/utils/mapControls";
   import { getViewportWidthState } from "$lib/stores/ViewportWidthState.svelte";
+  import { getLocalStorageState } from "$lib/stores/localStorage.svelte";
   import { collapsedSidebar } from "$lib/stores/SidebarStore";
 
   let { feature }: { feature: Feature } = $props();
@@ -19,6 +20,7 @@
   const map = mapContext.getMap();
   const viewportWidth = getViewportWidthState();
   const showImages = true;
+  const localStorageState = getLocalStorageState();
 
   function handleClick() {
     let polygon: Position[] = feature.geometry.coordinates[0];
@@ -30,6 +32,7 @@
       animate: true,
       duration: 0.8,
     });
+    localStorageState.insertFeature(feature);
   }
 </script>
 
