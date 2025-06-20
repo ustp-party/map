@@ -1,5 +1,5 @@
 <script lang="ts">
-  import ResultCards from "./ResultCards.svelte";
+  import SidebarContent from "./SidebarContent.svelte";
   import { collapsedSidebar } from "$lib/stores/SidebarStore";
 
   let panel: HTMLElement | null = null;
@@ -73,8 +73,7 @@
     <div class="indicator"></div>
   </button>
   <div class="container" aria-label="drawer content">
-    <h3>Results</h3>
-    <ResultCards />
+    <SidebarContent />
   </div>
 </div>
 
@@ -116,10 +115,6 @@
       overflow: auto;
       padding-left: clamp(4px, 2vw + 1px, 8px);
       padding-right: clamp(4px, 2vw + 1px, 8px);
-
-      h3 {
-        margin-bottom: 8px;
-      }
     }
   }
 </style>

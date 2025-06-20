@@ -4,7 +4,7 @@
   import { onMount } from "svelte";
 
   import SidebarBtn from "$components/buttons/SidebarBtn.svelte";
-  import ResultCards from "./ResultCards.svelte";
+  import SidebarContent from "./SidebarContent.svelte";
 
   import { getViewportWidthState } from "$lib/stores/ViewportWidthState.svelte";
   import { collapsedSidebar } from "$lib/stores/SidebarStore";
@@ -24,11 +24,8 @@
       transition:slide={{ axis: "x", duration: 300, easing: quintInOut }}
     >
       <div class="content">
-        <div class="spacer"></div>
-        <div class="divider"></div>
         <div class="container" aria-label="sidebar content">
-          <h3>Results</h3>
-          <ResultCards />
+          <SidebarContent />
         </div>
       </div>
     </div>
@@ -51,35 +48,20 @@
     box-shadow: var(--box-shadow);
 
     .content {
-      padding: 0 8px 0 8px;
+      padding: 0 8px 8px 8px;
       max-width: 100%;
-
       .container {
         display: flex;
         flex-direction: column;
         gap: 8px;
+        padding-top: 64px;
       }
     }
-  }
-
-  .divider {
-    min-height: 1px;
-    width: 100%;
-    background-color: var(--accent-2);
-    margin: clamp(4px, 2vw, 8px) 0;
-  }
-
-  .spacer {
-    min-height: 100px;
   }
 
   @media (prefers-color-scheme: dark) {
     .sidebar {
       border-right: 2px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .divider {
-      background-color: rgba(255, 255, 255, 0.1);
     }
   }
 </style>
