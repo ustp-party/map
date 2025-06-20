@@ -1,16 +1,17 @@
 <script lang="ts">
+  import type { Feature } from "$lib/types/features";
   import ResultCard from "$components/buttons/ResultCard.svelte";
-  import { getSearchState } from "$lib/stores/SearchState.svelte";
-  const searchState = getSearchState();
+  let props = $props<{ features: Feature[] }>();
 </script>
 
-<div class="cards">
-  {#key searchState.results}
-    <h4 class="header">Results ({searchState.results.length})</h4>
-    {#each searchState.results as feature}
-      <ResultCard {feature} />
-    {/each}
-  {/key}
+<div class="container">
+  <div class="cards">
+    {#key props.features}
+      {#each props.features as feature}
+        <ResultCard {feature} />
+      {/each}
+    {/key}
+  </div>
 </div>
 
 <style lang="scss">
@@ -21,9 +22,5 @@
     border-radius: 12px;
     width: 100%;
     overflow: hidden;
-
-    .header {
-      margin: 16px 0 8px 8px;
-    }
   }
 </style>

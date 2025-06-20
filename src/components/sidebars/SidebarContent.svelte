@@ -7,15 +7,19 @@
   import ResultCards from "./ResultCards.svelte";
 
   import { getSearchState } from "$lib/stores/SearchState.svelte";
+  import { getLocalStorage } from "$lib/stores/localStorage.svelte";
 
   const searchState = getSearchState();
-  const queryLength = $derived(searchState.query.length > 0);
+  const localStorage = getLocalStorage();
+  let queryLength = $derived(searchState.query.length > 0);
+  let recentlyViewed = $derived([...localStorage.recentlyViewed].reverse());
 </script>
 
 {#if searchState.results.length === 0 && queryLength}
   <p class="no-results">No results found for "{searchState.query}"</p>
 {:else if searchState.results.length > 0 && queryLength}
-  <ResultCards />
+  <h4 class="header">Results ({searchState.results.length})</h4>
+  <ResultCards features={searchState.results} />
   <p class="support-message">
     Not what you were looking for?<br />Contact us by posting an
     <a href="https://github.com/ustp-party/map/issues/new/choose">issue</a>
@@ -26,16 +30,27 @@
   </p>
 {:else}
   <div class="introduction">
-    <h3>Are you a visitor?</h3>
+    {#if localStorage.firstVisit}
+      <h3>Are you a visitor?</h3>
+    {:else}
+      <h3>Welcome back!</h3>
+    {/if}
     <p class="message">You might be looking for...</p>
     <div class="search-options">
-      {@render featured("Gymnasium", "Gymnasium", StarSVG)}
+      {@render featured("Gym", "Gymnasium", StarSVG)}
+      {@render featured("Gym Lobby", "Gymnasium Lobby", StarSVG)}
       {@render featured("AVR", "Audio Visual Room", StarSVG)}
+      {@render featured("Makerspace", "Makerspace", StarSVG)}
       {@render featured("LRC Bldg", "Learning Resource Center", BuildingSVG)}
       {@render featured("Restrooms", "Restroom", RestroomSVG)}
     </div>
   </div>
-  <div class="recently-viewed"></div>
+  {#if recentlyViewed.length > 0}
+    <div class="recently-viewed">
+      <h4 class="header">Recently Viewed</h4>
+      <ResultCards features={recentlyViewed} />
+    </div>
+  {/if}
 {/if}
 
 {#snippet featured(name: string, value: string, icon: string)}
@@ -45,6 +60,9 @@
 {/snippet}
 
 <style lang="scss">
+  .header {
+    margin: 16px 0 8px 8px;
+  }
   .no-results {
     font-size: 0.875rem;
     text-align: center;
