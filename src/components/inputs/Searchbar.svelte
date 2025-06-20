@@ -8,7 +8,7 @@
 
   import { createSearchIndex, searchBooks } from "$lib/utils/searchService";
   import { getSearchState } from "$lib/stores/SearchState.svelte";
-  import { buildings } from "$lib/stores/map";
+  import { buildings } from "$lib/stores/map.svelte";
   import { collapsedSidebar } from "$lib/stores/SidebarStore";
 
   const searchState = getSearchState();

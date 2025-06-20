@@ -3,7 +3,7 @@
   import RemoveIcon from "$components/icons/RemoveIcon.svelte";
   import { getContext } from "svelte";
   import type { Map } from "leaflet";
-  import { currentZoom } from "$lib/stores/map";
+  import { currentZoom } from "$lib/stores/map.svelte";
 
   const mapContext = getContext<{ getMap: () => Map }>("map");
   let map: Map = mapContext.getMap();

@@ -6,12 +6,13 @@
   import type { Position } from "geojson";
   import type { Snippet } from "svelte";
   import type { LatLngExpression } from "leaflet";
-  import { currentZoom } from "$lib/stores/map";
-  import { currentCenter } from "$lib/stores/map";
+  import { currentZoom } from "$lib/stores/map.svelte";
+  import { currentCenter } from "$lib/stores/map.svelte";
   import { getSearchState } from "$lib/stores/SearchState.svelte";
   import { mapTheme } from "$lib/theme";
-  import { buildings } from "$lib/stores/map";
+  import { buildings } from "$lib/stores/map.svelte";
   import { geometricCentroid } from "$lib/utils/mapControls";
+  import { getMapState } from "$lib/stores/map.svelte";
 
   let mapElement: HTMLDivElement;
   let map: L.Map | undefined = $state();
@@ -23,6 +24,7 @@
   let buildingsLayer: L.GeoJSON | undefined = $state();
   let allbuildings = $derived($buildings);
   let allBuildingsLayer: L.GeoJSON | undefined = undefined;
+  let mapState = getMapState();
 
   let {
     children,
@@ -34,7 +36,7 @@
     map = L.map(mapElement, { zoomControl: false });
 
     L.tileLayer(
-      "https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png",
+      mapState.tileset,
       {
         attribution:
           '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors | &copy; <a href="https://carto.com/attributions">CARTO</a>',

@@ -1,0 +1,44 @@
+import { writable } from "svelte/store";
+import type { LatLngExpression } from "leaflet";
+import type { FeatureCollection } from "$types/features";
+import type { Feature } from "$lib/types/features";
+import { getContext, setContext } from "svelte";
+import type { MapState } from "$lib/types/map";
+
+export let currentZoom = writable<number>(18);
+export let defaultZoom = writable<number>(18);
+export let currentCenter = writable<LatLngExpression>([8.486001, 124.656645]);
+export let defaultCenter = writable<LatLngExpression>([8.486001, 124.656645]);
+
+export let buildings = writable<Feature[] | null | undefined>(undefined);
+export let benches = writable<FeatureCollection | null | undefined>(undefined);
+export let parking = writable<FeatureCollection | null | undefined>(undefined);
+export let pointsOfInterest = writable<FeatureCollection | null | undefined>(
+  undefined
+);
+
+class MapStateClass implements MapState {
+  currentZoom = $state(18);
+  defaultZoom = $state(18);
+  currentCenter = $state([8.486001, 124.656645]);
+  defaultCenter = $state([8.486001, 124.656645]);
+  buildings = $state([]);
+  benches = $state([]);
+  parking = $state([]);
+  pointsOfInterest = $state([]);
+  tileset = $state(
+    "https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png"
+  );
+  map = $state(undefined);
+}
+
+const DEFAULT_KEY = "$_map_state";
+
+export const getMapState = (key = DEFAULT_KEY) => {
+  return getContext<MapState>(key);
+};
+
+export const setMapState = (key = DEFAULT_KEY) => {
+  const MapState = new MapStateClass();
+  return setContext(key, MapState);
+};

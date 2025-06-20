@@ -12,11 +12,13 @@
   import { setViewportWidthState } from "$lib/stores/ViewportWidthState.svelte";
   import { setLocalStorageState } from "$lib/stores/localStorage.svelte";
   import { getLocalStorageState } from "$lib/stores/localStorage.svelte";
+  import { setMapState } from "$lib/stores/map.svelte";
   import { collapsedSidebar } from "$lib/stores/SidebarStore";
 
   setSearchState();
   setViewportWidthState();
   setLocalStorageState();
+  setMapState();
 
   let localStorageState = getLocalStorageState();
 

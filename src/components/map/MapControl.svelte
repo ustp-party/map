@@ -4,9 +4,9 @@
   import SchoolIcon from "$components/icons/SchoolIcon.svelte";
   import { getContext } from "svelte";
   import type { Map } from "leaflet";
-  import { currentZoom } from "$lib/stores/map";
-  import { defaultCenter } from "$lib/stores/map";
-  import { defaultZoom } from "$lib/stores/map";
+  import { currentZoom } from "$lib/stores/map.svelte";
+  import { defaultCenter } from "$lib/stores/map.svelte";
+  import { defaultZoom } from "$lib/stores/map.svelte";
   import controls from "$lib/utils/mapControls";
   import spinnerSVG from "$assets/animated/spinner2.svg?raw";
   import SvgIcon from "$components/icons/SVGIcon.svelte";

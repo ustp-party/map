@@ -12,7 +12,7 @@
     benches,
     parking,
     pointsOfInterest,
-  } from "$lib/stores/map";
+  } from "$lib/stores/map.svelte";
 
   import { type PageData } from "./$types";
   import { getViewportWidthState } from "$lib/stores/ViewportWidthState.svelte";
