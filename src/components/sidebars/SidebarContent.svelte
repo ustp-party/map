@@ -7,12 +7,12 @@
   import ResultCards from "./ResultCards.svelte";
 
   import { getSearchState } from "$lib/stores/SearchState.svelte";
-  import { getLocalStorage } from "$lib/stores/localStorage.svelte";
+  import { getLocalStorageState } from "$lib/stores/localStorage.svelte";
 
   const searchState = getSearchState();
-  const localStorage = getLocalStorage();
+  const localStorageState = getLocalStorageState();
   let queryLength = $derived(searchState.query.length > 0);
-  let recentlyViewed = $derived([...localStorage.recentlyViewed].reverse());
+  let recentlyViewed = $derived([...localStorageState.recentlyViewed].reverse());
 </script>
 
 {#if searchState.results.length === 0 && queryLength}
@@ -30,7 +30,7 @@
   </p>
 {:else}
   <div class="introduction">
-    {#if localStorage.firstVisit}
+    {#if localStorageState.firstVisit}
       <h3>Are you a visitor?</h3>
     {:else}
       <h3>Welcome back!</h3>

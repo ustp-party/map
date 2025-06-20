@@ -10,15 +10,15 @@
 
   import { setSearchState } from "$lib/stores/SearchState.svelte";
   import { setViewportWidthState } from "$lib/stores/ViewportWidthState.svelte";
-  import { setLocalStorage } from "$lib/stores/localStorage.svelte";
-  import { getLocalStorage } from "$lib/stores/localStorage.svelte";
+  import { setLocalStorageState } from "$lib/stores/localStorage.svelte";
+  import { getLocalStorageState } from "$lib/stores/localStorage.svelte";
   import { collapsedSidebar } from "$lib/stores/SidebarStore";
 
   setSearchState();
   setViewportWidthState();
-  setLocalStorage();
+  setLocalStorageState();
 
-  let localStorage = getLocalStorage();
+  let localStorageState = getLocalStorageState();
 
   onMount(() => {
     if (prefersDarkMode()) {
@@ -35,7 +35,7 @@
     window.addEventListener("resize", setViewportHeight);
     setViewportHeight();
 
-    if (localStorage.firstVisit) {
+    if (localStorageState.firstVisit) {
       collapsedSidebar.set(false);
     }
   });

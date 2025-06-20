@@ -27,11 +27,11 @@ class LocalStorageClass implements LocalStorage {
 
 const DEFAULT_KEY = "$_local_storage";
 
-export const getLocalStorage = (key = DEFAULT_KEY) => {
+export const getLocalStorageState = (key = DEFAULT_KEY) => {
   return getContext<LocalStorage>(key);
 };
 
-export const setLocalStorage = (key = DEFAULT_KEY) => {
+export const setLocalStorageState = (key = DEFAULT_KEY) => {
   const LocalStorage = new LocalStorageClass();
   const recentlyViewedStr = window.localStorage.getItem("recentlyViewed");
 
