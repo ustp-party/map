@@ -16,6 +16,14 @@
   <form class="content">
     <input
       type="radio"
+      id="voyager"
+      name="tileset"
+      value={tilesets["voyager"]}
+      bind:group={mapState.tileset}
+    />
+    <label for="voyager">Voyager</label>
+    <input
+      type="radio"
       id="light"
       name="tileset"
       value={tilesets["light"]}
@@ -58,8 +66,8 @@
     />
     <label for="Parking Spaces">Parking Spaces</label>
   </form>
-    <div class="divider"></div>
-     <form class="content">
+  <div class="divider"></div>
+  <form class="content">
     <input
       type="checkbox"
       id="Restrooms"
