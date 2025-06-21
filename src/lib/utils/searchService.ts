@@ -7,7 +7,7 @@ const fuseOptions = {
     { name: ["properties", "type"], weight: 0.2 },
     { name: "properties.addr:housenumber", weight: 3 },
   ],
-  threshold: 0.3,
+  threshold: 0.6,
   //   includeScore: true,
   findAllMatches: true,
   // shouldSort: true,
