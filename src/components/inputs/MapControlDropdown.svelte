@@ -83,7 +83,7 @@
       value="Printing Stations"
       bind:checked={mapState.enablePrintingServices}
     />
-    <label for="Printing Stations">Printing Station</label>
+    <label for="Printing Stations">Printing Services</label>
         <input
       type="checkbox"
       id="Landmarks"
