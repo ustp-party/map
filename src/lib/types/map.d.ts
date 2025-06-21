@@ -12,4 +12,7 @@ export interface MapState {
   map: Map | undefined;
   setMap: (map: Map) => void;
   enableBuildings: boolean;
+  enableBenches: boolean;
+  enableParking: boolean;
+  enablePointsOfInterest: boolean;
 }

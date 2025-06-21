@@ -7,17 +7,13 @@
   import Sidebar from "$components/sidebars/Sidebar.svelte";
   import Drawer from "$components/sidebars/Drawer.svelte";
 
-  import {
-    buildings,
-    benches,
-    parking,
-    pointsOfInterest,
-  } from "$lib/stores/map.svelte";
+  import { buildings } from "$lib/stores/map.svelte";
 
   import { type PageData } from "./$types";
   import { getViewportWidthState } from "$lib/stores/ViewportWidthState.svelte";
   import { getMapState } from "$lib/stores/map.svelte";
   import { onMount } from "svelte";
+  import { map } from "leaflet";
 
   let { data }: { data: PageData } = $props();
   const mapState = getMapState();
@@ -25,9 +21,9 @@
   onMount(() => {
     mapState.buildings = data.buildings!.features;
     buildings.set(data.buildings!.features);
-    benches.set(data.benches);
-    parking.set(data.parking);
-    pointsOfInterest.set(data.pointsOfInterest);
+    mapState.benches = data.benches!.features;
+    mapState.parking = data.parking!.features;
+    mapState.pointsOfInterest = data.pointsOfInterest!.features;
   });
 
   const viewportWidth = getViewportWidthState();
@@ -75,7 +71,6 @@
     z-index: 1000;
     padding-top: clamp(4px, 2vw, 8px);
     width: 100%;
-
 
     .search {
       display: flex;

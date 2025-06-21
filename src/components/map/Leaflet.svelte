@@ -20,7 +20,6 @@
   let searchState = getSearchState();
   let searchResults = $derived<Feature[]>(searchState.results.slice(0, 5)); // Return only top 5
 
-  // let buildingsLayer: L.GeoJSON | undefined = $state();
   let allBuildingsLayer: L.GeoJSON | undefined = undefined;
 
   let mapState = getMapState();
@@ -34,7 +33,9 @@
     
   );
   let buildingsLayer: L.GeoJSON | undefined = $derived(controls.setBuildings(mapState.buildings));
+  let benchesLayer: L.GeoJSON | undefined = undefined;
   let currentBuildings: L.GeoJSON | undefined = $state();
+  let currentBenches: L.GeoJSON | undefined = $state();
   let currentTileset: L.TileLayer | undefined = $state();
   let {
     children,
@@ -124,6 +125,13 @@
     }
     if (mapState.enableBuildings) {
       allBuildingsLayer = controls.setBuildings(mapState.buildings).addTo(map!);
+    }
+
+    if (benchesLayer) {
+      map?.removeLayer(benchesLayer);
+    }
+    if (mapState.enableBenches) {
+      benchesLayer = controls.setBenches(mapState.benches).addTo(map!);
     }
   });
 

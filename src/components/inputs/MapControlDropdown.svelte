@@ -4,17 +4,31 @@
 
   const mapState = getMapState();
   const tilesets = {
-    "voyager": "https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png",
-    "light": "https://{s}.basemaps.cartocdn.com/rastertiles/light_all/{z}/{x}/{y}{r}.png",
-    "dark": "https://{s}.basemaps.cartocdn.com/rastertiles/dark_all/{z}/{x}/{y}{r}.png"
-  }
+    voyager:
+      "https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png",
+    light:
+      "https://{s}.basemaps.cartocdn.com/rastertiles/light_all/{z}/{x}/{y}{r}.png",
+    dark: "https://{s}.basemaps.cartocdn.com/rastertiles/dark_all/{z}/{x}/{y}{r}.png",
+  };
 </script>
 
 <div class="dropdown-menu" transition:slide={{ duration: 100 }}>
   <form class="content">
-    <input type="radio" id="light" name="tileset" value={tilesets["light"]} bind:group={mapState.tileset} />
+    <input
+      type="radio"
+      id="light"
+      name="tileset"
+      value={tilesets["light"]}
+      bind:group={mapState.tileset}
+    />
     <label for="light">Light</label>
-    <input type="radio" id="dark" name="tileset" value={tilesets["dark"]} bind:group={mapState.tileset} />
+    <input
+      type="radio"
+      id="dark"
+      name="tileset"
+      value={tilesets["dark"]}
+      bind:group={mapState.tileset}
+    />
     <label for="dark">Dark</label>
   </form>
   <div class="divider"></div>
@@ -29,9 +43,18 @@
     <label for="Buildings">Buildings</label>
     <input
       type="checkbox"
+      id="Benches"
+      name="enabled features"
+      value="Benches"
+      bind:checked={mapState.enableBenches}
+    />
+    <label for="Benches">Benches</label>
+    <input
+      type="checkbox"
       id="Parking Spaces"
       name="enabled features"
       value="Parking Spaces"
+      bind:checked={mapState.enableParking}
     />
     <label for="Parking Spaces">Parking Spaces</label>
   </form>

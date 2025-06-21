@@ -13,11 +13,6 @@ export let currentCenter = writable<LatLngExpression>([8.486001, 124.656645]);
 export let defaultCenter = writable<LatLngExpression>([8.486001, 124.656645]);
 
 export let buildings = writable<Feature[] | null | undefined>(undefined);
-export let benches = writable<FeatureCollection | null | undefined>(undefined);
-export let parking = writable<FeatureCollection | null | undefined>(undefined);
-export let pointsOfInterest = writable<FeatureCollection | null | undefined>(
-  undefined
-);
 
 class MapStateClass implements MapState {
   currentZoom = $state(18);
@@ -36,6 +31,9 @@ class MapStateClass implements MapState {
     this.map = map;
   };
   enableBuildings = $state<boolean>(true);
+  enableBenches = $state<boolean>(true);
+  enableParking = $state<boolean>(true);
+  enablePointsOfInterest = $state<boolean>(true);
 }
 
 const DEFAULT_KEY = "$_map_state";

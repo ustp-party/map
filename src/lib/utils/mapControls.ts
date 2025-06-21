@@ -110,7 +110,7 @@ function setBuildings(allbuildings: Feature[]): L.GeoJSON {
         }: Properties = feature.properties;
 
         if (feature.properties && name) {
-          let html = `<div class="building-tooltip">`;
+          let html = `<div class="feature-tooltip building">`;
           html += `<h3 class="tooltip-title">${name}</h3>`;
           html += '<div class="tooltip-content">';
           html += `<div class="tooltip-label">Building</div><div>${bldg_no}</div>`;
@@ -124,7 +124,6 @@ function setBuildings(allbuildings: Feature[]): L.GeoJSON {
       }
     },
   });
-
 
   // Add builing numbers
   allbuildings.forEach((feature) => {
@@ -146,13 +145,48 @@ function setBuildings(allbuildings: Feature[]): L.GeoJSON {
   return buildingslayer;
 }
 
+function setBenches(benches: Feature[]): L.GeoJSON {
+  return L.geoJSON(benches, {
+    style: {
+      color: mapTheme.bench,
+      weight: 0,
+      fillOpacity: 0.5,
+    },
+    onEachFeature: (feature, layer) => {
+      if (feature.geometry.type === "Polygon") {
+        const coords: Position[][] = feature.geometry.coordinates;
+        const {
+          ["Estimated Capacity"]: est_capacity,
+          ["Has roofing"]: has_roofing,
+          ["Has backrest"]: has_backrest,
+        }: Properties = feature.properties;
+
+        if (feature.properties && est_capacity) {
+          let html = `<div class="feature-tooltip bench">`;
+          html += `<h3 class="tooltip-title">Benches</h3>`;
+          html += '<div class="tooltip-content">';
+          html += `<div class="tooltip-label">Estimated Capacity</div><div> ${est_capacity}</div>`;
+          html += `<div class="tooltip-label">Has roofing</div><div> ${has_roofing}</div>`;
+          html += `<div class="tooltip-label">Has backrest</div><div> ${has_backrest}</div>`;
+          html += "</div></div></div>";
+
+          layer.bindTooltip(html, {
+            className: "polygon-label", // optional CSS class
+          });
+        }
+      }
+    },
+  });
+}
+
 const controls = {
   getCurrentPosition,
   locateMe,
   geometricCentroid,
   setBuildings,
+  setBenches,
 };
 
 export default controls;
 
-export { getCurrentPosition, locateMe, geometricCentroid, setBuildings };
+export { getCurrentPosition, locateMe, geometricCentroid, setBuildings, setBenches };

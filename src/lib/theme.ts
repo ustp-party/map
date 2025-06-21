@@ -27,4 +27,6 @@ export const darkTheme: Theme = {
 export const mapTheme = {
   highlight: "rgb(248, 156, 32)",
   building: "rgb(87, 144, 252)",
+  bench: "rgb(228, 37, 54)",
+  parking: "rgb(122, 33, 221)",
 };

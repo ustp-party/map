@@ -2,7 +2,7 @@
   color: var(--primary);
 }
 
-.building-tooltip {
+.feature-tooltip {
   display: flex;
   flex-direction: column;
   gap: clamp(4px, 1vh + 2px, 0.8rem);
@@ -12,12 +12,10 @@
     display: inline-block;
     width: 1em;
     height: 1em;
-    background-image: url("/data/free-icons/building.svg");
     background-size: contain;
     background-repeat: no-repeat;
     margin-right: 0.5em;
   }
-
   .tooltip-content {
     display: grid;
     grid-template-columns: min-content 1fr;
@@ -27,5 +25,17 @@
     .tooltip-label {
       font-weight: 600;
     }
+  }
+}
+
+.building {
+  .tooltip-title::before {
+    background-image: url("/data/free-icons/building.svg");
+  }
+}
+
+.bench {
+  .tooltip-title::before {
+    background-image: url("/data/free-icons/table-picnic.svg");
   }
 }
