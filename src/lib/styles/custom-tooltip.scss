@@ -46,17 +46,42 @@
   }
 }
 
-.tooltip-svg {
-  background-color: rgb(22, 85, 141);
+.parking {
+  .tooltip-title::before {
+    background-image: url("/data/free-icons/parking.svg");
+  }
+}
+
+@mixin flexo() {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 24px;
-  height: 24px;
-  border-radius: 4px;
-  color: rgb(255, 255, 255);
+}
 
-  & > * {
-    height: 1rem;
+.restroom-icon {
+  .tooltip-svg {
+    @include flexo();
+    background-color: rgb(22, 85, 141);
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
+    color: rgb(255, 255, 255);
+
+    & > * {
+      height: 1rem;
+    }
+  }
+}
+
+.parking-icon {
+  color: var(--icon-color);
+  font-size: 1.2rem;
+  .tooltip-svg {
+    @include flexo();
+    background-color: rgb(255, 255, 255);
+
+    width: fit-content;
+    height: auto;
+    border-radius: 4px;
   }
 }

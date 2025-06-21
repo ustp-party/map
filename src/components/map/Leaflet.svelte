@@ -33,6 +33,7 @@
     
   );
   let buildingsLayer: L.GeoJSON | undefined = $derived(controls.setBuildings(mapState.buildings));
+  let parkingLayer: L.GeoJSON | undefined = undefined;
   let benchesLayer: L.GeoJSON | undefined = undefined;
   let restroomsLayer: L.GeoJSON | undefined = undefined;
   let currentBuildings: L.GeoJSON | undefined = $state();
@@ -125,6 +126,13 @@
     }
     if (mapState.enableBuildings) {
       allBuildingsLayer = controls.setBuildings(mapState.buildings).addTo(map!);
+    }
+
+    if (parkingLayer) {
+      map?.removeLayer(parkingLayer);
+    }
+    if (mapState.enableParking) {
+      parkingLayer = controls.setParkingSpaces(mapState.parking).addTo(map!);
     }
 
     if (benchesLayer) {

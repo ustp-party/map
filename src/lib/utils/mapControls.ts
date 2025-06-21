@@ -5,6 +5,7 @@ import type { Properties } from "$lib/types/features";
 import type { LatLngExpression } from "leaflet";
 import { mapTheme } from "$lib/theme";
 import restroomSVG from "$assets/free-icons/restroom.svg?raw";
+import parkingSVG from "$assets/free-icons/parking.svg?raw";
 
 function getCurrentPosition(): Promise<GeolocationPosition> {
   return new Promise((resolve, reject) => {
@@ -169,7 +170,7 @@ function setBenches(benches: Feature[]): L.GeoJSON {
           html += `<div class="tooltip-label">Estimated Capacity</div><div> ${est_capacity}</div>`;
           html += `<div class="tooltip-label">Has roofing</div><div> ${has_roofing}</div>`;
           html += `<div class="tooltip-label">Has backrest</div><div> ${has_backrest}</div>`;
-          html += "</div></div></div>";
+          html += "</div></div>";
 
           layer.bindTooltip(html, {
             className: "polygon-label", // optional CSS class
@@ -178,6 +179,50 @@ function setBenches(benches: Feature[]): L.GeoJSON {
       }
     },
   });
+}
+
+function setParkingSpaces(parkingSpaces: Feature[]): L.GeoJSON {
+  let parkingLayer = L.geoJSON(parkingSpaces, {
+    style: {
+      color: mapTheme.parking,
+      weight: 0,
+      fillOpacity: 0.5,
+    },
+    onEachFeature: (feature, layer) => {
+      if (feature.geometry.type === "Polygon") {
+        const coords: Position[][] = feature.geometry.coordinates;
+        const { vehicles }: Properties = feature.properties;
+
+        if (feature.properties && vehicles) {
+          let html = `<div class="feature-tooltip parking">`;
+          html += `<h3 class="tooltip-title">Parking Spaces</h3>`;
+          html += '<div class="tooltip-content">';
+          html += `<div class="tooltip-label">Vehicles allowed</div><div>${vehicles}</div>`;
+          html += "</div></div>";
+
+          layer.bindTooltip(html, {
+            className: "polygon-label", // optional CSS class
+          });
+        }
+      }
+    },
+  });
+
+  parkingSpaces.forEach((feature) => {
+    if (feature.geometry.type === "Polygon") {
+      const coords: Position[][] = feature.geometry.coordinates;
+      const centroid: LatLngExpression = geometricCentroid(coords[0]);
+
+      L.marker(centroid, {
+        icon: L.divIcon({
+          className: "parking-icon",
+          html: `<div class="tooltip-svg">${parkingSVG}</div>`
+        }),
+      }).addTo(parkingLayer);
+    }
+  });
+
+  return parkingLayer;
 }
 
 function setRestrooms(restrooms: Feature[]): L.GeoJSON {
@@ -197,7 +242,7 @@ function setRestrooms(restrooms: Feature[]): L.GeoJSON {
       return L.marker(latlng, {
         icon: L.divIcon({
           className: "restroom-icon",
-          html: `<div class="tooltip-svg">${restroomSVG}</div`,
+          html: `<div class="tooltip-svg">${restroomSVG}</div>`,
         }),
       }).bindTooltip(html, {
         className: "polygon-label", // optional CSS class
@@ -212,6 +257,7 @@ const controls = {
   geometricCentroid,
   setBuildings,
   setBenches,
+  setParkingSpaces,
   setRestrooms,
 };
 
@@ -223,5 +269,6 @@ export {
   geometricCentroid,
   setBuildings,
   setBenches,
+  setParkingSpaces,
   setRestrooms,
 };

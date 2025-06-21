@@ -22,6 +22,7 @@ export interface Properties {
   "Estimated Capacity"?: numnber;
   "Has roofing"?: "Yes" | "No";
   "Has backrest"?: "Yes" | "No";
+  vehicles?: "All" | "Motorcycles only" | "Cars only" | "Bicycles only";
 }
 
 export interface Feature {
