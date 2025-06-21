@@ -1,7 +1,5 @@
 import { writable } from "svelte/store";
 import type { LatLngExpression } from "leaflet";
-import type { FeatureCollection } from "$types/features";
-// import type { Feature } from "geojson";
 import type { Feature } from "$lib/types/features";
 import { getContext, setContext } from "svelte";
 import type { MapState } from "$lib/types/map";
@@ -31,11 +29,11 @@ class MapStateClass implements MapState {
     this.map = map;
   };
   enableBuildings = $state<boolean>(true);
-  enableBenches = $state<boolean>(true);
+  enableBenches = $state<boolean>(false);
   enableParking = $state<boolean>(true);
   enablePointsOfInterest = $state<boolean>(true);
   enableRestrooms = $state<boolean>(true);
-  enablePrintingServices = $state<boolean>(true);
+  enablePrintingServices = $state<boolean>(false);
   enableLandmarks = $state<boolean>(true);
 }
 

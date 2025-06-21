@@ -5,18 +5,18 @@
   import SidebarBtn from "$components/buttons/SidebarBtn.svelte";
   import SidebarContent from "./SidebarContent.svelte";
 
-  import { getViewportWidthState } from "$lib/stores/ViewportWidthState.svelte";
+  import { getAppState } from "$lib/stores/appState.svelte";
   import { collapsedSidebar } from "$lib/stores/SidebarStore";
 
-  const viewportWidth = getViewportWidthState();
+  const appState = getAppState();
 
   onMount(() => {
-    window.addEventListener("resize", viewportWidth.update);
-    return () => window.removeEventListener("resize", viewportWidth.update);
+    window.addEventListener("resize", appState.updateViewportWidth);
+    return () => window.removeEventListener("resize", appState.updateViewportWidth);
   });
 </script>
 
-{#if viewportWidth.value >= 600}
+{#if appState.viewportWidth >= 600}
   {#if !$collapsedSidebar}
     <div
       class="sidebar"

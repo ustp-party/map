@@ -9,11 +9,11 @@
   import BuildingSVG from "$assets/free-icons/building.svg?raw";
   import burgerSodaSVG from "$assets/free-icons/burger-soda.svg?raw";
 
-  import { getViewportWidthState } from "$lib/stores/ViewportWidthState.svelte";
+  import { getAppState } from "$lib/stores/appState.svelte";
   let divRef: HTMLDivElement | undefined = $state(undefined);
   let isOverflowing = $state(false);
   let scrollLeft: number = $state(0);
-  let viewportWidth = getViewportWidthState();
+  let appState = getAppState();
   const scrollStep = 240;
 
   function checkOverflow(el: HTMLDivElement | undefined): boolean {
@@ -63,7 +63,7 @@
 </script>
 
 <div class="options" bind:this={divRef}>
-  {#if isOverflowing && viewportWidth.value >= 600}
+  {#if isOverflowing && appState.viewportWidth >= 600}
     <button
       class="scroll left"
       aria-label="Scroll Left"
@@ -88,7 +88,7 @@
     rotcSVG
   )}
 
-  {#if isOverflowing && viewportWidth.value >= 600}
+  {#if isOverflowing && appState.viewportWidth >= 600}
     <button
       class="scroll"
       aria-label="Scroll Right"

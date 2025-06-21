@@ -9,7 +9,7 @@
 
   import { getContext } from "svelte";
   import { geometricCentroid } from "$lib/utils/mapControls";
-  import { getViewportWidthState } from "$lib/stores/ViewportWidthState.svelte";
+  import { getAppState } from "$lib/stores/appState.svelte";
   import { getLocalStorageState } from "$lib/stores/localStorage.svelte";
   import { collapsedSidebar } from "$lib/stores/SidebarStore";
 
@@ -18,14 +18,14 @@
 
   const mapContext = getContext<{ getMap: () => Map }>("map");
   const map = mapContext.getMap();
-  const viewportWidth = getViewportWidthState();
+  const appState = getAppState();
   const showImages = true;
   const localStorageState = getLocalStorageState();
 
   function handleClick() {
     let polygon: Position[] = feature.geometry.coordinates[0];
     let centroid: LatLngExpression = geometricCentroid(polygon);
-    if (viewportWidth.value < 600) {
+    if (appState.viewportWidth < 600) {
       collapsedSidebar.set(true);
     }
     map.setView(centroid, 19, {

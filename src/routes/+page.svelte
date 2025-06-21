@@ -10,10 +10,9 @@
   import { buildings } from "$lib/stores/map.svelte";
 
   import { type PageData } from "./$types";
-  import { getViewportWidthState } from "$lib/stores/ViewportWidthState.svelte";
+  import { getAppState } from "$lib/stores/appState.svelte";
   import { getMapState } from "$lib/stores/map.svelte";
   import { onMount } from "svelte";
-  import { map } from "leaflet";
 
   let { data }: { data: PageData } = $props();
   const mapState = getMapState();
@@ -26,7 +25,7 @@
     mapState.pointsOfInterest = data.pointsOfInterest!.features;
   });
 
-  const viewportWidth = getViewportWidthState();
+  const appState = getAppState();
 </script>
 
 <div class="viewport">
@@ -36,20 +35,20 @@
       <div class="search">
         <Searchbar />
         <SearchOptions />
-        {#if viewportWidth.value >= 600}
+        {#if appState.viewportWidth>= 600}
           <MapControl />
         {/if}
       </div>
     </div>
-    {#if viewportWidth.value > 600}
+    {#if appState.viewportWidth > 600}
       <ZoomControl />
     {/if}
     <div class="bottom-bar">
-      {#if viewportWidth.value < 600}
+      {#if appState.viewportWidth < 600}
         <MapControl />
       {/if}
     </div>
-    {#if viewportWidth.value < 600}
+    {#if appState.viewportWidth < 600}
       <Drawer />
     {/if}
   </Leaflet>

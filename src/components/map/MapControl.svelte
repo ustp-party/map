@@ -10,15 +10,14 @@
   import controls from "$lib/utils/mapControls";
   import spinnerSVG from "$assets/animated/spinner2.svg?raw";
   import SvgIcon from "$components/icons/SVGIcon.svelte";
-  import { getViewportWidthState } from "$lib/stores/ViewportWidthState.svelte";
+  import { getAppState } from "$lib/stores/appState.svelte";
   import { getMapState } from "$lib/stores/map.svelte";
 
   const mapState = getMapState();
-  const ViewportWidthState = getViewportWidthState();
+  const appState = getAppState();
   let map: Map = mapState.map!;
   let userLocationMarker: L.Marker | null = $state(null);
   let loading = $state(false);
-  let openDropdown = $state(true);
 
   // BUG: The previous userLocationMarker is not being removed when a new one is created.
   async function locateUserHandler() {
@@ -43,7 +42,7 @@
   }
 
   function handleDropdown() {
-    openDropdown = !openDropdown;
+    appState.openMapControlDropdown = !appState.openMapControlDropdown;
   }
 </script>
 
@@ -80,7 +79,7 @@
     >
       <LayersIcon alt="Select map layer" />
     </button>
-    {#if openDropdown}
+    {#if appState.openMapControlDropdown}
       <MapControlDropdown />
     {/if}
   </li>

@@ -9,14 +9,14 @@
   import { onMount } from "svelte";
 
   import { setSearchState } from "$lib/stores/SearchState.svelte";
-  import { setViewportWidthState } from "$lib/stores/ViewportWidthState.svelte";
+  import { setAppState } from "$lib/stores/appState.svelte";
   import { setLocalStorageState } from "$lib/stores/localStorage.svelte";
   import { getLocalStorageState } from "$lib/stores/localStorage.svelte";
   import { setMapState } from "$lib/stores/map.svelte";
   import { collapsedSidebar } from "$lib/stores/SidebarStore";
 
   setSearchState();
-  setViewportWidthState();
+  setAppState();
   setLocalStorageState();
   setMapState();
 
