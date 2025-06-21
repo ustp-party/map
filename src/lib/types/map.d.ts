@@ -10,4 +10,6 @@ export interface MapState {
   pointsOfInterest: Feature[] | [];
   tileset: string;
   map: Map | undefined;
+  setMap: (map: Map) => void;
+  enableBuildings: boolean;
 }

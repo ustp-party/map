@@ -1,7 +1,9 @@
 import L from "leaflet";
 import fa from "$components/icons/CustomIcons";
-import type { Position } from "geojson";
+import type { Feature, Position } from "geojson";
+import type { Properties } from "$lib/types/features";
 import type { LatLngExpression } from "leaflet";
+import { mapTheme } from "$lib/theme";
 
 function getCurrentPosition(): Promise<GeolocationPosition> {
   return new Promise((resolve, reject) => {
@@ -91,12 +93,66 @@ function geometricCentroid(coordinates: Position[]): [number, number] {
   return [meanLat, meanLng];
 }
 
+function setBuildings(allbuildings: Feature[]): L.GeoJSON {
+  let buildingslayer = L.geoJSON(allbuildings, {
+    style: {
+      color: mapTheme.building,
+      weight: 1,
+      fillOpacity: 0.5,
+    },
+    onEachFeature: (feature, layer) => {
+      if (feature.geometry.type === "Polygon") {
+        const coords: Position[][] = feature.geometry.coordinates;
+        const {
+          name,
+          ["addr:housenumber"]: bldg_no,
+          ["building:levels"]: levels,
+        }: Properties = feature.properties;
+
+        if (feature.properties && name) {
+          let html = `<div class="building-tooltip">`;
+          html += `<h3 class="tooltip-title">${name}</h3>`;
+          html += '<div class="tooltip-content">';
+          html += `<div class="tooltip-label">Building</div><div>${bldg_no}</div>`;
+          html += `<div class="tooltip-label">Levels</div><div> ${levels}</div>`;
+          html += "</div></div>";
+
+          layer.bindTooltip(html, {
+            className: "polygon-label", // optional CSS class
+          });
+        }
+      }
+    },
+  });
+
+
+  // Add builing numbers
+  allbuildings.forEach((feature) => {
+    if (feature.geometry.type === "Polygon") {
+      const coords: Position[][] = feature.geometry.coordinates;
+      const centroid: LatLngExpression = geometricCentroid(coords[0]);
+      const { ["addr:housenumber"]: bldg_no } =
+        feature.properties as Properties;
+
+      L.marker(centroid, {
+        icon: L.divIcon({
+          className: "polygon-text",
+          html: bldg_no,
+        }),
+      }).addTo(buildingslayer);
+    }
+  });
+
+  return buildingslayer;
+}
+
 const controls = {
   getCurrentPosition,
   locateMe,
   geometricCentroid,
+  setBuildings,
 };
 
 export default controls;
 
-export { getCurrentPosition, locateMe, geometricCentroid };
+export { getCurrentPosition, locateMe, geometricCentroid, setBuildings };

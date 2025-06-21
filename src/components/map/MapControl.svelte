@@ -2,7 +2,7 @@
   import MyLocationIcon from "$components/icons/MyLocationIcon.svelte";
   import LayersIcon from "$components/icons/LayersIcon.svelte";
   import SchoolIcon from "$components/icons/SchoolIcon.svelte";
-  import { getContext } from "svelte";
+  import MapControlDropdown from "$components/inputs/MapControlDropdown.svelte";
   import type { Map } from "leaflet";
   import { currentZoom } from "$lib/stores/map.svelte";
   import { defaultCenter } from "$lib/stores/map.svelte";
@@ -10,14 +10,15 @@
   import controls from "$lib/utils/mapControls";
   import spinnerSVG from "$assets/animated/spinner2.svg?raw";
   import SvgIcon from "$components/icons/SVGIcon.svelte";
+  import { getViewportWidthState } from "$lib/stores/ViewportWidthState.svelte";
+  import { getMapState } from "$lib/stores/map.svelte";
 
-  const mapContext = getContext<{
-    getMap: () => Map;
-  }>("map");
-
-  let map: Map = mapContext.getMap();
+  const mapState = getMapState();
+  const ViewportWidthState = getViewportWidthState();
+  let map: Map = mapState.map!;
   let userLocationMarker: L.Marker | null = $state(null);
   let loading = $state(false);
+  let openDropdown = $state(true);
 
   // BUG: The previous userLocationMarker is not being removed when a new one is created.
   async function locateUserHandler() {
@@ -40,35 +41,56 @@
       currentZoom.set($defaultZoom);
     }
   }
+
+  function handleDropdown() {
+    openDropdown = !openDropdown;
+  }
 </script>
 
-<div class="control-panel">
-  <button
-    class="control location"
-    aria-label="My Location"
-    onclick={locateUserHandler}
-  >
-    {#if loading}
-      <SvgIcon size={24} alt="Loading user location">
-        {@html spinnerSVG}
-      </SvgIcon>
-    {:else}
-      <MyLocationIcon alt="My location" />
+<ul class="control-panel">
+  <li class="control-item">
+    <button
+      class="control location"
+      aria-label="My Location"
+      onclick={locateUserHandler}
+    >
+      {#if loading}
+        <SvgIcon size={24} alt="Loading user location">
+          {@html spinnerSVG}
+        </SvgIcon>
+      {:else}
+        <MyLocationIcon alt="My location" />
+      {/if}
+    </button>
+  </li>
+  <li class="control-item">
+    <button
+      class="control campus"
+      aria-label="Locate Me"
+      onclick={centerMapOnCampus}
+    >
+      <SchoolIcon alt="Campus location" />
+    </button>
+  </li>
+  <li class="control-item dropdown">
+    <button
+      class="control layer"
+      aria-label="Select Layer"
+      onclick={handleDropdown}
+    >
+      <LayersIcon alt="Select map layer" />
+    </button>
+    {#if openDropdown}
+      <MapControlDropdown />
     {/if}
-  </button>
-  <button
-    class="control campus"
-    aria-label="Locate Me"
-    onclick={centerMapOnCampus}
-  >
-    <SchoolIcon alt="Campus location" />
-  </button>
-  <button class="control layer" aria-label="Select Layer">
-    <LayersIcon alt="Select map layer" />
-  </button>
-</div>
+  </li>
+</ul>
 
 <style lang="scss">
+  .dropdown {
+    position: relative;
+    overflow: visible;
+  }
   .control-panel {
     bottom: clamp(32px, 4vw, 44px);
     right: clamp(10px, 2vw, 20px);
@@ -76,6 +98,10 @@
     flex-direction: row;
     gap: 2px;
     z-index: 1000;
+
+    li {
+      all: unset;
+    }
   }
 
   .control {

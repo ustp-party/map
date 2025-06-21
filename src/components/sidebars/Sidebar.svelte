@@ -1,6 +1,5 @@
 <script lang="ts">
   import { slide } from "svelte/transition";
-  import { quintInOut } from "svelte/easing";
   import { onMount } from "svelte";
 
   import SidebarBtn from "$components/buttons/SidebarBtn.svelte";
@@ -21,7 +20,7 @@
   {#if !$collapsedSidebar}
     <div
       class="sidebar"
-      transition:slide={{ axis: "x", duration: 300, easing: quintInOut }}
+      transition:slide={{ axis: "x", duration: 100 }}
     >
       <div class="content">
         <div class="container" aria-label="sidebar content">

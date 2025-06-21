@@ -1,9 +1,11 @@
 import { writable } from "svelte/store";
 import type { LatLngExpression } from "leaflet";
 import type { FeatureCollection } from "$types/features";
+// import type { Feature } from "geojson";
 import type { Feature } from "$lib/types/features";
 import { getContext, setContext } from "svelte";
 import type { MapState } from "$lib/types/map";
+import type { Map } from "leaflet";
 
 export let currentZoom = writable<number>(18);
 export let defaultZoom = writable<number>(18);
@@ -27,9 +29,13 @@ class MapStateClass implements MapState {
   parking = $state([]);
   pointsOfInterest = $state([]);
   tileset = $state(
-    "https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png"
+    "https://{s}.basemaps.cartocdn.com/rastertiles/light_all/{z}/{x}/{y}{r}.png"
   );
-  map = $state(undefined);
+  map = $state<Map | undefined>(undefined);
+  setMap = (map: Map) => {
+    this.map = map;
+  };
+  enableBuildings = $state<boolean>(true);
 }
 
 const DEFAULT_KEY = "$_map_state";

@@ -16,11 +16,14 @@
 
   import { type PageData } from "./$types";
   import { getViewportWidthState } from "$lib/stores/ViewportWidthState.svelte";
+  import { getMapState } from "$lib/stores/map.svelte";
   import { onMount } from "svelte";
 
   let { data }: { data: PageData } = $props();
+  const mapState = getMapState();
 
   onMount(() => {
+    mapState.buildings = data.buildings!.features;
     buildings.set(data.buildings!.features);
     benches.set(data.benches);
     parking.set(data.parking);
