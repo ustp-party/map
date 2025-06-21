@@ -4,9 +4,6 @@
   import SchoolIcon from "$components/icons/SchoolIcon.svelte";
   import MapControlDropdown from "$components/inputs/MapControlDropdown.svelte";
   import type { Map } from "leaflet";
-  import { currentZoom } from "$lib/stores/map.svelte";
-  import { defaultCenter } from "$lib/stores/map.svelte";
-  import { defaultZoom } from "$lib/stores/map.svelte";
   import controls from "$lib/utils/mapControls";
   import spinnerSVG from "$assets/animated/spinner2.svg?raw";
   import SvgIcon from "$components/icons/SVGIcon.svelte";
@@ -33,11 +30,11 @@
 
   function centerMapOnCampus() {
     if (map) {
-      map.setView($defaultCenter, $defaultZoom, {
+      map.setView(mapState.defaultCenter, mapState.defaultZoom, {
         animate: true,
         duration: 0.8,
       });
-      currentZoom.set($defaultZoom);
+      mapState.updateCurrentZoom(mapState.defaultZoom);
     }
   }
 

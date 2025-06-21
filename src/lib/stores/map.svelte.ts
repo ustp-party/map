@@ -1,19 +1,16 @@
 import { writable } from "svelte/store";
-import type { LatLngExpression } from "leaflet";
-import type { Feature } from "$lib/types/features";
 import { getContext, setContext } from "svelte";
+import type { Feature } from "$lib/types/features";
 import type { MapState } from "$lib/types/map";
 import type { Map } from "leaflet";
-
-export let currentZoom = writable<number>(18);
-export let defaultZoom = writable<number>(18);
-export let currentCenter = writable<LatLngExpression>([8.486001, 124.656645]);
-export let defaultCenter = writable<LatLngExpression>([8.486001, 124.656645]);
 
 export let buildings = writable<Feature[] | null | undefined>(undefined);
 
 class MapStateClass implements MapState {
   currentZoom = $state(18);
+  updateCurrentZoom = (zoom: number) => {
+    this.currentZoom = zoom;
+  }
   defaultZoom = $state(18);
   currentCenter = $state([8.486001, 124.656645]);
   defaultCenter = $state([8.486001, 124.656645]);

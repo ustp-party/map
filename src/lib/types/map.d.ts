@@ -1,6 +1,7 @@
 import type { Map } from "leaflet";
 export interface MapState {
   currentZoom: number;
+  updateCurrentZoom: (zoom: number) => void;
   defaultZoom: number;
   currentCenter: LatLngExpression;
   defaultCenter: LatLngExpression;

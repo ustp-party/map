@@ -6,23 +6,21 @@
   import type { Snippet } from "svelte";
   import type { Feature } from "geojson";
 
-  import { currentZoom } from "$lib/stores/map.svelte";
-  import { currentCenter } from "$lib/stores/map.svelte";
   import { getSearchState } from "$lib/stores/SearchState.svelte";
   import { mapTheme } from "$lib/theme";
   import { getMapState } from "$lib/stores/map.svelte";
   import controls from "$lib/utils/mapControls";
 
+  let mapState = getMapState();
   let mapElement: HTMLDivElement;
   let map: L.Map | undefined = $state();
-  let view: L.LatLngExpression = $derived($currentCenter);
-  let zoom: number = $derived($currentZoom);
+  let view: L.LatLngExpression = $derived(mapState.currentCenter);
+  let zoom: number = $derived(mapState.currentZoom);
   let searchState = getSearchState();
   let searchResults = $derived<Feature[]>(searchState.results.slice(0, 5)); // Return only top 5
 
   let allBuildingsLayer: L.GeoJSON | undefined = undefined;
 
-  let mapState = getMapState();
   let tilesetLayer: L.TileLayer | undefined = $derived(
     L.tileLayer(mapState.tileset, {
       attribution:
