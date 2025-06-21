@@ -52,6 +52,12 @@
   }
 }
 
+.printing-service {
+  .tooltip-title::before {
+    background-image: url("/data/free-icons/printer.svg");
+  }
+}
+
 @mixin flexo() {
   display: flex;
   align-items: center;
@@ -83,5 +89,18 @@
     width: fit-content;
     height: auto;
     border-radius: 4px;
+  }
+}
+
+.printing-service-icon {
+  color: #333333;
+  font-size: 1rem;
+  .tooltip-svg {
+    @include flexo();
+    background-color: rgb(255, 255, 255);
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
+    border: 1px solid #333333;
   }
 }

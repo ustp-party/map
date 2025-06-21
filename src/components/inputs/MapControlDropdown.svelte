@@ -76,6 +76,14 @@
       bind:checked={mapState.enableRestrooms}
     />
     <label for="Restrooms">Restrooms</label>
+    <input
+      type="checkbox"
+      id="Printing Stations"
+      name="enabled features"
+      value="Printing Stations"
+      bind:checked={mapState.enablePrintingServices}
+    />
+    <label for="Printing Stations">Printing Station</label>
   </form>
 </div>
 

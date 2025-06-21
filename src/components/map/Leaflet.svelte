@@ -30,12 +30,14 @@
       maxZoom: 20,
       keepBuffer: 6,
     })
-    
   );
-  let buildingsLayer: L.GeoJSON | undefined = $derived(controls.setBuildings(mapState.buildings));
+  let buildingsLayer: L.GeoJSON | undefined = $derived(
+    controls.setBuildings(mapState.buildings)
+  );
   let parkingLayer: L.GeoJSON | undefined = undefined;
   let benchesLayer: L.GeoJSON | undefined = undefined;
   let restroomsLayer: L.GeoJSON | undefined = undefined;
+  let printingServicesLayer: L.GeoJSON | undefined = undefined;
   let currentBuildings: L.GeoJSON | undefined = $state();
   let currentTileset: L.TileLayer | undefined = $state();
   let {
@@ -146,7 +148,18 @@
       map?.removeLayer(restroomsLayer);
     }
     if (mapState.enableRestrooms) {
-      restroomsLayer = controls.setRestrooms(mapState.pointsOfInterest).addTo(map!);
+      restroomsLayer = controls
+        .setRestrooms(mapState.pointsOfInterest)
+        .addTo(map!);
+    }
+
+    if (printingServicesLayer) {
+      map?.removeLayer(printingServicesLayer);
+    }
+    if (mapState.enablePrintingServices) {
+      printingServicesLayer = controls
+        .setPrintingServices(mapState.pointsOfInterest)
+        .addTo(map!);
     }
   });
 

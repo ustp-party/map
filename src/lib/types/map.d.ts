@@ -16,4 +16,6 @@ export interface MapState {
   enableParking: boolean;
   enablePointsOfInterest: boolean;
   enableRestrooms: boolean;
+  enablePrintingServices: boolean;
+  enableLandmarks: boolean;
 }

@@ -6,6 +6,7 @@ import type { LatLngExpression } from "leaflet";
 import { mapTheme } from "$lib/theme";
 import restroomSVG from "$assets/free-icons/restroom.svg?raw";
 import parkingSVG from "$assets/free-icons/parking.svg?raw";
+import printerSVG from "$assets/free-icons/printer.svg?raw";
 
 function getCurrentPosition(): Promise<GeolocationPosition> {
   return new Promise((resolve, reject) => {
@@ -216,7 +217,7 @@ function setParkingSpaces(parkingSpaces: Feature[]): L.GeoJSON {
       L.marker(centroid, {
         icon: L.divIcon({
           className: "parking-icon",
-          html: `<div class="tooltip-svg">${parkingSVG}</div>`
+          html: `<div class="tooltip-svg">${parkingSVG}</div>`,
         }),
       }).addTo(parkingLayer);
     }
@@ -251,6 +252,31 @@ function setRestrooms(restrooms: Feature[]): L.GeoJSON {
   });
 }
 
+function setPrintingServices(printingServices: Feature[]): L.GeoJSON {
+    let printingServicesFiltered = printingServices.filter(
+    (feature) => feature.properties!.type === "Printing Service"
+  );
+  return L.geoJSON(printingServicesFiltered, {
+    pointToLayer: (feature, latlng) => {
+      const { description }: Properties = feature.properties!;
+      let html = `<div class="feature-tooltip printing-service">`;
+      html += `<h3 class="tooltip-title">Printing Service</h3>`;
+      html += '<div class="tooltip-content">';
+      html += `<div class="tooltip-label">Description</div><div>${description}</div>`;
+      html += "</div></div>";
+
+      return L.marker(latlng, {
+        icon: L.divIcon({
+          className: "printing-service-icon",
+          html: `<div class="tooltip-svg">${printerSVG}</div>`,
+        }),
+      }).bindTooltip(html, {
+        className: "polygon-label", // optional CSS class
+      });
+    },
+  });
+}
+
 const controls = {
   getCurrentPosition,
   locateMe,
@@ -259,6 +285,7 @@ const controls = {
   setBenches,
   setParkingSpaces,
   setRestrooms,
+  setPrintingServices,
 };
 
 export default controls;
@@ -271,4 +298,5 @@ export {
   setBenches,
   setParkingSpaces,
   setRestrooms,
+  setPrintingServices,
 };
