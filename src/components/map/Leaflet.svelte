@@ -34,8 +34,8 @@
   );
   let buildingsLayer: L.GeoJSON | undefined = $derived(controls.setBuildings(mapState.buildings));
   let benchesLayer: L.GeoJSON | undefined = undefined;
+  let restroomsLayer: L.GeoJSON | undefined = undefined;
   let currentBuildings: L.GeoJSON | undefined = $state();
-  let currentBenches: L.GeoJSON | undefined = $state();
   let currentTileset: L.TileLayer | undefined = $state();
   let {
     children,
@@ -132,6 +132,13 @@
     }
     if (mapState.enableBenches) {
       benchesLayer = controls.setBenches(mapState.benches).addTo(map!);
+    }
+
+    if (restroomsLayer) {
+      map?.removeLayer(restroomsLayer);
+    }
+    if (mapState.enableRestrooms) {
+      restroomsLayer = controls.setRestrooms(mapState.pointsOfInterest).addTo(map!);
     }
   });
 

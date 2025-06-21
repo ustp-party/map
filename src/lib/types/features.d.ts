@@ -13,7 +13,7 @@ export interface FeatureCollection {
 export interface Properties {
   name: string;
   description: string;
-  type?: string;
+  type?: string | "Restroom";
   "addr:housenumber"?: string;
   "addr:place"?: string;
   "building:levels"?: string;

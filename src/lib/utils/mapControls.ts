@@ -4,6 +4,7 @@ import type { Feature, Position } from "geojson";
 import type { Properties } from "$lib/types/features";
 import type { LatLngExpression } from "leaflet";
 import { mapTheme } from "$lib/theme";
+import restroomSVG from "$assets/free-icons/restroom.svg?raw";
 
 function getCurrentPosition(): Promise<GeolocationPosition> {
   return new Promise((resolve, reject) => {
@@ -179,14 +180,48 @@ function setBenches(benches: Feature[]): L.GeoJSON {
   });
 }
 
+function setRestrooms(restrooms: Feature[]): L.GeoJSON {
+  let restroomsFiltered = restrooms.filter(
+    (feature) => feature.properties!.type === "Restroom"
+  );
+  return L.geoJSON(restroomsFiltered, {
+    pointToLayer: (feature, latlng) => {
+      const { description, level }: Properties = feature.properties!;
+      let html = `<div class="feature-tooltip restroom">`;
+      html += `<h3 class="tooltip-title">Restroom</h3>`;
+      html += '<div class="tooltip-content">';
+      html += `<div class="tooltip-label">Description</div><div>${description}</div>`;
+      html += `<div class="tooltip-label">Level</div><div>${level}</div>`;
+      html += "</div></div>";
+
+      return L.marker(latlng, {
+        icon: L.divIcon({
+          className: "restroom-icon",
+          html: `<div class="tooltip-svg">${restroomSVG}</div`,
+        }),
+      }).bindTooltip(html, {
+        className: "polygon-label", // optional CSS class
+      });
+    },
+  });
+}
+
 const controls = {
   getCurrentPosition,
   locateMe,
   geometricCentroid,
   setBuildings,
   setBenches,
+  setRestrooms,
 };
 
 export default controls;
 
-export { getCurrentPosition, locateMe, geometricCentroid, setBuildings, setBenches };
+export {
+  getCurrentPosition,
+  locateMe,
+  geometricCentroid,
+  setBuildings,
+  setBenches,
+  setRestrooms,
+};

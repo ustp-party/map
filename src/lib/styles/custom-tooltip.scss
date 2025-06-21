@@ -39,3 +39,24 @@
     background-image: url("/data/free-icons/table-picnic.svg");
   }
 }
+
+.restroom {
+  .tooltip-title::before {
+    background-image: url("/data/free-icons/restroom.svg");
+  }
+}
+
+.tooltip-svg {
+  background-color: rgb(22, 85, 141);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  color: rgb(255, 255, 255);
+
+  & > * {
+    height: 1rem;
+  }
+}

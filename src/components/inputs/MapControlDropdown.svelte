@@ -58,6 +58,17 @@
     />
     <label for="Parking Spaces">Parking Spaces</label>
   </form>
+    <div class="divider"></div>
+     <form class="content">
+    <input
+      type="checkbox"
+      id="Restrooms"
+      name="enabled features"
+      value="Restrooms"
+      bind:checked={mapState.enableRestrooms}
+    />
+    <label for="Restrooms">Restrooms</label>
+  </form>
 </div>
 
 <style lang="scss">

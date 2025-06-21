@@ -15,4 +15,5 @@ export interface MapState {
   enableBenches: boolean;
   enableParking: boolean;
   enablePointsOfInterest: boolean;
+  enableRestrooms: boolean;
 }

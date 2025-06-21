@@ -34,6 +34,7 @@ class MapStateClass implements MapState {
   enableBenches = $state<boolean>(true);
   enableParking = $state<boolean>(true);
   enablePointsOfInterest = $state<boolean>(true);
+  enableRestrooms = $state<boolean>(true);
 }
 
 const DEFAULT_KEY = "$_map_state";
