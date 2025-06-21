@@ -7,6 +7,7 @@ import { mapTheme } from "$lib/theme";
 import restroomSVG from "$assets/free-icons/restroom.svg?raw";
 import parkingSVG from "$assets/free-icons/parking.svg?raw";
 import printerSVG from "$assets/free-icons/printer.svg?raw";
+import sparkleSVG from "$assets/free-icons/sparkle.svg?raw";
 
 function getCurrentPosition(): Promise<GeolocationPosition> {
   return new Promise((resolve, reject) => {
@@ -253,7 +254,7 @@ function setRestrooms(restrooms: Feature[]): L.GeoJSON {
 }
 
 function setPrintingServices(printingServices: Feature[]): L.GeoJSON {
-    let printingServicesFiltered = printingServices.filter(
+  let printingServicesFiltered = printingServices.filter(
     (feature) => feature.properties!.type === "Printing Service"
   );
   return L.geoJSON(printingServicesFiltered, {
@@ -277,6 +278,31 @@ function setPrintingServices(printingServices: Feature[]): L.GeoJSON {
   });
 }
 
+function setLandmarks(landmarks: Feature[]): L.GeoJSON {
+  let landmarksFiltered = landmarks.filter(
+    (feature) => feature.properties!.type === "Landmark"
+  );
+  return L.geoJSON(landmarksFiltered, {
+    pointToLayer: (feature, latlng) => {
+      const { description, level }: Properties = feature.properties!;
+      let html = `<div class="feature-tooltip landmark">`;
+      html += `<h3 class="tooltip-title">Landmark</h3>`;
+      html += '<div class="tooltip-content">';
+      html += `<div class="tooltip-label">Description</div><div>${description}</div>`;
+      html += `<div class="tooltip-label">Level</div><div>${level}</div>`;
+      html += "</div></div>";
+      return L.marker(latlng, {
+        icon: L.divIcon({
+          className: "landmark-icon",
+          html: `<div class="tooltip-svg">${sparkleSVG}</div>`,
+        }),
+      }).bindTooltip(html, {
+        className: "polygon-label", // optional CSS class
+      });
+    },
+  });
+}
+
 const controls = {
   getCurrentPosition,
   locateMe,
@@ -286,6 +312,7 @@ const controls = {
   setParkingSpaces,
   setRestrooms,
   setPrintingServices,
+  setLandmarks,
 };
 
 export default controls;
@@ -299,4 +326,5 @@ export {
   setParkingSpaces,
   setRestrooms,
   setPrintingServices,
+  setLandmarks,
 };

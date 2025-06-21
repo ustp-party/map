@@ -38,6 +38,7 @@
   let benchesLayer: L.GeoJSON | undefined = undefined;
   let restroomsLayer: L.GeoJSON | undefined = undefined;
   let printingServicesLayer: L.GeoJSON | undefined = undefined;
+  let landmarksLayer: L.GeoJSON | undefined = undefined;
   let currentBuildings: L.GeoJSON | undefined = $state();
   let currentTileset: L.TileLayer | undefined = $state();
   let {
@@ -159,6 +160,15 @@
     if (mapState.enablePrintingServices) {
       printingServicesLayer = controls
         .setPrintingServices(mapState.pointsOfInterest)
+        .addTo(map!);
+    }
+
+    if (landmarksLayer) {
+      map?.removeLayer(landmarksLayer);
+    }
+    if (mapState.enableLandmarks) {
+      landmarksLayer = controls
+        .setLandmarks(mapState.pointsOfInterest)
         .addTo(map!);
     }
   });
