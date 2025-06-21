@@ -1,13 +1,9 @@
 import L from "leaflet";
-import fa from "$components/icons/CustomIcons";
+import icons from "$components/icons/CustomIcons";
 import type { Feature, Position } from "geojson";
 import type { Properties } from "$lib/types/features";
 import type { LatLngExpression } from "leaflet";
 import { mapTheme } from "$lib/theme";
-import restroomSVG from "$assets/free-icons/restroom.svg?raw";
-import parkingSVG from "$assets/free-icons/parking.svg?raw";
-import printerSVG from "$assets/free-icons/printer.svg?raw";
-import sparkleSVG from "$assets/free-icons/sparkle.svg?raw";
 
 function getCurrentPosition(): Promise<GeolocationPosition> {
   return new Promise((resolve, reject) => {
@@ -39,7 +35,9 @@ async function locateMe(
     }
 
     // Create and store new marker
-    userLocationMarker = L.marker([lat, lng], { icon: fa.LocationCrosshairs })
+    userLocationMarker = L.marker([lat, lng], {
+      icon: icons.LocationCrosshairs,
+    })
       .addTo(map)
       .bindPopup("<b>You are here!</b><br>Note: Use GPS for better accuracy.")
       .openPopup();
@@ -216,10 +214,7 @@ function setParkingSpaces(parkingSpaces: Feature[]): L.GeoJSON {
       const centroid: LatLngExpression = geometricCentroid(coords[0]);
 
       L.marker(centroid, {
-        icon: L.divIcon({
-          className: "parking-icon",
-          html: `<div class="tooltip-svg">${parkingSVG}</div>`,
-        }),
+        icon: icons.ParkingIcon,
       }).addTo(parkingLayer);
     }
   });
@@ -242,10 +237,7 @@ function setRestrooms(restrooms: Feature[]): L.GeoJSON {
       html += "</div></div>";
 
       return L.marker(latlng, {
-        icon: L.divIcon({
-          className: "restroom-icon",
-          html: `<div class="tooltip-svg">${restroomSVG}</div>`,
-        }),
+        icon: icons.RestroomIcon,
       }).bindTooltip(html, {
         className: "polygon-label", // optional CSS class
       });
@@ -268,10 +260,7 @@ function setPrintingServices(printingServices: Feature[]): L.GeoJSON {
       html += "</div></div>";
 
       return L.marker(latlng, {
-        icon: L.divIcon({
-          className: "printing-service-icon",
-          html: `<div class="tooltip-svg">${printerSVG}</div>`,
-        }),
+        icon: icons.PrintingServiceIcon,
       }).bindTooltip(html, {
         className: "polygon-label", // optional CSS class
       });
@@ -293,10 +282,7 @@ function setLandmarks(landmarks: Feature[]): L.GeoJSON {
       html += `<div class="tooltip-label">Level</div><div>${level}</div>`;
       html += "</div></div>";
       return L.marker(latlng, {
-        icon: L.divIcon({
-          className: "landmark-icon",
-          html: `<div class="tooltip-svg">${sparkleSVG}</div>`,
-        }),
+        icon: icons.LandmarkIcon,
       }).bindTooltip(html, {
         className: "polygon-label", // optional CSS class
       });
