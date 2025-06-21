@@ -259,11 +259,12 @@ function setPrintingServices(printingServices: Feature[]): L.GeoJSON {
   );
   return L.geoJSON(printingServicesFiltered, {
     pointToLayer: (feature, latlng) => {
-      const { description }: Properties = feature.properties!;
+      const { description, level }: Properties = feature.properties!;
       let html = `<div class="feature-tooltip printing-service">`;
       html += `<h3 class="tooltip-title">Printing Service</h3>`;
       html += '<div class="tooltip-content">';
       html += `<div class="tooltip-label">Description</div><div>${description}</div>`;
+      html += `<div class="tooltip-label">Level</div><div>${level}</div>`;
       html += "</div></div>";
 
       return L.marker(latlng, {
