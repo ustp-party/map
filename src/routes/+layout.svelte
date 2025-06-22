@@ -12,8 +12,8 @@
   import { setAppState } from "$lib/stores/appState.svelte";
   import { setLocalStorageState } from "$lib/stores/localStorage.svelte";
   import { getLocalStorageState } from "$lib/stores/localStorage.svelte";
-  import { setMapState } from "$lib/stores/map.svelte";
-  import { getMapState } from "$lib/stores/map.svelte";
+  import { setMapState } from "$lib/stores/mapState.svelte";
+  import { getMapState } from "$lib/stores/mapState.svelte";
   import { collapsedSidebar } from "$lib/stores/SidebarStore";
 
   setSearchState();

@@ -11,10 +11,13 @@
   import printerSVG from "$assets/free-icons/printer.svg?raw";
 
   import { getAppState } from "$lib/stores/appState.svelte";
+  import { getMapState } from "$lib/stores/mapState.svelte";
+
   let divRef: HTMLDivElement | undefined = $state(undefined);
   let isOverflowing = $state(false);
   let scrollLeft: number = $state(0);
   let appState = getAppState();
+  let mapState = getMapState();
   const scrollStep = 240;
 
   function checkOverflow(el: HTMLDivElement | undefined): boolean {
@@ -81,7 +84,9 @@
     </button>
   {/if}
   {@render featured("Cafeteria", "Cafeteria", burgerSodaSVG)}
-  {@render featured("Printing", "Printing Services", printerSVG)}
+  {@render featured("Printing", "Printing Services", printerSVG, () => {
+    mapState.enablePrintingServices = true;
+  })}
   {@render featured(
     "CITC Bldg",
     "Information and Communications Technology Building",
@@ -110,8 +115,8 @@
   {/if}
 </div>
 
-{#snippet featured(name: string, value: string, icon: string)}
-  <SearchOption {name} {value}>
+{#snippet featured(name: string, value: string, icon: string, callback?: () => void)}
+  <SearchOption {name} {value} {callback}>
     {@html icon}
   </SearchOption>
 {/snippet}

@@ -8,7 +8,7 @@
 
   import { getSearchState } from "$lib/stores/SearchState.svelte";
   import { mapTheme } from "$lib/theme";
-  import { getMapState } from "$lib/stores/map.svelte";
+  import { getMapState } from "$lib/stores/mapState.svelte";
   import controls from "$lib/utils/mapControls";
   import icons from "$components/icons/CustomIcons";
 

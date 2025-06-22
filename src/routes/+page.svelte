@@ -7,11 +7,11 @@
   import Sidebar from "$components/sidebars/Sidebar.svelte";
   import Drawer from "$components/sidebars/Drawer.svelte";
 
-  import { allFeatures } from "$lib/stores/map.svelte";
+  import { allFeatures } from "$lib/stores/mapState.svelte";
 
   import { type PageData } from "./$types";
   import { getAppState } from "$lib/stores/appState.svelte";
-  import { getMapState } from "$lib/stores/map.svelte";
+  import { getMapState } from "$lib/stores/mapState.svelte";
   import { onMount } from "svelte";
 
   let { data }: { data: PageData } = $props();

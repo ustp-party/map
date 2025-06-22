@@ -3,7 +3,7 @@
   import { getContext } from "svelte";
   import AddIcon from "$components/icons/AddIcon.svelte";
   import RemoveIcon from "$components/icons/RemoveIcon.svelte";
-  import { getMapState } from "$lib/stores/map.svelte";
+  import { getMapState } from "$lib/stores/mapState.svelte";
 
   const mapState = getMapState();
   const mapContext = getContext<{ getMap: () => Map }>("map");
