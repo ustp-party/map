@@ -1,5 +1,5 @@
 <h1 align="center">
-    <img src="/static/ustp.map.party-64x64.png">
+    <img src="/static/favicon.png">
     <a href="https://map.ustp.party">
         <div align="center">map.ustp.party</div>
     </a>
