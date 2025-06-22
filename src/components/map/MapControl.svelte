@@ -126,7 +126,7 @@
 
   @media (prefers-color-scheme: dark) {
     .control {
-      box-shadow: 0 0px 4px rgba(255, 255, 255, 0.8);
+      box-shadow: none;
     }
   }
 

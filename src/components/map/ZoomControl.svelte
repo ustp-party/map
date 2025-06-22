@@ -72,7 +72,7 @@
 
   @media (prefers-color-scheme: dark) {
     .zoom {
-      box-shadow: var(--box-shadow);
+      box-shadow: none;
     }
   }
 </style>
