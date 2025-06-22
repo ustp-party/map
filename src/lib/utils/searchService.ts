@@ -3,11 +3,11 @@ import type { Feature } from "$lib/types/features";
 
 const fuseOptions = {
   keys: [
-    { name: ["properties", "name"], weight: 0.5 },
-    { name: ["properties", "type"], weight: 0.2 },
-    { name: "properties.addr:housenumber", weight: 3 },
+    { name: ["properties", "name"], weight: 0.4 },
+    { name: ["properties", "type"], weight: 0.3},
+    { name: ["properties", "addr:housenumber"], weight: 3 },
   ],
-  //   threshold: 0.0,
+  threshold: 0.4,
   //   includeScore: true,
   findAllMatches: true,
   // shouldSort: true,

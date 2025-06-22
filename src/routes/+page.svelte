@@ -7,27 +7,30 @@
   import Sidebar from "$components/sidebars/Sidebar.svelte";
   import Drawer from "$components/sidebars/Drawer.svelte";
 
-  import {
-    buildings,
-    benches,
-    parking,
-    pointsOfInterest,
-  } from "$lib/stores/map";
+  import { allFeatures } from "$lib/stores/map.svelte";
 
   import { type PageData } from "./$types";
-  import { getViewportWidthState } from "$lib/stores/ViewportWidthState.svelte";
+  import { getAppState } from "$lib/stores/appState.svelte";
+  import { getMapState } from "$lib/stores/map.svelte";
   import { onMount } from "svelte";
 
   let { data }: { data: PageData } = $props();
+  const mapState = getMapState();
 
   onMount(() => {
-    buildings.set(data.buildings!.features);
-    benches.set(data.benches);
-    parking.set(data.parking);
-    pointsOfInterest.set(data.pointsOfInterest);
+    mapState.buildings = data.buildings!.features;
+    mapState.benches = data.benches!.features;
+    mapState.parking = data.parking!.features;
+    mapState.pointsOfInterest = data.pointsOfInterest!.features;
+    allFeatures.set([
+      ...data.buildings!.features,
+      ...data.benches!.features,
+      ...data.parking!.features,
+      ...data.pointsOfInterest!.features,
+    ]);
   });
 
-  const viewportWidth = getViewportWidthState();
+  const appState = getAppState();
 </script>
 
 <div class="viewport">
@@ -37,20 +40,20 @@
       <div class="search">
         <Searchbar />
         <SearchOptions />
-        {#if viewportWidth.value >= 600}
+        {#if appState.viewportWidth >= 600}
           <MapControl />
         {/if}
       </div>
     </div>
-    {#if viewportWidth.value > 600}
+    {#if appState.viewportWidth > 600}
       <ZoomControl />
     {/if}
     <div class="bottom-bar">
-      {#if viewportWidth.value < 600}
+      {#if appState.viewportWidth < 600}
         <MapControl />
       {/if}
     </div>
-    {#if viewportWidth.value < 600}
+    {#if appState.viewportWidth < 600}
       <Drawer />
     {/if}
   </Leaflet>
@@ -72,7 +75,6 @@
     z-index: 1000;
     padding-top: clamp(4px, 2vw, 8px);
     width: 100%;
-
 
     .search {
       display: flex;

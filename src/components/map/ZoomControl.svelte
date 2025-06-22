@@ -1,29 +1,21 @@
 <script lang="ts">
+  import type { Map } from "leaflet";
+  import { getContext } from "svelte";
   import AddIcon from "$components/icons/AddIcon.svelte";
   import RemoveIcon from "$components/icons/RemoveIcon.svelte";
-  import { getContext } from "svelte";
-  import type { Map } from "leaflet";
-  import { currentZoom } from "$lib/stores/map";
+  import { getMapState } from "$lib/stores/map.svelte";
 
+  const mapState = getMapState();
   const mapContext = getContext<{ getMap: () => Map }>("map");
   let map: Map = mapContext.getMap();
-  let zoomInDisabled = $derived($currentZoom >= map.getMaxZoom());
-  let zoomOutDisabled = $derived($currentZoom <= map.getMinZoom());
+  let zoomInDisabled = $derived(mapState.currentZoom >= map.getMaxZoom());
+  let zoomOutDisabled = $derived(mapState.currentZoom <= map.getMinZoom());
 
-  function zoomInCallback() {
-    currentZoom.update((z) => {
-      const newZoom = z + 1;
-      map.setZoom(newZoom);
-      return newZoom;
-    });
-  }
-
-  function zoomOutCallback() {
-    currentZoom.update((z) => {
-      const newZoom = z - 1;
-      map.setZoom(newZoom);
-      return newZoom;
-    });
+  function zoomCallback(step: number = -1) {
+    const z = map.getZoom();
+    const newZoom = z + step;
+    map.setZoom(newZoom);
+    mapState.currentZoom = newZoom;
   }
 </script>
 
@@ -31,7 +23,7 @@
   <button
     class="zoom in"
     aria-label="Zoom In"
-    onclick={zoomInCallback}
+    onclick={() => zoomCallback(1)}
     disabled={zoomInDisabled}
   >
     <AddIcon alt="Zoom in" />
@@ -39,7 +31,7 @@
   <button
     class="zoom out"
     aria-label="Zoom Out"
-    onclick={zoomOutCallback}
+    onclick={() => zoomCallback(-1)}
     disabled={zoomOutDisabled}
   >
     <RemoveIcon alt="Zoom out" />
@@ -80,7 +72,7 @@
 
   @media (prefers-color-scheme: dark) {
     .zoom {
-      box-shadow: var(--box-shadow);
+      box-shadow: none;
     }
   }
 </style>
