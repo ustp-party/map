@@ -38,7 +38,6 @@
   let restroomsLayer: L.GeoJSON | undefined = undefined;
   let printingServicesLayer: L.GeoJSON | undefined = undefined;
   let landmarksLayer: L.GeoJSON | undefined = undefined;
-  let currentBuildings: L.GeoJSON | undefined = $state();
   let currentTileset: L.TileLayer | undefined = $state();
   let {
     children,
@@ -191,10 +190,6 @@
 
     if (currentTileset) {
       currentTileset.remove();
-    }
-
-    if (currentBuildings) {
-      currentBuildings.remove();
     }
     if (allBuildingsLayer) {
       allBuildingsLayer.remove();
