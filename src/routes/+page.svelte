@@ -7,7 +7,7 @@
   import Sidebar from "$components/sidebars/Sidebar.svelte";
   import Drawer from "$components/sidebars/Drawer.svelte";
 
-  import { buildings } from "$lib/stores/map.svelte";
+  import { allFeatures } from "$lib/stores/map.svelte";
 
   import { type PageData } from "./$types";
   import { getAppState } from "$lib/stores/appState.svelte";
@@ -19,10 +19,15 @@
 
   onMount(() => {
     mapState.buildings = data.buildings!.features;
-    buildings.set(data.buildings!.features);
     mapState.benches = data.benches!.features;
     mapState.parking = data.parking!.features;
     mapState.pointsOfInterest = data.pointsOfInterest!.features;
+    allFeatures.set([
+      ...data.buildings!.features,
+      ...data.benches!.features,
+      ...data.parking!.features,
+      ...data.pointsOfInterest!.features,
+    ]);
   });
 
   const appState = getAppState();
@@ -35,7 +40,7 @@
       <div class="search">
         <Searchbar />
         <SearchOptions />
-        {#if appState.viewportWidth>= 600}
+        {#if appState.viewportWidth >= 600}
           <MapControl />
         {/if}
       </div>

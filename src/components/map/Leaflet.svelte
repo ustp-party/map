@@ -10,6 +10,7 @@
   import { mapTheme } from "$lib/theme";
   import { getMapState } from "$lib/stores/map.svelte";
   import controls from "$lib/utils/mapControls";
+  import icons from "$components/icons/CustomIcons";
 
   let mapState = getMapState();
   let mapElement: HTMLDivElement;
@@ -29,7 +30,7 @@
       keepBuffer: 6,
     })
   );
-  let buildingsLayer: L.GeoJSON | undefined = $derived(
+  let resultsLayer: L.GeoJSON | undefined = $derived(
     controls.setBuildings(mapState.buildings)
   );
   let parkingLayer: L.GeoJSON | undefined = undefined;
@@ -77,11 +78,11 @@
 
       // Set debounce to update after 700ms of inactivity
       debounceTimer = setTimeout(() => {
-        if (buildingsLayer) {
-          map?.removeLayer(buildingsLayer);
+        if (resultsLayer) {
+          map?.removeLayer(resultsLayer);
         }
 
-        buildingsLayer = L.geoJSON(searchResults, {
+        resultsLayer = L.geoJSON(searchResults, {
           style: {
             color: mapTheme.highlight,
             weight: 2,
@@ -92,22 +93,23 @@
             if (feature.geometry.type === "Polygon") {
               const {
                 name,
+                type,
                 ["addr:housenumber"]: bldg_no,
                 ["building:levels"]: levels,
               }: Properties = feature.properties;
-              if (feature.properties && name) {
-                let html = `<div class="building-tooltip">`;
-                html += `<h3 class="tooltip-title">${name}</h3>`;
-                html += '<div class="tooltip-content">';
-                html += `<div class="tooltip-label">Building</div><div>${bldg_no}</div>`;
-                html += `<div class="tooltip-label">Levels</div><div> ${levels}</div>`;
-                html += "</div></div>";
 
-                layer.bindTooltip(html, {
-                  className: "polygon-label", // optional CSS class
-                });
-              }
+              const labels = {
+                Building: bldg_no,
+                Levels: levels,
+              };
+
+              layer.bindTooltip(controls.tooltipTemplate(name, type, labels), {
+                className: "polygon-label",
+              });
             }
+          },
+          pointToLayer: (feature, latlng) => {
+            return L.marker(latlng, { icon: icons.HighlightIcon });
           },
         }).addTo(map!);
       }, 700);

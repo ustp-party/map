@@ -19,8 +19,8 @@ const icons = {
     className: "fa location-crosshairs",
     html: ripples,
     iconSize: [64, 64], // size of the icon (width, height)
-    iconAnchor: [32, 63], // point of the icon which corresponds to the marker's location
-    popupAnchor: [0, -32], // point from which the popup should open relative to the iconAnchor
+    iconAnchor: [32, 32], // point of the icon which corresponds to the marker's location
+    popupAnchor: [0, 0], // point from which the popup should open relative to the iconAnchor
     //   shadowUrl: "path/to/my-icon-shadow.png", // Optional
     //   shadowSize: [40, 40], // Optional
     //   shadowAnchor: [10, 40], // Optional
@@ -41,7 +41,13 @@ const icons = {
     className: "landmark-icon",
     html: `<div class="tooltip-svg"></div>`,
   }),
-  // Add more icons as needed
+  HighlightIcon: L.divIcon({
+    className: "highlight-icon",
+    html: ripples,
+    iconSize: [64, 64],
+    iconAnchor: [32, 32], 
+    popupAnchor: [0, 0], 
+  }),
 };
 
 export default icons;

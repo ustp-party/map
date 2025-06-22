@@ -5,7 +5,7 @@ import type { Properties } from "$lib/types/features";
 import type { LatLngExpression } from "leaflet";
 import { mapTheme } from "$lib/theme";
 
-function _tooltipTemplate(
+function tooltipTemplate(
   title: string,
   type: string,
   labels: Record<string, string | undefined>
@@ -136,7 +136,7 @@ function setBuildings(allbuildings: Feature[]): L.GeoJSON {
         Levels: levels,
       };
 
-      layer.bindTooltip(_tooltipTemplate(name, "building", labels), {
+      layer.bindTooltip(tooltipTemplate(name, "building", labels), {
         className: "polygon-label", // optional CSS class
       });
     },
@@ -182,7 +182,7 @@ function setBenches(benches: Feature[]): L.GeoJSON {
         "Has backrest": backrest,
       };
 
-      layer.bindTooltip(_tooltipTemplate("Benches", "bench", labels), {
+      layer.bindTooltip(tooltipTemplate("Benches", "bench", labels), {
         className: "polygon-label",
       });
     },
@@ -204,7 +204,7 @@ function setParkingSpaces(parkingSpaces: Feature[]): L.GeoJSON {
           Vehicles: vehicles,
         };
 
-        layer.bindTooltip(_tooltipTemplate("Parking Space", "parking", labels), {
+        layer.bindTooltip(tooltipTemplate("Parking Space", "parking", labels), {
           className: "polygon-label",
         });
       }
@@ -240,7 +240,7 @@ function setRestrooms(restrooms: Feature[]): L.GeoJSON {
 
       return L.marker(latlng, {
         icon: icons.RestroomIcon,
-      }).bindTooltip(_tooltipTemplate("Restroom", "restroom", labels), {
+      }).bindTooltip(tooltipTemplate("Restroom", "restroom", labels), {
         className: "polygon-label", // optional CSS class
       });
     },
@@ -261,7 +261,7 @@ function setPrintingServices(printingServices: Feature[]): L.GeoJSON {
       return L.marker(latlng, {
         icon: icons.PrintingServiceIcon,
       }).bindTooltip(
-        _tooltipTemplate("Printing Service", "printing-service", labels),
+        tooltipTemplate("Printing Service", "printing-service", labels),
         {
           className: "polygon-label",
         }
@@ -284,7 +284,7 @@ function setLandmarks(landmarks: Feature[]): L.GeoJSON {
       };
       return L.marker(latlng, {
         icon: icons.LandmarkIcon,
-      }).bindTooltip(_tooltipTemplate("Landmark", "landmark", labels), {
+      }).bindTooltip(tooltipTemplate("Landmark", "landmark", labels), {
         className: "polygon-label", // optional CSS class
       });
     },
@@ -295,6 +295,7 @@ const controls = {
   getCurrentPosition,
   locateMe,
   geometricCentroid,
+  tooltipTemplate,
   setBuildings,
   setBenches,
   setParkingSpaces,
@@ -309,6 +310,7 @@ export {
   getCurrentPosition,
   locateMe,
   geometricCentroid,
+  tooltipTemplate,
   setBuildings,
   setBenches,
   setParkingSpaces,

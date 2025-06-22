@@ -4,7 +4,7 @@ import type { Feature } from "$lib/types/features";
 import type { MapState } from "$lib/types/map";
 import type { Map } from "leaflet";
 
-export let buildings = writable<Feature[] | null | undefined>(undefined);
+export let allFeatures = writable<Feature[] | null | undefined>(undefined);
 
 class MapStateClass implements MapState {
   currentZoom = $state(18);
