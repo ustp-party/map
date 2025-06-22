@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+
+Sitemap: https://map.ustp.party/sitemap.xml
