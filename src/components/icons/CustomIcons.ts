@@ -32,21 +32,30 @@ const icons = {
   RestroomIcon: L.divIcon({
     className: "restroom-icon",
     html: `<div class="tooltip-svg">${restroomSVG}</div>`,
+    // iconSize: [24, 24],
+    iconAnchor: [12, 12],
+    popupAnchor: [0, 0],
   }),
   PrintingServiceIcon: L.divIcon({
     className: "printing-service-icon",
     html: `<div class="tooltip-svg">${printerSVG}</div>`,
+    // iconSize: [24, 24],
+    iconAnchor: [12, 12],
+    popupAnchor: [0, 0],
   }),
   LandmarkIcon: L.divIcon({
     className: "landmark-icon",
     html: `<div class="tooltip-svg"></div>`,
+    // iconSize: [24, 24],
+    iconAnchor: [9, 9],
+    popupAnchor: [0, 0],
   }),
   HighlightIcon: L.divIcon({
     className: "highlight-icon",
     html: ripples,
     iconSize: [64, 64],
-    iconAnchor: [32, 32], 
-    popupAnchor: [0, 0], 
+    iconAnchor: [32, 32],
+    popupAnchor: [0, 0],
   }),
 };
 

@@ -109,7 +109,20 @@
             }
           },
           pointToLayer: (feature, latlng) => {
-            return L.marker(latlng, { icon: icons.HighlightIcon });
+            const { description, type, level }: Properties =
+              feature.properties;
+
+            const labels = {
+              Descripion: description,
+              Level: level,
+            };
+
+            return L.marker(latlng, { icon: icons.HighlightIcon }).bindTooltip(
+              controls.tooltipTemplate(type, type, labels),
+              {
+                className: "marker-label",
+              }
+            );
           },
         }).addTo(map!);
       }, 700);
