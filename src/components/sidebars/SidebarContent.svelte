@@ -46,7 +46,7 @@
       {@render featured("LRC Bldg", "Learning Resource Center", BuildingSVG)}
       {@render featured("Restrooms", "Restroom", RestroomSVG)}
       {@render featured("Parking", "Parking", parkingSVG)}
-      {@render featured("Landmarks", "Larndmarks", sparkleSVG)}
+      {@render featured("Landmarks", "Landmarks", sparkleSVG)}
     </div>
   </div>
   {#if recentlyViewed.length > 0}
