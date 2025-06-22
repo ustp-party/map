@@ -10,6 +10,7 @@ export interface MapState {
   parking: Feature[] | [];
   pointsOfInterest: Feature[] | [];
   tileset: string;
+  tilesets: Tilesets;
   map: Map | undefined;
   setMap: (map: Map) => void;
   enableBuildings: boolean;
@@ -19,4 +20,10 @@ export interface MapState {
   enableRestrooms: boolean;
   enablePrintingServices: boolean;
   enableLandmarks: boolean;
+}
+
+export interface Tilesets {
+  voyager: string;
+  light: string;
+  dark: string;
 }

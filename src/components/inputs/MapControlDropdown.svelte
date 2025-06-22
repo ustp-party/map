@@ -3,13 +3,6 @@
   import { slide } from "svelte/transition";
 
   const mapState = getMapState();
-  const tilesets = {
-    voyager:
-      "https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png",
-    light:
-      "https://{s}.basemaps.cartocdn.com/rastertiles/light_all/{z}/{x}/{y}{r}.png",
-    dark: "https://{s}.basemaps.cartocdn.com/rastertiles/dark_all/{z}/{x}/{y}{r}.png",
-  };
 </script>
 
 <div class="dropdown-menu" transition:slide={{ duration: 100 }}>
@@ -18,7 +11,7 @@
       type="radio"
       id="voyager"
       name="tileset"
-      value={tilesets["voyager"]}
+      value={mapState.tilesets["voyager"]}
       bind:group={mapState.tileset}
     />
     <label for="voyager">Voyager</label>
@@ -26,7 +19,7 @@
       type="radio"
       id="light"
       name="tileset"
-      value={tilesets["light"]}
+      value={mapState.tilesets["light"]}
       bind:group={mapState.tileset}
     />
     <label for="light">Light</label>
@@ -34,7 +27,7 @@
       type="radio"
       id="dark"
       name="tileset"
-      value={tilesets["dark"]}
+      value={mapState.tilesets["dark"]}
       bind:group={mapState.tileset}
     />
     <label for="dark">Dark</label>
