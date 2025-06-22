@@ -1,7 +1,31 @@
 import L from "leaflet";
-import fa from "$components/icons/CustomIcons";
-import type { Position } from "geojson";
+import icons from "$components/icons/CustomIcons";
+import type { Feature, Position } from "geojson";
+import type { Properties } from "$lib/types/features";
 import type { LatLngExpression } from "leaflet";
+import { mapTheme } from "$lib/theme";
+
+function tooltipTemplate(
+  title: string,
+  type: string,
+  labels: Record<string, string | undefined>
+): string {
+  const content = Object.entries(labels)
+    .map(
+      ([key, value]) =>
+        `<div class="tooltip-label">${key}</div><div>${value}</div>`
+    )
+    .join("");
+
+  return `
+    <div class="feature-tooltip ${type.toLowerCase()}">
+      <h3 class="tooltip-title">${title}</h3>
+      <div class="tooltip-content">
+        ${content}
+      </div>
+    </div>
+  `.trim();
+}
 
 function getCurrentPosition(): Promise<GeolocationPosition> {
   return new Promise((resolve, reject) => {
@@ -33,7 +57,9 @@ async function locateMe(
     }
 
     // Create and store new marker
-    userLocationMarker = L.marker([lat, lng], { icon: fa.LocationCrosshairs })
+    userLocationMarker = L.marker([lat, lng], {
+      icon: icons.LocationCrosshairs,
+    })
       .addTo(map)
       .bindPopup("<b>You are here!</b><br>Note: Use GPS for better accuracy.")
       .openPopup();
@@ -91,12 +117,204 @@ function geometricCentroid(coordinates: Position[]): [number, number] {
   return [meanLat, meanLng];
 }
 
+function setBuildings(allbuildings: Feature[]): L.GeoJSON {
+  let buildingslayer = L.geoJSON(allbuildings, {
+    style: {
+      color: mapTheme.building,
+      weight: 1,
+      fillOpacity: 0.5,
+    },
+    onEachFeature: (feature, layer) => {
+      const {
+        name,
+        ["addr:housenumber"]: bldg_no,
+        ["building:levels"]: levels,
+      }: Properties = feature.properties;
+
+      const labels = {
+        Building: bldg_no,
+        Levels: levels,
+      };
+
+      layer.bindTooltip(tooltipTemplate(name, "building", labels), {
+        className: "polygon-label", // optional CSS class
+      });
+    },
+  });
+
+  // Add building numbers
+  allbuildings.forEach((feature) => {
+    if (feature.geometry.type === "Polygon") {
+      const coords: Position[][] = feature.geometry.coordinates;
+      const centroid: LatLngExpression = geometricCentroid(coords[0]);
+      const { ["addr:housenumber"]: bldg_no } =
+        feature.properties as Properties;
+
+      L.marker(centroid, {
+        icon: L.divIcon({
+          className: "polygon-text",
+          html: bldg_no,
+        }),
+      }).addTo(buildingslayer);
+    }
+  });
+
+  return buildingslayer;
+}
+
+function setBenches(benches: Feature[]): L.GeoJSON {
+  return L.geoJSON(benches, {
+    style: {
+      color: mapTheme.bench,
+      weight: 0,
+      fillOpacity: 0.5,
+    },
+    onEachFeature: ({ properties }, layer) => {
+      const {
+        ["Estimated Capacity"]: capacity,
+        ["Has roofing"]: roofing,
+        ["Has backrest"]: backrest,
+      }: Properties = properties;
+
+      const labels = {
+        "Estimated Capacity": capacity,
+        "Has roofing": roofing,
+        "Has backrest": backrest,
+      };
+
+      layer.bindTooltip(tooltipTemplate("Benches", "bench", labels), {
+        className: "polygon-label",
+      });
+    },
+  });
+}
+
+function setParkingSpaces(parkingSpaces: Feature[]): L.GeoJSON {
+  let parkingLayer = L.geoJSON(parkingSpaces, {
+    style: {
+      color: mapTheme.parking,
+      weight: 0,
+      fillOpacity: 0.5,
+    },
+    onEachFeature: (feature, layer) => {
+      if (feature.geometry.type === "Polygon") {
+        const { vehicles }: Properties = feature.properties;
+
+        const labels = {
+          Vehicles: vehicles,
+        };
+
+        layer.bindTooltip(tooltipTemplate("Parking Space", "parking", labels), {
+          className: "polygon-label",
+        });
+      }
+    },
+  });
+
+  parkingSpaces.forEach((feature) => {
+    if (feature.geometry.type === "Polygon") {
+      const coords: Position[][] = feature.geometry.coordinates;
+      const centroid: LatLngExpression = geometricCentroid(coords[0]);
+
+      L.marker(centroid, {
+        icon: icons.ParkingIcon,
+      }).addTo(parkingLayer);
+    }
+  });
+
+  return parkingLayer;
+}
+
+function setRestrooms(restrooms: Feature[]): L.GeoJSON {
+  let restroomsFiltered = restrooms.filter(
+    (feature) => feature.properties!.type === "Restroom"
+  );
+  return L.geoJSON(restroomsFiltered, {
+    pointToLayer: (feature, latlng) => {
+      const { description, level }: Properties = feature.properties!;
+
+      const labels = {
+        Description: description,
+        Level: level,
+      };
+
+      return L.marker(latlng, {
+        icon: icons.RestroomIcon,
+      }).bindTooltip(tooltipTemplate("Restroom", "restroom", labels), {
+        className: "polygon-label", // optional CSS class
+      });
+    },
+  });
+}
+
+function setPrintingServices(printingServices: Feature[]): L.GeoJSON {
+  let printingServicesFiltered = printingServices.filter(
+    (feature) => feature.properties!.type === "Printing Service"
+  );
+  return L.geoJSON(printingServicesFiltered, {
+    pointToLayer: (feature, latlng) => {
+      const { description, level }: Properties = feature.properties!;
+      const labels = {
+        Description: description,
+        Level: level,
+      };
+      return L.marker(latlng, {
+        icon: icons.PrintingServiceIcon,
+      }).bindTooltip(
+        tooltipTemplate("Printing Service", "printing-service", labels),
+        {
+          className: "polygon-label",
+        }
+      );
+    },
+  });
+}
+
+function setLandmarks(landmarks: Feature[]): L.GeoJSON {
+  let landmarksFiltered = landmarks.filter(
+    (feature) => feature.properties!.type === "Landmark"
+  );
+  return L.geoJSON(landmarksFiltered, {
+    pointToLayer: (feature, latlng) => {
+      const { description, level }: Properties = feature.properties!;
+
+      const labels = {
+        Description: description,
+        Level: level,
+      };
+      return L.marker(latlng, {
+        icon: icons.LandmarkIcon,
+      }).bindTooltip(tooltipTemplate("Landmark", "landmark", labels), {
+        className: "polygon-label", // optional CSS class
+      });
+    },
+  });
+}
+
 const controls = {
   getCurrentPosition,
   locateMe,
   geometricCentroid,
+  tooltipTemplate,
+  setBuildings,
+  setBenches,
+  setParkingSpaces,
+  setRestrooms,
+  setPrintingServices,
+  setLandmarks,
 };
 
 export default controls;
 
-export { getCurrentPosition, locateMe, geometricCentroid };
+export {
+  getCurrentPosition,
+  locateMe,
+  geometricCentroid,
+  tooltipTemplate,
+  setBuildings,
+  setBenches,
+  setParkingSpaces,
+  setRestrooms,
+  setPrintingServices,
+  setLandmarks,
+};

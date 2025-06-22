@@ -8,7 +8,7 @@
 
   import { createSearchIndex, searchBooks } from "$lib/utils/searchService";
   import { getSearchState } from "$lib/stores/SearchState.svelte";
-  import { buildings } from "$lib/stores/map";
+  import { allFeatures } from "$lib/stores/map.svelte";
   import { collapsedSidebar } from "$lib/stores/SidebarStore";
 
   const searchState = getSearchState();
@@ -16,9 +16,9 @@
   const query = $derived(searchState.query);
 
   onMount(() => {
-    searchIndex = createSearchIndex($buildings!);
+    searchIndex = createSearchIndex($allFeatures!);
 
-    buildings.subscribe((newBooks) => {
+    allFeatures.subscribe((newBooks) => {
       searchIndex = createSearchIndex(newBooks!);
     });
   });

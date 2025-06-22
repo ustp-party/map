@@ -9,22 +9,28 @@
   import { onMount } from "svelte";
 
   import { setSearchState } from "$lib/stores/SearchState.svelte";
-  import { setViewportWidthState } from "$lib/stores/ViewportWidthState.svelte";
+  import { setAppState } from "$lib/stores/appState.svelte";
   import { setLocalStorageState } from "$lib/stores/localStorage.svelte";
   import { getLocalStorageState } from "$lib/stores/localStorage.svelte";
+  import { setMapState } from "$lib/stores/map.svelte";
+  import { getMapState } from "$lib/stores/map.svelte";
   import { collapsedSidebar } from "$lib/stores/SidebarStore";
 
   setSearchState();
-  setViewportWidthState();
+  setAppState();
   setLocalStorageState();
+  setMapState();
 
   let localStorageState = getLocalStorageState();
+  let mapState = getMapState();
 
   onMount(() => {
     if (prefersDarkMode()) {
       darkMode.set(true);
+      mapState.tileset = mapState.tilesets.dark;
     } else {
       darkMode.set(false);
+      mapState.tileset = mapState.tilesets.light;
     }
 
     // Set initial viewport height, useful for mobile browsers

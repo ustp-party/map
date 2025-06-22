@@ -6,10 +6,14 @@
 
   import SvgIcon from "$components/icons/SVGIcon.svelte";
   import buildingSVG from "$assets/free-icons/building.svg?raw";
+  import restroomSVG from "$assets/free-icons/restroom.svg?raw";
+  import printerSVG from "$assets/free-icons/printer.svg?raw";
+  import sparkleSVG from "$assets/free-icons/sparkle.svg?raw";
+  import parkingSVG from "$assets/free-icons/parking.svg?raw";
 
   import { getContext } from "svelte";
   import { geometricCentroid } from "$lib/utils/mapControls";
-  import { getViewportWidthState } from "$lib/stores/ViewportWidthState.svelte";
+  import { getAppState } from "$lib/stores/appState.svelte";
   import { getLocalStorageState } from "$lib/stores/localStorage.svelte";
   import { collapsedSidebar } from "$lib/stores/SidebarStore";
 
@@ -18,22 +22,46 @@
 
   const mapContext = getContext<{ getMap: () => Map }>("map");
   const map = mapContext.getMap();
-  const viewportWidth = getViewportWidthState();
+  const appState = getAppState();
   const showImages = true;
   const localStorageState = getLocalStorageState();
 
   function handleClick() {
-    let polygon: Position[] = feature.geometry.coordinates[0];
-    let centroid: LatLngExpression = geometricCentroid(polygon);
-    if (viewportWidth.value < 600) {
+    let centroid: LatLngExpression;
+
+    if (feature.geometry.type === "Point") {
+      let coords = feature.geometry.coordinates as Array<number>;
+      let lat = coords[1];
+      let lng = coords[0];
+      centroid = [lat, lng];
+    } else if (feature.geometry.type === "Polygon") {
+      centroid = geometricCentroid(
+        feature.geometry.coordinates[0] as Position[]
+      );
+    } else {
+      console.warn("Unsupported geometry type:", feature.geometry.type);
+      return;
+    }
+
+    if (appState.viewportWidth < 600) {
       collapsedSidebar.set(true);
     }
+
     map.setView(centroid, 19, {
       animate: true,
       duration: 0.8,
     });
+
     localStorageState.insertFeature(feature);
   }
+
+  const svgs: Record<string, string> = {
+    building: buildingSVG,
+    Restroom: restroomSVG,
+    "Printing Service": printerSVG,
+    Landmark: sparkleSVG,
+    parking: parkingSVG,
+  };
 </script>
 
 <button class="card" id={feature.id} onclick={handleClick}>
@@ -41,16 +69,16 @@
     <div class="body">
       <div class="icons">
         <SvgIcon>
-          {#if p.type == "building"}
-            {@html buildingSVG}
-          {/if}
+          {@html svgs[p.type]}
         </SvgIcon>
       </div>
       <div class="card-content">
-        <h3 class="card-title">{p.name}</h3>
+        <h3 class="card-title">{p.name || p.description}</h3>
         <div class="details">
           {@render detail("Building", p["addr:housenumber"])}
           {@render detail("Levels", p["building:levels"])}
+          {@render detail("Level", p["level"])}
+          {@render detail("Vehicles", p["vehicles"])}
         </div>
       </div>
     </div>
@@ -119,6 +147,14 @@
               font-weight: 400;
             }
           }
+        }
+
+        .icons {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: fit-content;
+          margin-right: 8px;
         }
       }
     }

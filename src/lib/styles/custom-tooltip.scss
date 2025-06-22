@@ -1,8 +1,8 @@
 .polygon-text {
-  color: var(--primary);
+  color: var(--text);
 }
 
-.building-tooltip {
+.feature-tooltip {
   display: flex;
   flex-direction: column;
   gap: clamp(4px, 1vh + 2px, 0.8rem);
@@ -12,12 +12,10 @@
     display: inline-block;
     width: 1em;
     height: 1em;
-    background-image: url("/data/free-icons/building.svg");
     background-size: contain;
     background-repeat: no-repeat;
     margin-right: 0.5em;
   }
-
   .tooltip-content {
     display: grid;
     grid-template-columns: min-content 1fr;
@@ -26,6 +24,162 @@
 
     .tooltip-label {
       font-weight: 600;
+    }
+  }
+}
+
+.building {
+  .tooltip-title::before {
+    background-image: url("/data/free-icons/building.svg");
+  }
+}
+
+.bench {
+  .tooltip-title::before {
+    background-image: url("/data/free-icons/table-picnic.svg");
+  }
+}
+
+.restroom {
+  .tooltip-title::before {
+    background-image: url("/data/free-icons/restroom.svg");
+  }
+}
+
+.parking {
+  .tooltip-title::before {
+    background-image: url("/data/free-icons/parking.svg");
+  }
+}
+
+.printing-service {
+  .tooltip-title::before {
+    background-image: url("/data/free-icons/printer.svg");
+  }
+}
+
+.landmark {
+  .tooltip-title::before {
+    background-image: url("/data/free-icons/sparkle.svg");
+  }
+}
+
+@mixin flexo() {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.restroom-icon {
+  .tooltip-svg {
+    @include flexo();
+    background-color: rgb(22, 85, 141);
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
+    color: rgb(255, 255, 255);
+
+    & > * {
+      height: 1rem;
+    }
+  }
+}
+
+.parking-icon {
+  color: rgb(22, 85, 141);
+  font-size: 1.2rem;
+  .tooltip-svg {
+    @include flexo();
+    background-color: rgb(255, 255, 255);
+    width: fit-content;
+    height: auto;
+    border-radius: 4px;
+  }
+}
+
+.printing-service-icon {
+  color: #333333;
+  font-size: 1rem;
+  .tooltip-svg {
+    @include flexo();
+    background-color: rgb(255, 255, 255);
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
+    border: 1px solid #333333;
+  }
+}
+
+.landmark-icon {
+  @include flexo();
+  .tooltip-svg {
+    width: 24px;
+    height: 24px;
+    clip-path: path(
+      "M 10.2905 0.5856 Q 9.9977 0.0418 9.3702 0 Q 8.7428 0.0418 8.4499 0.5856 L 5.9819 5.9819 L 5.9819 5.9819 L 0.5856 8.4499 L 0.5856 8.4499 Q 0.0418 8.7428 0 9.3702 Q 0.0418 9.9977 0.5856 10.2905 L 5.9819 12.7586 L 5.9819 12.7586 L 8.4499 18.1548 L 8.4499 18.1548 Q 8.7428 18.6986 9.3702 18.7405 Q 9.9977 18.6986 10.2905 18.1548 L 12.7586 12.7586 L 12.7586 12.7586 L 18.1548 10.2905 L 18.1548 10.2905 Q 18.6986 9.9977 18.7405 9.3702 Q 18.6986 8.7428 18.1548 8.4499 L 12.7586 5.9819 L 12.7586 5.9819 L 10.2905 0.5856 L 10.2905 0.5856 Z"
+    );
+    background: linear-gradient(
+      124deg,
+      #ff2400,
+      #e81d1d,
+      #e8b71d,
+      #e3e81d,
+      #1de840,
+      #1ddde8,
+      #2b1de8,
+      #dd00f3,
+      #dd00f3
+    );
+    background-size: 500% 300%;
+
+    -webkit-animation: rainbow 18s ease infinite;
+    -z-animation: rainbow 18s ease infinite;
+    -o-animation: rainbow 18s ease infinite;
+    animation: rainbow 18s ease infinite;
+
+    @-webkit-keyframes rainbow {
+      0% {
+        background-position: 0% 82%;
+      }
+      50% {
+        background-position: 100% 19%;
+      }
+      100% {
+        background-position: 0% 82%;
+      }
+    }
+    @-moz-keyframes rainbow {
+      0% {
+        background-position: 0% 82%;
+      }
+      50% {
+        background-position: 100% 19%;
+      }
+      100% {
+        background-position: 0% 82%;
+      }
+    }
+    @-o-keyframes rainbow {
+      0% {
+        background-position: 0% 82%;
+      }
+      50% {
+        background-position: 100% 19%;
+      }
+      100% {
+        background-position: 0% 82%;
+      }
+    }
+    @keyframes rainbow {
+      0% {
+        background-position: 0% 82%;
+      }
+      50% {
+        background-position: 100% 19%;
+      }
+      100% {
+        background-position: 0% 82%;
+      }
     }
   }
 }

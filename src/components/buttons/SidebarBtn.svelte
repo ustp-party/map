@@ -30,7 +30,7 @@
     align-items: center;
     justify-content: right;
     box-shadow: var(--box-shadow);
-    transition: left 0.24s ease-in-out;
+    transition: left 0.08s ease-in-out;
     width: 460px;
   }
 

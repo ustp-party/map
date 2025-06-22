@@ -2,6 +2,8 @@
   import StarSVG from "$assets/free-icons/star.svg?raw";
   import BuildingSVG from "$assets/free-icons/building.svg?raw";
   import RestroomSVG from "$assets/free-icons/restroom.svg?raw";
+  import parkingSVG from "$assets/free-icons/parking.svg?raw";
+  import sparkleSVG from "$assets/free-icons/sparkle.svg?raw";
 
   import SearchOption from "$components/buttons/SearchOption.svelte";
   import ResultCards from "./ResultCards.svelte";
@@ -36,13 +38,15 @@
       <h3>Welcome back!</h3>
     {/if}
     <p class="message">You might be looking for...</p>
-    <div class="search-options">
+    <div class="search-options" aria-label="visitor oriented search options"> 
       {@render featured("Gym", "Gymnasium", StarSVG)}
       {@render featured("Gym Lobby", "Gymnasium Lobby", StarSVG)}
       {@render featured("AVR", "Audio Visual Room", StarSVG)}
       {@render featured("Makerspace", "Makerspace", StarSVG)}
       {@render featured("LRC Bldg", "Learning Resource Center", BuildingSVG)}
       {@render featured("Restrooms", "Restroom", RestroomSVG)}
+      {@render featured("Parking", "Parking", parkingSVG)}
+      {@render featured("Landmarks", "Landmarks", sparkleSVG)}
     </div>
   </div>
   {#if recentlyViewed.length > 0}
