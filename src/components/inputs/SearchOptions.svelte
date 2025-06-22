@@ -8,6 +8,7 @@
   import SearchOption from "$components/buttons/SearchOption.svelte";
   import BuildingSVG from "$assets/free-icons/building.svg?raw";
   import burgerSodaSVG from "$assets/free-icons/burger-soda.svg?raw";
+  import printerSVG from "$assets/free-icons/printer.svg?raw";
 
   import { getAppState } from "$lib/stores/appState.svelte";
   let divRef: HTMLDivElement | undefined = $state(undefined);
@@ -62,7 +63,11 @@
   });
 </script>
 
-<div class="options" bind:this={divRef}>
+<div
+  class="options"
+  bind:this={divRef}
+  aria-label="Student orient search options"
+>
   {#if isOverflowing && appState.viewportWidth >= 600}
     <button
       class="scroll left"
@@ -76,12 +81,15 @@
     </button>
   {/if}
   {@render featured("Cafeteria", "Cafeteria", burgerSodaSVG)}
+  {@render featured("Printing", "Printing Services", printerSVG)}
   {@render featured(
     "CITC Bldg",
     "Information and Communications Technology Building",
     BuildingSVG
   )}
   {@render featured("CEA Bldg", "Engineering Complex I/II", BuildingSVG)}
+  {@render featured("CSM Bldg", "Science Complex (41)", BuildingSVG)}
+  {@render featured("COT Bldg", "Technology Building", BuildingSVG)}
   {@render featured(
     "ROTC Field",
     "Reserve Officers Training Corps Field",
