@@ -7,11 +7,15 @@
     children?: Snippet;
     name?: string;
     value?: string;
+    callback?: () => void;
   }>();
 
   const searchState = getSearchState();
   function btnHandler() {
     searchState.updateQuery(props.value);
+    if (props.callback) {
+      props.callback();
+    }
   }
 </script>
 
