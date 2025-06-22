@@ -52,12 +52,12 @@
     <label for="Benches">Benches</label>
     <input
       type="checkbox"
-      id="Parking Spaces"
+      id="parking-spaces"
       name="enabled features"
       value="Parking Spaces"
       bind:checked={mapState.enableParking}
     />
-    <label for="Parking Spaces">Parking Spaces</label>
+    <label for="parking-spaces">Parking Spaces</label>
   </form>
   <div class="divider"></div>
   <form class="content">
