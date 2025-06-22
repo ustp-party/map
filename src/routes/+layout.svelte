@@ -51,6 +51,7 @@
 
 <svelte:head>
   <title>USTP CDO Campus Map</title>
+  <meta name="google-site-verification" content="CQ4rJlp_JKcfkSbQjCTQX0pEP2vlCur2bR7EEkYrTps" />
   <meta name="description" content="Interactive campus map of USTP." />
   <meta
     name="keywords"
