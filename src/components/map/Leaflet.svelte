@@ -30,9 +30,7 @@
       keepBuffer: 6,
     })
   );
-  let resultsLayer: L.GeoJSON | undefined = $derived(
-    controls.setBuildings(mapState.buildings)
-  );
+  let resultsLayer: L.GeoJSON | undefined = undefined;
   let parkingLayer: L.GeoJSON | undefined = undefined;
   let benchesLayer: L.GeoJSON | undefined = undefined;
   let restroomsLayer: L.GeoJSON | undefined = undefined;
@@ -108,8 +106,7 @@
             }
           },
           pointToLayer: (feature, latlng) => {
-            const { description, type, level }: Properties =
-              feature.properties;
+            const { description, type, level }: Properties = feature.properties;
 
             const labels = {
               Descripion: description,
