@@ -5,6 +5,28 @@ import type { Properties } from "$lib/types/features";
 import type { LatLngExpression } from "leaflet";
 import { mapTheme } from "$lib/theme";
 
+function _tooltipTemplate(
+  title: string,
+  type: string,
+  labels: Record<string, string | undefined>
+): string {
+  const content = Object.entries(labels)
+    .map(
+      ([key, value]) =>
+        `<div class="tooltip-label">${key}</div><div>${value}</div>`
+    )
+    .join("");
+
+  return `
+    <div class="feature-tooltip ${type}">
+      <h3 class="tooltip-title">${title}</h3>
+      <div class="tooltip-content">
+        ${content}
+      </div>
+    </div>
+  `.trim();
+}
+
 function getCurrentPosition(): Promise<GeolocationPosition> {
   return new Promise((resolve, reject) => {
     navigator.geolocation.getCurrentPosition(
@@ -103,27 +125,20 @@ function setBuildings(allbuildings: Feature[]): L.GeoJSON {
       fillOpacity: 0.5,
     },
     onEachFeature: (feature, layer) => {
-      if (feature.geometry.type === "Polygon") {
-        const coords: Position[][] = feature.geometry.coordinates;
-        const {
-          name,
-          ["addr:housenumber"]: bldg_no,
-          ["building:levels"]: levels,
-        }: Properties = feature.properties;
+      const {
+        name,
+        ["addr:housenumber"]: bldg_no,
+        ["building:levels"]: levels,
+      }: Properties = feature.properties;
 
-        if (feature.properties && name) {
-          let html = `<div class="feature-tooltip building">`;
-          html += `<h3 class="tooltip-title">${name}</h3>`;
-          html += '<div class="tooltip-content">';
-          html += `<div class="tooltip-label">Building</div><div>${bldg_no}</div>`;
-          html += `<div class="tooltip-label">Levels</div><div> ${levels}</div>`;
-          html += "</div></div>";
+      const labels = {
+        Building: bldg_no,
+        Levels: levels,
+      };
 
-          layer.bindTooltip(html, {
-            className: "polygon-label", // optional CSS class
-          });
-        }
-      }
+      layer.bindTooltip(_tooltipTemplate(name, "building", labels), {
+        className: "polygon-label", // optional CSS class
+      });
     },
   });
 
@@ -154,29 +169,22 @@ function setBenches(benches: Feature[]): L.GeoJSON {
       weight: 0,
       fillOpacity: 0.5,
     },
-    onEachFeature: (feature, layer) => {
-      if (feature.geometry.type === "Polygon") {
-        const coords: Position[][] = feature.geometry.coordinates;
-        const {
-          ["Estimated Capacity"]: est_capacity,
-          ["Has roofing"]: has_roofing,
-          ["Has backrest"]: has_backrest,
-        }: Properties = feature.properties;
+    onEachFeature: ({ properties }, layer) => {
+      const {
+        ["Estimated Capacity"]: capacity,
+        ["Has roofing"]: roofing,
+        ["Has backrest"]: backrest,
+      }: Properties = properties;
 
-        if (feature.properties && est_capacity) {
-          let html = `<div class="feature-tooltip bench">`;
-          html += `<h3 class="tooltip-title">Benches</h3>`;
-          html += '<div class="tooltip-content">';
-          html += `<div class="tooltip-label">Estimated Capacity</div><div> ${est_capacity}</div>`;
-          html += `<div class="tooltip-label">Has roofing</div><div> ${has_roofing}</div>`;
-          html += `<div class="tooltip-label">Has backrest</div><div> ${has_backrest}</div>`;
-          html += "</div></div>";
+      const labels = {
+        "Estimated Capacity": capacity,
+        "Has roofing": roofing,
+        "Has backrest": backrest,
+      };
 
-          layer.bindTooltip(html, {
-            className: "polygon-label", // optional CSS class
-          });
-        }
-      }
+      layer.bindTooltip(_tooltipTemplate("Benches", "bench", labels), {
+        className: "polygon-label",
+      });
     },
   });
 }
@@ -190,20 +198,15 @@ function setParkingSpaces(parkingSpaces: Feature[]): L.GeoJSON {
     },
     onEachFeature: (feature, layer) => {
       if (feature.geometry.type === "Polygon") {
-        const coords: Position[][] = feature.geometry.coordinates;
         const { vehicles }: Properties = feature.properties;
 
-        if (feature.properties && vehicles) {
-          let html = `<div class="feature-tooltip parking">`;
-          html += `<h3 class="tooltip-title">Parking Spaces</h3>`;
-          html += '<div class="tooltip-content">';
-          html += `<div class="tooltip-label">Vehicles allowed</div><div>${vehicles}</div>`;
-          html += "</div></div>";
+        const labels = {
+          Vehicles: vehicles,
+        };
 
-          layer.bindTooltip(html, {
-            className: "polygon-label", // optional CSS class
-          });
-        }
+        layer.bindTooltip(_tooltipTemplate("Parking Space", "parking", labels), {
+          className: "polygon-label",
+        });
       }
     },
   });
@@ -229,16 +232,15 @@ function setRestrooms(restrooms: Feature[]): L.GeoJSON {
   return L.geoJSON(restroomsFiltered, {
     pointToLayer: (feature, latlng) => {
       const { description, level }: Properties = feature.properties!;
-      let html = `<div class="feature-tooltip restroom">`;
-      html += `<h3 class="tooltip-title">Restroom</h3>`;
-      html += '<div class="tooltip-content">';
-      html += `<div class="tooltip-label">Description</div><div>${description}</div>`;
-      html += `<div class="tooltip-label">Level</div><div>${level}</div>`;
-      html += "</div></div>";
+
+      const labels = {
+        Description: description,
+        Level: level,
+      };
 
       return L.marker(latlng, {
         icon: icons.RestroomIcon,
-      }).bindTooltip(html, {
+      }).bindTooltip(_tooltipTemplate("Restroom", "restroom", labels), {
         className: "polygon-label", // optional CSS class
       });
     },
@@ -252,18 +254,18 @@ function setPrintingServices(printingServices: Feature[]): L.GeoJSON {
   return L.geoJSON(printingServicesFiltered, {
     pointToLayer: (feature, latlng) => {
       const { description, level }: Properties = feature.properties!;
-      let html = `<div class="feature-tooltip printing-service">`;
-      html += `<h3 class="tooltip-title">Printing Service</h3>`;
-      html += '<div class="tooltip-content">';
-      html += `<div class="tooltip-label">Description</div><div>${description}</div>`;
-      html += `<div class="tooltip-label">Level</div><div>${level}</div>`;
-      html += "</div></div>";
-
+      const labels = {
+        Description: description,
+        Level: level,
+      };
       return L.marker(latlng, {
         icon: icons.PrintingServiceIcon,
-      }).bindTooltip(html, {
-        className: "polygon-label", // optional CSS class
-      });
+      }).bindTooltip(
+        _tooltipTemplate("Printing Service", "printing-service", labels),
+        {
+          className: "polygon-label",
+        }
+      );
     },
   });
 }
@@ -275,15 +277,14 @@ function setLandmarks(landmarks: Feature[]): L.GeoJSON {
   return L.geoJSON(landmarksFiltered, {
     pointToLayer: (feature, latlng) => {
       const { description, level }: Properties = feature.properties!;
-      let html = `<div class="feature-tooltip landmark">`;
-      html += `<h3 class="tooltip-title">Landmark</h3>`;
-      html += '<div class="tooltip-content">';
-      html += `<div class="tooltip-label">Description</div><div>${description}</div>`;
-      html += `<div class="tooltip-label">Level</div><div>${level}</div>`;
-      html += "</div></div>";
+
+      const labels = {
+        Description: description,
+        Level: level,
+      };
       return L.marker(latlng, {
         icon: icons.LandmarkIcon,
-      }).bindTooltip(html, {
+      }).bindTooltip(_tooltipTemplate("Landmark", "landmark", labels), {
         className: "polygon-label", // optional CSS class
       });
     },
