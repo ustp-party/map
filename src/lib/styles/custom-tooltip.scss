@@ -111,20 +111,13 @@
 }
 
 .landmark-icon {
-  color: rgb(255, 255, 255);
-  font-size: 1rem;
+  @include flexo();
   .tooltip-svg {
-    @include flexo();
-    // background: #020024;
-    // background: linear-gradient(
-    //   90deg,
-    //   rgba(2, 0, 36, 1) 0%,
-    //   rgba(9, 9, 121, 1) 35%,
-    //   rgba(255, 179, 57, 1) 100%
-    // );
     width: 24px;
     height: 24px;
-    border-radius: 25px;
+    clip-path: path(
+      "M 10.2905 0.5856 Q 9.9977 0.0418 9.3702 0 Q 8.7428 0.0418 8.4499 0.5856 L 5.9819 5.9819 L 5.9819 5.9819 L 0.5856 8.4499 L 0.5856 8.4499 Q 0.0418 8.7428 0 9.3702 Q 0.0418 9.9977 0.5856 10.2905 L 5.9819 12.7586 L 5.9819 12.7586 L 8.4499 18.1548 L 8.4499 18.1548 Q 8.7428 18.6986 9.3702 18.7405 Q 9.9977 18.6986 10.2905 18.1548 L 12.7586 12.7586 L 12.7586 12.7586 L 18.1548 10.2905 L 18.1548 10.2905 Q 18.6986 9.9977 18.7405 9.3702 Q 18.6986 8.7428 18.1548 8.4499 L 12.7586 5.9819 L 12.7586 5.9819 L 10.2905 0.5856 L 10.2905 0.5856 Z"
+    );
     background: linear-gradient(
       124deg,
       #ff2400,
@@ -143,50 +136,50 @@
     -z-animation: rainbow 18s ease infinite;
     -o-animation: rainbow 18s ease infinite;
     animation: rainbow 18s ease infinite;
-  }
 
-  @-webkit-keyframes rainbow {
-    0% {
-      background-position: 0% 82%;
+    @-webkit-keyframes rainbow {
+      0% {
+        background-position: 0% 82%;
+      }
+      50% {
+        background-position: 100% 19%;
+      }
+      100% {
+        background-position: 0% 82%;
+      }
     }
-    50% {
-      background-position: 100% 19%;
+    @-moz-keyframes rainbow {
+      0% {
+        background-position: 0% 82%;
+      }
+      50% {
+        background-position: 100% 19%;
+      }
+      100% {
+        background-position: 0% 82%;
+      }
     }
-    100% {
-      background-position: 0% 82%;
+    @-o-keyframes rainbow {
+      0% {
+        background-position: 0% 82%;
+      }
+      50% {
+        background-position: 100% 19%;
+      }
+      100% {
+        background-position: 0% 82%;
+      }
     }
-  }
-  @-moz-keyframes rainbow {
-    0% {
-      background-position: 0% 82%;
-    }
-    50% {
-      background-position: 100% 19%;
-    }
-    100% {
-      background-position: 0% 82%;
-    }
-  }
-  @-o-keyframes rainbow {
-    0% {
-      background-position: 0% 82%;
-    }
-    50% {
-      background-position: 100% 19%;
-    }
-    100% {
-      background-position: 0% 82%;
-    }
-  }
-  @keyframes rainbow {
-    0% {
-      background-position: 0% 82%;
-    }
-    50% {
-      background-position: 100% 19%;
-    }
-    100% {
-      background-position: 0% 82%;
+    @keyframes rainbow {
+      0% {
+        background-position: 0% 82%;
+      }
+      50% {
+        background-position: 100% 19%;
+      }
+      100% {
+        background-position: 0% 82%;
+      }
     }
   }
 }

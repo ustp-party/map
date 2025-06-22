@@ -5,7 +5,6 @@ import ripples from "$assets/animated/ripples.svg?raw";
 import restroomSVG from "$assets/free-icons/restroom.svg?raw";
 import parkingSVG from "$assets/free-icons/parking.svg?raw";
 import printerSVG from "$assets/free-icons/printer.svg?raw";
-import sparkleSVG from "$assets/free-icons/sparkle.svg?raw";
 
 interface CustomIcons {
   LocationCrosshairs: L.Icon;
@@ -40,7 +39,7 @@ const icons = {
   }),
   LandmarkIcon: L.divIcon({
     className: "landmark-icon",
-    html: `<div class="tooltip-svg">${sparkleSVG}</div>`,
+    html: `<div class="tooltip-svg"></div>`,
   }),
   // Add more icons as needed
 };
