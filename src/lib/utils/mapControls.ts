@@ -142,7 +142,7 @@ function setBuildings(allbuildings: Feature[]): L.GeoJSON {
     },
   });
 
-  // Add builing numbers
+  // Add building numbers
   allbuildings.forEach((feature) => {
     if (feature.geometry.type === "Polygon") {
       const coords: Position[][] = feature.geometry.coordinates;
