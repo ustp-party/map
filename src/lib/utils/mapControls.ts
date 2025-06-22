@@ -18,7 +18,7 @@ function tooltipTemplate(
     .join("");
 
   return `
-    <div class="feature-tooltip ${type.toLowerCase().replaceAll(" ", "-")}">
+    <div class="feature-tooltip ${type.toLowerCase().replace(/\s+/g, "-")}">
       <h3 class="tooltip-title">${title}</h3>
       <div class="tooltip-content">
         ${content}
