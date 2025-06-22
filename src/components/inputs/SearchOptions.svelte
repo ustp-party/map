@@ -11,7 +11,7 @@
   import printerSVG from "$assets/free-icons/printer.svg?raw";
 
   import { getAppState } from "$lib/stores/appState.svelte";
-  import { getMapState } from "$lib/stores/map.svelte";
+  import { getMapState } from "$lib/stores/mapState.svelte";
 
   let divRef: HTMLDivElement | undefined = $state(undefined);
   let isOverflowing = $state(false);

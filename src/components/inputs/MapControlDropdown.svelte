@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { getMapState } from "$lib/stores/map.svelte";
+  import { getMapState } from "$lib/stores/mapState.svelte";
   import { slide } from "svelte/transition";
 
   const mapState = getMapState();

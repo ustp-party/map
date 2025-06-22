@@ -8,7 +8,7 @@
   import spinnerSVG from "$assets/animated/spinner2.svg?raw";
   import SvgIcon from "$components/icons/SVGIcon.svelte";
   import { getAppState } from "$lib/stores/appState.svelte";
-  import { getMapState } from "$lib/stores/map.svelte";
+  import { getMapState } from "$lib/stores/mapState.svelte";
 
   const mapState = getMapState();
   const appState = getAppState();
