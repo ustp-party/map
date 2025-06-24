@@ -10,12 +10,14 @@
   import printerSVG from "$assets/free-icons/printer.svg?raw";
   import sparkleSVG from "$assets/free-icons/sparkle.svg?raw";
   import parkingSVG from "$assets/free-icons/parking.svg?raw";
+  import spinnerSVG from "$assets/animated/spinner2.svg?raw";
 
   import { getContext } from "svelte";
   import { geometricCentroid } from "$lib/utils/mapControls";
   import { getAppState } from "$lib/stores/appState.svelte";
   import { getLocalStorageState } from "$lib/stores/localStorage.svelte";
   import { collapsedSidebar } from "$lib/stores/SidebarStore";
+  import { load } from "$routes/+page";
 
   let { feature }: { feature: Feature } = $props();
   let p = feature.properties;
@@ -29,6 +31,7 @@
   let imageElement: HTMLImageElement | undefined = $state(undefined);
   let mouseX: number = $state(0);
   let mouseY: number = $state(0);
+  let loadingImage: boolean = $state(true);
 
   function handleClick() {
     let centroid: LatLngExpression;
@@ -86,6 +89,10 @@
     window.removeEventListener("mousemove", onMouseMove);
   }
 
+  function loadHandler() {
+    loadingImage = false;
+  }
+
   const svgs: Record<string, string> = {
     building: buildingSVG,
     Restroom: restroomSVG,
@@ -129,13 +136,19 @@
 </button>
 
 <div class="image-container" bind:this={imageContainer}>
-  <img
-    class="hover-image"
-    bind:this={imageElement}
-    src={p.image}
-    alt={`Feature reference of ${p.name || p.description}`}
-    loading="lazy"
-  />
+  {#if loadingImage}
+    <SvgIcon size={64} alt="Loading image">
+      {@html spinnerSVG}
+    </SvgIcon>
+  {/if}
+    <img
+      class="hover-image"
+      bind:this={imageElement}
+      src={p.image}
+      alt={`Feature reference of ${p.name || p.description}`}
+      loading="lazy"
+      onload={loadHandler}
+    />
 </div>
 
 {#snippet detail(label: string, value: string | number | undefined)}
@@ -158,6 +171,7 @@
     img {
       display: absolute;
       left: 0;
+      background-color: gray;
     }
   }
 
