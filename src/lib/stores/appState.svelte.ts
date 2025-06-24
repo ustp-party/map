@@ -3,11 +3,13 @@ import { getContext, setContext } from "svelte";
 interface AppState {
   openMapControlDropdown: boolean;
   viewportWidth: number;
+  viewportHeight: number;
   updateViewportWidth: () => void;
 }
 
 class AppStateClass implements AppState {
   viewportWidth = $state(window.innerWidth || 0);
+  viewportHeight = $state(window.innerHeight || 0);
   openMapControlDropdown = $state(false);
   updateViewportWidth = () => {
     this.viewportWidth = window.innerWidth;

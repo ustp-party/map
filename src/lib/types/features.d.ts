@@ -20,6 +20,7 @@ export interface Properties {
   "building:levels"?: string;
   level?: string;
   image?: string;
+  image_compressed?: string;
   "Estimated Capacity"?: numnber;
   "Has roofing"?: "Yes" | "No";
   "Has backrest"?: "Yes" | "No";

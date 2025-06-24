@@ -25,6 +25,10 @@
   const appState = getAppState();
   const showImages = true;
   const localStorageState = getLocalStorageState();
+  let imageContainer: HTMLDivElement | undefined = $state(undefined);
+  let imageElement: HTMLImageElement | undefined = $state(undefined);
+  let mouseX: number = $state(0);
+  let mouseY: number = $state(0);
 
   function handleClick() {
     let centroid: LatLngExpression;
@@ -55,6 +59,33 @@
     localStorageState.insertFeature(feature);
   }
 
+  function onMouseMove(event: MouseEvent) {
+    mouseX = event.clientX;
+    mouseY = event.clientY;
+    let offset = appState.viewportWidth * 0.05; // 5% of viewport width
+    imageContainer!.style.left = `${mouseX + offset}px`;
+    imageElement!.style.top = `${mouseY}px`;
+    imageElement!.style.maxWidth = `${
+      appState.viewportWidth - mouseX - offset
+    }px`;
+  }
+
+  function hoverHandler() {
+    if (appState.viewportWidth < 600) {
+      return; // Don't show hover image on small screens
+    }
+    imageContainer!.style.display = "flex";
+    window.addEventListener("mousemove", onMouseMove);
+  }
+
+  function unhoverHandler() {
+    if (appState.viewportWidth < 600) {
+      return; // Don't hide hover image on small screens
+    }
+    imageContainer!.style.display = "none";
+    window.removeEventListener("mousemove", onMouseMove);
+  }
+
   const svgs: Record<string, string> = {
     building: buildingSVG,
     Restroom: restroomSVG,
@@ -82,13 +113,30 @@
         </div>
       </div>
     </div>
-    {#if p.image && showImages}
-      <img src={p.image} alt={p.name} class="card-image" />
+    {#if p.image_compressed && showImages}
+      <img
+        src={p.image_compressed}
+        alt={p.name}
+        onmouseenter={hoverHandler}
+        onmouseleave={unhoverHandler}
+        class="card-image"
+        loading="lazy"
+      />
     {:else}
-      <div class="card-image-placeholder"></div>
+      <div class="card-image-placeholder" role="presentation"></div>
     {/if}
   </div>
 </button>
+
+<div class="image-container" bind:this={imageContainer}>
+  <img
+    class="hover-image"
+    bind:this={imageElement}
+    src={p.image}
+    alt={`Feature reference of ${p.name || p.description}`}
+    loading="lazy"
+  />
+</div>
 
 {#snippet detail(label: string, value: string | number | undefined)}
   {#if value}
@@ -98,6 +146,21 @@
 {/snippet}
 
 <style lang="scss">
+  .image-container {
+    position: fixed;
+    display: none;
+    top: 0;
+    max-height: 100vh; /* no overflow vertically */
+    height: 100%;
+    object-fit: contain;
+    align-items: center;
+
+    img {
+      display: absolute;
+      left: 0;
+    }
+  }
+
   @mixin flex-col {
     display: flex;
     flex-direction: column;
@@ -155,6 +218,20 @@
           justify-content: center;
           height: fit-content;
           margin-right: 8px;
+        }
+      }
+
+      .card-image {
+        min-width: 80px;
+        width: clamp(80px, 5vw + 10px, 100px);
+        height: 100%;
+        aspect-ratio: 1;
+        border-radius: 12px;
+        object-fit: cover;
+        object-position: center;
+
+        &:hover {
+          transform: scale(1.05);
         }
       }
     }
