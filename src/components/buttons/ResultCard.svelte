@@ -17,7 +17,6 @@
   import { getAppState } from "$lib/stores/appState.svelte";
   import { getLocalStorageState } from "$lib/stores/localStorage.svelte";
   import { collapsedSidebar } from "$lib/stores/SidebarStore";
-  import { load } from "$routes/+page";
 
   let { feature }: { feature: Feature } = $props();
   let p = feature.properties;
@@ -29,6 +28,7 @@
   const localStorageState = getLocalStorageState();
   let imageContainer: HTMLDivElement | undefined = $state(undefined);
   let imageElement: HTMLImageElement | undefined = $state(undefined);
+  let loadingContainer: HTMLDivElement | undefined = $state(undefined);
   let mouseX: number = $state(0);
   let mouseY: number = $state(0);
   let loadingImage: boolean = $state(true);
@@ -73,11 +73,22 @@
     }px`;
   }
 
+  function loadingIcon(event: MouseEvent) {
+    mouseX = event.clientX;
+    mouseY = event.clientY;
+
+    let offset = 100; // 5% of viewport width
+    loadingContainer!.style.left = `${mouseX + offset}px`;
+    loadingContainer!.style.top = `${mouseY}px`;
+    loadingContainer!.style.transform = `translateY(-45%)`;
+  }
+
   function hoverHandler() {
     if (appState.viewportWidth < 600) {
       return; // Don't show hover image on small screens
     }
     imageContainer!.style.display = "flex";
+    window.addEventListener("mousemove", loadingIcon);
     window.addEventListener("mousemove", onMouseMove);
   }
 
@@ -91,6 +102,7 @@
 
   function loadHandler() {
     loadingImage = false;
+    window.removeEventListener("mousemove", loadingIcon);
   }
 
   const svgs: Record<string, string> = {
@@ -136,19 +148,21 @@
 </button>
 
 <div class="image-container" bind:this={imageContainer}>
-  {#if loadingImage}
-    <SvgIcon size={64} alt="Loading image">
-      {@html spinnerSVG}
-    </SvgIcon>
+  {#if true}
+    <div class="loading-container" bind:this={loadingContainer}>
+      <SvgIcon size={56} alt="Loading image">
+        {@html spinnerSVG}
+      </SvgIcon>
+    </div>
   {/if}
-    <img
-      class="hover-image"
-      bind:this={imageElement}
-      src={p.image}
-      alt={`Feature reference of ${p.name || p.description}`}
-      loading="lazy"
-      onload={loadHandler}
-    />
+  <img
+    class="hover-image"
+    bind:this={imageElement}
+    src={p.image}
+    alt={`Feature reference of ${p.name || p.description}`}
+    loading="lazy"
+    onload={loadHandler}
+  />
 </div>
 
 {#snippet detail(label: string, value: string | number | undefined)}
@@ -159,6 +173,14 @@
 {/snippet}
 
 <style lang="scss">
+  .loading-container {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    height: fit-content;
+  }
+
   .image-container {
     position: fixed;
     display: none;
