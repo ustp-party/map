@@ -24,7 +24,9 @@
         "id": 2,
         "description": "Document printing",
         "type": "Printing Service",
-        "level": "1"
+        "level": "1",
+        "image": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750775919/print_1_hd_v4ytae.avif",
+        "image_compressed": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750775917/print_1_comp_g7bwno.avif"
       }
     },
     {
@@ -115,7 +117,9 @@
         "id": 8,
         "description": "I <3 USTP",
         "type": "Landmark",
-        "level": "1"
+        "level": "1",
+        "image": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750775482/ilu_1_hd_gyvays.avif",
+        "image_compressed": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750775481/ilu_1_comp_kpe0mw.avif"
       }
     },
     {
@@ -128,7 +132,9 @@
         "id": 9,
         "description": "Philippine Flag",
         "type": "Landmark",
-        "level": "1"
+        "level": "1",
+        "image": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750774134/flag_1_hd_pyxa8x.avif",
+        "image_compressed": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750774133/flag_1_comp_esiszf.avif"
       }
     },
     {
@@ -141,7 +147,48 @@
         "id": 10,
         "description": "Statue",
         "type": "Landmark",
-        "level": "1"
+        "level": "1",
+        "image": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750765872/statue_1_hd_p8dzot.avif",
+        "image_compressed": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750765871/statue_1_comp_ps8ols.avif"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [124.655811, 8.48556]
+      },
+      "properties": {
+        "id": 11,
+        "description": "Male & Female restroom",
+        "type": "Restroom",
+        "level": "1-5"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [124.657016, 8.484841]
+      },
+      "properties": {
+        "id": 12,
+        "description": "Male & Female restroom",
+        "type": "Restroom",
+        "level": "1-5"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [124.655582, 8.486852]
+      },
+      "properties": {
+        "id": 13,
+        "description": "Male & Female restroom",
+        "type": "Restroom",
+        "level": "1-3"
       }
     }
   ]
