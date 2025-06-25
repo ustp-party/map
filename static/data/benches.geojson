@@ -8,11 +8,16 @@
       "type": "Feature",
       "properties": {
         "@id": "way/427550449",
-        "addr:housenumber": "28",
         "addr:place": "University of Science and Technology of Southern Philippines",
+        "type": "bench",
+        "name": "Benches",
+        "description": "Near the cafeteria",
         "Estimated Capacity": "100",
         "Has roofing": "Yes",
-        "Has backrest": "No"
+        "Has backrest": "No",
+        "Has table": "Yes",
+        "image": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750819058/benches_1_hd_pphjav.avif",
+        "image_compressed": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750819057/benches_1_comp_iuqsbz.avif"
       },
       "geometry": {
         "type": "Polygon",

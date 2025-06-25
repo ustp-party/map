@@ -9,7 +9,8 @@
       },
       "properties": {
         "id": 1,
-        "description": "Document printing",
+        "name": "Printing Service",
+        "description": "At the building 28 entrance",
         "type": "Printing Service",
         "level": "1"
       }
@@ -22,9 +23,12 @@
       },
       "properties": {
         "id": 2,
-        "description": "Document printing",
+        "name": "Printing Service",
+        "description": "At the CSM building",
         "type": "Printing Service",
-        "level": "1"
+        "level": "1",
+        "image": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750775919/print_1_hd_v4ytae.avif",
+        "image_compressed": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750775917/print_1_comp_g7bwno.avif"
       }
     },
     {
@@ -35,7 +39,8 @@
       },
       "properties": {
         "id": 3,
-        "description": "Document printing",
+        "name": "Printing Service",
+        "description": "At the building 5 entrance",
         "type": "Printing Service",
         "level": "1"
       }
@@ -48,6 +53,7 @@
       },
       "properties": {
         "id": 4,
+        "name": "Restroom",
         "description": "Male & Female restroom",
         "type": "Restroom",
         "level": "1-4"
@@ -61,6 +67,7 @@
       },
       "properties": {
         "id": 5,
+        "name": "Restroom",
         "description": "Male Restroom",
         "type": "Restroom",
         "level": "1"
@@ -74,6 +81,7 @@
       },
       "properties": {
         "id": 6,
+        "name": "Restroom",
         "description": "Female Restroom",
         "type": "Restroom",
         "level": "1"
@@ -87,6 +95,7 @@
       },
       "properties": {
         "id": 7,
+        "name": "Restroom",
         "description": "Male Restroom",
         "type": "Restroom",
         "level": "1, 4"
@@ -100,6 +109,7 @@
       },
       "properties": {
         "id": 7,
+        "name": "Restroom",
         "description": "Female Restroom",
         "type": "Restroom",
         "level": "1, 4"
@@ -113,9 +123,12 @@
       },
       "properties": {
         "id": 8,
-        "description": "I <3 USTP",
+        "description": "I ♥️ USTP. Near the entrance gate",
         "type": "Landmark",
-        "level": "1"
+        "name": "I Love USTP",
+        "level": "1",
+        "image": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750775482/ilu_1_hd_gyvays.avif",
+        "image_compressed": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750775481/ilu_1_comp_kpe0mw.avif"
       }
     },
     {
@@ -126,9 +139,12 @@
       },
       "properties": {
         "id": 9,
-        "description": "Philippine Flag",
+        "name": "Philippine Flag",
+        "description": "In front of the Gym Lobby",
         "type": "Landmark",
-        "level": "1"
+        "level": "1",
+        "image": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750774134/flag_1_hd_pyxa8x.avif",
+        "image_compressed": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750774133/flag_1_comp_esiszf.avif"
       }
     },
     {
@@ -139,9 +155,54 @@
       },
       "properties": {
         "id": 10,
-        "description": "Statue",
+        "name": "Statue",
+        "description": "In front of the Admin build",
         "type": "Landmark",
-        "level": "1"
+        "level": "1",
+        "image": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750765872/statue_1_hd_p8dzot.avif",
+        "image_compressed": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750765871/statue_1_comp_ps8ols.avif"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [124.655811, 8.48556]
+      },
+      "properties": {
+        "id": 11,
+        "name": "Restroom",
+        "description": "Male & Female restroom",
+        "type": "Restroom",
+        "level": "1-5"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [124.657016, 8.484841]
+      },
+      "properties": {
+        "id": 12,
+        "name": "Restroom",
+        "description": "Male & Female restroom",
+        "type": "Restroom",
+        "level": "1-5"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [124.655582, 8.486852]
+      },
+      "properties": {
+        "id": 13,
+        "name": "Restroom",
+        "description": "Male & Female restroom",
+        "type": "Restroom",
+        "level": "1-3"
       }
     }
   ]

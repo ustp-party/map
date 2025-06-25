@@ -10,6 +10,8 @@
   import printerSVG from "$assets/free-icons/printer.svg?raw";
   import sparkleSVG from "$assets/free-icons/sparkle.svg?raw";
   import parkingSVG from "$assets/free-icons/parking.svg?raw";
+  import spinnerSVG from "$assets/animated/spinner2.svg?raw";
+  import picnicSVG from "$assets/free-icons/table-picnic.svg?raw";
 
   import { getContext } from "svelte";
   import { geometricCentroid } from "$lib/utils/mapControls";
@@ -25,6 +27,12 @@
   const appState = getAppState();
   const showImages = true;
   const localStorageState = getLocalStorageState();
+  let imageContainer: HTMLDivElement | undefined = $state(undefined);
+  let imageElement: HTMLImageElement | undefined = $state(undefined);
+  let loadingContainer: HTMLDivElement | undefined = $state(undefined);
+  let mouseX: number = $state(0);
+  let mouseY: number = $state(0);
+  let loadingImage: boolean = $state(true);
 
   function handleClick() {
     let centroid: LatLngExpression;
@@ -55,12 +63,56 @@
     localStorageState.insertFeature(feature);
   }
 
+  function onMouseMove(event: MouseEvent) {
+    mouseX = event.clientX;
+    mouseY = event.clientY;
+    let offset = appState.viewportWidth * 0.05; // 5% of viewport width
+    imageContainer!.style.left = `${mouseX + offset}px`;
+    imageElement!.style.top = `${mouseY}px`;
+    imageElement!.style.maxWidth = `${
+      appState.viewportWidth - mouseX - offset
+    }px`;
+  }
+
+  function loadingIcon(event: MouseEvent) {
+    mouseX = event.clientX;
+    mouseY = event.clientY;
+
+    let offset = 100; // 5% of viewport width
+    loadingContainer!.style.left = `${mouseX + offset}px`;
+    loadingContainer!.style.top = `${mouseY}px`;
+    loadingContainer!.style.transform = `translateY(-45%)`;
+  }
+
+  function hoverHandler() {
+    if (appState.viewportWidth < 600) {
+      return; // Don't show hover image on small screens
+    }
+    imageContainer!.style.display = "flex";
+    window.addEventListener("mousemove", loadingIcon);
+    window.addEventListener("mousemove", onMouseMove);
+  }
+
+  function unhoverHandler() {
+    if (appState.viewportWidth < 600) {
+      return; // Don't hide hover image on small screens
+    }
+    imageContainer!.style.display = "none";
+    window.removeEventListener("mousemove", onMouseMove);
+  }
+
+  function loadHandler() {
+    loadingImage = false;
+    window.removeEventListener("mousemove", loadingIcon);
+  }
+
   const svgs: Record<string, string> = {
     building: buildingSVG,
     Restroom: restroomSVG,
     "Printing Service": printerSVG,
     Landmark: sparkleSVG,
     parking: parkingSVG,
+    bench: picnicSVG,
   };
 </script>
 
@@ -73,22 +125,49 @@
         </SvgIcon>
       </div>
       <div class="card-content">
-        <h3 class="card-title">{p.name || p.description}</h3>
+        <h3 class="card-title">{p.name}</h3>
         <div class="details">
           {@render detail("Building", p["addr:housenumber"])}
           {@render detail("Levels", p["building:levels"])}
           {@render detail("Level", p["level"])}
           {@render detail("Vehicles", p["vehicles"])}
+          {@render detail("Capacity", p["Estimated Capacity"])}
+          {@render detail("Description", p.description)}
         </div>
       </div>
     </div>
-    {#if p.image && showImages}
-      <img src={p.image} alt={p.name} class="card-image" />
+    {#if p.image_compressed && showImages}
+      <img
+        src={p.image_compressed}
+        alt={p.name}
+        onmouseenter={hoverHandler}
+        onmouseleave={unhoverHandler}
+        class="card-image"
+        loading="lazy"
+      />
     {:else}
-      <div class="card-image-placeholder"></div>
+      <div class="card-image-placeholder" role="presentation"></div>
     {/if}
   </div>
 </button>
+
+<div class="image-container" bind:this={imageContainer}>
+  {#if loadingImage}
+    <div class="loading-container" bind:this={loadingContainer}>
+      <SvgIcon size={56} alt="Loading image">
+        {@html spinnerSVG}
+      </SvgIcon>
+    </div>
+  {/if}
+  <img
+    class="hover-image"
+    bind:this={imageElement}
+    src={p.image}
+    alt={`Feature reference of ${p.name || p.description}`}
+    loading="lazy"
+    onload={loadHandler}
+  />
+</div>
 
 {#snippet detail(label: string, value: string | number | undefined)}
   {#if value}
@@ -98,6 +177,31 @@
 {/snippet}
 
 <style lang="scss">
+  .loading-container {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    height: fit-content;
+  }
+
+  .image-container {
+    position: fixed;
+    display: none;
+    top: 0;
+    max-height: 100vh; /* no overflow vertically */
+    height: 100%;
+    object-fit: contain;
+    align-items: center;
+
+    img {
+      display: absolute;
+      left: 0;
+      background-color: gray;
+      max-height: var(--viewport);
+    }
+  }
+
   @mixin flex-col {
     display: flex;
     flex-direction: column;
@@ -155,6 +259,20 @@
           justify-content: center;
           height: fit-content;
           margin-right: 8px;
+        }
+      }
+
+      .card-image {
+        min-width: 80px;
+        width: clamp(80px, 5vw + 10px, 100px);
+        height: 100%;
+        aspect-ratio: 1;
+        border-radius: 12px;
+        object-fit: cover;
+        object-position: center;
+
+        &:hover {
+          transform: scale(1.05);
         }
       }
     }
