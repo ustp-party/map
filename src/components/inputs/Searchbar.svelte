@@ -43,7 +43,7 @@
   });
 </script>
 
-<div class="searchbar">
+<search class="searchbar">
   <input type="text" placeholder="Search" bind:value={searchState.query} />
   <button aria-label="Search">
     <SvgIcon size={24} alt="Search">
@@ -63,7 +63,7 @@
       </button>
     </div>
   {/if}
-</div>
+  </search>
 
 <style lang="scss">
   .searchbar {
