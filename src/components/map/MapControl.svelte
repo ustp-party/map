@@ -45,37 +45,43 @@
 
 <ul class="control-panel">
   <li class="control-item">
-    <button
-      class="control location"
-      aria-label="My Location"
-      onclick={locateUserHandler}
-    >
-      {#if loading}
-        <SvgIcon size={24} alt="Loading user location">
-          {@html spinnerSVG}
-        </SvgIcon>
-      {:else}
-        <MyLocationIcon alt="My location" />
-      {/if}
-    </button>
+    <abbr title="Locate me">
+      <button
+        class="control location"
+        aria-label="My Location"
+        onclick={locateUserHandler}
+      >
+        {#if loading}
+          <SvgIcon size={24} alt="Loading user location">
+            {@html spinnerSVG}
+          </SvgIcon>
+        {:else}
+          <MyLocationIcon alt="My location" />
+        {/if}
+      </button>
+    </abbr>
   </li>
   <li class="control-item">
-    <button
-      class="control campus"
-      aria-label="Locate Me"
-      onclick={centerMapOnCampus}
-    >
-      <SchoolIcon alt="Campus location" />
-    </button>
+    <abbr title="Recenter to campus location">
+      <button
+        class="control campus"
+        aria-label="Locate me"
+        onclick={centerMapOnCampus}
+      >
+        <SchoolIcon alt="Recenter to campus location" />
+      </button>
+    </abbr>
   </li>
   <li class="control-item dropdown">
-    <button
-      class="control layer"
-      aria-label="Select Layer"
-      onclick={handleDropdown}
-    >
-      <LayersIcon alt="Select map layer" />
-    </button>
+    <abbr title="Select map options">
+      <button
+        class="control layer"
+        aria-label="Select Layer"
+        onclick={handleDropdown}
+      >
+        <LayersIcon alt="Select map options" />
+      </button>
+    </abbr>
     {#if appState.openMapControlDropdown}
       <MapControlDropdown />
     {/if}

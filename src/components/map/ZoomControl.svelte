@@ -20,22 +20,26 @@
 </script>
 
 <div class="zoom-control">
-  <button
-    class="zoom in"
-    aria-label="Zoom In"
-    onclick={() => zoomCallback(1)}
-    disabled={zoomInDisabled}
-  >
-    <AddIcon alt="Zoom in" />
-  </button>
-  <button
-    class="zoom out"
-    aria-label="Zoom Out"
-    onclick={() => zoomCallback(-1)}
-    disabled={zoomOutDisabled}
-  >
-    <RemoveIcon alt="Zoom out" />
-  </button>
+  <abbr title="Zoom in">
+    <button
+      class="zoom in"
+      aria-label="Zoom in"
+      onclick={() => zoomCallback(1)}
+      disabled={zoomInDisabled}
+    >
+      <AddIcon alt="Zoom in" />
+    </button>
+  </abbr>
+  <abbr title="Zoom out">
+    <button
+      class="zoom out"
+      aria-label="Zoom out"
+      onclick={() => zoomCallback(-1)}
+      disabled={zoomOutDisabled}
+    >
+      <RemoveIcon alt="Zoom out" />
+    </button>
+  </abbr>
 </div>
 
 <style>

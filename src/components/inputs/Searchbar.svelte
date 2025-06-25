@@ -52,18 +52,20 @@
   </button>
   {#if searchState.query.length > 0}
     <div transition:fade={{ duration: 200 }}>
-      <button
-        class="clear-input"
-        aria-label="Clear search input"
-        onclick={() => searchState.updateQuery("")}
-      >
-        <SvgIcon size={24} alt="Clear search input">
-          {@html closeSVG}
-        </SvgIcon>
-      </button>
+      <abbr title="Clear search input">
+        <button
+          class="clear-input"
+          aria-label="Clear search input"
+          onclick={() => searchState.updateQuery("")}
+        >
+          <SvgIcon size={24} alt="Clear search input">
+            {@html closeSVG}
+          </SvgIcon>
+        </button>
+      </abbr>
     </div>
   {/if}
-  </search>
+</search>
 
 <style lang="scss">
   .searchbar {

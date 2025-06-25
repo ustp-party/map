@@ -69,7 +69,7 @@
 <div
   class="options"
   bind:this={divRef}
-  aria-label="Student orient search options"
+  aria-label="Student oriented search options"
 >
   {#if isOverflowing && appState.viewportWidth >= 600}
     <button
@@ -78,9 +78,11 @@
       onclick={() => scrollToLeft(divRef)}
       disabled={scrollLeft === 0}
     >
-      <SvgIcon size={24} alt="Scroll Left">
-        {@html chevronLeftSVG}
-      </SvgIcon>
+      <abbr title="Scroll left">
+        <SvgIcon size={24} alt="Scroll Left">
+          {@html chevronLeftSVG}
+        </SvgIcon>
+      </abbr>
     </button>
   {/if}
   {@render featured("Cafeteria", "Cafeteria", burgerSodaSVG)}
@@ -108,14 +110,21 @@
       onclick={() => scrollToRight(divRef)}
       disabled={scrollLeft + divRef!.clientWidth == divRef!.scrollWidth}
     >
-      <SvgIcon size={24} alt="Scroll Right">
-        {@html chevronRightSVG}
-      </SvgIcon>
+      <abbr title="Scroll right">
+        <SvgIcon size={24} alt="Scroll Right">
+          {@html chevronRightSVG}
+        </SvgIcon>
+      </abbr>
     </button>
   {/if}
 </div>
 
-{#snippet featured(name: string, value: string, icon: string, callback?: () => void)}
+{#snippet featured(
+  name: string,
+  value: string,
+  icon: string,
+  callback?: () => void
+)}
   <SearchOption {name} {value} {callback}>
     {@html icon}
   </SearchOption>
