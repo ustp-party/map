@@ -5,8 +5,9 @@
   const mapState = getMapState();
 </script>
 
-<div class="dropdown-menu" transition:slide={{ duration: 100 }}>
-  <form class="content">
+<form class="dropdown-menu" transition:slide={{ duration: 100 }}>
+  <legend>MAP THEME</legend>
+  <fieldset class="content">
     <input
       type="radio"
       id="voyager"
@@ -31,9 +32,10 @@
       bind:group={mapState.tileset}
     />
     <label for="dark">Dark</label>
-  </form>
-  <div class="divider"></div>
-  <form class="content">
+  </fieldset>
+  <div class="divider" aria-label="divider"></div>
+  <fieldset class="content">
+    <legend>AREAS</legend>
     <input
       type="checkbox"
       id="Buildings"
@@ -58,9 +60,10 @@
       bind:checked={mapState.enableParking}
     />
     <label for="parking-spaces">Parking Spaces</label>
-  </form>
+  </fieldset>
   <div class="divider"></div>
-  <form class="content">
+  <fieldset class="content">
+    <legend>POINTS</legend>
     <input
       type="checkbox"
       id="Restrooms"
@@ -77,7 +80,7 @@
       bind:checked={mapState.enablePrintingServices}
     />
     <label for="Printing Stations">Printing Services</label>
-        <input
+    <input
       type="checkbox"
       id="Landmarks"
       name="enabled features"
@@ -85,10 +88,20 @@
       bind:checked={mapState.enableLandmarks}
     />
     <label for="Landmarks">Landmarks</label>
-  </form>
-</div>
+  </fieldset>
+</form>
 
 <style lang="scss">
+  legend {
+    font-weight: 600;
+    font-size: 0.8rem;
+    color: var(--text-placeholder);
+    margin-bottom: 2px;
+  }
+
+  fieldset {
+    all: unset;
+  }
   .dropdown-menu {
     position: absolute;
     top: calc(100% + 8px);
@@ -109,8 +122,12 @@
     .divider {
       width: 100%;
       height: 1px;
-      background-color: var(--accent-2);
-      margin: 4px 0;
+      background-color: transparent;
+      margin: 8px 0;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      box-shadow: none;
     }
   }
 
@@ -118,8 +135,8 @@
     .dropdown-menu {
       top: -8px;
       right: 50vw;
-      margin-right: none;
-      transform: translateX(60%) translateY(-100%);
+      margin-right: 0;
+      transform: translate(50%, -100%);
     }
   }
 </style>
