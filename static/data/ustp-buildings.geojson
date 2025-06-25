@@ -18,7 +18,9 @@
         "leisure": "sports_hall",
         "name": "Gymnasium",
         "building:levels": "2",
-        "sport": "multi"
+        "sport": "multi",
+        "iamge": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750819151/gym_1_hd_y0kvfr.avif",
+        "image_compressed": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750819150/gym_1_comp_kfvxjw.avif"
       },
       "geometry": {
         "type": "Polygon",
@@ -105,7 +107,9 @@
         "addr:place": "University of Science and Technology of Southern Philippines",
         "building": "construction",
         "name": "Sports Complex",
-        "type": "building"
+        "type": "building",
+        "image": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750820440/sports_complex_1_hd_trwcmc.avif",
+        "image_compressed": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750820440/sports_complex_1_hd_trwcmc.avif"
       },
       "geometry": {
         "type": "Polygon",
@@ -181,7 +185,9 @@
         "building": "university",
         "name": "Science Complex",
         "building:levels": 5,
-        "type": "building"
+        "type": "building",
+        "image": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750819648/csm_1_hd_hbuh2f.avif",
+        "image_compressed": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750819646/csm_1_comp_aotyzu.avif"
       },
       "geometry": {
         "type": "Polygon",
@@ -213,7 +219,9 @@
         "building": "university",
         "building:levels": "2",
         "name": "Senior High School Building",
-        "type": "building"
+        "type": "building",
+        "image": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750820514/shs_1_hd_pchzcm.avif",
+        "image_compressed": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750820512/shs_1_comp_r2usrd.avif"
       },
       "geometry": {
         "type": "Polygon",
@@ -241,7 +249,9 @@
         "addr:place": "University of Science and Technology of Southern Philippines",
         "type": "building",
         "name": "Gymnasium Lobby",
-        "building:levels": "1"
+        "building:levels": "1",
+        "image": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750821418/gym_lobby_1_hd_h1fpiq.avif",
+        "image_compressed": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750821417/gym_lobby_1_comp_qc22nj.avif"
       },
       "geometry": {
         "type": "Polygon",
@@ -268,6 +278,7 @@
         "building": "college",
         "building:levels": "4",
         "name": "Information and Communications Technology Building",
+        "description": "College of Information Technology and Computing (CITC)",
         "type": "building",
         "image": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750765872/citc_1_hd_qxcawh.avif",
         "image_compressed": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750765871/citc_1_comp_umshsv.avif"
@@ -592,8 +603,10 @@
         "addr:housenumber": "37",
         "addr:place": "University of Science and Technology of Southern Philippines",
         "building": "college",
-        "name": "Civil Technology Building",
-        "type": "building"
+        "name": "FAB LAB building",
+        "description": "Metals & Engineering Innovation Center",
+        "type": "building",
+        "building:levels": 1
       },
       "geometry": {
         "type": "Polygon",
@@ -863,9 +876,10 @@
       "properties": {
         "@id": "way/427550461",
         "building": "college",
-        "name": "Unknown Building",
+        "name": "Sump pit",
         "addr:place": "University of Science and Technology of Southern Philippines",
         "addr:housenumber": "?",
+        "building:levels": "1",
         "type": "building"
       },
       "geometry": {
