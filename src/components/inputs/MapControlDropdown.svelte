@@ -6,7 +6,10 @@
 </script>
 
 <form class="dropdown-menu" transition:slide={{ duration: 100 }}>
-  <legend>MAP THEME</legend>
+  <legend
+    >MAP THEME
+    <div class="divider"></div></legend
+  >
   <fieldset class="content">
     <input
       type="radio"
@@ -33,9 +36,12 @@
     />
     <label for="dark">Dark</label>
   </fieldset>
-  <div class="divider" aria-label="divider"></div>
+  <div class="spacer"></div>
   <fieldset class="content">
-    <legend>AREAS</legend>
+    <legend
+      >AREAS
+      <div class="divider" aria-label="divider"></div></legend
+    >
     <input
       type="checkbox"
       id="Buildings"
@@ -61,9 +67,11 @@
     />
     <label for="parking-spaces">Parking Spaces</label>
   </fieldset>
-  <div class="divider"></div>
+  <div class="spacer"></div>
   <fieldset class="content">
-    <legend>POINTS</legend>
+    <legend
+      >POINTS <div class="divider" aria-label="divider"></div></legend
+    >
     <input
       type="checkbox"
       id="Restrooms"
@@ -95,8 +103,13 @@
   legend {
     font-weight: 600;
     font-size: 0.8rem;
+    width: 100%;
     color: var(--text-placeholder);
     margin-bottom: 2px;
+    display: flex;
+    align-items: center;
+    text-wrap: nowrap;
+    gap: 6px;
   }
 
   fieldset {
@@ -122,8 +135,12 @@
     .divider {
       width: 100%;
       height: 1px;
-      background-color: transparent;
-      margin: 8px 0;
+      background-color: var(--text-placeholder);
+      opacity: 0.5;
+    }
+
+    .spacer {
+      height: 12px;
     }
 
     @media (prefers-color-scheme: dark) {
