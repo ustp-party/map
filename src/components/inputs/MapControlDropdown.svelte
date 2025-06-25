@@ -6,11 +6,8 @@
 </script>
 
 <form class="dropdown-menu" transition:slide={{ duration: 100 }}>
-  <legend
-    >MAP THEME
-    <div class="divider"></div></legend
-  >
   <fieldset class="content">
+    <legend>MAP THEME</legend>
     <input
       type="radio"
       id="voyager"
@@ -36,12 +33,8 @@
     />
     <label for="dark">Dark</label>
   </fieldset>
-  <div class="spacer"></div>
   <fieldset class="content">
-    <legend
-      >AREAS
-      <div class="divider" aria-label="divider"></div></legend
-    >
+    <legend>AREAS</legend>
     <input
       type="checkbox"
       id="Buildings"
@@ -67,11 +60,8 @@
     />
     <label for="parking-spaces">Parking Spaces</label>
   </fieldset>
-  <div class="spacer"></div>
   <fieldset class="content">
-    <legend
-      >POINTS <div class="divider" aria-label="divider"></div></legend
-    >
+    <legend>POINTS</legend>
     <input
       type="checkbox"
       id="Restrooms"
@@ -100,20 +90,16 @@
 </form>
 
 <style lang="scss">
-  legend {
-    font-weight: 600;
-    font-size: 0.8rem;
-    width: 100%;
-    color: var(--text-placeholder);
-    margin-bottom: 2px;
-    display: flex;
-    align-items: center;
-    text-wrap: nowrap;
-    gap: 6px;
-  }
-
   fieldset {
-    all: unset;
+    border: none;
+    border-top: 1px solid var(--text-placeholder);
+    legend {
+      font-weight: 600;
+      font-size: 0.8rem;
+      color: var(--text-placeholder);
+      margin-bottom: 2px;
+      padding-right: 4px;
+    }
   }
   .dropdown-menu {
     position: absolute;
@@ -124,6 +110,9 @@
     box-shadow: var(--box-shadow);
     padding: 8px;
     border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8em;
 
     .content {
       display: grid;
@@ -131,16 +120,6 @@
       grid-template-columns: min-content 1fr;
       column-gap: clamp(0.8rem, 1vw, 1rem);
       gap: 4px;
-    }
-    .divider {
-      width: 100%;
-      height: 1px;
-      background-color: var(--text-placeholder);
-      opacity: 0.5;
-    }
-
-    .spacer {
-      height: 12px;
     }
 
     @media (prefers-color-scheme: dark) {
