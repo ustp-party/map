@@ -278,7 +278,7 @@ function setLandmarks(landmarks: Feature[]): L.GeoJSON {
   );
   return L.geoJSON(landmarksFiltered, {
     pointToLayer: (feature, latlng) => {
-      const { description, level }: Properties = feature.properties!;
+      const { name, description, level }: Properties = feature.properties!;
 
       const labels = {
         Description: description,
@@ -286,7 +286,7 @@ function setLandmarks(landmarks: Feature[]): L.GeoJSON {
       };
       return L.marker(latlng, {
         icon: icons.LandmarkIcon,
-      }).bindTooltip(tooltipTemplate("Landmark", "landmark", labels), {
+      }).bindTooltip(tooltipTemplate(name, "landmark", labels), {
         className: "polygon-label", // optional CSS class
       });
     },

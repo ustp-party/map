@@ -19,7 +19,7 @@
         "name": "Gymnasium",
         "building:levels": "2",
         "sport": "multi",
-        "iamge": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750819151/gym_1_hd_y0kvfr.avif",
+        "image": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750819151/gym_1_hd_y0kvfr.avif",
         "image_compressed": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750819150/gym_1_comp_kfvxjw.avif"
       },
       "geometry": {
