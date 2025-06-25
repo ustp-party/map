@@ -11,6 +11,7 @@
   import sparkleSVG from "$assets/free-icons/sparkle.svg?raw";
   import parkingSVG from "$assets/free-icons/parking.svg?raw";
   import spinnerSVG from "$assets/animated/spinner2.svg?raw";
+  import picnicSVG from "$assets/free-icons/table-picnic.svg?raw";
 
   import { getContext } from "svelte";
   import { geometricCentroid } from "$lib/utils/mapControls";
@@ -111,6 +112,7 @@
     "Printing Service": printerSVG,
     Landmark: sparkleSVG,
     parking: parkingSVG,
+    bench: picnicSVG,
   };
 </script>
 
@@ -123,12 +125,14 @@
         </SvgIcon>
       </div>
       <div class="card-content">
-        <h3 class="card-title">{p.name || p.description}</h3>
+        <h3 class="card-title">{p.name}</h3>
         <div class="details">
           {@render detail("Building", p["addr:housenumber"])}
           {@render detail("Levels", p["building:levels"])}
           {@render detail("Level", p["level"])}
           {@render detail("Vehicles", p["vehicles"])}
+          {@render detail("Capacity", p["Estimated Capacity"])}
+          {@render detail("Description", p.description)}
         </div>
       </div>
     </div>

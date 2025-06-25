@@ -174,12 +174,14 @@ function setBenches(benches: Feature[]): L.GeoJSON {
         ["Estimated Capacity"]: capacity,
         ["Has roofing"]: roofing,
         ["Has backrest"]: backrest,
+        ["Has table"]: table,
       }: Properties = properties;
 
       const labels = {
         "Estimated Capacity": capacity,
         "Has roofing": roofing,
         "Has backrest": backrest,
+        "Has table": table,
       };
 
       layer.bindTooltip(tooltipTemplate("Benches", "bench", labels), {
