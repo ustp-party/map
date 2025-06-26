@@ -1,6 +1,6 @@
 <script lang="ts">
   import { fade } from "svelte/transition";
-  import { onMount } from "svelte";
+  import { onDestroy, onMount } from "svelte";
 
   import SvgIcon from "$components/icons/SVGIcon.svelte";
   import closeSVG from "$assets/material-icons/close.svg?raw";
@@ -24,6 +24,12 @@
     });
 
     window.addEventListener("keydown", () => {
+      document.getElementById("searchbar")?.focus();
+    });
+  });
+
+  onDestroy(() => {
+    window.removeEventListener("keydown", () => {
       document.getElementById("searchbar")?.focus();
     });
   });
