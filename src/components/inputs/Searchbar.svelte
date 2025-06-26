@@ -21,6 +21,10 @@
     allFeatures.subscribe((newBooks) => {
       searchIndex = createSearchIndex(newBooks!);
     });
+
+    window.addEventListener("keydown", () => {
+      document.getElementById("searchbar")?.focus();
+    });
   });
 
   function handleSearch() {
@@ -44,7 +48,12 @@
 </script>
 
 <search class="searchbar">
-  <input type="text" placeholder="Search" bind:value={searchState.query} />
+  <input
+    id="searchbar"
+    type="text"
+    placeholder="Search"
+    bind:value={searchState.query}
+  />
   <button aria-label="Search">
     <SvgIcon size={24} alt="Search" fixed>
       {@html searchSVG}
