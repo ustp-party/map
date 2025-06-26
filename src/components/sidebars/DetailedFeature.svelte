@@ -229,7 +229,7 @@
 
     .content {
       & > * {
-        padding: 16px;
+        padding: 16px 32px;
         border-bottom: 1px solid var(--border);
       }
 
