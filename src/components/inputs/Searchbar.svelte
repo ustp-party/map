@@ -5,6 +5,7 @@
   import SvgIcon from "$components/icons/SVGIcon.svelte";
   import closeSVG from "$assets/material-icons/close.svg?raw";
   import searchSVG from "$assets/material-icons/search-24.svg?raw";
+  import arrowBackSVG from "$assets/material-icons/arrow-back.svg?raw";
 
   import { createSearchIndex, searchBooks } from "$lib/utils/searchService";
   import { getSearchState } from "$lib/stores/SearchState.svelte";
@@ -48,6 +49,21 @@
 </script>
 
 <search class="searchbar">
+  {#if searchState.detailedFeature}
+    <div transition:fade={{ duration: 200 }}>
+      <abbr title="Go back">
+        <button
+          class="clear-input"
+          aria-label="Clear search input"
+          onclick={() => searchState.updateDetailedFeature(undefined)}
+        >
+          <SvgIcon size={24} alt="Clear search input">
+            {@html arrowBackSVG}
+          </SvgIcon>
+        </button>
+      </abbr>
+    </div>
+  {/if}
   <input
     id="searchbar"
     type="text"
