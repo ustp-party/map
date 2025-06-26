@@ -113,8 +113,8 @@
     .container {
       height: calc(100% - 40px);
       overflow: auto;
-      padding-left: clamp(4px, 2vw + 1px, 8px);
-      padding-right: clamp(4px, 2vw + 1px, 8px);
+      // padding-left: clamp(4px, 2vw + 1px, 8px);
+      // padding-right: clamp(4px, 2vw + 1px, 8px);
     }
   }
 </style>

@@ -6,6 +6,9 @@
 
   import exploreIcon from "$assets/material-icons/explore.svg?raw";
   import shareIcon from "$assets/material-icons/share.svg?raw";
+  import accessibleSVG from "$assets/free-icons/accessible.svg?raw";
+  import stairsSVG from "$assets/free-icons/stairs.svg?raw";
+  import elevatorSVG from "$assets/free-icons/elevator.svg?raw";
 
   import SvgIcon from "$components/icons/SVGIcon.svelte";
 
@@ -82,13 +85,19 @@
       dialog.addEventListener("touchstart", closeDialog);
     }
   });
+
+  const accessibility: Record<string, string> = {
+    Wheelchair: accessibleSVG,
+    Elevator: elevatorSVG,
+    Stairs: stairsSVG,
+  };
 </script>
 
 <div class="detailed-feature">
   <abbr title="View picture">
     {#if p.image}
       <button id="close-dialog" onclick={() => dialog!.showModal()}>
-        <img src={p.image} alt={p.name} class="header-image" />
+        <img src={p.image} alt={p.name} class="header-image" loading="lazy" />
       </button>
     {:else}
       <div class="card-image-placeholder" role="presentation"></div>
@@ -99,34 +108,78 @@
       <h2>{p.name}</h2>
       <h5>{p.description}</h5>
     </header>
-    <menu class="controls-menu">
-      <li>
-        <abbr title="Find and zoom to this location on the map">
-        <button id="locate-btn" class="menu-item" onclick={handleClick}>
-          <div class="icon-container">
-            <SvgIcon size={24}>{@html exploreIcon}</SvgIcon>
-          </div>
-          <label for="locate-btn">Find</label></button
-        >
-        </abbr>
-      </li>
-      <li>
-        <abbr title="Share this location (coming soon)">
-        <button id="share-btn" class="menu-item" disabled>
-          <div class="icon-container">
-            <SvgIcon size={24}>{@html shareIcon}</SvgIcon>
-          </div>
-          <label for="share-btn">Share</label></button
-        >
-        </abbr>
-      </li>
-    </menu>
+    <main>
+      <div class="right-details">
+        <p>
+          {#if p.long_description}
+            {p.long_description}
+          {:else}
+            <em>No detailed description available.</em>
+          {/if}
+        </p>
+        <dl>
+          {@render detail("Building", p["addr:housenumber"])}
+          {@render detail("Levels", p["building:levels"])}
+          {@render detail("Level", p["level"])}
+          {@render detail("Vehicles", p["vehicles"])}
+          {@render detail("Capacity", p["Estimated Capacity"])}
+        </dl>
+      </div>
+
+      <menu class="controls-menu">
+        <li>
+          <abbr title="Find and zoom to this location on the map">
+            <button id="locate-btn" class="menu-item" onclick={handleClick}>
+              <div class="icon-container">
+                <SvgIcon>{@html exploreIcon}</SvgIcon>
+              </div>
+              <label for="locate-btn">Find</label></button
+            >
+          </abbr>
+        </li>
+        <li>
+          <abbr title="Share this location (coming soon)">
+            <button id="share-btn" class="menu-item" disabled>
+              <div class="icon-container">
+                <SvgIcon>{@html shareIcon}</SvgIcon>
+              </div>
+              <label for="share-btn">Share</label></button
+            >
+          </abbr>
+        </li>
+      </menu>
+    </main>
+    <div class="accessibility-options">
+      {#if p.accessibility && p.accessibility.length > 0}
+        <h4>Accessibility Options</h4>
+        <ul>
+          {#each p.accessibility as option}
+            <li>
+              <abbr title="Accessible by {option}">
+                <SvgIcon>
+                  {@html accessibility[option] || ""}
+                </SvgIcon>
+              </abbr>
+            </li>
+          {/each}
+        </ul>
+      {:else}
+        <em>No accessibility options available.</em>
+      {/if}
+    </div>
   </div>
 </div>
 
 <dialog class="focus-image" bind:this={dialog} closedby="any">
   <img src={p.image} alt={p.name} />
 </dialog>
+
+{#snippet detail(label: string, value: string | number | undefined)}
+  {#if value}
+    <dt class="left-detail">{label}</dt>
+    <dd class="right-detail">{value}</dd>
+  {/if}
+{/snippet}
 
 <style lang="scss">
   .detailed-feature {
@@ -175,56 +228,106 @@
     }
 
     .content {
+      & > * {
+        padding: 16px;
+        border-bottom: 1px solid var(--border);
+      }
+
       header {
         display: flex;
         flex-direction: column;
         gap: 16px;
-        padding: 16px;
-        border-bottom: 1px solid var(--border);
         h5 {
           font-size: small;
           font-weight: 500;
         }
       }
 
-      .controls-menu {
+      main {
         display: flex;
-        padding: 16px;
-        gap: 16px;
-        justify-content: center;
+        justify-content: space-between;
+        gap: 8px;
 
-        li {
-          all: unset;
-        }
-
-        button {
+        .right-details {
           display: flex;
           flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          gap: 8px;
-          cursor: pointer;
-
-          .icon-container {
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: var(--bg-accent);
-            border-radius: 50%;
-            box-shadow: var(--box-shadow);
+          gap: 16px;
+          width: 100%;
+          p {
+            margin: 0;
+            font-size: medium;
+            line-height: 1.5;
           }
+          dl {
+            display: grid;
+            grid-template-columns: min-content 1fr;
+            column-gap: clamp(1rem, 2vw + 4px, 2rem);
+            font-size: 0.875rem;
+            height: fit-content;
 
-          &:hover, &:active {
-            background-color: transparent;
-          }
-
-          &:hover {
-            .icon-container {
-              background-color: var(--bg-accent-hover);
+            .left-detail {
+              font-weight: 600;
+            }
+            .right-detail {
+              font-weight: 400;
             }
           }
+        }
+        menu {
+          display: flex;
+          gap: 16px;
+
+          li {
+            all: unset;
+          }
+
+          button {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            cursor: pointer;
+
+            .icon-container {
+              width: 40px;
+              height: 40px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              background-color: var(--bg-accent);
+              border-radius: 50%;
+              box-shadow: var(--box-shadow);
+            }
+
+            &:hover,
+            &:active {
+              background-color: transparent;
+            }
+
+            &:hover {
+              .icon-container {
+                background-color: var(--bg-accent-hover);
+              }
+            }
+          }
+        }
+      }
+
+      .accessibility-options {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        h4 {
+          font-size: small;
+          font-weight: 600;
+        }
+        ul {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 16px;
+          list-style: none;
+          padding: 0;
         }
       }
     }

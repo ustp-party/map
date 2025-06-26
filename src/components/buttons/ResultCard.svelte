@@ -97,14 +97,14 @@
       </div>
       <div class="card-content">
         <h3 class="card-title">{p.name}</h3>
-        <div class="details">
+        <dl class="details">
           {@render detail("Building", p["addr:housenumber"])}
           {@render detail("Levels", p["building:levels"])}
           {@render detail("Level", p["level"])}
           {@render detail("Vehicles", p["vehicles"])}
           {@render detail("Capacity", p["Estimated Capacity"])}
           {@render detail("Description", p.description)}
-        </div>
+        </dl>
       </div>
     </div>
     {#if p.image_compressed && showImages}
@@ -142,8 +142,8 @@
 
 {#snippet detail(label: string, value: string | number | undefined)}
   {#if value}
-    <div class="left-detail">{label}</div>
-    <div class="right-detail">{value}</div>
+    <dt class="left-detail">{label}</dt>
+    <dd class="right-detail">{value}</dd>
   {/if}
 {/snippet}
 
