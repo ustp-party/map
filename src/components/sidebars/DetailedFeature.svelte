@@ -151,7 +151,7 @@
     </main>
     <div class="accessibility-options">
       {#if p.accessibility && p.accessibility.length > 0}
-        <h4>Accessibility Options</h4>
+        <h4>Accessibility options</h4>
         <ul>
           {#each p.accessibility as option}
             <li>
@@ -171,7 +171,7 @@
 </div>
 
 <dialog class="focus-image" bind:this={dialog} closedby="any">
-  <img src={p.image} alt={p.name} draggable="false"/>
+  <img src={p.image} alt={p.name} draggable="false" />
 </dialog>
 
 {#snippet detail(label: string, value: string | number | undefined)}
@@ -298,6 +298,10 @@
               background-color: var(--bg-accent);
               border-radius: 50%;
               box-shadow: var(--box-shadow);
+
+              @media (prefers-color-scheme: dark) {
+                box-shadow: none;
+              }
             }
 
             &:hover,

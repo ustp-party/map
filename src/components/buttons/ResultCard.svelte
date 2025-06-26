@@ -1,6 +1,5 @@
 <script lang="ts">
   import type { Feature } from "$lib/types/features";
-  import type { Map } from "leaflet";
 
   import SvgIcon from "$components/icons/SVGIcon.svelte";
   import buildingSVG from "$assets/free-icons/building.svg?raw";
@@ -14,6 +13,7 @@
   import { getAppState } from "$lib/stores/appState.svelte";
   import { getLocalStorageState } from "$lib/stores/localStorage.svelte";
   import { getSearchState } from "$lib/stores/SearchState.svelte";
+  import { onDestroy } from "svelte";
 
   let { feature }: { feature: Feature } = $props();
   let p = feature.properties;
@@ -38,11 +38,14 @@
     mouseX = event.clientX;
     mouseY = event.clientY;
     let offset = appState.viewportWidth * 0.05; // 5% of viewport width
-    imageContainer!.style.left = `${mouseX + offset}px`;
-    imageElement!.style.top = `${mouseY}px`;
-    imageElement!.style.maxWidth = `${
-      appState.viewportWidth - mouseX - offset
-    }px`;
+
+    if (imageContainer && imageElement) {
+      imageContainer.style.left = `${mouseX + offset}px`;
+      imageElement.style.top = `${mouseY}px`;
+      imageElement.style.maxWidth = `${
+        appState.viewportWidth - mouseX - offset
+      }px`;
+    }
   }
 
   function loadingIcon(event: MouseEvent) {
@@ -50,26 +53,33 @@
     mouseY = event.clientY;
 
     let offset = 100; // 5% of viewport width
-    loadingContainer!.style.left = `${mouseX + offset}px`;
-    loadingContainer!.style.top = `${mouseY}px`;
-    loadingContainer!.style.transform = `translateY(-45%)`;
+    if (loadingContainer) {
+      loadingContainer.style.left = `${mouseX + offset}px`;
+      loadingContainer.style.top = `${mouseY}px`;
+      loadingContainer.style.transform = `translateY(-45%)`;
+    }
   }
 
   function hoverHandler() {
     if (appState.viewportWidth < 600) {
       return; // Don't show hover image on small screens
     }
-    imageContainer!.style.display = "flex";
-    window.addEventListener("mousemove", loadingIcon);
-    window.addEventListener("mousemove", onMouseMove);
+
+    if (imageContainer) {
+      imageContainer.style.display = "flex";
+      window.addEventListener("mousemove", onMouseMove);
+      window.addEventListener("mousemove", loadingIcon);
+    }
   }
 
   function unhoverHandler() {
     if (appState.viewportWidth < 600) {
       return; // Don't hide hover image on small screens
     }
-    imageContainer!.style.display = "none";
-    window.removeEventListener("mousemove", onMouseMove);
+    if (imageContainer) {
+      imageContainer.style.display = "none";
+      window.removeEventListener("mousemove", onMouseMove);
+    }
   }
 
   function loadHandler() {
@@ -85,6 +95,11 @@
     parking: parkingSVG,
     bench: picnicSVG,
   };
+
+  onDestroy(() => {
+    window.removeEventListener("mousemove", onMouseMove);
+    window.removeEventListener("mousemove", loadingIcon);
+  });
 </script>
 
 <button class="card" id={feature.id} onclick={handleClick}>
