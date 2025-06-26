@@ -151,7 +151,7 @@
     </main>
     <div class="accessibility-options">
       {#if p.accessibility && p.accessibility.length > 0}
-        <h4>Accessibility Options</h4>
+        <h4>Accessibility options</h4>
         <ul>
           {#each p.accessibility as option}
             <li>
