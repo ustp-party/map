@@ -13,6 +13,7 @@
   const searchState = getSearchState();
   function btnHandler() {
     searchState.updateQuery(props.value);
+    searchState.updateDetailedFeature(undefined);
     if (props.callback) {
       props.callback();
     }
