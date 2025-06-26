@@ -1,13 +1,11 @@
 <script lang="ts">
   import type { Map } from "leaflet";
-  import { getContext } from "svelte";
   import AddIcon from "$components/icons/AddIcon.svelte";
   import RemoveIcon from "$components/icons/RemoveIcon.svelte";
   import { getMapState } from "$lib/stores/mapState.svelte";
 
   const mapState = getMapState();
-  const mapContext = getContext<{ getMap: () => Map }>("map");
-  let map: Map = mapContext.getMap();
+  let map: Map = mapState.map!;
   let zoomInDisabled = $derived(mapState.currentZoom >= map.getMaxZoom());
   let zoomOutDisabled = $derived(mapState.currentZoom <= map.getMinZoom());
 
