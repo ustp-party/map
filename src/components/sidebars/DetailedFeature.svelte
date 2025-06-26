@@ -171,7 +171,7 @@
 </div>
 
 <dialog class="focus-image" bind:this={dialog} closedby="any">
-  <img src={p.image} alt={p.name} />
+  <img src={p.image} alt={p.name} draggable="false"/>
 </dialog>
 
 {#snippet detail(label: string, value: string | number | undefined)}
@@ -343,9 +343,16 @@
     overflow: hidden;
 
     img {
-      max-width: 80vw;
+      max-width: max(calc(95vw - 300px), 95vw);
       max-height: 95vh;
       object-fit: cover;
+      cursor: zoom-in;
+      user-select: none;
+
+      &:active {
+        cursor: zoom-out;
+        scale: 1.5;
+      }
     }
 
     &::backdrop {
