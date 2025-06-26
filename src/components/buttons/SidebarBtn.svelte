@@ -7,13 +7,13 @@
   class={"sidebar_btn" + ($collapsedSidebar ? " close" : " open")}
   on:click={() => collapsedSidebar.update((value) => !value)}
 >
-  <div class="icon">
+  <abbr title={`${$collapsedSidebar ? "Open" : "Close"} sidebar`} class="icon">
     {#if $collapsedSidebar}
       <ArrowIcon direction="right" />
     {:else}
       <ArrowIcon direction="left" />
     {/if}
-  </div>
+  </abbr>
 </button>
 
 <style>

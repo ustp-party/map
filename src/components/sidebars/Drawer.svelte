@@ -83,7 +83,7 @@
     bottom: 0;
     left: 0;
     right: 0;
-    height: max(300px, calc(var(--viewport) * 0.8));
+    height: max(300px, calc(var(--viewport-height) * 0.8));
     background: var(--bg);
     border-top-left-radius: 12px;
     border-top-right-radius: 12px;
@@ -113,8 +113,8 @@
     .container {
       height: calc(100% - 40px);
       overflow: auto;
-      padding-left: clamp(4px, 2vw + 1px, 8px);
-      padding-right: clamp(4px, 2vw + 1px, 8px);
+      // padding-left: clamp(4px, 2vw + 1px, 8px);
+      // padding-right: clamp(4px, 2vw + 1px, 8px);
     }
   }
 </style>

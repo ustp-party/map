@@ -14,6 +14,7 @@ export interface FeatureCollection {
 export interface Properties {
   name: string;
   description: string;
+  long_description?: string;
   type: string | "Restroom" | "Printing Service" | "Landmark" | "Building";
   "addr:housenumber"?: string;
   "addr:place"?: string;
@@ -26,6 +27,7 @@ export interface Properties {
   "Has backrest"?: "Yes" | "No";
   "Has table"?: "Yes" | "No";
   vehicles?: "All" | "Motorcycles only" | "Cars only" | "Bicycles only";
+  accessibility?: Array<"Wheelchair" | "Elevator" | "Stairs" | "None">;
 }
 
 export interface Feature {

@@ -28,7 +28,8 @@
         "type": "Printing Service",
         "level": "1",
         "image": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750775919/print_1_hd_v4ytae.avif",
-        "image_compressed": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750775917/print_1_comp_g7bwno.avif"
+        "image_compressed": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750775917/print_1_comp_g7bwno.avif",
+        "accessibility": ["Wheelchair", "Stairs"]
       }
     },
     {

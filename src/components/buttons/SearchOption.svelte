@@ -13,18 +13,21 @@
   const searchState = getSearchState();
   function btnHandler() {
     searchState.updateQuery(props.value);
+    searchState.updateDetailedFeature(undefined);
     if (props.callback) {
       props.callback();
     }
   }
 </script>
 
-<button class="option" aria-label={props.value} onclick={btnHandler}>
-  <SearchOptionIcon>
-    {@render props.children()}
-  </SearchOptionIcon>
-  {props.name}
-</button>
+<abbr title={`Quick search for '${props.name}'`}>
+  <button class="option" aria-label={props.value} onclick={btnHandler}>
+    <SearchOptionIcon>
+      {@render props.children()}
+    </SearchOptionIcon>
+    {props.name}
+  </button>
+</abbr>
 
 <style lang="scss">
   .option {

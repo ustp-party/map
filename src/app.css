@@ -5,8 +5,15 @@
 }
 
 body {
-  --viewport: calc(var(--vh, 1vh) * 100);
-  height: var(--viewport);
+  --viewport-height: calc(var(--vh, 1vh) * 100);
+  height: var(--viewport-height);
+}
+
+/* For tooltips */
+abbr {
+  all: unset;
+  width: fit-content;
+  height: fit-content;
 }
 
 :root {
@@ -91,7 +98,7 @@ a {
     --btn-hover: rgb(184, 222, 230);
     --btn-active: rgb(134, 163, 168);
 
-    --box-shadow: 0 1px 2px rgba(255,255,255,0.3),0 1px 3px 1px rgba(255,255,255,0.15);
-    
+    --box-shadow: 0 1px 2px rgba(255, 255, 255, 0.3),
+      0 1px 3px 1px rgba(255, 255, 255, 0.15);
   }
 }

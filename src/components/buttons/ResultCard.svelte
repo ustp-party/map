@@ -1,8 +1,6 @@
 <script lang="ts">
   import type { Feature } from "$lib/types/features";
   import type { Map } from "leaflet";
-  import type { Position } from "geojson";
-  import type { LatLngExpression } from "leaflet";
 
   import SvgIcon from "$components/icons/SVGIcon.svelte";
   import buildingSVG from "$assets/free-icons/building.svg?raw";
@@ -13,20 +11,17 @@
   import spinnerSVG from "$assets/animated/spinner2.svg?raw";
   import picnicSVG from "$assets/free-icons/table-picnic.svg?raw";
 
-  import { getContext } from "svelte";
-  import { geometricCentroid } from "$lib/utils/mapControls";
   import { getAppState } from "$lib/stores/appState.svelte";
   import { getLocalStorageState } from "$lib/stores/localStorage.svelte";
-  import { collapsedSidebar } from "$lib/stores/SidebarStore";
+  import { getSearchState } from "$lib/stores/SearchState.svelte";
 
   let { feature }: { feature: Feature } = $props();
   let p = feature.properties;
 
-  const mapContext = getContext<{ getMap: () => Map }>("map");
-  const map = mapContext.getMap();
   const appState = getAppState();
   const showImages = true;
   const localStorageState = getLocalStorageState();
+  const searchState = getSearchState();
   let imageContainer: HTMLDivElement | undefined = $state(undefined);
   let imageElement: HTMLImageElement | undefined = $state(undefined);
   let loadingContainer: HTMLDivElement | undefined = $state(undefined);
@@ -35,31 +30,7 @@
   let loadingImage: boolean = $state(true);
 
   function handleClick() {
-    let centroid: LatLngExpression;
-
-    if (feature.geometry.type === "Point") {
-      let coords = feature.geometry.coordinates as Array<number>;
-      let lat = coords[1];
-      let lng = coords[0];
-      centroid = [lat, lng];
-    } else if (feature.geometry.type === "Polygon") {
-      centroid = geometricCentroid(
-        feature.geometry.coordinates[0] as Position[]
-      );
-    } else {
-      console.warn("Unsupported geometry type:", feature.geometry.type);
-      return;
-    }
-
-    if (appState.viewportWidth < 600) {
-      collapsedSidebar.set(true);
-    }
-
-    map.setView(centroid, 19, {
-      animate: true,
-      duration: 0.8,
-    });
-
+    searchState.updateDetailedFeature(feature);
     localStorageState.insertFeature(feature);
   }
 
@@ -126,14 +97,14 @@
       </div>
       <div class="card-content">
         <h3 class="card-title">{p.name}</h3>
-        <div class="details">
+        <dl class="details">
           {@render detail("Building", p["addr:housenumber"])}
           {@render detail("Levels", p["building:levels"])}
           {@render detail("Level", p["level"])}
           {@render detail("Vehicles", p["vehicles"])}
           {@render detail("Capacity", p["Estimated Capacity"])}
           {@render detail("Description", p.description)}
-        </div>
+        </dl>
       </div>
     </div>
     {#if p.image_compressed && showImages}
@@ -171,8 +142,8 @@
 
 {#snippet detail(label: string, value: string | number | undefined)}
   {#if value}
-    <div class="left-detail">{label}</div>
-    <div class="right-detail">{value}</div>
+    <dt class="left-detail">{label}</dt>
+    <dd class="right-detail">{value}</dd>
   {/if}
 {/snippet}
 
@@ -198,7 +169,7 @@
       display: absolute;
       left: 0;
       background-color: gray;
-      max-height: var(--viewport);
+      max-height: var(--viewport-height);
     }
   }
 

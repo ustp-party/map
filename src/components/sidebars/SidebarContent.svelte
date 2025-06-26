@@ -7,6 +7,7 @@
 
   import SearchOption from "$components/buttons/SearchOption.svelte";
   import ResultCards from "./ResultCards.svelte";
+  import DetailedFeature from "./DetailedFeature.svelte";
 
   import { getSearchState } from "$lib/stores/SearchState.svelte";
   import { getLocalStorageState } from "$lib/stores/localStorage.svelte";
@@ -14,22 +15,29 @@
   const searchState = getSearchState();
   const localStorageState = getLocalStorageState();
   let queryLength = $derived(searchState.query.length > 0);
-  let recentlyViewed = $derived([...localStorageState.recentlyViewed].reverse());
+  let recentlyViewed = $derived(
+    [...localStorageState.recentlyViewed].reverse()
+  );
 </script>
 
-{#if searchState.results.length === 0 && queryLength}
+{#if searchState.detailedFeature}
+  <DetailedFeature feature={searchState.detailedFeature} />
+{:else if searchState.results.length === 0 && queryLength}
   <p class="no-results">No results found for "{searchState.query}"</p>
 {:else if searchState.results.length > 0 && queryLength}
-  <h4 class="header">Results ({searchState.results.length})</h4>
-  <ResultCards features={searchState.results} />
-  <p class="support-message">
-    Not what you were looking for?<br />Contact us by posting an
-    <a href="https://github.com/ustp-party/map/issues/new/choose">issue</a>
-    or by sending an email to
-    <a href="mailto:chrisandrei.irag@1.ustp.edu.ph"
-      >chrisandrei.irag@1.ustp.edu.ph</a
-    >
-  </p>
+  <div class="with-results">
+    <h4>Results ({searchState.results.length})</h4>
+
+    <ResultCards features={searchState.results} />
+    <p class="support-message">
+      Not what you were looking for?<br />Contact us by posting an
+      <a href="https://github.com/ustp-party/map/issues/new/choose">issue</a>
+      or by sending an email to
+      <a href="mailto:chrisandrei.irag@1.ustp.edu.ph"
+        >chrisandrei.irag@1.ustp.edu.ph</a
+      >
+    </p>
+  </div>
 {:else}
   <div class="introduction">
     {#if localStorageState.firstVisit}
@@ -38,7 +46,7 @@
       <h3>Welcome back!</h3>
     {/if}
     <p class="message">You might be looking for...</p>
-    <div class="search-options" aria-label="visitor oriented search options"> 
+    <div class="search-options" aria-label="visitor oriented search options">
       {@render featured("Gym", "Gymnasium", StarSVG)}
       {@render featured("Gym Lobby", "Gymnasium Lobby", StarSVG)}
       {@render featured("AVR", "Audio Visual Room", StarSVG)}
@@ -51,7 +59,7 @@
   </div>
   {#if recentlyViewed.length > 0}
     <div class="recently-viewed">
-      <h4 class="header">Recently Viewed</h4>
+      <h4>Recently Viewed</h4>
       <ResultCards features={recentlyViewed} />
     </div>
   {/if}
@@ -64,19 +72,30 @@
 {/snippet}
 
 <style lang="scss">
-  .header {
-    margin: 16px 0 8px 8px;
+  .recently-viewed {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 0 8px;
   }
   .no-results {
     font-size: 0.875rem;
     text-align: center;
-    margin-top: 16px;
+    margin-top: 80px;
   }
+
+  .with-results {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 80px 8px 0 8px;
+  }
+
   .introduction {
     display: flex;
     flex-direction: column;
     align-items: left;
-    margin: 32px;
+    margin: 80px 32px 32px 32px;
     .message {
       font-size: 0.875rem;
     }

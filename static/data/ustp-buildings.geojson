@@ -20,7 +20,8 @@
         "building:levels": "2",
         "sport": "multi",
         "image": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750819151/gym_1_hd_y0kvfr.avif",
-        "image_compressed": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750819150/gym_1_comp_kfvxjw.avif"
+        "image_compressed": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750819150/gym_1_comp_kfvxjw.avif",
+        "accessibility": ["Wheelchair", "Stairs"]
       },
       "geometry": {
         "type": "Polygon",
@@ -49,7 +50,8 @@
         "building:levels": "5",
         "type": "building",
         "image": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750777534/lrc_1_hd_gtuvrv.avif",
-        "image_compressed": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750777533/lrc_1_comp_jkm3mb.avif"
+        "image_compressed": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750777533/lrc_1_comp_jkm3mb.avif",
+        "accessibility": ["Elevator", "Stairs"]
       },
       "geometry": {
         "type": "Polygon",
@@ -109,7 +111,8 @@
         "name": "Sports Complex",
         "type": "building",
         "image": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750820440/sports_complex_1_hd_trwcmc.avif",
-        "image_compressed": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750820440/sports_complex_1_hd_trwcmc.avif"
+        "image_compressed": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750820440/sports_complex_1_hd_trwcmc.avif",
+        "accessibility": ["Wheelchair"]
       },
       "geometry": {
         "type": "Polygon",
@@ -187,7 +190,8 @@
         "building:levels": 5,
         "type": "building",
         "image": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750819648/csm_1_hd_hbuh2f.avif",
-        "image_compressed": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750819646/csm_1_comp_aotyzu.avif"
+        "image_compressed": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750819646/csm_1_comp_aotyzu.avif",
+        "accessibility": ["Wheelchair", "Elevator", "Stairs"]
       },
       "geometry": {
         "type": "Polygon",
@@ -251,7 +255,8 @@
         "name": "Gymnasium Lobby",
         "building:levels": "1",
         "image": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750821418/gym_lobby_1_hd_h1fpiq.avif",
-        "image_compressed": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750821417/gym_lobby_1_comp_qc22nj.avif"
+        "image_compressed": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750821417/gym_lobby_1_comp_qc22nj.avif",
+        "accessibility": ["Stairs"]
       },
       "geometry": {
         "type": "Polygon",
@@ -281,7 +286,8 @@
         "description": "College of Information Technology and Computing (CITC)",
         "type": "building",
         "image": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750765872/citc_1_hd_qxcawh.avif",
-        "image_compressed": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750765871/citc_1_comp_umshsv.avif"
+        "image_compressed": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750765871/citc_1_comp_umshsv.avif",
+        "accessibility": ["Wheelchair", "Elevator", "Stairs"]
       },
       "geometry": {
         "type": "Polygon",
@@ -656,7 +662,8 @@
         "building": "college",
         "name": "Engineering Complex I",
         "type": "building",
-        "building:levels": 6
+        "building:levels": 6,
+        "accessibility": ["Wheelchair", "Elevator", "Stairs"]
       },
       "geometry": {
         "type": "Polygon",
@@ -686,7 +693,8 @@
         "type": "building",
         "building:levels": 8,
         "image": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750776559/cea_2_hd_yltqtk.avif",
-        "image_compressed": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750776558/cea_2_comp_lbzx2w.avif"
+        "image_compressed": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750776558/cea_2_comp_lbzx2w.avif",
+        "accessibility": ["Wheelchair", "Elevator", "Stairs"]
       },
       "geometry": {
         "type": "Polygon",
@@ -728,7 +736,8 @@
         "building:levels": "1",
         "type": "building",
         "image": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750765871/cafet_1_hd_qx5ly3.avif",
-        "image_compressed": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750765871/cafet_1_comp_mugtks.avif"
+        "image_compressed": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750765871/cafet_1_comp_mugtks.avif",
+        "accessibility": ["Wheelchair"]
       },
       "geometry": {
         "type": "Polygon",
@@ -855,7 +864,8 @@
         "type": "building",
         "building:levels": 4,
         "image": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750776607/cot_1_hd_kdtpll.avif",
-        "image_compressed": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750776605/cot_1_comp_syqzit.avif"
+        "image_compressed": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750776605/cot_1_comp_syqzit.avif",
+        "accessibility": ["Stairs"]
       },
       "geometry": {
         "type": "Polygon",
