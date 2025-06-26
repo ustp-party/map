@@ -198,7 +198,7 @@
       display: absolute;
       left: 0;
       background-color: gray;
-      max-height: var(--viewport);
+      max-height: var(--viewport-height);
     }
   }
 

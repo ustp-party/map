@@ -5,8 +5,8 @@
 }
 
 body {
-  --viewport: calc(var(--vh, 1vh) * 100);
-  height: var(--viewport);
+  --viewport-height: calc(var(--vh, 1vh) * 100);
+  height: var(--viewport-height);
 }
 
 /* For tooltips */
