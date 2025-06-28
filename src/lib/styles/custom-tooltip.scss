@@ -60,6 +60,12 @@
 
 .landmark {
   .tooltip-title::before {
+    background-image: url("/data/free-icons/monument.svg");
+  }
+}
+
+.event-center {
+  .tooltip-title::before {
     background-image: url("/data/free-icons/sparkle.svg");
   }
 }
@@ -111,6 +117,17 @@
 }
 
 .landmark-icon {
+  color: #f03a3a;
+  font-size: 1rem;
+  .tooltip-svg {
+    @include flexo();
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
+  }
+}
+
+.event-center-icon {
   @include flexo();
   .tooltip-svg {
     width: 24px;

@@ -9,6 +9,7 @@
   import parkingSVG from "$assets/free-icons/parking.svg?raw";
   import spinnerSVG from "$assets/animated/spinner2.svg?raw";
   import picnicSVG from "$assets/free-icons/table-picnic.svg?raw";
+  import monumentSVG from "$assets/free-icons/monument.svg?raw";
 
   import { getAppState } from "$lib/stores/appState.svelte";
   import { getLocalStorageState } from "$lib/stores/localStorage.svelte";
@@ -91,9 +92,10 @@
     building: buildingSVG,
     Restroom: restroomSVG,
     "Printing Service": printerSVG,
-    Landmark: sparkleSVG,
+    Landmark: monumentSVG,
     parking: parkingSVG,
     bench: picnicSVG,
+    "Event Center": sparkleSVG,
   };
 
   onDestroy(() => {

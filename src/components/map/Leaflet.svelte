@@ -36,6 +36,7 @@
   let restroomsLayer: L.GeoJSON | undefined = undefined;
   let printingServicesLayer: L.GeoJSON | undefined = undefined;
   let landmarksLayer: L.GeoJSON | undefined = undefined;
+  let eventCentersLayer: L.GeoJSON | undefined = undefined;
   let currentTileset: L.TileLayer | undefined = $state();
   let {
     children,
@@ -174,6 +175,14 @@
     if (mapState.enableLandmarks) {
       landmarksLayer = controls
         .setLandmarks(mapState.pointsOfInterest)
+        .addTo(map!);
+    }
+    if (eventCentersLayer) {
+      map?.removeLayer(eventCentersLayer);
+    }
+    if (mapState.enableEventCenters) {
+      eventCentersLayer = controls
+        .setEventCenters(mapState.pointsOfInterest)
         .addTo(map!);
     }
   });

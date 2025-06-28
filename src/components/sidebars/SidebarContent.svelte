@@ -4,6 +4,7 @@
   import RestroomSVG from "$assets/free-icons/restroom.svg?raw";
   import parkingSVG from "$assets/free-icons/parking.svg?raw";
   import sparkleSVG from "$assets/free-icons/sparkle.svg?raw";
+  import monumentSVG from "$assets/free-icons/monument.svg?raw";
 
   import SearchOption from "$components/buttons/SearchOption.svelte";
   import ResultCards from "./ResultCards.svelte";
@@ -61,15 +62,16 @@
     {/if}
     <p class="message">You might be looking for...</p>
     <div class="search-options" aria-label="visitor oriented search options">
-      {@render featured("Gym", "Gymnasium", StarSVG)}
-      {@render featured("Gym Lobby", "Gymnasium Lobby", StarSVG)}
-      {@render featured("PAT", "Performance Arts Theater", StarSVG)}
-      {@render featured("AVR", "Audio Visual Room", StarSVG)}
+      {@render featured("Gym", "Gymnasium", BuildingSVG)}
+      {@render featured("Gym Lobby", "Gymnasium Lobby", BuildingSVG)}
+      {@render featured("PAT", "Performance Arts Theater",  sparkleSVG)}
+      {@render featured("ICT-AVR", "ICT Audio Visual Room",  sparkleSVG)}
       {@render featured("Makerspace", "Makerspace", StarSVG)}
       {@render featured("LRC Bldg", "Learning Resource Center", BuildingSVG)}
       {@render featured("Restrooms", "Restroom", RestroomSVG)}
       {@render featured("Parking", "Parking", parkingSVG)}
-      {@render featured("Landmarks", "Landmarks", sparkleSVG)}
+      {@render featured("Landmarks", "Landmarks", monumentSVG)}
+      {@render featured("Events", "Event Center", sparkleSVG)}
     </div>
   </div>
   {#if recentlyViewed.length > 0}

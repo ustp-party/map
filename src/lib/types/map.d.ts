@@ -20,6 +20,7 @@ export interface MapState {
   enableRestrooms: boolean;
   enablePrintingServices: boolean;
   enableLandmarks: boolean;
+  enableEventCenters: boolean;
 }
 
 export interface Tilesets {

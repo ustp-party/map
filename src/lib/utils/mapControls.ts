@@ -293,6 +293,27 @@ function setLandmarks(landmarks: Feature[]): L.GeoJSON {
   });
 }
 
+function setEventCenters(eventCenters: Feature[]): L.GeoJSON {
+  let eventCentersFiltered = eventCenters.filter(
+    (feature) => feature.properties!.type === "Event Center"
+  );
+  return L.geoJSON(eventCentersFiltered, {
+    pointToLayer: (feature, latlng) => {
+      const { name, description, level }: Properties = feature.properties!;
+
+      const labels = {
+        Description: description,
+        Level: level,
+      };
+      return L.marker(latlng, {
+        icon: icons.EventCenterIcon,
+      }).bindTooltip(tooltipTemplate(name, "event-center", labels), {
+        className: "polygon-label", // optional CSS class
+      });
+    },
+  });
+}
+
 const controls = {
   getCurrentPosition,
   locateMe,
@@ -304,6 +325,7 @@ const controls = {
   setRestrooms,
   setPrintingServices,
   setLandmarks,
+  setEventCenters,
 };
 
 export default controls;
@@ -319,4 +341,5 @@ export {
   setRestrooms,
   setPrintingServices,
   setLandmarks,
+  setEventCenters,
 };
