@@ -205,6 +205,52 @@
         "type": "Restroom",
         "level": "1-3"
       }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [124.657126, 8.484873]
+      },
+      "properties": {
+        "id": 14,
+        "type": "Event Center",
+        "name": "Performance Arts Theater",
+        "description": "Located at the 5th floor the Engineering Complex I",
+        "long_description": "Performance Arts Theater is a multi-purpose venue for various events, including performances, lectures, and gatherings. It is designed to accommodate a wide range of activities and can be used for both formal and informal events.",
+        "level": "5",
+        "accessibility": ["Elevator", "Stairs"]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [124.657480, 8.486228]
+      },
+      "properties": {
+        "id": 15,
+        "type": "Event Center",
+        "name": "ICT Audio Visual Room",
+        "description": "Located at the 4th floor the CITC Bldg",
+        "long_description": "ICT Audio Visual Room is a specialized facility designed for audio-visual presentations, lectures, and multimedia events. It is equipped with advanced technology to support various forms of media and communication.",
+        "level": "4",
+        "accessibility": ["Elevator", "Stairs"]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [124.655728, 8.486666]
+      },
+      "properties": {
+        "id": 16,
+        "type": "Event Center",
+        "name": "Makerspace",
+        "description": "Located at the 4th floor of the LRC Bldg",
+        "level": "4"
+      }
     }
   ]
 }
