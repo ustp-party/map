@@ -48,6 +48,7 @@
           href="https://www.ustp.edu.ph/cdeo/ustp-cagayan-de-oro-360-virtual-tour/"
           >Official 360 Virtual Tour</a
         >
+        <a href="https://liberapay.com/iragca/donate">Donate</a>
       </div>
     </footer>
   </div>
@@ -62,6 +63,7 @@
     <div class="search-options" aria-label="visitor oriented search options">
       {@render featured("Gym", "Gymnasium", StarSVG)}
       {@render featured("Gym Lobby", "Gymnasium Lobby", StarSVG)}
+      {@render featured("PAT", "Performance Arts Theater", StarSVG)}
       {@render featured("AVR", "Audio Visual Room", StarSVG)}
       {@render featured("Makerspace", "Makerspace", StarSVG)}
       {@render featured("LRC Bldg", "Learning Resource Center", BuildingSVG)}
@@ -85,6 +87,11 @@
 {/snippet}
 
 <style lang="scss">
+  a {
+    &:hover {
+      color: var(--info);
+    }
+  }
   .recently-viewed {
     display: flex;
     flex-direction: column;
@@ -153,7 +160,7 @@
 
         &:hover {
           text-decoration: underline;
-          color: var(--text);
+          color: var(--info);
         }
       }
     }
