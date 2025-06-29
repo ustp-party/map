@@ -117,7 +117,7 @@ function geometricCentroid(coordinates: Position[]): [number, number] {
   return [meanLat, meanLng];
 }
 
-function setBuildings(allbuildings: Feature[]): L.GeoJSON {
+function setBuildings(allbuildings: Feature[], callback: Function): L.GeoJSON {
   let buildingslayer = L.geoJSON(allbuildings, {
     style: {
       color: mapTheme.building,
@@ -136,9 +136,13 @@ function setBuildings(allbuildings: Feature[]): L.GeoJSON {
         Levels: levels,
       };
 
-      layer.bindTooltip(tooltipTemplate(name, "building", labels), {
-        className: "polygon-label", // optional CSS class
-      });
+      layer
+        .bindTooltip(tooltipTemplate(name, "building", labels), {
+          className: "polygon-label", // optional CSS class
+        })
+        .on("click", () => {
+          callback(feature);
+        });
     },
   });
 
@@ -162,20 +166,20 @@ function setBuildings(allbuildings: Feature[]): L.GeoJSON {
   return buildingslayer;
 }
 
-function setBenches(benches: Feature[]): L.GeoJSON {
+function setBenches(benches: Feature[], callback: Function): L.GeoJSON {
   return L.geoJSON(benches, {
     style: {
       color: mapTheme.bench,
       weight: 0,
       fillOpacity: 0.5,
     },
-    onEachFeature: ({ properties }, layer) => {
+    onEachFeature: (feature, layer) => {
       const {
         ["Estimated Capacity"]: capacity,
         ["Has roofing"]: roofing,
         ["Has backrest"]: backrest,
         ["Has table"]: table,
-      }: Properties = properties;
+      }: Properties = feature.properties;
 
       const labels = {
         "Estimated Capacity": capacity,
@@ -184,14 +188,21 @@ function setBenches(benches: Feature[]): L.GeoJSON {
         "Has table": table,
       };
 
-      layer.bindTooltip(tooltipTemplate("Benches", "bench", labels), {
-        className: "polygon-label",
-      });
+      layer
+        .bindTooltip(tooltipTemplate("Benches", "bench", labels), {
+          className: "polygon-label",
+        })
+        .on("click", () => {
+          callback(feature);
+        });
     },
   });
 }
 
-function setParkingSpaces(parkingSpaces: Feature[]): L.GeoJSON {
+function setParkingSpaces(
+  parkingSpaces: Feature[],
+  callback: Function
+): L.GeoJSON {
   let parkingLayer = L.geoJSON(parkingSpaces, {
     style: {
       color: mapTheme.parking,
@@ -206,9 +217,13 @@ function setParkingSpaces(parkingSpaces: Feature[]): L.GeoJSON {
           Vehicles: vehicles,
         };
 
-        layer.bindTooltip(tooltipTemplate("Parking Space", "parking", labels), {
-          className: "polygon-label",
-        });
+        layer
+          .bindTooltip(tooltipTemplate("Parking Space", "parking", labels), {
+            className: "polygon-label",
+          })
+          .on("click", () => {
+            callback(feature);
+          });
       }
     },
   });
@@ -227,7 +242,7 @@ function setParkingSpaces(parkingSpaces: Feature[]): L.GeoJSON {
   return parkingLayer;
 }
 
-function setRestrooms(restrooms: Feature[]): L.GeoJSON {
+function setRestrooms(restrooms: Feature[], callback: Function): L.GeoJSON {
   let restroomsFiltered = restrooms.filter(
     (feature) => feature.properties!.type === "Restroom"
   );
@@ -242,14 +257,21 @@ function setRestrooms(restrooms: Feature[]): L.GeoJSON {
 
       return L.marker(latlng, {
         icon: icons.RestroomIcon,
-      }).bindTooltip(tooltipTemplate("Restroom", "restroom", labels), {
-        className: "polygon-label", // optional CSS class
-      });
+      })
+        .bindTooltip(tooltipTemplate("Restroom", "restroom", labels), {
+          className: "polygon-label", // optional CSS class
+        })
+        .on("click", () => {
+          callback(feature);
+        });
     },
   });
 }
 
-function setPrintingServices(printingServices: Feature[]): L.GeoJSON {
+function setPrintingServices(
+  printingServices: Feature[],
+  callback: Function
+): L.GeoJSON {
   let printingServicesFiltered = printingServices.filter(
     (feature) => feature.properties!.type === "Printing Service"
   );
@@ -262,17 +284,21 @@ function setPrintingServices(printingServices: Feature[]): L.GeoJSON {
       };
       return L.marker(latlng, {
         icon: icons.PrintingServiceIcon,
-      }).bindTooltip(
-        tooltipTemplate("Printing Service", "printing-service", labels),
-        {
-          className: "polygon-label",
-        }
-      );
+      })
+        .bindTooltip(
+          tooltipTemplate("Printing Service", "printing-service", labels),
+          {
+            className: "polygon-label",
+          }
+        )
+        .on("click", () => {
+          callback(feature);
+        });
     },
   });
 }
 
-function setLandmarks(landmarks: Feature[]): L.GeoJSON {
+function setLandmarks(landmarks: Feature[], callback: Function): L.GeoJSON {
   let landmarksFiltered = landmarks.filter(
     (feature) => feature.properties!.type === "Landmark"
   );
@@ -286,14 +312,21 @@ function setLandmarks(landmarks: Feature[]): L.GeoJSON {
       };
       return L.marker(latlng, {
         icon: icons.LandmarkIcon,
-      }).bindTooltip(tooltipTemplate(name, "landmark", labels), {
-        className: "polygon-label", // optional CSS class
-      });
+      })
+        .bindTooltip(tooltipTemplate(name, "landmark", labels), {
+          className: "polygon-label", // optional CSS class
+        })
+        .on("click", () => {
+          callback(feature);
+        });
     },
   });
 }
 
-function setEventCenters(eventCenters: Feature[]): L.GeoJSON {
+function setEventCenters(
+  eventCenters: Feature[],
+  callback: Function
+): L.GeoJSON {
   let eventCentersFiltered = eventCenters.filter(
     (feature) => feature.properties!.type === "Event Center"
   );
@@ -307,9 +340,13 @@ function setEventCenters(eventCenters: Feature[]): L.GeoJSON {
       };
       return L.marker(latlng, {
         icon: icons.EventCenterIcon,
-      }).bindTooltip(tooltipTemplate(name, "event-center", labels), {
-        className: "polygon-label", // optional CSS class
-      });
+      })
+        .bindTooltip(tooltipTemplate(name, "event-center", labels), {
+          className: "polygon-label", // optional CSS class
+        })
+        .on("click", () => {
+          callback(feature);
+        });
     },
   });
 }

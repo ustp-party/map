@@ -22,7 +22,9 @@
 </script>
 
 {#if searchState.detailedFeature}
-  <DetailedFeature feature={searchState.detailedFeature} />
+  {#key searchState.detailedFeature}
+    <DetailedFeature feature={searchState.detailedFeature} />
+  {/key}
 {:else if searchState.results.length === 0 && queryLength}
   <p class="no-results">No results found for "{searchState.query}"</p>
 {:else if searchState.results.length > 0 && queryLength}
@@ -64,8 +66,8 @@
     <div class="search-options" aria-label="visitor oriented search options">
       {@render featured("Gym", "Gymnasium", BuildingSVG)}
       {@render featured("Gym Lobby", "Gymnasium Lobby", BuildingSVG)}
-      {@render featured("PAT", "Performance Arts Theater",  sparkleSVG)}
-      {@render featured("ICT-AVR", "ICT Audio Visual Room",  sparkleSVG)}
+      {@render featured("PAT", "Performance Arts Theater", sparkleSVG)}
+      {@render featured("ICT-AVR", "ICT Audio Visual Room", sparkleSVG)}
       {@render featured("Makerspace", "Makerspace", StarSVG)}
       {@render featured("LRC Bldg", "Learning Resource Center", BuildingSVG)}
       {@render featured("Restrooms", "Restroom", RestroomSVG)}

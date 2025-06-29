@@ -2,16 +2,18 @@
   import L from "leaflet";
   import "leaflet/dist/leaflet.css";
   import { onDestroy, onMount } from "svelte";
-  import type { Properties } from "$lib/types/features";
+  import type { Properties, Feature as MapFeature } from "$lib/types/features";
   import type { Snippet } from "svelte";
   import type { Feature } from "geojson";
 
   import { getSearchState } from "$lib/stores/SearchState.svelte";
   import { mapTheme } from "$lib/theme";
   import { getMapState } from "$lib/stores/mapState.svelte";
+  import { getAppState } from "$lib/stores/appState.svelte";
   import controls from "$lib/utils/mapControls";
   import icons from "$components/icons/CustomIcons";
 
+  let appState = getAppState();
   let mapState = getMapState();
   let mapElement: HTMLDivElement;
   let map: L.Map | undefined = $state();
@@ -122,6 +124,11 @@
     }
   });
 
+  function setDetailedFeature(feature: MapFeature): void {
+    searchState.updateDetailedFeature(feature);
+    appState.collapsedSidebar = true;
+  }
+
   // Data viz of all buildings
   $effect(() => {
     if (currentTileset) {
@@ -134,21 +141,27 @@
       map?.removeLayer(allBuildingsLayer);
     }
     if (mapState.enableBuildings) {
-      allBuildingsLayer = controls.setBuildings(mapState.buildings).addTo(map!);
+      allBuildingsLayer = controls
+        .setBuildings(mapState.buildings, setDetailedFeature)
+        .addTo(map!);
     }
 
     if (parkingLayer) {
       map?.removeLayer(parkingLayer);
     }
     if (mapState.enableParking) {
-      parkingLayer = controls.setParkingSpaces(mapState.parking).addTo(map!);
+      parkingLayer = controls
+        .setParkingSpaces(mapState.parking, setDetailedFeature)
+        .addTo(map!);
     }
 
     if (benchesLayer) {
       map?.removeLayer(benchesLayer);
     }
     if (mapState.enableBenches) {
-      benchesLayer = controls.setBenches(mapState.benches).addTo(map!);
+      benchesLayer = controls
+        .setBenches(mapState.benches, setDetailedFeature)
+        .addTo(map!);
     }
 
     if (restroomsLayer) {
@@ -156,7 +169,7 @@
     }
     if (mapState.enableRestrooms) {
       restroomsLayer = controls
-        .setRestrooms(mapState.pointsOfInterest)
+        .setRestrooms(mapState.pointsOfInterest, setDetailedFeature)
         .addTo(map!);
     }
 
@@ -165,7 +178,7 @@
     }
     if (mapState.enablePrintingServices) {
       printingServicesLayer = controls
-        .setPrintingServices(mapState.pointsOfInterest)
+        .setPrintingServices(mapState.pointsOfInterest, setDetailedFeature)
         .addTo(map!);
     }
 
@@ -174,7 +187,7 @@
     }
     if (mapState.enableLandmarks) {
       landmarksLayer = controls
-        .setLandmarks(mapState.pointsOfInterest)
+        .setLandmarks(mapState.pointsOfInterest, setDetailedFeature)
         .addTo(map!);
     }
     if (eventCentersLayer) {
@@ -182,7 +195,7 @@
     }
     if (mapState.enableEventCenters) {
       eventCentersLayer = controls
-        .setEventCenters(mapState.pointsOfInterest)
+        .setEventCenters(mapState.pointsOfInterest, setDetailedFeature)
         .addTo(map!);
     }
   });
