@@ -46,11 +46,14 @@
     children: Snippet;
   } = $props();
 
+  const SEARCH_RESULTS_PANE_NAME = "search-results";
+  const SEACH_RESULTS_PANE_Z_INDEX = "450";
+
   onMount(() => {
     map = L.map(mapElement, { zoomControl: false });
 
-    map.createPane("search-results");
-    map.getPane("search-results")!.style.zIndex = "450";
+    map.createPane(SEARCH_RESULTS_PANE_NAME);
+    map.getPane(SEARCH_RESULTS_PANE_NAME)!.style.zIndex = SEACH_RESULTS_PANE_Z_INDEX;
 
     if (map) {
       if (view && zoom) {
@@ -117,7 +120,7 @@
 
             return L.marker(latlng, {
               icon: icons.HighlightIcon,
-              pane: "search-results",
+              pane: SEARCH_RESULTS_PANE_NAME,
             }).bindTooltip(controls.tooltipTemplate(type, type, labels), {
               className: "marker-label",
             });
