@@ -18,7 +18,7 @@
 </script>
 
 {#if appState.viewportWidth >= 600}
-  {#if appState.collapsedSidebar}
+  {#if !appState.collapsedSidebar}
     <div class="sidebar" transition:slide={{ axis: "x", duration: 100 }}>
       <div class="content">
         <div class="container" aria-label="sidebar content">

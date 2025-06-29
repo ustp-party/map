@@ -126,7 +126,7 @@
 
   function setDetailedFeature(feature: MapFeature): void {
     searchState.updateDetailedFeature(feature);
-    appState.collapsedSidebar = true;
+    appState.collapsedSidebar = false;
   }
 
   // Data viz of all buildings

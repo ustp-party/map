@@ -14,9 +14,9 @@
     class="icon"
   >
     {#if appState.collapsedSidebar}
-      <ArrowIcon direction="left" />
-    {:else}
       <ArrowIcon direction="right" />
+    {:else}
+      <ArrowIcon direction="left" />
     {/if}
   </abbr>
 </button>
@@ -40,10 +40,10 @@
   }
 
   .open {
-    left: -440px;
+    left: 0px;
   }
   .close {
-    left: 0px;
+    left: -440px;
   }
 
   .icon {
