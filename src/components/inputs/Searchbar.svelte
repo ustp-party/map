@@ -10,8 +10,9 @@
   import { createSearchIndex, searchBooks } from "$lib/utils/searchService";
   import { getSearchState } from "$lib/stores/SearchState.svelte";
   import { allFeatures } from "$lib/stores/mapState.svelte";
-  import { collapsedSidebar } from "$lib/stores/SidebarStore";
+  import { getAppState } from "$lib/stores/appState.svelte";
 
+  const appState = getAppState();
   const searchState = getSearchState();
   let searchIndex: any;
   const query = $derived(searchState.query);
@@ -49,7 +50,7 @@
       searchState.updateResults([]);
     } else {
       handleSearch();
-      collapsedSidebar.set(false);
+      appState.collapsedSidebar = false;
     }
   });
 </script>

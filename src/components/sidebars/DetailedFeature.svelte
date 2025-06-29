@@ -13,7 +13,6 @@
   import SvgIcon from "$components/icons/SVGIcon.svelte";
 
   import { geometricCentroid } from "$lib/utils/mapControls";
-  import { collapsedSidebar } from "$lib/stores/SidebarStore";
   import { getAppState } from "$lib/stores/appState.svelte";
   import { getMapState } from "$lib/stores/mapState.svelte";
 
@@ -51,7 +50,7 @@
     }
 
     if (appState.viewportWidth < 600) {
-      collapsedSidebar.set(true);
+      appState.collapsedSidebar = true;
     }
 
     mapState.map!.setView(centroid, 19, {
@@ -109,14 +108,14 @@
       <h5>{p.description}</h5>
     </header>
     <main>
+      <p>
+        {#if p.long_description}
+          {p.long_description}
+        {:else}
+          <em>No detailed description available.</em>
+        {/if}
+      </p>
       <div class="right-details">
-        <p>
-          {#if p.long_description}
-            {p.long_description}
-          {:else}
-            <em>No detailed description available.</em>
-          {/if}
-        </p>
         <dl>
           {@render detail("Building", p["addr:housenumber"])}
           {@render detail("Levels", p["building:levels"])}
@@ -124,30 +123,29 @@
           {@render detail("Vehicles", p["vehicles"])}
           {@render detail("Capacity", p["Estimated Capacity"])}
         </dl>
+        <menu class="controls-menu">
+          <li>
+            <abbr title="Find and zoom to this location on the map">
+              <button id="locate-btn" class="menu-item" onclick={handleClick}>
+                <div class="icon-container">
+                  <SvgIcon>{@html exploreIcon}</SvgIcon>
+                </div>
+                <label for="locate-btn">Find</label></button
+              >
+            </abbr>
+          </li>
+          <li>
+            <abbr title="Share this location (coming soon)">
+              <button id="share-btn" class="menu-item" disabled>
+                <div class="icon-container">
+                  <SvgIcon>{@html shareIcon}</SvgIcon>
+                </div>
+                <label for="share-btn">Share</label></button
+              >
+            </abbr>
+          </li>
+        </menu>
       </div>
-
-      <menu class="controls-menu">
-        <li>
-          <abbr title="Find and zoom to this location on the map">
-            <button id="locate-btn" class="menu-item" onclick={handleClick}>
-              <div class="icon-container">
-                <SvgIcon>{@html exploreIcon}</SvgIcon>
-              </div>
-              <label for="locate-btn">Find</label></button
-            >
-          </abbr>
-        </li>
-        <li>
-          <abbr title="Share this location (coming soon)">
-            <button id="share-btn" class="menu-item" disabled>
-              <div class="icon-container">
-                <SvgIcon>{@html shareIcon}</SvgIcon>
-              </div>
-              <label for="share-btn">Share</label></button
-            >
-          </abbr>
-        </li>
-      </menu>
     </main>
     <div class="accessibility-options">
       {#if p.accessibility && p.accessibility.length > 0}
@@ -229,7 +227,7 @@
 
     .content {
       & > * {
-        padding: 16px;
+        padding: 16px 32px;
         border-bottom: 1px solid var(--border);
       }
 
@@ -242,22 +240,23 @@
           font-weight: 500;
         }
       }
+      p {
+        margin: 0;
+        font-size: medium;
+        line-height: 1.5;
+      }
 
       main {
         display: flex;
-        justify-content: space-between;
-        gap: 8px;
+        flex-direction: column;
+        gap: 16px;
 
         .right-details {
           display: flex;
-          flex-direction: column;
+          flex-direction: row;
+          justify-content: space-between;
           gap: 16px;
           width: 100%;
-          p {
-            margin: 0;
-            font-size: medium;
-            line-height: 1.5;
-          }
           dl {
             display: grid;
             grid-template-columns: min-content 1fr;

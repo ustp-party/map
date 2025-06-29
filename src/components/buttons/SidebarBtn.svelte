@@ -1,14 +1,19 @@
 <script lang="ts">
   import ArrowIcon from "$components/icons/ArrowIcon.svelte";
-  import { collapsedSidebar } from "$lib/stores/SidebarStore";
+  import { getAppState } from "$lib/stores/appState.svelte";
+
+  const appState = getAppState();
 </script>
 
 <button
-  class={"sidebar_btn" + ($collapsedSidebar ? " close" : " open")}
-  on:click={() => collapsedSidebar.update((value) => !value)}
+  class={"sidebar_btn" + (appState.collapsedSidebar ? " close" : " open")}
+  on:click={() => (appState.collapsedSidebar = !appState.collapsedSidebar)}
 >
-  <abbr title={`${$collapsedSidebar ? "Open" : "Close"} sidebar`} class="icon">
-    {#if $collapsedSidebar}
+  <abbr
+    title={`${appState.collapsedSidebar ? "Open" : "Close"} sidebar`}
+    class="icon"
+  >
+    {#if appState.collapsedSidebar}
       <ArrowIcon direction="right" />
     {:else}
       <ArrowIcon direction="left" />

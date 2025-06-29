@@ -6,7 +6,6 @@
   import SidebarContent from "./SidebarContent.svelte";
 
   import { getAppState } from "$lib/stores/appState.svelte";
-  import { collapsedSidebar } from "$lib/stores/SidebarStore";
 
   const appState = getAppState();
 
@@ -19,7 +18,7 @@
 </script>
 
 {#if appState.viewportWidth >= 600}
-  {#if !$collapsedSidebar}
+  {#if !appState.collapsedSidebar}
     <div class="sidebar" transition:slide={{ axis: "x", duration: 100 }}>
       <div class="content">
         <div class="container" aria-label="sidebar content">
@@ -44,14 +43,18 @@
     display: flex;
     flex-direction: column;
     box-shadow: var(--box-shadow);
+    padding-bottom: 32px;
 
     .content {
       // padding: 0 8px 8px 8px;
       max-width: 100%;
+      height: 100%;
+
       .container {
         display: flex;
         flex-direction: column;
         gap: 8px;
+        height: 100%;
         // padding-top: 64px;
       }
     }

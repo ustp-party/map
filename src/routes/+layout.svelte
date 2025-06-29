@@ -9,12 +9,10 @@
   import { onMount } from "svelte";
 
   import { setSearchState } from "$lib/stores/SearchState.svelte";
-  import { setAppState } from "$lib/stores/appState.svelte";
   import { setLocalStorageState } from "$lib/stores/localStorage.svelte";
   import { getLocalStorageState } from "$lib/stores/localStorage.svelte";
-  import { setMapState } from "$lib/stores/mapState.svelte";
-  import { getMapState } from "$lib/stores/mapState.svelte";
-  import { collapsedSidebar } from "$lib/stores/SidebarStore";
+  import { setMapState, getMapState } from "$lib/stores/mapState.svelte";
+  import { setAppState, getAppState } from "$lib/stores/appState.svelte";
 
   setSearchState();
   setAppState();
@@ -22,7 +20,8 @@
   setMapState();
 
   let localStorageState = getLocalStorageState();
-  let mapState = getMapState();
+  const mapState = getMapState();
+  const appState = getAppState();
 
   onMount(() => {
     if (prefersDarkMode()) {
@@ -42,7 +41,7 @@
     setViewportHeight();
 
     if (localStorageState.firstVisit) {
-      collapsedSidebar.set(false);
+      appState.collapsedSidebar = true;
     }
   });
 
@@ -51,7 +50,10 @@
 
 <svelte:head>
   <title>USTP CDO Campus Map</title>
-  <meta name="google-site-verification" content="CQ4rJlp_JKcfkSbQjCTQX0pEP2vlCur2bR7EEkYrTps" />
+  <meta
+    name="google-site-verification"
+    content="CQ4rJlp_JKcfkSbQjCTQX0pEP2vlCur2bR7EEkYrTps"
+  />
   <meta name="description" content="Interactive campus map of USTP." />
   <meta
     name="keywords"

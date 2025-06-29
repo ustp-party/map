@@ -606,7 +606,7 @@
       "type": "Feature",
       "properties": {
         "@id": "way/427550457",
-        "addr:housenumber": "37",
+        "addr:housenumber": 45,
         "addr:place": "University of Science and Technology of Southern Philippines",
         "building": "college",
         "name": "FAB LAB building",

@@ -5,6 +5,7 @@ import ripples from "$assets/animated/ripples.svg?raw";
 import restroomSVG from "$assets/free-icons/restroom.svg?raw";
 import parkingSVG from "$assets/free-icons/parking.svg?raw";
 import printerSVG from "$assets/free-icons/printer.svg?raw";
+import monumentSVG from "$assets/free-icons/monument.svg?raw"
 
 interface CustomIcons {
   LocationCrosshairs: L.Icon;
@@ -45,9 +46,9 @@ const icons = {
   }),
   LandmarkIcon: L.divIcon({
     className: "landmark-icon",
-    html: `<div class="tooltip-svg"></div>`,
+    html: `<div class="tooltip-svg">${monumentSVG}</div>`,
     // iconSize: [24, 24],
-    iconAnchor: [9, 9],
+    iconAnchor: [12, 12],
     popupAnchor: [0, 0],
   }),
   HighlightIcon: L.divIcon({
@@ -55,6 +56,13 @@ const icons = {
     html: ripples,
     iconSize: [64, 64],
     iconAnchor: [32, 32],
+    popupAnchor: [0, 0],
+  }),
+  EventCenterIcon: L.divIcon({
+    className: "event-center-icon",
+    html: `<div class="tooltip-svg"></div>`,
+    // iconSize: [24, 24],
+    iconAnchor: [9, 9],
     popupAnchor: [0, 0],
   }),
 };

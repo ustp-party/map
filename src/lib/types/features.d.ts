@@ -15,7 +15,7 @@ export interface Properties {
   name: string;
   description: string;
   long_description?: string;
-  type: string | "Restroom" | "Printing Service" | "Landmark" | "Building";
+  type: string | "Restroom" | "Printing Service" | "Landmark" | "Building" | "Event Center";
   "addr:housenumber"?: string;
   "addr:place"?: string;
   "building:levels"?: string;
