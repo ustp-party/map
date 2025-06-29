@@ -7,10 +7,12 @@
   import parkingSVG from "$assets/free-icons/parking.svg?raw";
   import sparkleSVG from "$assets/free-icons/sparkle.svg?raw";
   import monumentSVG from "$assets/free-icons/monument.svg?raw";
+  import chevronRightSVG from "$assets/material-icons/chevron-right.svg?raw";
 
   import SearchOption from "$components/buttons/SearchOption.svelte";
   import ResultCards from "./ResultCards.svelte";
   import DetailedFeature from "./DetailedFeature.svelte";
+  import SvgIcon from "$components/icons/SVGIcon.svelte";
 
   import { getSearchState } from "$lib/stores/SearchState.svelte";
   import { getLocalStorageState } from "$lib/stores/localStorage.svelte";
@@ -57,7 +59,14 @@
   </div>
   {#if recentlyViewed.length > 0}
     <details class="recently-viewed">
-      <summary>Recently Viewed</summary>
+      <summary>
+        <span>
+          <SvgIcon>
+            {@html chevronRightSVG}
+          </SvgIcon>
+        </span>
+        Recently Viewed</summary
+      >
       <ResultCards features={recentlyViewed} />
     </details>
   {/if}
@@ -78,13 +87,22 @@
     gap: 8px;
     margin: 0 8px;
     margin-bottom: 32px;
+
+    &[open] span {
+      transform: rotate(90deg);
+      transition: transform 0.2s ease;
+    }
+
     summary {
+      list-style: none;
       font-weight: 600;
       font-size: 0.875rem;
       cursor: pointer;
       padding: 8px 0;
       border-bottom: 1px solid var(--border);
       margin: 0 16px 16px 16px;
+      display: flex;
+      align-items: center;
     }
   }
   .no-results {
