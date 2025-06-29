@@ -64,7 +64,7 @@
           aria-label="Clear search input"
           onclick={() => searchState.updateDetailedFeature(undefined)}
         >
-          <SvgIcon size={24} alt="Clear search input">
+          <SvgIcon alt="Clear search input" fixed>
             {@html arrowBackSVG}
           </SvgIcon>
         </button>
