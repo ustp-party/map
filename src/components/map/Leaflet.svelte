@@ -49,6 +49,9 @@
   onMount(() => {
     map = L.map(mapElement, { zoomControl: false });
 
+    map.createPane("search-results");
+    map.getPane("search-results")!.style.zIndex = "450";
+
     if (map) {
       if (view && zoom) {
         map.setView(view, zoom);
@@ -112,12 +115,12 @@
               Level: level,
             };
 
-            return L.marker(latlng, { icon: icons.HighlightIcon }).bindTooltip(
-              controls.tooltipTemplate(type, type, labels),
-              {
-                className: "marker-label",
-              }
-            );
+            return L.marker(latlng, {
+              icon: icons.HighlightIcon,
+              pane: "search-results",
+            }).bindTooltip(controls.tooltipTemplate(type, type, labels), {
+              className: "marker-label",
+            });
           },
         }).addTo(map!);
       }, 700);
