@@ -1,5 +1,6 @@
 <script lang="ts">
   import SidebarContent from "./SidebarContent.svelte";
+  import Footer from "./Footer.svelte";
   import { getAppState } from "$lib/stores/appState.svelte";
 
   const appState = getAppState();
@@ -114,6 +115,9 @@
     .container {
       height: calc(100% - 40px);
       overflow: auto;
+      display: flex;
+      flex-direction: column;
+      padding-bottom: 32px;
       // padding-left: clamp(4px, 2vw + 1px, 8px);
       // padding-right: clamp(4px, 2vw + 1px, 8px);
     }

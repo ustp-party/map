@@ -43,14 +43,18 @@
     display: flex;
     flex-direction: column;
     box-shadow: var(--box-shadow);
+    padding-bottom: 32px;
 
     .content {
       // padding: 0 8px 8px 8px;
       max-width: 100%;
+      height: 100%;
+
       .container {
         display: flex;
         flex-direction: column;
         gap: 8px;
+        height: 100%;
         // padding-top: 64px;
       }
     }

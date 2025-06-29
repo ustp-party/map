@@ -1,4 +1,6 @@
 <script lang="ts">
+  import Footer from "./Footer.svelte";
+
   import StarSVG from "$assets/free-icons/star.svg?raw";
   import BuildingSVG from "$assets/free-icons/building.svg?raw";
   import RestroomSVG from "$assets/free-icons/restroom.svg?raw";
@@ -30,30 +32,7 @@
 {:else if searchState.results.length > 0 && queryLength}
   <div class="with-results">
     <h4>Results ({searchState.results.length})</h4>
-
     <ResultCards features={searchState.results} />
-    <footer class="footer">
-      <div>
-        Not what you were looking for or the data is wrong?<br />Contact us by
-        posting an
-        <a href="https://github.com/ustp-party/map/issues/new/choose">issue</a>
-        or by sending an email to
-        <a href="mailto:chrisandrei.irag@1.ustp.edu.ph"
-          >chrisandrei.irag@1.ustp.edu.ph</a
-        >
-      </div>
-      <div class="other-links">
-        <a
-          href="https://github.com/ustp-party/map/blob/master/.github/CONTRIBUTING.md"
-          >Contribute</a
-        >
-        <a
-          href="https://www.ustp.edu.ph/cdeo/ustp-cagayan-de-oro-360-virtual-tour/"
-          >Official 360 Virtual Tour</a
-        >
-        <a href="https://liberapay.com/iragca/donate">Donate</a>
-      </div>
-    </footer>
   </div>
 {:else}
   <div class="introduction">
@@ -77,12 +56,14 @@
     </div>
   </div>
   {#if recentlyViewed.length > 0}
-    <div class="recently-viewed">
-      <h4>Recently Viewed</h4>
+    <details class="recently-viewed">
+      <summary>Recently Viewed</summary>
       <ResultCards features={recentlyViewed} />
-    </div>
+    </details>
   {/if}
 {/if}
+
+<Footer />
 
 {#snippet featured(name: string, value: string, icon: string)}
   <SearchOption {name} {value}>
@@ -91,16 +72,20 @@
 {/snippet}
 
 <style lang="scss">
-  a {
-    &:hover {
-      color: var(--info);
-    }
-  }
   .recently-viewed {
     display: flex;
     flex-direction: column;
     gap: 8px;
     margin: 0 8px;
+    margin-bottom: 32px;
+    summary {
+      font-weight: 600;
+      font-size: 0.875rem;
+      cursor: pointer;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+      margin: 0 16px 16px 16px;
+    }
   }
   .no-results {
     font-size: 0.875rem;
@@ -112,7 +97,12 @@
     display: flex;
     flex-direction: column;
     gap: 8px;
-    margin: 80px 8px 0 8px;
+    margin: 80px 8px 32px 8px;
+
+    @media (max-width: 599px) {
+      margin: 8px;
+      margin-bottom: 32px;
+    }
   }
 
   .introduction {
@@ -120,6 +110,10 @@
     flex-direction: column;
     align-items: left;
     margin: 80px 32px 32px 32px;
+
+    @media (max-width: 599px) {
+      margin: 16px 16px 32px 16px;
+    }
     .message {
       font-size: 0.875rem;
     }
@@ -130,43 +124,6 @@
       flex-wrap: wrap;
       gap: 4px;
       margin-top: 16px;
-    }
-  }
-
-  .footer {
-    padding: 10px;
-    text-align: center;
-    color: var(--text-secondary);
-    font-size: small;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-
-    .other-links {
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      gap: 8px;
-
-      a {
-        font-weight: 500;
-        color: var(--text-secondary);
-        text-decoration: none;
-
-        &::before {
-          content: "[";
-          color: var(--text);
-        }
-        &::after {
-          content: "]";
-          color: var(--text);
-        }
-
-        &:hover {
-          text-decoration: underline;
-          color: var(--info);
-        }
-      }
     }
   }
 </style>
