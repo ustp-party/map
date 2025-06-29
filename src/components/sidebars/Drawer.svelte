@@ -1,7 +1,8 @@
 <script lang="ts">
   import SidebarContent from "./SidebarContent.svelte";
-  import { collapsedSidebar } from "$lib/stores/SidebarStore";
+  import { getAppState } from "$lib/stores/appState.svelte";
 
+  const appState = getAppState();
   let panel: HTMLElement | null = null;
   let startY = 0;
   let currentY = $state(0);
@@ -37,11 +38,11 @@
     if (offsetY > 100) {
       // Close it fully (just show handle)
       panel!.style.transform = `translateY(calc(100% - 40px))`;
-      collapsedSidebar.set(true);
+      appState.collapsedSidebar = true
     } else {
       // Snap open
       panel!.style.transform = `translateY(0)`;
-      collapsedSidebar.set(false);
+      appState.collapsedSidebar = false;
     }
 
     offsetY = 0;
@@ -54,7 +55,7 @@
   }
 
   $effect(() => {
-    if ($collapsedSidebar) {
+    if (appState.collapsedSidebar) {
       panel!.style.transition = "transform 0.3s ease";
       panel!.style.transform = `translateY(calc(100% - 40px))`;
     } else {

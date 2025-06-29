@@ -13,7 +13,6 @@
   import SvgIcon from "$components/icons/SVGIcon.svelte";
 
   import { geometricCentroid } from "$lib/utils/mapControls";
-  import { collapsedSidebar } from "$lib/stores/SidebarStore";
   import { getAppState } from "$lib/stores/appState.svelte";
   import { getMapState } from "$lib/stores/mapState.svelte";
 
@@ -51,7 +50,7 @@
     }
 
     if (appState.viewportWidth < 600) {
-      collapsedSidebar.set(true);
+      appState.collapsedSidebar = true;
     }
 
     mapState.map!.setView(centroid, 19, {

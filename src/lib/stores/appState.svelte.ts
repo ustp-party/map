@@ -5,6 +5,7 @@ interface AppState {
   viewportWidth: number;
   viewportHeight: number;
   updateViewportWidth: () => void;
+  collapsedSidebar: boolean;
 }
 
 class AppStateClass implements AppState {
@@ -14,6 +15,7 @@ class AppStateClass implements AppState {
   updateViewportWidth = () => {
     this.viewportWidth = window.innerWidth;
   };
+  collapsedSidebar = $state(false);
 }
 
 const DEFAULT_KEY = "$_app_state";
