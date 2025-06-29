@@ -88,12 +88,12 @@
     <label for="Landmarks">Landmarks</label>
     <input
       type="checkbox"
-      id="Event Centers"
+      id="event-centers"
       name="enabled features"
       value="Event Centers"
       bind:checked={mapState.enableEventCenters}
     />
-    <label for="Event Centers">Event Centers</label>
+    <label for="event-centers">Event Centers</label>
   </fieldset>
 </form>
 
