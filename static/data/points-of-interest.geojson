@@ -249,7 +249,9 @@
         "type": "Event Center",
         "name": "Makerspace",
         "description": "Located at the 4th floor of the LRC Bldg",
-        "level": "4"
+        "long_description": "Makerspace is a collaborative workspace equipped with tools and resources for creative projects, prototyping, and innovation. It provides a hands-on environment for individuals to design, build, and experiment with various materials and technologies.",
+        "level": "4",
+        "accessibility": ["Elevator", "Stairs"]
       }
     }
   ]
