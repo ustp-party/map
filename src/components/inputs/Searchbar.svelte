@@ -109,7 +109,7 @@
     background-color: var(--bg-accent);
     border: 1px solid var(--border);
     border-radius: 25px;
-    padding: 8px 16px;
+    padding: 0px 16px;
     align-items: center;
     width: clamp(80px, 100%, 400px);
     height: 48px;
@@ -118,6 +118,9 @@
     margin-right: clamp(4px, 5vw, 16px);
     box-shadow: var(--box-shadow);
 
+    div {
+      height: 100%;
+    }
     input {
       width: 100%;
       height: 100%;
@@ -144,6 +147,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    height: 100%;
 
     &:hover {
       color: var(--icon-color);
