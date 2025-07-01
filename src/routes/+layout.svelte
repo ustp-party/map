@@ -9,8 +9,7 @@
   import { onMount } from "svelte";
 
   import { setSearchState } from "$lib/stores/SearchState.svelte";
-  import { setLocalStorageState } from "$lib/stores/localStorage.svelte";
-  import { getLocalStorageState } from "$lib/stores/localStorage.svelte";
+  import { setLocalStorageState, getLocalStorageState } from "$lib/stores/localStorage.svelte";
   import { setMapState, getMapState } from "$lib/stores/mapState.svelte";
   import { setAppState, getAppState } from "$lib/stores/appState.svelte";
 
