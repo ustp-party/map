@@ -41,7 +41,6 @@
 
     if (id && $allFeatures) {
       const feature = $allFeatures.find((f: Feature) => f.id === id);
-      console.log(id);
       if (feature) {
         searchState.updateDetailedFeature(feature);
         searchState.updateQuery(feature.properties.name);
