@@ -40,7 +40,7 @@
     setViewportHeight();
 
     if (localStorageState.firstVisit) {
-      appState.collapsedSidebar = true;
+      appState.collapsedSidebar = false;
     }
   });
 
