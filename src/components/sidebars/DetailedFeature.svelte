@@ -416,6 +416,10 @@
     }
   }
 
+  #share-btn {
+    anchor-name: --share-btn;
+  }
+
   #clipboard-notification {
     border: none;
 
@@ -424,10 +428,14 @@
     font-weight: 600;
     margin: 0;
     inset: auto;
-
     border-radius: 4px;
-    transform: translate(-50%, calc(-100% - 8px));
     box-shadow: var(--box-shadow);
+    align-self: auto;
+    position: absolute;
+    position-anchor: --share-btn;
+    top: anchor(top);
+    left: anchor(left);
+    transform: translate(-50%, -150%);
   }
 
   .clipboard {
