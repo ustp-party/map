@@ -52,6 +52,11 @@
       history.pushState({}, "", path);
     }
   });
+
+  function closeDialog() {
+    dialog?.close();
+    appState.collapsedSidebar = false;
+  }
 </script>
 
 <div class="viewport">
@@ -80,17 +85,12 @@
   </Leaflet>
 </div>
 
-<dialog
-  class="error-message"
-  bind:this={dialog}
-  closedby="any"
-  onclick={() => dialog?.close()}
->
+<dialog class="error-message" bind:this={dialog} closedby="any">
   <SvgIcon size={32} alt="Error" fixed>
     {@html questionMarkSVG}
   </SvgIcon>
   This location does not exist or has been deleted.
-  <button>OK</button>
+  <button onclick={closeDialog}>OK</button>
 </dialog>
 
 <style lang="scss">
