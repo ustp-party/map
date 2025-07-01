@@ -32,7 +32,7 @@
     p = feature.properties;
   }
 
-  function handleClick() {
+  function handleFind() {
     let centroid: LatLngExpression;
 
     if (feature.geometry.type === "Point") {
@@ -126,7 +126,7 @@
         <menu class="controls-menu">
           <li>
             <abbr title="Find and zoom to this location on the map">
-              <button id="locate-btn" class="menu-item" onclick={handleClick}>
+              <button id="locate-btn" class="menu-item" onclick={handleFind}>
                 <div class="icon-container">
                   <SvgIcon>{@html exploreIcon}</SvgIcon>
                 </div>
