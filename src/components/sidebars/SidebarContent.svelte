@@ -65,7 +65,7 @@
             {@html chevronRightSVG}
           </SvgIcon>
         </span>
-        Recently Viewed</summary
+        Recently viewed</summary
       >
       <ResultCards features={recentlyViewed} />
     </details>

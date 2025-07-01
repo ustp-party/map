@@ -40,6 +40,7 @@ abbr {
   --bg: rgba(202, 240, 248, 1);
   --bg-accent: rgba(249, 249, 249, 1);
   --bg-accent-hover: rgb(239, 239, 239);
+  --bg-accent-active: rgb(220, 220, 220);
 
   --btn-hover: rgb(0, 80, 157, 1);
   --btn-active: rgb(0, 62, 119);
@@ -48,8 +49,14 @@ abbr {
     0 1px 3px 1px rgba(60, 64, 67, 0.15);
 
   --danger: oklch(0.5 0.17 30);
-  --warning: oklch(0.5 0.17 100);
+  --danger-bg: oklch(92.81% 0.05264 30.253);
+  --warning: hsl(45, 37%, 47%);
+  --warning-bg: hsl(54, 100%, 90%);
+  --warning-accent: hsl(54, 100%, 80%);
+  --warning-accent-hover: hsl(54, 100%, 70%);
+  --warning-accent-active: hsl(54, 100%, 60%);
   --success: oklch(0.5 0.17 160);
+  --success-bg: oklch(92.81% 0.05264 164.253);
   --info: oklch(0.5 0.17 260);
 
   font-family: "Roboto", "Arial", sans-serif;
@@ -99,16 +106,19 @@ a {
     --bg: rgb(28, 27, 34);
     --bg-accent: rgb(52, 51, 61);
     --bg-accent-hover: rgb(66, 65, 80);
+    --bg-accent-active: rgb(80, 79, 95);
 
     --btn-hover: rgb(184, 222, 230);
     --btn-active: rgb(134, 163, 168);
 
-    --box-shadow: 0 1px 2px rgba(255, 255, 255, 0.3),
-      0 1px 3px 1px rgba(255, 255, 255, 0.15);
+    --box-shadow: none;
 
-    --danger: oklch(0.7 0.17 30);
+    --danger: oklch(91.059% 0.03794 17.722);
+    --danger-bg: oklch(45.781% 0.14815 25.207);
     --warning: oklch(0.7 0.17 100);
+    --warning-bg: oklch(40.163% 0.0435 101.139);
     --success: oklch(0.7 0.17 160);
+    --success-bg: oklch(37.067% 0.03461 169.936);
     --info: oklch(0.7 0.17 260);
   }
 }

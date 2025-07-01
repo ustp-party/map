@@ -20,6 +20,8 @@
   const mapState = getMapState();
   const { feature }: { feature: Feature } = $props();
   let dialog: HTMLDialogElement | undefined = $state(undefined);
+  let clipboardNotification: HTMLDivElement | undefined = $state(undefined);
+  let failedCopy: boolean = $state(false);
   let p = $state<Properties>({
     name: "Loading...",
     description: "Please wait while the feature loads.",
@@ -32,7 +34,7 @@
     p = feature.properties;
   }
 
-  function handleClick() {
+  function handleFind() {
     let centroid: LatLngExpression;
 
     if (feature.geometry.type === "Point") {
@@ -59,8 +61,44 @@
     });
   }
 
-  // Will be supersed by the <dialog> attribute `closedby="any"` in the future
-  // when it is widely supported
+  function handleShare() {
+    const baseURL = window.location.origin;
+    const featureID = feature.id;
+    async function copyToClipboard(text: string) {
+      try {
+        await navigator.clipboard.writeText(text);
+        failedCopy = false;
+
+        if (clipboardNotification) {
+          clipboardNotification.showPopover();
+          setTimeout(() => {
+            clipboardNotification?.hidePopover();
+          }, 2000);
+        }
+      } catch (err) {
+        console.error("Failed to copy!", err);
+        failedCopy = true;
+        if (clipboardNotification) {
+          clipboardNotification.innerText = "Failed to copy link.";
+        }
+      }
+    }
+    if (!featureID) {
+      console.warn("Feature ID is not available.");
+      failedCopy = true;
+      if (clipboardNotification) {
+        clipboardNotification.innerText =
+          "Failed to copy link. Feature ID is not available.";
+      }
+      return;
+    }
+    copyToClipboard(`${baseURL}/?id=${featureID.replace("/", "/").trim()}`);
+  }
+
+  // Will be superseded by the <dialog> attribute `closedby="any"`
+  // in the future when it is widely supported.
+  // WHY is this a dialog?--I plan to add more pictures
+  // and make it a gallery in the future.
   function closeDialog(e: MouseEvent | TouchEvent) {
     if (dialog) {
       const dimensions = dialog.getBoundingClientRect();
@@ -126,7 +164,7 @@
         <menu class="controls-menu">
           <li>
             <abbr title="Find and zoom to this location on the map">
-              <button id="locate-btn" class="menu-item" onclick={handleClick}>
+              <button id="locate-btn" class="menu-item" onclick={handleFind}>
                 <div class="icon-container">
                   <SvgIcon>{@html exploreIcon}</SvgIcon>
                 </div>
@@ -135,8 +173,21 @@
             </abbr>
           </li>
           <li>
-            <abbr title="Share this location (coming soon)">
-              <button id="share-btn" class="menu-item" disabled>
+            <abbr title="Share this location">
+              <div
+                popover
+                id="clipboard-notification"
+                class={`clipboard ${failedCopy ? "failed" : ""}`}
+                bind:this={clipboardNotification}
+              >
+                Link to location copied!
+              </div>
+              <button
+                id="share-btn"
+                class="menu-item"
+                onclick={handleShare}
+                popovertarget="clipboard-notification"
+              >
                 <div class="icon-container">
                   <SvgIcon>{@html shareIcon}</SvgIcon>
                 </div>
@@ -297,10 +348,6 @@
               background-color: var(--bg-accent);
               border-radius: 50%;
               box-shadow: var(--box-shadow);
-
-              @media (prefers-color-scheme: dark) {
-                box-shadow: none;
-              }
             }
 
             &:hover,
@@ -311,6 +358,12 @@
             &:hover {
               .icon-container {
                 background-color: var(--bg-accent-hover);
+              }
+            }
+
+            &:active {
+              .icon-container {
+                background-color: var(--bg-accent-active);
               }
             }
           }
@@ -360,6 +413,30 @@
 
     &::backdrop {
       background-color: rgba(0, 0, 0, 0.8);
+    }
+  }
+
+  #clipboard-notification {
+    border: none;
+
+    padding: 0.5em 1em;
+    font-size: x-small;
+    font-weight: 600;
+    margin: 0;
+    inset: auto;
+
+    border-radius: 4px;
+    transform: translate(-50%, calc(-100% - 8px));
+    box-shadow: var(--box-shadow);
+  }
+
+  .clipboard {
+    color: var(--success);
+    background-color: var(--success-bg);
+
+    &.failed {
+      color: var(--danger);
+      background-color: var(--danger-bg);
     }
   }
 </style>
