@@ -33,7 +33,7 @@
     overflow: visible;
   }
 
-  .svg-icon.fixed {
+  .svg-icon .fixed {
     color: var(--icon-color);
   }
 </style>

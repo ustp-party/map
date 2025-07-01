@@ -50,7 +50,11 @@ abbr {
 
   --danger: oklch(0.5 0.17 30);
   --danger-bg: oklch(92.81% 0.05264 30.253);
-  --warning: oklch(0.5 0.17 100);
+  --warning: hsl(45, 37%, 47%);
+  --warning-bg: hsl(54, 100%, 90%);
+  --warning-accent: hsl(54, 100%, 80%);
+  --warning-accent-hover: hsl(54, 100%, 70%);
+  --warning-accent-active: hsl(54, 100%, 60%);
   --success: oklch(0.5 0.17 160);
   --success-bg: oklch(92.81% 0.05264 164.253);
   --info: oklch(0.5 0.17 260);
@@ -112,6 +116,7 @@ a {
     --danger: oklch(91.059% 0.03794 17.722);
     --danger-bg: oklch(45.781% 0.14815 25.207);
     --warning: oklch(0.7 0.17 100);
+    --warning-bg: oklch(40.163% 0.0435 101.139);
     --success: oklch(0.7 0.17 160);
     --success-bg: oklch(37.067% 0.03461 169.936);
     --info: oklch(0.7 0.17 260);

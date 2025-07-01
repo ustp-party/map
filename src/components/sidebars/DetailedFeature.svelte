@@ -92,7 +92,7 @@
       }
       return;
     }
-    copyToClipboard(`${baseURL}/?id=${featureID.replace("/", "%").trim()}`);
+    copyToClipboard(`${baseURL}/?id=${featureID.replace("/", "/").trim()}`);
   }
 
   // Will be superseded by the <dialog> attribute `closedby="any"`
