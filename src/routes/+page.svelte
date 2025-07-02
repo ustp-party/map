@@ -19,6 +19,7 @@
   import { getSearchState } from "$lib/stores/SearchState.svelte";
   import { allFeatures } from "$lib/stores/mapState.svelte";
   import featuresCallbacks from "$lib/utils/features";
+  import LoadingPage from "$components/loaders/LoadingPage.svelte";
 
   const dataPromise = (async () => {
     const buildings = await featuresCallbacks.buildings(fetch);
@@ -66,7 +67,7 @@
 </script>
 
 {#await dataPromise}
-  <div class="loader">Loading</div>
+  <LoadingPage />
 {:then}
   <div class="viewport">
     <Leaflet>
