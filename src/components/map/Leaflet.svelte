@@ -3,13 +3,10 @@
   import "leaflet/dist/leaflet.css";
   import { onDestroy, onMount } from "svelte";
   import { goto } from "$app/navigation";
-  
+
   import type { Properties, Feature as MapFeature } from "$lib/types/features";
   import type { Snippet } from "svelte";
   import type { Feature } from "geojson";
-  
-  import questionMarkSVG from "$assets/material-icons/question_mark.svg?raw";
-  import SvgIcon from "$components/icons/SVGIcon.svelte";
 
   import { getSearchState } from "$lib/stores/SearchState.svelte";
   import { mapTheme } from "$lib/theme";
@@ -74,19 +71,15 @@
     }
   });
 
+  // If the link is assumed to be shared by a user
   $effect(() => {
     if (id && shared && $allFeatures) {
-      console.log("Shared ID:", id);
       const feature = $allFeatures.find((f: Feature) => f.id === id);
       if (feature) {
         const centroid = findCentroid(feature);
-        searchState.updateDetailedFeature(feature);
-        searchState.updateQuery(feature.properties.name);
         if (centroid && map) {
           map.setView(centroid, 19);
         }
-      } else {
-        dialog?.showModal();
       }
     }
   });
@@ -245,26 +238,12 @@
       map = undefined;
     }
   });
-
-  function closeDialog() {
-    dialog?.close();
-    appState.collapsedSidebar = false;
-    goto("/", { replaceState: true });
-  }
 </script>
 
 <div bind:this={mapElement} id="map"></div>
 {#if map}
   {@render children()}
 {/if}
-
-<dialog class="error-message" bind:this={dialog} closedby="any">
-  <SvgIcon size={32} alt="Error" fixed>
-    {@html questionMarkSVG}
-  </SvgIcon>
-  This location does not exist or has been deleted.
-  <button onclick={closeDialog}>OK</button>
-</dialog>
 
 <style>
   #map {
@@ -275,60 +254,5 @@
     position: absolute;
     top: 0;
     left: 0;
-  }
-
-  .error-message {
-    all: unset;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
-    color: var(--warning);
-    background-color: var(--bg-accent);
-    border-radius: 8px;
-    padding: 16px;
-    box-shadow: var(--box-shadow);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    gap: 16px;
-    opacity: 0;
-
-    &[open] {
-      opacity: 1;
-      transition: opacity 0.3s ease-in-out;
-    }
-
-    &::backdrop {
-      background-color: rgba(0, 0, 0, 0.5);
-    }
-
-    @media (prefers-color-scheme: dark) {
-      background-color: var(--bg);
-
-      &::backdrop {
-        background-color: rgba(0, 0, 0, 0.7);
-      }
-    }
-
-    button {
-      color: var(--warning);
-      background-color: var(--warning-bg);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      padding: 4px 16px;
-      cursor: pointer;
-      font-weight: 500;
-
-      &:hover {
-        background-color: var(--warning-accent-hover);
-      }
-
-      &:active {
-        background-color: var(--warning-accent-active);
-      }
-    }
   }
 </style>

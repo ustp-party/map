@@ -6,17 +6,23 @@
   import SearchOptions from "$components/inputs/SearchOptions.svelte";
   import Sidebar from "$components/sidebars/Sidebar.svelte";
   import Drawer from "$components/sidebars/Drawer.svelte";
+  import MissingFeature from "$components/dialogs/MissingFeature.svelte";
 
   import { allFeatures } from "$lib/stores/mapState.svelte";
 
   import { type PageData } from "./$types";
+  import type { Feature } from "$lib/types/features";
   import { getAppState } from "$lib/stores/appState.svelte";
   import { getMapState } from "$lib/stores/mapState.svelte";
+  import { getSearchState } from "$lib/stores/SearchState.svelte";
   import { onMount } from "svelte";
+  import { page } from "$app/state";
 
   let { data }: { data: PageData } = $props();
   const mapState = getMapState();
   const appState = getAppState();
+  const searchState = getSearchState();
+  const id = page.url.searchParams.get("id") || "";
 
   onMount(() => {
     mapState.buildings = data.buildings!.features;
@@ -29,6 +35,16 @@
       ...data.parking!.features,
       ...data.pointsOfInterest!.features,
     ]);
+
+    if (id && $allFeatures) {
+      const feature = $allFeatures.find((f: Feature) => f.id === id);
+      if (feature) {
+        searchState.updateDetailedFeature(feature);
+        searchState.updateQuery(feature.properties.name);
+      } else {
+        appState.openMissingFeatureDialog = true;
+      }
+    }
   });
 </script>
 
@@ -57,6 +73,8 @@
     {/if}
   </Leaflet>
 </div>
+
+<MissingFeature />
 
 <style lang="scss">
   .viewport {
