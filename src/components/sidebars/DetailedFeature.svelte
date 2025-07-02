@@ -64,7 +64,9 @@
   function handleShare() {
     if (feature.id) {
       const baseURL = window.location.origin;
-      const encodedID = encodeURIComponent(feature.id.trim());
+      const searchParams = new URLSearchParams(window.location.search);
+      searchParams.set("id", feature.id);
+      searchParams.set("shared", "true");
       async function copyToClipboard(text: string) {
         try {
           await navigator.clipboard.writeText(text);
@@ -84,8 +86,7 @@
           }
         }
       }
-
-      copyToClipboard(`${baseURL}/?id=${encodedID}`);
+      copyToClipboard(`${baseURL}/?${searchParams.toString()}`);
     } else {
       console.warn("Feature ID is not available.");
       failedCopy = true;
