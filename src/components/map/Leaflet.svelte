@@ -2,6 +2,7 @@
   import L from "leaflet";
   import "leaflet/dist/leaflet.css";
   import { onDestroy, onMount } from "svelte";
+  import { goto } from "$app/navigation";
   import type { Properties, Feature as MapFeature } from "$lib/types/features";
   import type { Snippet } from "svelte";
   import type { Feature } from "geojson";
@@ -53,7 +54,8 @@
     map = L.map(mapElement, { zoomControl: false });
 
     map.createPane(SEARCH_RESULTS_PANE_NAME);
-    map.getPane(SEARCH_RESULTS_PANE_NAME)!.style.zIndex = SEACH_RESULTS_PANE_Z_INDEX;
+    map.getPane(SEARCH_RESULTS_PANE_NAME)!.style.zIndex =
+      SEACH_RESULTS_PANE_Z_INDEX;
 
     if (map) {
       if (view && zoom) {
@@ -131,6 +133,9 @@
   });
 
   function setDetailedFeature(feature: MapFeature): void {
+    if (feature.id) {
+      goto(`?id=${encodeURIComponent(feature.id)}`, { replaceState: true });
+    }
     searchState.updateDetailedFeature(feature);
     appState.collapsedSidebar = false;
   }

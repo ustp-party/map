@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { onMount } from "svelte";
+  import { onMount  } from "svelte";
   import type { Position } from "geojson";
   import type { LatLngExpression } from "leaflet";
   import type { Feature, Properties } from "$lib/types/features";
@@ -63,7 +63,7 @@
 
   function handleShare() {
     const baseURL = window.location.origin;
-    const featureID = feature.id;
+    const encodedID = encodeURIComponent(feature.id.trim());
     async function copyToClipboard(text: string) {
       try {
         await navigator.clipboard.writeText(text);
@@ -83,7 +83,7 @@
         }
       }
     }
-    if (!featureID) {
+    if (!feature.id) {
       console.warn("Feature ID is not available.");
       failedCopy = true;
       if (clipboardNotification) {
@@ -92,7 +92,7 @@
       }
       return;
     }
-    copyToClipboard(`${baseURL}/?id=${featureID.replace("/", "/").trim()}`);
+    copyToClipboard(`${baseURL}/?id=${encodedID}`);
   }
 
   // Will be superseded by the <dialog> attribute `closedby="any"`

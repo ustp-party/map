@@ -21,7 +21,7 @@
   import { page } from "$app/state";
 
   let { data }: { data: PageData } = $props();
-  let id = page.url.searchParams.get("id")?.trim() || "";
+  let id = page.url.searchParams.get("id") || "";
   let dialog: HTMLDialogElement | undefined;
   const mapState = getMapState();
   const searchState = getSearchState();
@@ -47,8 +47,6 @@
       } else {
         dialog?.showModal();
       }
-      const path = window.location.pathname;
-      history.pushState({}, "", path);
     }
   });
 
