@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { onMount  } from "svelte";
+  import { onMount } from "svelte";
   import type { Position } from "geojson";
   import type { LatLngExpression } from "leaflet";
   import type { Feature, Properties } from "$lib/types/features";
@@ -62,28 +62,31 @@
   }
 
   function handleShare() {
-    const baseURL = window.location.origin;
-    const encodedID = encodeURIComponent(feature.id.trim());
-    async function copyToClipboard(text: string) {
-      try {
-        await navigator.clipboard.writeText(text);
-        failedCopy = false;
+    if (feature.id) {
+      const baseURL = window.location.origin;
+      const encodedID = encodeURIComponent(feature.id.trim());
+      async function copyToClipboard(text: string) {
+        try {
+          await navigator.clipboard.writeText(text);
+          failedCopy = false;
 
-        if (clipboardNotification) {
-          clipboardNotification.showPopover();
-          setTimeout(() => {
-            clipboardNotification?.hidePopover();
-          }, 2000);
-        }
-      } catch (err) {
-        console.error("Failed to copy!", err);
-        failedCopy = true;
-        if (clipboardNotification) {
-          clipboardNotification.innerText = "Failed to copy link.";
+          if (clipboardNotification) {
+            clipboardNotification.showPopover();
+            setTimeout(() => {
+              clipboardNotification?.hidePopover();
+            }, 2000);
+          }
+        } catch (err) {
+          console.error("Failed to copy!", err);
+          failedCopy = true;
+          if (clipboardNotification) {
+            clipboardNotification.innerText = "Failed to copy link.";
+          }
         }
       }
-    }
-    if (!feature.id) {
+
+      copyToClipboard(`${baseURL}/?id=${encodedID}`);
+    } else {
       console.warn("Feature ID is not available.");
       failedCopy = true;
       if (clipboardNotification) {
@@ -92,7 +95,6 @@
       }
       return;
     }
-    copyToClipboard(`${baseURL}/?id=${encodedID}`);
   }
 
   // Will be superseded by the <dialog> attribute `closedby="any"`
