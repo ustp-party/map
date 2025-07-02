@@ -2,6 +2,8 @@
   import L from "leaflet";
   import "leaflet/dist/leaflet.css";
   import { onDestroy, onMount } from "svelte";
+  import { goto } from "$app/navigation";
+
   import type { Properties, Feature as MapFeature } from "$lib/types/features";
   import type { Snippet } from "svelte";
   import type { Feature } from "geojson";
@@ -12,14 +14,20 @@
   import { getAppState } from "$lib/stores/appState.svelte";
   import controls from "$lib/utils/mapControls";
   import icons from "$components/icons/CustomIcons";
+  import { page } from "$app/state";
+  import { allFeatures } from "$lib/stores/mapState.svelte";
+  import { findCentroid } from "$lib/utils/mapControls";
 
+  let id = page.url.searchParams.get("id") || "";
+  let shared = page.url.searchParams.get("shared") || "";
   let appState = getAppState();
   let mapState = getMapState();
+  let searchState = getSearchState();
   let mapElement: HTMLDivElement;
+  let dialog: HTMLDialogElement | undefined = $state(undefined);
   let map: L.Map | undefined = $state();
   let view: L.LatLngExpression = $derived(mapState.currentCenter);
   let zoom: number = $derived(mapState.currentZoom);
-  let searchState = getSearchState();
   let searchResults = $derived<Feature[]>(searchState.results.slice(0, 5)); // Return only top 5
 
   let allBuildingsLayer: L.GeoJSON | undefined = undefined;
@@ -53,7 +61,8 @@
     map = L.map(mapElement, { zoomControl: false });
 
     map.createPane(SEARCH_RESULTS_PANE_NAME);
-    map.getPane(SEARCH_RESULTS_PANE_NAME)!.style.zIndex = SEACH_RESULTS_PANE_Z_INDEX;
+    map.getPane(SEARCH_RESULTS_PANE_NAME)!.style.zIndex =
+      SEACH_RESULTS_PANE_Z_INDEX;
 
     if (map) {
       if (view && zoom) {
@@ -62,10 +71,16 @@
     }
   });
 
-  onDestroy(() => {
-    if (map) {
-      map?.remove();
-      map = undefined;
+  // If the link is assumed to be shared by a user
+  $effect(() => {
+    if (id && shared && $allFeatures) {
+      const feature = $allFeatures.find((f: Feature) => f.id === id);
+      if (feature) {
+        const centroid = findCentroid(feature);
+        if (centroid && map) {
+          map.setView(centroid, 19);
+        }
+      }
     }
   });
 
@@ -131,6 +146,9 @@
   });
 
   function setDetailedFeature(feature: MapFeature): void {
+    if (feature.id) {
+      goto(`?id=${encodeURIComponent(feature.id)}`, { replaceState: true });
+    }
     searchState.updateDetailedFeature(feature);
     appState.collapsedSidebar = false;
   }
@@ -214,6 +232,10 @@
     }
     if (allBuildingsLayer) {
       allBuildingsLayer.remove();
+    }
+    if (map) {
+      map?.remove();
+      map = undefined;
     }
   });
 </script>

@@ -1,6 +1,7 @@
 <script lang="ts">
   import { fade } from "svelte/transition";
   import { onDestroy, onMount } from "svelte";
+  import { replaceState } from "$app/navigation";
 
   import SvgIcon from "$components/icons/SVGIcon.svelte";
   import closeSVG from "$assets/material-icons/close.svg?raw";
@@ -14,9 +15,17 @@
 
   const appState = getAppState();
   const searchState = getSearchState();
-  let searchIndex: any;
   const query = $derived(searchState.query);
+  let searchIndex: any;
 
+  function handleGoBack() {
+    searchState.updateDetailedFeature(undefined);
+    replaceState("/", "");
+  }
+
+  const onPopState = (event: PopStateEvent) => {
+    handleGoBack();
+  };
   onMount(() => {
     searchIndex = createSearchIndex($allFeatures!);
 
@@ -27,12 +36,16 @@
     window.addEventListener("keydown", () => {
       document.getElementById("searchbar")?.focus();
     });
+
+    window.addEventListener("popstate", onPopState);
   });
 
   onDestroy(() => {
     window.removeEventListener("keydown", () => {
       document.getElementById("searchbar")?.focus();
     });
+
+    window.removeEventListener("popstate", onPopState);
   });
 
   function handleSearch() {
@@ -59,12 +72,8 @@
   {#if searchState.detailedFeature}
     <div transition:fade={{ duration: 200 }}>
       <abbr title="Go back">
-        <button
-          class="clear-input"
-          aria-label="Clear search input"
-          onclick={() => searchState.updateDetailedFeature(undefined)}
-        >
-          <SvgIcon alt="Clear search input" fixed>
+        <button class="clear-input" aria-label="Go back" onclick={handleGoBack}>
+          <SvgIcon alt="Go back" fixed>
             {@html arrowBackSVG}
           </SvgIcon>
         </button>

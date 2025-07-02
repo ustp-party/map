@@ -351,6 +351,22 @@ function setEventCenters(
   });
 }
 
+function findCentroid(feature: Feature): LatLngExpression {
+  let centroid: LatLngExpression = [0, 0];
+  if (feature.geometry.type === "Point") {
+    let coords = feature.geometry.coordinates as Array<number>;
+    let lat = coords[1];
+    let lng = coords[0];
+    centroid = [lat, lng];
+  } else if (feature.geometry.type === "Polygon") {
+    centroid = geometricCentroid(feature.geometry.coordinates[0] as Position[]);
+  } else {
+    console.warn("Unsupported geometry type:", feature.geometry.type);
+  }
+
+  return centroid;
+}
+
 const controls = {
   getCurrentPosition,
   locateMe,
@@ -363,6 +379,7 @@ const controls = {
   setPrintingServices,
   setLandmarks,
   setEventCenters,
+  findCentroid,
 };
 
 export default controls;
@@ -379,4 +396,5 @@ export {
   setPrintingServices,
   setLandmarks,
   setEventCenters,
+  findCentroid,
 };

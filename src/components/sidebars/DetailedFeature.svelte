@@ -62,28 +62,32 @@
   }
 
   function handleShare() {
-    const baseURL = window.location.origin;
-    const featureID = feature.id;
-    async function copyToClipboard(text: string) {
-      try {
-        await navigator.clipboard.writeText(text);
-        failedCopy = false;
+    if (feature.id) {
+      const baseURL = window.location.origin;
+      const searchParams = new URLSearchParams(window.location.search);
+      searchParams.set("id", feature.id);
+      searchParams.set("shared", "true");
+      async function copyToClipboard(text: string) {
+        try {
+          await navigator.clipboard.writeText(text);
+          failedCopy = false;
 
-        if (clipboardNotification) {
-          clipboardNotification.showPopover();
-          setTimeout(() => {
-            clipboardNotification?.hidePopover();
-          }, 2000);
-        }
-      } catch (err) {
-        console.error("Failed to copy!", err);
-        failedCopy = true;
-        if (clipboardNotification) {
-          clipboardNotification.innerText = "Failed to copy link.";
+          if (clipboardNotification) {
+            clipboardNotification.showPopover();
+            setTimeout(() => {
+              clipboardNotification?.hidePopover();
+            }, 2000);
+          }
+        } catch (err) {
+          console.error("Failed to copy!", err);
+          failedCopy = true;
+          if (clipboardNotification) {
+            clipboardNotification.innerText = "Failed to copy link.";
+          }
         }
       }
-    }
-    if (!featureID) {
+      copyToClipboard(`${baseURL}/?${searchParams.toString()}`);
+    } else {
       console.warn("Feature ID is not available.");
       failedCopy = true;
       if (clipboardNotification) {
@@ -92,7 +96,6 @@
       }
       return;
     }
-    copyToClipboard(`${baseURL}/?id=${featureID.replace("/", "/").trim()}`);
   }
 
   // Will be superseded by the <dialog> attribute `closedby="any"`

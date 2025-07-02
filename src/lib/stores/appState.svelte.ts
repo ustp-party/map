@@ -6,6 +6,7 @@ interface AppState {
   viewportHeight: number;
   updateViewportWidth: () => void;
   collapsedSidebar: boolean;
+  openMissingFeatureDialog: boolean;
 }
 
 class AppStateClass implements AppState {
@@ -16,6 +17,7 @@ class AppStateClass implements AppState {
     this.viewportWidth = window.innerWidth;
   };
   collapsedSidebar = $state(false);
+  openMissingFeatureDialog = $state(false);
 }
 
 const DEFAULT_KEY = "$_app_state";

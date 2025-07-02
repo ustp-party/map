@@ -15,6 +15,7 @@
   import { getLocalStorageState } from "$lib/stores/localStorage.svelte";
   import { getSearchState } from "$lib/stores/SearchState.svelte";
   import { onDestroy } from "svelte";
+  import { goto } from "$app/navigation";
 
   let { feature }: { feature: Feature } = $props();
   let p = feature.properties;
@@ -31,6 +32,9 @@
   let loadingImage: boolean = $state(true);
 
   function handleClick() {
+    if (feature.id) {
+      goto(`?id=${encodeURIComponent(feature.id)}`, { replaceState: true });
+    }
     searchState.updateDetailedFeature(feature);
     localStorageState.insertFeature(feature);
   }

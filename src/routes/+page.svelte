@@ -1,6 +1,4 @@
 <script lang="ts">
-  import questionMarkSVG from "$assets/material-icons/question_mark.svg?raw";
-
   import Leaflet from "$components/map/Leaflet.svelte";
   import ZoomControl from "$components/map/ZoomControl.svelte";
   import MapControl from "$components/map/MapControl.svelte";
@@ -8,7 +6,7 @@
   import SearchOptions from "$components/inputs/SearchOptions.svelte";
   import Sidebar from "$components/sidebars/Sidebar.svelte";
   import Drawer from "$components/sidebars/Drawer.svelte";
-  import SvgIcon from "$components/icons/SVGIcon.svelte";
+  import MissingFeature from "$components/dialogs/MissingFeature.svelte";
 
   import { allFeatures } from "$lib/stores/mapState.svelte";
 
@@ -21,11 +19,10 @@
   import { page } from "$app/state";
 
   let { data }: { data: PageData } = $props();
-  let id = page.url.searchParams.get("id")?.trim() || "";
-  let dialog: HTMLDialogElement | undefined;
   const mapState = getMapState();
-  const searchState = getSearchState();
   const appState = getAppState();
+  const searchState = getSearchState();
+  const id = page.url.searchParams.get("id") || "";
 
   onMount(() => {
     mapState.buildings = data.buildings!.features;
@@ -41,22 +38,14 @@
 
     if (id && $allFeatures) {
       const feature = $allFeatures.find((f: Feature) => f.id === id);
-      console.log(id);
       if (feature) {
         searchState.updateDetailedFeature(feature);
         searchState.updateQuery(feature.properties.name);
       } else {
-        dialog?.showModal();
+        appState.openMissingFeatureDialog = true;
       }
-      const path = window.location.pathname;
-      history.pushState({}, "", path);
     }
   });
-
-  function closeDialog() {
-    dialog?.close();
-    appState.collapsedSidebar = false;
-  }
 </script>
 
 <div class="viewport">
@@ -85,13 +74,7 @@
   </Leaflet>
 </div>
 
-<dialog class="error-message" bind:this={dialog} closedby="any">
-  <SvgIcon size={32} alt="Error" fixed>
-    {@html questionMarkSVG}
-  </SvgIcon>
-  This location does not exist or has been deleted.
-  <button onclick={closeDialog}>OK</button>
-</dialog>
+<MissingFeature />
 
 <style lang="scss">
   .viewport {
@@ -138,54 +121,5 @@
     display: flex;
     align-items: center;
     justify-content: center;
-  }
-
-  .error-message {
-    all: unset;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
-    color: var(--warning);
-    background-color: var(--bg-accent);
-    border-radius: 8px;
-    padding: 16px;
-    box-shadow: var(--box-shadow);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    gap: 16px;
-
-    &::backdrop {
-      background-color: rgba(0, 0, 0, 0.5);
-    }
-
-    @media (prefers-color-scheme: dark) {
-      background-color: var(--bg);
-
-      &::backdrop {
-        background-color: rgba(0, 0, 0, 0.7);
-      }
-    }
-
-    button {
-      color: var(--warning);
-      background-color: var(--warning-bg);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      padding: 4px 16px;
-      cursor: pointer;
-      font-weight: 500;
-
-      &:hover {
-        background-color: var(--warning-accent-hover);
-      }
-
-      &:active {
-        background-color: var(--warning-accent-active);
-      }
-    }
   }
 </style>

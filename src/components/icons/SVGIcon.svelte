@@ -12,12 +12,14 @@
     alt?: string | undefined;
     fixed?: boolean;
   } = $props();
+
+  const style = fixed ? "style=var(--icon-color);" : ""
 </script>
 
 <div
   class={`svg-icon ${fixed ? "fixed" : ""}`}
   aria-label={alt}
-  style="width: {size}px; height: {size}px;"
+  style="width: {size}px; height: {size}px; {style}"
 >
   {@render children()}
 </div>
@@ -31,9 +33,5 @@
     transition: color 0.1s ease;
     padding: 0;
     overflow: visible;
-  }
-
-  .svg-icon .fixed {
-    color: var(--icon-color);
   }
 </style>
