@@ -1,4 +1,10 @@
 <script lang="ts">
+  import type { PageData } from "./$types";
+  import type { Feature } from "$lib/types/features";
+
+  import { page } from "$app/state";
+  import { onMount } from "svelte";
+
   import Leaflet from "$components/map/Leaflet.svelte";
   import ZoomControl from "$components/map/ZoomControl.svelte";
   import MapControl from "$components/map/MapControl.svelte";
@@ -8,73 +14,90 @@
   import Drawer from "$components/sidebars/Drawer.svelte";
   import MissingFeature from "$components/dialogs/MissingFeature.svelte";
 
-  import { allFeatures } from "$lib/stores/mapState.svelte";
-
-  import { type PageData } from "./$types";
-  import type { Feature } from "$lib/types/features";
   import { getAppState } from "$lib/stores/appState.svelte";
   import { getMapState } from "$lib/stores/mapState.svelte";
   import { getSearchState } from "$lib/stores/SearchState.svelte";
-  import { onMount } from "svelte";
-  import { page } from "$app/state";
+  import { allFeatures } from "$lib/stores/mapState.svelte";
+  import featuresCallbacks from "$lib/utils/features";
+  import LoadingPage from "$components/loaders/LoadingPage.svelte";
 
-  let { data }: { data: PageData } = $props();
+  const dataPromise = (async () => {
+    const buildings = await featuresCallbacks.buildings(fetch);
+    const benches = await featuresCallbacks.benches(fetch);
+    const parking = await featuresCallbacks.parking(fetch);
+    const pointsOfInterest = await featuresCallbacks.pointsOfInterest(fetch);
+
+    return {
+      buildings,
+      benches,
+      parking,
+      pointsOfInterest,
+    } satisfies PageData;
+  })();
   const mapState = getMapState();
   const appState = getAppState();
   const searchState = getSearchState();
   const id = page.url.searchParams.get("id") || "";
-
   onMount(() => {
-    mapState.buildings = data.buildings!.features;
-    mapState.benches = data.benches!.features;
-    mapState.parking = data.parking!.features;
-    mapState.pointsOfInterest = data.pointsOfInterest!.features;
-    allFeatures.set([
-      ...data.buildings!.features,
-      ...data.benches!.features,
-      ...data.parking!.features,
-      ...data.pointsOfInterest!.features,
-    ]);
+    dataPromise.then((data) => {
+      mapState.buildings = data.buildings!.features;
+      mapState.benches = data.benches!.features;
+      mapState.parking = data.parking!.features;
+      mapState.pointsOfInterest = data.pointsOfInterest!.features;
 
-    if (id && $allFeatures) {
-      const feature = $allFeatures.find((f: Feature) => f.id === id);
-      if (feature) {
-        searchState.updateDetailedFeature(feature);
-        searchState.updateQuery(feature.properties.name);
-      } else {
-        appState.openMissingFeatureDialog = true;
+      let featureArray = data
+        .buildings!.features.concat(data.benches!.features)
+        .concat(data.parking!.features)
+        .concat(data.pointsOfInterest!.features);
+
+      allFeatures.set(featureArray);
+
+      if (id) {
+        const feature = featureArray.find((f: Feature) => f.id === id);
+
+        if (feature) {
+          searchState.updateDetailedFeature(feature);
+          searchState.updateQuery(feature.properties.name);
+        } else {
+          appState.openMissingFeatureDialog = true;
+        }
       }
-    }
+    });
   });
 </script>
 
-<div class="viewport">
-  <Leaflet>
-    <Sidebar />
-    <div class="top-bar">
-      <div class="search">
-        <Searchbar />
-        <SearchOptions />
-        {#if appState.viewportWidth >= 600}
+{#await dataPromise}
+  <LoadingPage />
+{:then}
+  <div class="viewport">
+    <Leaflet>
+      <Sidebar />
+      <div class="top-bar">
+        <div class="search">
+          <Searchbar />
+          <SearchOptions />
+          {#if appState.viewportWidth >= 600}
+            <MapControl />
+          {/if}
+        </div>
+      </div>
+      {#if appState.viewportWidth > 600}
+        <ZoomControl />
+      {/if}
+      <div class="bottom-bar">
+        {#if appState.viewportWidth < 600}
           <MapControl />
         {/if}
       </div>
-    </div>
-    {#if appState.viewportWidth > 600}
-      <ZoomControl />
-    {/if}
-    <div class="bottom-bar">
       {#if appState.viewportWidth < 600}
-        <MapControl />
+        <Drawer />
       {/if}
-    </div>
-    {#if appState.viewportWidth < 600}
-      <Drawer />
-    {/if}
-  </Leaflet>
-</div>
-
-<MissingFeature />
+    </Leaflet>
+  </div>
+  <MissingFeature />
+{:catch error}
+  <div class="loader">Error loading data: {error.message}</div>
+{/await}
 
 <style lang="scss">
   .viewport {
@@ -121,5 +144,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+
+  .loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 10.5rem;
+    color: var(--color-text);
   }
 </style>
