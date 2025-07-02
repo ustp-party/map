@@ -10,7 +10,7 @@
   
   import questionMarkSVG from "$assets/material-icons/question_mark.svg?raw";
   import SvgIcon from "$components/icons/SVGIcon.svelte";
-  
+
   import { getSearchState } from "$lib/stores/SearchState.svelte";
   import { mapTheme } from "$lib/theme";
   import { getMapState } from "$lib/stores/mapState.svelte";
@@ -83,7 +83,7 @@
         searchState.updateDetailedFeature(feature);
         searchState.updateQuery(feature.properties.name);
         if (centroid && map) {
-          map.setView(centroid, 18);
+          map.setView(centroid, 19);
         }
       } else {
         dialog?.showModal();
@@ -294,6 +294,12 @@
     justify-content: center;
     flex-direction: column;
     gap: 16px;
+    opacity: 0;
+
+    &[open] {
+      opacity: 1;
+      transition: opacity 0.3s ease-in-out;
+    }
 
     &::backdrop {
       background-color: rgba(0, 0, 0, 0.5);
