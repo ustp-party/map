@@ -1,8 +1,8 @@
 <script>
-  import SvgIcon from "$components/icons/SVGIcon.svelte";
-  import spinnerSVG from "$assets/animated/spinner.svg?raw";
   import { fade } from "svelte/transition";
   import { quintIn } from "svelte/easing";
+
+  let { children } = $props();
 </script>
 
 <div class="loading-page" transition:fade={{ duration: 600, easing: quintIn }}>
@@ -10,12 +10,7 @@
   <div class="bg bg2"></div>
   <div class="bg bg3"></div>
   <div class="content">
-    <div>
-      <SvgIcon size={40}>
-        {@html spinnerSVG}
-      </SvgIcon>
-    </div>
-    Loading...
+    {@render children()}
   </div>
 </div>
 
@@ -46,6 +41,7 @@
       padding: 2em;
       border-radius: 1em;
       border: 1px solid var(--border);
+      margin: 1em;
 
       @media (prefers-color-scheme: dark) {
         background-color: rgba(52, 51, 61, 0.8);
