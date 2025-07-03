@@ -1,9 +1,11 @@
 <script>
   import SvgIcon from "$components/icons/SVGIcon.svelte";
   import spinnerSVG from "$assets/animated/spinner.svg?raw";
+  import { fade } from "svelte/transition";
+  import { quintIn } from "svelte/easing";
 </script>
 
-<div class="loading-page">
+<div class="loading-page" transition:fade={{ duration: 600, easing: quintIn }}>
   <div class="bg"></div>
   <div class="bg bg2"></div>
   <div class="bg bg3"></div>
@@ -31,7 +33,6 @@
     color: var(--color-text);
     font-weight: bold;
     text-align: center;
-    transition: opacity 0.3s ease-in-out;
 
     .content {
       position: relative;
@@ -44,6 +45,11 @@
       background-color: oklch(1 0 0 / 0.8);
       padding: 2em;
       border-radius: 1em;
+      border: 1px solid var(--border);
+
+      @media (prefers-color-scheme: dark) {
+        background-color: rgba(52, 51, 61, 0.8);
+      }
     }
 
     .bg {
