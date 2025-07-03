@@ -13,11 +13,11 @@
     fixed?: boolean;
   } = $props();
 
-  const style = fixed ? "style=var(--icon-color);" : ""
+  const style = fixed ? "color: var(--icon-color);" : ""
 </script>
 
 <div
-  class={`svg-icon ${fixed ? "fixed" : ""}`}
+  class="svg-icon"
   aria-label={alt}
   style="width: {size}px; height: {size}px; {style}"
 >
