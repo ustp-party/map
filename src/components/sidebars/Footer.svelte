@@ -57,7 +57,8 @@
           color: var(--text);
         }
 
-        &:hover {
+        &:hover,
+        &:active {
           text-decoration: underline;
           color: var(--info);
         }

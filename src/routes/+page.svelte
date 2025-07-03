@@ -13,13 +13,15 @@
   import Sidebar from "$components/sidebars/Sidebar.svelte";
   import Drawer from "$components/sidebars/Drawer.svelte";
   import MissingFeature from "$components/dialogs/MissingFeature.svelte";
+  import LoadingPage from "$components/loaders/LoadingPage.svelte";
+  import LoadingModal from "$components/loaders/LoadingModal.svelte";
+  import LoadingError from "$components/loaders/LoadingError.svelte";
 
   import { getAppState } from "$lib/stores/appState.svelte";
   import { getMapState } from "$lib/stores/mapState.svelte";
   import { getSearchState } from "$lib/stores/SearchState.svelte";
   import { allFeatures } from "$lib/stores/mapState.svelte";
   import featuresCallbacks from "$lib/utils/features";
-  import LoadingPage from "$components/loaders/LoadingPage.svelte";
 
   const dataPromise = (async () => {
     const buildings = await featuresCallbacks.buildings(fetch);
@@ -67,7 +69,9 @@
 </script>
 
 {#await dataPromise}
-  <LoadingPage />
+  <LoadingPage>
+    <LoadingModal />
+  </LoadingPage>
 {:then}
   <div class="viewport">
     <Leaflet>
@@ -96,7 +100,9 @@
   </div>
   <MissingFeature />
 {:catch error}
-  <div class="loader">Error loading data: {error.message}</div>
+  <LoadingPage>
+    <LoadingError {error} />
+  </LoadingPage>
 {/await}
 
 <style lang="scss">
@@ -144,14 +150,5 @@
     display: flex;
     align-items: center;
     justify-content: center;
-  }
-
-  .loader {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 10.5rem;
-    color: var(--color-text);
   }
 </style>
