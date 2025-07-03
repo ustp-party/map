@@ -6,12 +6,12 @@
 
   let counter = $state(0);
   onMount(() => {
-    setInterval(() => {
+    const intervalId = setInterval(() => {
       counter += 1;
     }, 1000);
 
     return () => {
-      clearInterval(counter);
+      clearInterval(intervalId);
     };
   });
 </script>
