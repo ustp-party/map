@@ -1,7 +1,8 @@
 <script>
+  import { onMount } from "svelte";
   import SvgIcon from "$components/icons/SVGIcon.svelte";
   import spinnerSVG from "$assets/animated/spinner.svg?raw";
-  import { onMount } from "svelte";
+  import LoadingFooter from "./LoadingFooter.svelte";
 
   let counter = $state(0);
   onMount(() => {
@@ -16,15 +17,22 @@
 </script>
 
 <div>
-  <SvgIcon size={40}>
+  <SvgIcon size={60}>
     {@html spinnerSVG}
   </SvgIcon>
 </div>
-<span> You're getting there! </span>
-<span> Please wait... </span>
+{#if counter < 15}
+  <span> You're getting there! </span>
+  <span> Please wait... </span>
+{:else}
+  <span> This is taking longer than expected. </span>
+{/if}
 <span>
   ({counter + 1} seconds)
 </span>
+{#if counter >= 15}
+  <LoadingFooter />
+{/if}
 
 <style lang="scss">
   :nth-child(3),
