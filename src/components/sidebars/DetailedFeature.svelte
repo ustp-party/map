@@ -312,8 +312,9 @@
           width: 100%;
           dl {
             display: grid;
-            grid-template-columns: min-content 1fr;
+            grid-template-columns: max-content 1fr;
             column-gap: clamp(1rem, 2vw + 4px, 2rem);
+            row-gap: clamp(0.2rem, 0.1vh + 1px, 0.5rem);
             font-size: 0.875rem;
             height: fit-content;
 
