@@ -102,7 +102,7 @@
     parking: parkingSVG,
     bench: picnicSVG,
     "Event Center": sparkleSVG,
-    sports: basketballSVG
+    sports: basketballSVG,
   };
 
   onDestroy(() => {
@@ -189,7 +189,6 @@
     align-items: center;
 
     img {
-      display: absolute;
       left: 0;
       background-color: gray;
       max-height: var(--viewport-height);
