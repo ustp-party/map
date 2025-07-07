@@ -58,7 +58,7 @@
     name="google-site-verification"
     content="CQ4rJlp_JKcfkSbQjCTQX0pEP2vlCur2bR7EEkYrTps"
   />
-  <meta name="description" content="Interactive campus map of the University of Science and Technologoy of Southern Philippines in Cagayan de Oro (USTP-CDO)" />
+  <meta name="description" content="Interactive campus map of the University of Science and Technology of Southern Philippines in Cagayan de Oro (USTP-CDO)" />
   <meta
     name="keywords"
     content="USTP, map, campus, university, university of science and technology of southern philippines, cdo, cagayan de oro"
