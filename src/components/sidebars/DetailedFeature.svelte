@@ -9,13 +9,13 @@
   import accessibleSVG from "$assets/free-icons/accessible.svg?raw";
   import stairsSVG from "$assets/free-icons/stairs.svg?raw";
   import elevatorSVG from "$assets/free-icons/elevator.svg?raw";
-
   import SvgIcon from "$components/icons/SVGIcon.svelte";
 
   import { geometricCentroid } from "$lib/utils/mapControls";
   import { getAppState } from "$lib/stores/appState.svelte";
   import { getMapState } from "$lib/stores/mapState.svelte";
   import { labelBuilder } from "$lib/utils/mapControls";
+  import { timeAgo, formatDate } from "$lib/utils/sidebar";
 
   const appState = getAppState();
   const mapState = getMapState();
@@ -23,6 +23,7 @@
   let dialog: HTMLDialogElement | undefined = $state(undefined);
   let clipboardNotification: HTMLDivElement | undefined = $state(undefined);
   let failedCopy: boolean = $state(false);
+  let exactDate: boolean = $state(false);
   let p = $state<Properties>({
     name: "Loading...",
     description: "Please wait while the feature loads.",
@@ -147,7 +148,20 @@
   <div class="content">
     <header>
       <h2>{p.name}</h2>
+
       <h5>{p.description}</h5>
+      {#if p.last_updated}
+        <button
+          onclick={() => (exactDate = !exactDate)}
+          aria-label="Toggle last updated date"
+        >
+          {#if exactDate}
+            Last updated on {formatDate(p.last_updated)}
+          {:else}
+            Last updated {timeAgo(p.last_updated)}
+          {/if}
+        </button>
+      {/if}
     </header>
     <main>
       <p>
@@ -290,6 +304,20 @@
         display: flex;
         flex-direction: column;
         gap: 16px;
+
+        button {
+          all: unset;
+          font-size: small;
+          user-select: none;
+          width: fit-content;
+          color: var(--text-subtle);
+          &:hover {
+            text-decoration: underline;
+            color: var(--text);
+            cursor: pointer;
+          }
+        }
+
         h5 {
           font-size: small;
           font-weight: 500;
