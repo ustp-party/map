@@ -22,7 +22,7 @@
 </script>
 
 <dialog class="error-message" bind:this={dialog} closedby="any">
-  <SvgIcon size={32} alt="Error" fixed>
+  <SvgIcon size={32} alt="Error">
     {@html questionMarkSVG}
   </SvgIcon>
   This location does not exist or has been deleted.

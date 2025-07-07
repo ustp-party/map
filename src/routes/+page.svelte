@@ -102,7 +102,9 @@
       {/if}
     </Leaflet>
   </div>
-  <MissingFeature />
+  {#if appState.openMissingFeatureDialog}
+    <MissingFeature />
+  {/if}
 {:catch error}
   <LoadingPage>
     <LoadingError {error} />
