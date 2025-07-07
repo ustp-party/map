@@ -157,7 +157,7 @@
       "properties": {
         "id": 10,
         "name": "Statue",
-        "description": "In front of the Admin build",
+        "description": "In front of the Admin building",
         "type": "Landmark",
         "level": "1",
         "image": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750765872/statue_1_hd_p8dzot.avif",
