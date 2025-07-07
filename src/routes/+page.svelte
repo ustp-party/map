@@ -64,6 +64,33 @@
         if (feature) {
           searchState.updateDetailedFeature(feature);
           searchState.updateQuery(feature.properties.name);
+
+          switch (feature.properties.type) {
+            case "building":
+              mapState.enableBuildings = true;
+              break;
+            case "bench":
+              mapState.enableBenches = true;
+              break;
+            case "parking":
+              mapState.enableParking = true;
+              break;
+            case "Landmark":
+              mapState.enableLandmarks = true;
+              break;
+            case "Restroom":
+              mapState.enableRestrooms = true;
+              break;
+            case "sports":
+              mapState.enableSportsAreas = true;
+              break;
+            case "Printing Service":
+              mapState.enablePrintingServices = true;
+              break;
+            case "Event Center":
+              mapState.enableEventCenters = true;
+              break;
+          }
         } else {
           appState.openMissingFeatureDialog = true;
         }
