@@ -132,8 +132,6 @@
     Elevator: elevatorSVG,
     Stairs: stairsSVG,
   };
-
-  const labels = labelBuilder(p);
 </script>
 
 <div class="detailed-feature">
@@ -161,7 +159,7 @@
       </p>
       <div class="right-details">
         <dl>
-          {#each Object.entries(labels) as [label, value]}
+          {#each Object.entries(labelBuilder(p)) as [label, value]}
             {@render detail(label, value)}
           {/each}
         </dl>
@@ -217,7 +215,7 @@
           {/each}
         </ul>
       {:else}
-        <em>No accessibility options available.</em>
+        <em>No specified accessibility options available.</em>
       {/if}
     </div>
   </div>
