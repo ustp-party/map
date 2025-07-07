@@ -304,7 +304,7 @@
       main {
         display: flex;
         flex-direction: column;
-        gap: 16px;
+        gap: 2rem;
 
         .right-details {
           display: flex;
