@@ -110,9 +110,13 @@
             if (feature.geometry.type === "Polygon") {
               const { name, type }: Properties = feature.properties;
               const labels = controls.labelBuilder(feature.properties);
-              layer.bindTooltip(controls.tooltipTemplate(name, type, labels), {
-                className: "polygon-label",
-              });
+              layer
+                .bindTooltip(controls.tooltipTemplate(name, type, labels), {
+                  className: "polygon-label",
+                })
+                .on("click", () => {
+                  setDetailedFeature(feature as MapFeature);
+                });
             }
           },
           pointToLayer: (feature, latlng) => {
@@ -121,9 +125,13 @@
             return L.marker(latlng, {
               icon: icons.HighlightIcon,
               pane: SEARCH_RESULTS_PANE_NAME,
-            }).bindTooltip(controls.tooltipTemplate(name, type, labels), {
-              className: "marker-label",
-            });
+            })
+              .bindTooltip(controls.tooltipTemplate(name, type, labels), {
+                className: "marker-label",
+              })
+              .on("click", () => {
+                setDetailedFeature(feature as MapFeature);
+              });
           },
         }).addTo(map!);
       }, 700);
