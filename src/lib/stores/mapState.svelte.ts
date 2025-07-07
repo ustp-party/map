@@ -37,7 +37,6 @@ class MapStateClass implements MapState {
   enableBenches = $state<boolean>(false);
   enableParking = $state<boolean>(true);
   enableSportsAreas = $state<boolean>(false);
-  enablePointsOfInterest = $state<boolean>(true);
   enableRestrooms = $state<boolean>(true);
   enablePrintingServices = $state<boolean>(false);
   enableLandmarks = $state<boolean>(true);

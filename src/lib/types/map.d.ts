@@ -9,7 +9,6 @@ export interface MapState {
   benches: Feature[] | [];
   parking: Feature[] | [];
   pointsOfInterest: Feature[] | [];
-  sportsAreas: Feature[] | [];
   tileset: string;
   tilesets: Tilesets;
   map: Map | undefined;
@@ -17,8 +16,6 @@ export interface MapState {
   enableBuildings: boolean;
   enableBenches: boolean;
   enableParking: boolean;
-  enableSportsAreas: boolean;
-  enablePointsOfInterest: boolean;
   enableRestrooms: boolean;
   enablePrintingServices: boolean;
   enableLandmarks: boolean;
