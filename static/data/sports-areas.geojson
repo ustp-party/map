@@ -14,7 +14,9 @@
         "image": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750820935/rotc_field_1_hd_hmxuaq.avif",
         "image_compressed": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750820933/rotc_field_1_comp_kt67ey.avif",
         "description": "Located at the northern part of the campus",
-        "long_description": "The ROTC Field is a large open area used for various sports and activities, primarily by the Reserve Officers' Training Corps. It is located within the University of Science and Technology of Southern Philippines (USTP) campus in Cagayan de Oro City. The field is often used for parades, drills, and other military training exercises, as well as for recreational sports."
+        "long_description": "The ROTC Field is a large open area used for various sports and activities, primarily by the Reserve Officers' Training Corps. It is located within the University of Science and Technology of Southern Philippines (USTP) campus in Cagayan de Oro City. The field is often used for parades, drills, and other military training exercises, as well as for recreational sports.",
+        "Has roofing": "No",
+        "Outdoor": "Yes"
       },
       "geometry": {
         "type": "Polygon",

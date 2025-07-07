@@ -28,6 +28,7 @@ export interface Properties {
   "Has table"?: "Yes" | "No";
   vehicles?: "All" | "Motorcycles only" | "Cars only" | "Bicycles only";
   accessibility?: Array<"Wheelchair" | "Elevator" | "Stairs" | "None">;
+  Outdoor?: "Yes" | "No";
 }
 
 export interface Feature {

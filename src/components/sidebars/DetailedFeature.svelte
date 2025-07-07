@@ -160,7 +160,9 @@
       <div class="right-details">
         <dl>
           {#each Object.entries(labelBuilder(p)) as [label, value]}
-            {@render detail(label, value)}
+            {#if label != "Description"}
+              {@render detail(label, value)}
+            {/if}
           {/each}
         </dl>
         <menu class="controls-menu">

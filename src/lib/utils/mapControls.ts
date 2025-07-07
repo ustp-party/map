@@ -125,19 +125,10 @@ function setBuildings(allbuildings: Feature[], callback: Function): L.GeoJSON {
       fillOpacity: 0.5,
     },
     onEachFeature: (feature, layer) => {
-      const {
-        name,
-        ["addr:housenumber"]: bldg_no,
-        ["building:levels"]: levels,
-      }: Properties = feature.properties;
-
-      const labels = {
-        Building: bldg_no,
-        Levels: levels,
-      };
-
+      const { name, type }: Properties = feature.properties;
+      const labels = labelBuilder(feature.properties!);
       layer
-        .bindTooltip(tooltipTemplate(name, "building", labels), {
+        .bindTooltip(tooltipTemplate(name, type, labels), {
           className: "polygon-label", // optional CSS class
         })
         .on("click", () => {
@@ -174,22 +165,10 @@ function setBenches(benches: Feature[], callback: Function): L.GeoJSON {
       fillOpacity: 0.5,
     },
     onEachFeature: (feature, layer) => {
-      const {
-        ["Estimated Capacity"]: capacity,
-        ["Has roofing"]: roofing,
-        ["Has backrest"]: backrest,
-        ["Has table"]: table,
-      }: Properties = feature.properties;
-
-      const labels = {
-        "Estimated Capacity": capacity,
-        "Has roofing": roofing,
-        "Has backrest": backrest,
-        "Has table": table,
-      };
-
+      const { name, type }: Properties = feature.properties;
+      const labels = labelBuilder(feature.properties!);
       layer
-        .bindTooltip(tooltipTemplate("Benches", "bench", labels), {
+        .bindTooltip(tooltipTemplate(name, type, labels), {
           className: "polygon-label",
         })
         .on("click", () => {
@@ -211,14 +190,10 @@ function setParkingSpaces(
     },
     onEachFeature: (feature, layer) => {
       if (feature.geometry.type === "Polygon") {
-        const { vehicles }: Properties = feature.properties;
-
-        const labels = {
-          Vehicles: vehicles,
-        };
-
+        const { name, type }: Properties = feature.properties;
+        const labels = labelBuilder(feature.properties!);
         layer
-          .bindTooltip(tooltipTemplate("Parking Space", "parking", labels), {
+          .bindTooltip(tooltipTemplate(name, type, labels), {
             className: "polygon-label",
           })
           .on("click", () => {
@@ -242,10 +217,7 @@ function setParkingSpaces(
   return parkingLayer;
 }
 
-function setSportsAreas(
-  sportsAreas: Feature[],
-  callback: Function
-): L.GeoJSON {
+function setSportsAreas(sportsAreas: Feature[], callback: Function): L.GeoJSON {
   return L.geoJSON(sportsAreas, {
     style: {
       color: mapTheme.sportsArea,
@@ -254,9 +226,7 @@ function setSportsAreas(
     },
     onEachFeature: (feature, layer) => {
       const { name, type }: Properties = feature.properties!;
-
-      const labels = labelBuilder(feature.properties!);+6
-
+      const labels = labelBuilder(feature.properties!);
       layer
         .bindTooltip(tooltipTemplate(name, type, labels), {
           className: "polygon-label",
@@ -275,9 +245,7 @@ function setRestrooms(restrooms: Feature[], callback: Function): L.GeoJSON {
   return L.geoJSON(restroomsFiltered, {
     pointToLayer: (feature, latlng) => {
       const { name, type }: Properties = feature.properties!;
-
       const labels = labelBuilder(feature.properties!);
-
       return L.marker(latlng, {
         icon: icons.RestroomIcon,
       })
@@ -327,16 +295,12 @@ function setLandmarks(landmarks: Feature[], callback: Function): L.GeoJSON {
   );
   return L.geoJSON(landmarksFiltered, {
     pointToLayer: (feature, latlng) => {
-      const { name, description, level }: Properties = feature.properties!;
-
-      const labels = {
-        Description: description,
-        Level: level,
-      };
+      const { name, type }: Properties = feature.properties;
+      const labels = labelBuilder(feature.properties!);
       return L.marker(latlng, {
         icon: icons.LandmarkIcon,
       })
-        .bindTooltip(tooltipTemplate(name, "landmark", labels), {
+        .bindTooltip(tooltipTemplate(name, type, labels), {
           className: "polygon-label", // optional CSS class
         })
         .on("click", () => {
@@ -355,16 +319,12 @@ function setEventCenters(
   );
   return L.geoJSON(eventCentersFiltered, {
     pointToLayer: (feature, latlng) => {
-      const { name, description, level }: Properties = feature.properties!;
-
-      const labels = {
-        Description: description,
-        Level: level,
-      };
+      const { name, type }: Properties = feature.properties;
+      const labels = labelBuilder(feature.properties!);
       return L.marker(latlng, {
         icon: icons.EventCenterIcon,
       })
-        .bindTooltip(tooltipTemplate(name, "event-center", labels), {
+        .bindTooltip(tooltipTemplate(name, type, labels), {
           className: "polygon-label", // optional CSS class
         })
         .on("click", () => {
@@ -401,7 +361,8 @@ function labelBuilder(properties: Properties): Record<string, string> {
 
     if (properties.type === "bench") {
       return {
-        "Estimated Capacity": properties["Estimated Capacity"] || "N/A or unknown",
+        "Estimated Capacity":
+          properties["Estimated Capacity"] || "N/A or unknown",
         "Has roofing": properties["Has roofing"] || "N/A or unknown",
         "Has backrest": properties["Has backrest"] || "N/A or unknown",
         "Has table": properties["Has table"] || "N/A or unknown",
@@ -416,14 +377,36 @@ function labelBuilder(properties: Properties): Record<string, string> {
 
     if (properties.type === "sports") {
       return {
-        Description: properties.description || "N/A or unknown",
         Level: properties["building:levels"] || "N/A or unknown",
+        "Has roofing": properties["Has roofing"] || "N/A or unknown",
+        Outdoor: properties.Outdoor || "N/A or unknown",
       };
     }
 
     if (properties.type === "Restroom") {
       return {
         Level: properties.level || "N/A or unknown",
+      };
+    }
+
+    if (properties.type === "Event Center") {
+      return {
+        Level: properties.level || "N/A or unknown",
+        Description: properties.description || "No description available",
+      };
+    }
+
+    if (properties.type === "Landmark") {
+      return {
+        Level: properties.level || "N/A or unknown",
+        Description: properties.description || "No description available",
+      };
+    }
+
+    if (properties.type === "Printing Service") {
+      return {
+        Level: properties.level || "N/A or unknown",
+        Description: properties.description || "No description available",
       };
     }
   }
