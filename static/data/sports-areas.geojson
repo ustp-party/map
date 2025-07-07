@@ -16,7 +16,12 @@
         "description": "Located at the northern part of the campus",
         "long_description": "The ROTC Field is a large open area used for various sports and activities, primarily by the Reserve Officers' Training Corps. It is located within the University of Science and Technology of Southern Philippines (USTP) campus in Cagayan de Oro City. The field is often used for parades, drills, and other military training exercises, as well as for recreational sports.",
         "Has roofing": "No",
-        "Outdoor": "Yes"
+        "Lit": "No",
+        "Outdoor": "Yes",
+        "Has ": "No",
+        "Sport": ["Ceremonial"],
+        "Surface": "Dirt",
+        "accessibility": ["Wheelchair"]
       },
       "geometry": {
         "type": "Polygon",
@@ -30,6 +35,65 @@
         ]
       },
       "id": "rotc-field"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "type": "sports",
+        "name": "Sport Pitch",
+        "addr:place": "University of Science and Technology of Southern Philippines",
+        "building:levels": "1",
+        "image": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750820728/opcourt_1_hd_auidao.avif",
+        "image_compressed": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750820726/opcourt_1_comp_xqrxbo.avif",
+        "description": "Located at the ROTC Field",
+        "Has roofing": "No",
+        "Outdoor": "Yes",
+        "Lit": "No",
+        "Sport": "Basketball, Volleyball",
+        "Surface": "Concrete",
+        "accessibility": ["Wheelchair"]
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [124.6561161, 8.4869371],
+            [124.6561134, 8.4866566],
+            [124.6562891, 8.4866539],
+            [124.6562898, 8.4869384],
+            [124.6561161, 8.4869371]
+          ]
+        ]
+      },
+      "id": "sport-pitch-rotc-field"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "type": "sports",
+        "name": "Sport Pitch",
+        "addr:place": "University of Science and Technology of Southern Philippines",
+        "building:levels": "1",
+        "description": "Located inside the Gymnasium",
+        "Has roofing": "Yes",
+        "Outdoor": "No",
+        "Lit": "Yes",
+        "Sport": "Basketball, Volleyball, Tennis",
+        "Surface": "Concrete",
+        "accessibility": ["Wheelchair", "Stairs"]
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [124.656659, 8.485634],
+            [124.656847, 8.485706],
+            [124.656749, 8.485979],
+            [124.656555, 8.485915]
+          ]
+        ]
+      },
+      "id": "ustp-football-field"
     }
   ]
 }

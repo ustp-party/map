@@ -380,6 +380,9 @@ function labelBuilder(properties: Properties): Record<string, string> {
         Level: properties["building:levels"] || "N/A or unknown",
         "Has roofing": properties["Has roofing"] || "N/A or unknown",
         Outdoor: properties.Outdoor || "N/A or unknown",
+        "Has lighting": properties.Lit || "N/A or unknown",
+        "Sport(s)": properties.Sport || "N/A or unknown",
+        Surface: properties.Surface || "N/A or unknown",
       };
     }
 
