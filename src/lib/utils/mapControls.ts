@@ -367,6 +367,37 @@ function findCentroid(feature: Feature): LatLngExpression {
   return centroid;
 }
 
+function labelBuilder(properties: Properties): Record<string, string> {
+  if (properties) {
+    if (properties.type === "building") {
+      return {
+        Building: properties["addr:housenumber"] || "N/A or unknown",
+        Levels: properties["building:levels"] || "N/A or unknown",
+      };
+    }
+
+    if (properties.type === "bench") {
+      return {
+        "Estimated Capacity": properties["Estimated Capacity"] || "N/A or unknown",
+        "Has roofing": properties["Has roofing"] || "N/A or unknown",
+        "Has backrest": properties["Has backrest"] || "N/A or unknown",
+        "Has table": properties["Has table"] || "N/A or unknown",
+      };
+    }
+
+    if (properties.type === "parking") {
+      return {
+        Vehicles: properties.vehicles || "N/A or unknown",
+      };
+    }
+  }
+
+  return {
+    name: properties.name || "Unknown",
+    description: properties.description || "No description available",
+  };
+}
+
 const controls = {
   getCurrentPosition,
   locateMe,
@@ -380,6 +411,7 @@ const controls = {
   setLandmarks,
   setEventCenters,
   findCentroid,
+  labelBuilder,
 };
 
 export default controls;
@@ -397,4 +429,5 @@ export {
   setLandmarks,
   setEventCenters,
   findCentroid,
+  labelBuilder,
 };

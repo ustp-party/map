@@ -111,14 +111,9 @@
               const {
                 name,
                 type,
-                ["addr:housenumber"]: bldg_no,
-                ["building:levels"]: levels,
               }: Properties = feature.properties;
 
-              const labels = {
-                Building: bldg_no,
-                Levels: levels,
-              };
+              const labels = controls.labelBuilder(feature.properties);
 
               layer.bindTooltip(controls.tooltipTemplate(name, type, labels), {
                 className: "polygon-label",

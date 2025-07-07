@@ -13,7 +13,7 @@
 
 ## Tech Stack
 
-- Frontend: [Svelte](https://svelte.dev/) with Github Pages
+- Frontend: [Svelte](https://svelte.dev/) with Cloudflare Pages
 - Backend: None
 - Development: [Node.js](https://github.com/nvm-sh/nvm) and [npm](https://www.npmjs.com/)
 
