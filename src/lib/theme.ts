@@ -29,4 +29,5 @@ export const mapTheme = {
   building: "rgb(87, 144, 252)",
   bench: "rgb(228, 37, 54)",
   parking: "rgb(122, 33, 221)",
+  sportsArea: "rgb(0, 128, 0)",
 };

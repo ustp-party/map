@@ -10,12 +10,14 @@
   import spinnerSVG from "$assets/animated/spinner2.svg?raw";
   import picnicSVG from "$assets/free-icons/table-picnic.svg?raw";
   import monumentSVG from "$assets/free-icons/monument.svg?raw";
+  import basketballSVG from "$assets/free-icons/basketball.svg?raw";
 
   import { getAppState } from "$lib/stores/appState.svelte";
   import { getLocalStorageState } from "$lib/stores/localStorage.svelte";
   import { getSearchState } from "$lib/stores/SearchState.svelte";
   import { onDestroy } from "svelte";
   import { goto } from "$app/navigation";
+  import { labelBuilder } from "$lib/utils/mapControls";
 
   let { feature }: { feature: Feature } = $props();
   let p = feature.properties;
@@ -100,12 +102,15 @@
     parking: parkingSVG,
     bench: picnicSVG,
     "Event Center": sparkleSVG,
+    sports: basketballSVG
   };
 
   onDestroy(() => {
     window.removeEventListener("mousemove", onMouseMove);
     window.removeEventListener("mousemove", loadingIcon);
   });
+
+  const labels = labelBuilder(p);
 </script>
 
 <button class="card" id={feature.id} onclick={handleClick}>
@@ -119,12 +124,9 @@
       <div class="card-content">
         <h3 class="card-title">{p.name}</h3>
         <dl class="details">
-          {@render detail("Building", p["addr:housenumber"])}
-          {@render detail("Levels", p["building:levels"])}
-          {@render detail("Level", p["level"])}
-          {@render detail("Vehicles", p["vehicles"])}
-          {@render detail("Capacity", p["Estimated Capacity"])}
-          {@render detail("Description", p.description)}
+          {#each Object.entries(labels) as [label, value]}
+            {@render detail(label, value)}
+          {/each}
         </dl>
       </div>
     </div>

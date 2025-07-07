@@ -24,7 +24,6 @@
   let mapState = getMapState();
   let searchState = getSearchState();
   let mapElement: HTMLDivElement;
-  let dialog: HTMLDialogElement | undefined = $state(undefined);
   let map: L.Map | undefined = $state();
   let view: L.LatLngExpression = $derived(mapState.currentCenter);
   let zoom: number = $derived(mapState.currentZoom);
@@ -47,6 +46,7 @@
   let printingServicesLayer: L.GeoJSON | undefined = undefined;
   let landmarksLayer: L.GeoJSON | undefined = undefined;
   let eventCentersLayer: L.GeoJSON | undefined = undefined;
+  let sportsAreasLayer: L.GeoJSON | undefined = undefined;
   let currentTileset: L.TileLayer | undefined = $state();
   let {
     children,
@@ -171,6 +171,14 @@
     if (mapState.enableParking) {
       parkingLayer = controls
         .setParkingSpaces(mapState.parking, setDetailedFeature)
+        .addTo(map!);
+    }
+    if (sportsAreasLayer) {
+      map?.removeLayer(sportsAreasLayer);
+    }
+    if (mapState.enableSportsAreas) {
+      sportsAreasLayer = controls
+        .setSportsAreas(mapState.sportsAreas, setDetailedFeature)
         .addTo(map!);
     }
 

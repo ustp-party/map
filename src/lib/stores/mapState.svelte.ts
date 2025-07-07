@@ -18,6 +18,7 @@ class MapStateClass implements MapState {
   benches = $state([]);
   parking = $state([]);
   pointsOfInterest = $state([]);
+  sportsAreas = $state([]);
   tileset = $state(
     "https://{s}.basemaps.cartocdn.com/rastertiles/light_all/{z}/{x}/{y}{r}.png"
   );
@@ -35,6 +36,7 @@ class MapStateClass implements MapState {
   enableBuildings = $state<boolean>(true);
   enableBenches = $state<boolean>(false);
   enableParking = $state<boolean>(true);
+  enableSportsAreas = $state<boolean>(false);
   enablePointsOfInterest = $state<boolean>(true);
   enableRestrooms = $state<boolean>(true);
   enablePrintingServices = $state<boolean>(false);

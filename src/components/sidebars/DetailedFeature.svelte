@@ -15,6 +15,7 @@
   import { geometricCentroid } from "$lib/utils/mapControls";
   import { getAppState } from "$lib/stores/appState.svelte";
   import { getMapState } from "$lib/stores/mapState.svelte";
+  import { labelBuilder } from "$lib/utils/mapControls";
 
   const appState = getAppState();
   const mapState = getMapState();
@@ -131,6 +132,8 @@
     Elevator: elevatorSVG,
     Stairs: stairsSVG,
   };
+
+  const labels = labelBuilder(p);
 </script>
 
 <div class="detailed-feature">
@@ -158,11 +161,9 @@
       </p>
       <div class="right-details">
         <dl>
-          {@render detail("Building", p["addr:housenumber"])}
-          {@render detail("Levels", p["building:levels"])}
-          {@render detail("Level", p["level"])}
-          {@render detail("Vehicles", p["vehicles"])}
-          {@render detail("Capacity", p["Estimated Capacity"])}
+          {#each Object.entries(labels) as [label, value]}
+            {@render detail(label, value)}
+          {/each}
         </dl>
         <menu class="controls-menu">
           <li>

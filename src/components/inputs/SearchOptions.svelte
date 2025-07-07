@@ -100,7 +100,9 @@
   {@render featured(
     "ROTC Field",
     "Reserve Officers Training Corps Field",
-    rotcSVG
+    rotcSVG, () => {
+      mapState.enableSportsAreas = true;
+    }
   )}
 
   {#if isOverflowing && appState.viewportWidth >= 600}

@@ -28,12 +28,14 @@
     const benches = await featuresCallbacks.benches(fetch);
     const parking = await featuresCallbacks.parking(fetch);
     const pointsOfInterest = await featuresCallbacks.pointsOfInterest(fetch);
+    const sportsAreas = await featuresCallbacks.sportsAreas(fetch);
 
     return {
       buildings,
       benches,
       parking,
       pointsOfInterest,
+      sportsAreas,
     } satisfies PageData;
   })();
   const mapState = getMapState();
@@ -46,11 +48,13 @@
       mapState.benches = data.benches!.features;
       mapState.parking = data.parking!.features;
       mapState.pointsOfInterest = data.pointsOfInterest!.features;
+      mapState.sportsAreas = data.sportsAreas!.features;
 
       let featureArray = data
         .buildings!.features.concat(data.benches!.features)
         .concat(data.parking!.features)
-        .concat(data.pointsOfInterest!.features);
+        .concat(data.pointsOfInterest!.features)
+        .concat(data.sportsAreas!.features);
 
       allFeatures.set(featureArray);
 

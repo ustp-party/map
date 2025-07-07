@@ -242,6 +242,32 @@ function setParkingSpaces(
   return parkingLayer;
 }
 
+function setSportsAreas(
+  sportsAreas: Feature[],
+  callback: Function
+): L.GeoJSON {
+  return L.geoJSON(sportsAreas, {
+    style: {
+      color: mapTheme.sportsArea,
+      weight: 0,
+      fillOpacity: 0.5,
+    },
+    onEachFeature: (feature, layer) => {
+      const { name, type }: Properties = feature.properties!;
+
+      const labels = labelBuilder(feature.properties!);+6
+
+      layer
+        .bindTooltip(tooltipTemplate(name, type, labels), {
+          className: "polygon-label",
+        })
+        .on("click", () => {
+          callback(feature);
+        });
+    },
+  });
+}
+
 function setRestrooms(restrooms: Feature[], callback: Function): L.GeoJSON {
   let restroomsFiltered = restrooms.filter(
     (feature) => feature.properties!.type === "Restroom"
@@ -390,6 +416,13 @@ function labelBuilder(properties: Properties): Record<string, string> {
         Vehicles: properties.vehicles || "N/A or unknown",
       };
     }
+
+    if (properties.type === "sports") {
+      return {
+        Description: properties.description || "N/A or unknown",
+        Level: properties["building:levels"] || "N/A or unknown",
+      };
+    }
   }
 
   return {
@@ -412,6 +445,7 @@ const controls = {
   setEventCenters,
   findCentroid,
   labelBuilder,
+  setSportsAreas,
 };
 
 export default controls;
@@ -430,4 +464,5 @@ export {
   setEventCenters,
   findCentroid,
   labelBuilder,
+  setSportsAreas,
 };
