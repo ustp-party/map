@@ -832,30 +832,6 @@
     {
       "type": "Feature",
       "properties": {
-        "@id": "way/427550459",
-        "building": "college",
-        "name": "Unknown Building",
-        "addr:place": "University of Science and Technology of Southern Philippines",
-        "addr:housenumber": "?",
-        "type": "building"
-      },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [124.6551396, 8.4868863],
-            [124.655178, 8.4868068],
-            [124.6552424, 8.4868099],
-            [124.655204, 8.486908],
-            [124.6551396, 8.4868863]
-          ]
-        ]
-      },
-      "id": "way/427550459"
-    },
-    {
-      "type": "Feature",
-      "properties": {
         "@id": "way/427550460",
         "building": "college",
         "name": "Technology Building",
@@ -865,17 +841,20 @@
         "building:levels": 4,
         "image": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750776607/cot_1_hd_kdtpll.avif",
         "image_compressed": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750776605/cot_1_comp_syqzit.avif",
-        "accessibility": ["Stairs"]
+        "accessibility": ["Stairs"],
+        "last_updated": "2025-07-07"
       },
       "geometry": {
         "type": "Polygon",
         "coordinates": [
           [
-            [124.655577, 8.4869183],
-            [124.6551845, 8.4867663],
-            [124.6552545, 8.4866754],
-            [124.6556282, 8.4868222],
-            [124.655577, 8.4869183]
+            [124.6554335, 8.4869859],
+            [124.655418, 8.4870208],
+            [124.655497, 8.4870486],
+            [124.6555839, 8.4868222],
+            [124.6551499, 8.4866555],
+            [124.6550759, 8.4868565],
+            [124.6554335, 8.4869859]
           ]
         ]
       },
