@@ -12,6 +12,7 @@
         "name": "Printing Service",
         "description": "At the building 28 entrance",
         "type": "Printing Service",
+        "last_updated": "2025-06-25 14:56:59",
         "level": "1"
       }
     },
@@ -29,6 +30,7 @@
         "level": "1",
         "image": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750775919/print_1_hd_v4ytae.avif",
         "image_compressed": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750775917/print_1_comp_g7bwno.avif",
+        "last_updated": "2025-06-25 14:56:59",
         "accessibility": ["Wheelchair", "Stairs"]
       }
     },
@@ -43,6 +45,7 @@
         "name": "Printing Service",
         "description": "At the building 5 entrance",
         "type": "Printing Service",
+        "last_updated": "2025-06-25 14:56:59",
         "level": "1"
       }
     },
@@ -57,6 +60,7 @@
         "name": "Male & Female Restrooms",
         "description": "Male & Female restrooms",
         "type": "Restroom",
+        "last_updated": "2025-06-25 14:56:59",
         "level": "1-4"
       }
     },
@@ -71,6 +75,7 @@
         "name": "Male Restroom",
         "description": "Male Restroom",
         "type": "Restroom",
+        "last_updated": "2025-06-25 14:56:59",
         "level": "1"
       }
     },
@@ -85,6 +90,7 @@
         "name": "Female Restroom",
         "description": "Female Restroom",
         "type": "Restroom",
+        "last_updated": "2025-06-25 14:56:59",
         "level": "1"
       }
     },
@@ -99,6 +105,7 @@
         "name": "Male Restroom",
         "description": "Male Restroom",
         "type": "Restroom",
+        "last_updated": "2025-06-25 14:56:59",
         "level": "1, 4"
       }
     },
@@ -113,6 +120,7 @@
         "name": "Female Restroom",
         "description": "Female Restroom",
         "type": "Restroom",
+        "last_updated": "2025-06-25 14:56:59",
         "level": "1, 4"
       }
     },
@@ -128,6 +136,7 @@
         "type": "Landmark",
         "name": "I Love USTP",
         "level": "1",
+        "last_updated": "2025-06-25 14:56:59",
         "image": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750775482/ilu_1_hd_gyvays.avif",
         "image_compressed": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750775481/ilu_1_comp_kpe0mw.avif"
       }
@@ -144,6 +153,7 @@
         "description": "In front of the Gym Lobby",
         "type": "Landmark",
         "level": "1",
+        "last_updated": "2025-06-25 14:56:59",
         "image": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750774134/flag_1_hd_pyxa8x.avif",
         "image_compressed": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750774133/flag_1_comp_esiszf.avif"
       }
@@ -160,6 +170,7 @@
         "description": "In front of the Admin building",
         "type": "Landmark",
         "level": "1",
+        "last_updated": "2025-06-25 14:56:59",
         "image": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750765872/statue_1_hd_p8dzot.avif",
         "image_compressed": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750765871/statue_1_comp_ps8ols.avif"
       }
@@ -175,6 +186,7 @@
         "name": "Male & Female Restrooms",
         "description": "Male & Female restroom",
         "type": "Restroom",
+        "last_updated": "2025-06-25 14:56:59",
         "level": "1-5"
       }
     },
@@ -189,6 +201,7 @@
         "name": "Male & Female Restrooms",
         "description": "Male & Female restrooms",
         "type": "Restroom",
+        "last_updated": "2025-06-25 14:56:59",
         "level": "1-5"
       }
     },
@@ -203,6 +216,7 @@
         "name": "Male & Female Restrooms",
         "description": "Male & Female restrooms",
         "type": "Restroom",
+        "last_updated": "2025-06-25 14:56:59",
         "level": "1-3"
       }
     },
@@ -219,6 +233,7 @@
         "description": "Located at the 5th floor the Engineering Complex I",
         "long_description": "Performance Arts Theater is a multi-purpose venue for various events, including performances, lectures, and gatherings. It is designed to accommodate a wide range of activities and can be used for both formal and informal events.",
         "level": "5",
+        "last_updated": "2025-06-25 14:56:59",
         "accessibility": ["Elevator", "Stairs"]
       }
     },
@@ -226,7 +241,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [124.657480, 8.486228]
+        "coordinates": [124.65748, 8.486228]
       },
       "properties": {
         "id": 15,
@@ -235,6 +250,7 @@
         "description": "Located at the 4th floor the CITC Bldg",
         "long_description": "ICT Audio Visual Room is a specialized facility designed for audio-visual presentations, lectures, and multimedia events. It is equipped with advanced technology to support various forms of media and communication.",
         "level": "4",
+        "last_updated": "2025-06-25 14:56:59",
         "accessibility": ["Elevator", "Stairs"]
       }
     },
@@ -251,6 +267,7 @@
         "description": "Located at the 4th floor of the LRC Bldg",
         "long_description": "Makerspace is a collaborative workspace equipped with tools and resources for creative projects, prototyping, and innovation. It provides a hands-on environment for individuals to design, build, and experiment with various materials and technologies.",
         "level": "4",
+        "last_updated": "2025-06-25 14:56:59",
         "accessibility": ["Elevator", "Stairs"]
       }
     }

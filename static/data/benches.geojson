@@ -17,6 +17,7 @@
         "Has backrest": "No",
         "Has table": "Yes",
         "Lit": "Yes",
+        "last_updated": "2025-06-25 14:56:59",
         "image": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750819058/benches_1_hd_pphjav.avif",
         "image_compressed": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750819057/benches_1_comp_iuqsbz.avif"
       },
@@ -47,6 +48,7 @@
         "Has backrest": "No",
         "Has table": "Yes",
         "shelter_type": "picnic_shelter",
+        "last_updated": "2025-07-07 15:45:00",
         "image": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750819424/benches_3_hd_owkdbq.avif",
         "image_compressed": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750819422/benches_3_comp_gptal5.avif"
       },
@@ -81,6 +83,7 @@
         "Has backrest": "No",
         "Has table": "Yes",
         "shelter_type": "picnic_shelter",
+        "last_updated": "2025-07-07 15:45:00",
         "image": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750819278/benches_2_hd_cggdoe.avif",
         "image_compressed": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750819277/benches_2_comp_a3o68a.avif"
       },
@@ -126,7 +129,8 @@
         "Estimated Capacity": "6",
         "Has roofing": "Yes",
         "Has backrest": "No",
-        "Has table": "Yes"
+        "Has table": "Yes",
+        "last_updated": "2025-07-07 15:45:00"
       },
       "geometry": {
         "type": "Polygon",
@@ -154,7 +158,8 @@
         "Estimated Capacity": "6",
         "Has roofing": "Yes",
         "Has backrest": "No",
-        "Has table": "Yes"
+        "Has table": "Yes",
+        "last_updated": "2025-07-07 15:45:00"
       },
       "geometry": {
         "type": "Polygon",
@@ -182,7 +187,8 @@
         "Estimated Capacity": "6",
         "Has roofing": "Yes",
         "Has backrest": "No",
-        "Has table": "Yes"
+        "Has table": "Yes",
+        "last_updated": "2025-07-07 15:45:00"
       },
       "geometry": {
         "type": "Polygon",
@@ -211,7 +217,8 @@
         "Has roofing": "Yes",
         "Has backrest": "No",
         "Has table": "Yes",
-        "Lit": "No"
+        "Lit": "No",
+        "last_updated": "2025-07-07 15:45:00"
       },
       "geometry": {
         "type": "Polygon",
@@ -240,7 +247,8 @@
         "Has roofing": "Yes",
         "Has backrest": "No",
         "Has table": "Yes",
-        "Lit": "No"
+        "Lit": "No",
+        "last_updated": "2025-07-07 15:45:00"
       },
       "geometry": {
         "type": "Polygon",

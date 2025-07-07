@@ -21,6 +21,7 @@
         "Has ": "No",
         "Sport": ["Ceremonial"],
         "Surface": "Dirt",
+        "last_updated": "2025-06-25 14:56:59",
         "accessibility": ["Wheelchair"]
       },
       "geometry": {
@@ -51,6 +52,7 @@
         "Lit": "No",
         "Sport": "Basketball, Volleyball",
         "Surface": "Concrete",
+        "last_updated": "2025-07-07 15:45:00",
         "accessibility": ["Wheelchair"]
       },
       "geometry": {
@@ -80,6 +82,7 @@
         "Lit": "Yes",
         "Sport": "Basketball, Volleyball, Tennis",
         "Surface": "Concrete",
+        "last_updated": "2025-07-07 15:45:00",
         "accessibility": ["Wheelchair", "Stairs"]
       },
       "geometry": {
