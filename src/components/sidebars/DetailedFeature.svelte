@@ -249,6 +249,10 @@
 {/snippet}
 
 <style lang="scss">
+  em {
+    color: var(--text-placeholder);
+    user-select: none;
+  }
   .detailed-feature {
     #close-dialog {
       all: unset;
@@ -308,7 +312,6 @@
         button {
           all: unset;
           font-size: small;
-          user-select: none;
           width: fit-content;
           color: var(--text-subtle);
           margin-top: 1rem;
