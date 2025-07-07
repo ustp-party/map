@@ -9,12 +9,13 @@
   import accessibleSVG from "$assets/free-icons/accessible.svg?raw";
   import stairsSVG from "$assets/free-icons/stairs.svg?raw";
   import elevatorSVG from "$assets/free-icons/elevator.svg?raw";
-
   import SvgIcon from "$components/icons/SVGIcon.svelte";
 
   import { geometricCentroid } from "$lib/utils/mapControls";
   import { getAppState } from "$lib/stores/appState.svelte";
   import { getMapState } from "$lib/stores/mapState.svelte";
+  import { labelBuilder } from "$lib/utils/mapControls";
+  import { timeAgo, formatDate } from "$lib/utils/sidebar";
 
   const appState = getAppState();
   const mapState = getMapState();
@@ -22,6 +23,7 @@
   let dialog: HTMLDialogElement | undefined = $state(undefined);
   let clipboardNotification: HTMLDivElement | undefined = $state(undefined);
   let failedCopy: boolean = $state(false);
+  let exactDate: boolean = $state(false);
   let p = $state<Properties>({
     name: "Loading...",
     description: "Please wait while the feature loads.",
@@ -146,7 +148,20 @@
   <div class="content">
     <header>
       <h2>{p.name}</h2>
+
       <h5>{p.description}</h5>
+      {#if p.last_updated}
+        <button
+          onclick={() => (exactDate = !exactDate)}
+          aria-label="Toggle last updated date"
+        >
+          {#if exactDate}
+            Last updated on {formatDate(p.last_updated)}
+          {:else}
+            Last updated {timeAgo(p.last_updated)}
+          {/if}
+        </button>
+      {/if}
     </header>
     <main>
       <p>
@@ -158,11 +173,11 @@
       </p>
       <div class="right-details">
         <dl>
-          {@render detail("Building", p["addr:housenumber"])}
-          {@render detail("Levels", p["building:levels"])}
-          {@render detail("Level", p["level"])}
-          {@render detail("Vehicles", p["vehicles"])}
-          {@render detail("Capacity", p["Estimated Capacity"])}
+          {#each Object.entries(labelBuilder(p)) as [label, value]}
+            {#if label != "Description"}
+              {@render detail(label, value)}
+            {/if}
+          {/each}
         </dl>
         <menu class="controls-menu">
           <li>
@@ -216,7 +231,7 @@
           {/each}
         </ul>
       {:else}
-        <em>No accessibility options available.</em>
+        <em>No specified accessibility options available.</em>
       {/if}
     </div>
   </div>
@@ -234,6 +249,10 @@
 {/snippet}
 
 <style lang="scss">
+  em {
+    color: var(--text-placeholder);
+    user-select: none;
+  }
   .detailed-feature {
     #close-dialog {
       all: unset;
@@ -288,7 +307,21 @@
       header {
         display: flex;
         flex-direction: column;
-        gap: 16px;
+        gap: 0.4em;
+
+        button {
+          all: unset;
+          font-size: small;
+          width: fit-content;
+          color: var(--text-subtle);
+          margin-top: 1rem;
+          &:hover {
+            text-decoration: underline;
+            color: var(--text);
+            cursor: pointer;
+          }
+        }
+
         h5 {
           font-size: small;
           font-weight: 500;
@@ -303,7 +336,7 @@
       main {
         display: flex;
         flex-direction: column;
-        gap: 16px;
+        gap: 2rem;
 
         .right-details {
           display: flex;
@@ -313,8 +346,9 @@
           width: 100%;
           dl {
             display: grid;
-            grid-template-columns: min-content 1fr;
+            grid-template-columns: max-content 1fr;
             column-gap: clamp(1rem, 2vw + 4px, 2rem);
+            row-gap: clamp(0.2rem, 0.1vh + 1px, 0.5rem);
             font-size: 0.875rem;
             height: fit-content;
 

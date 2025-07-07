@@ -125,19 +125,10 @@ function setBuildings(allbuildings: Feature[], callback: Function): L.GeoJSON {
       fillOpacity: 0.5,
     },
     onEachFeature: (feature, layer) => {
-      const {
-        name,
-        ["addr:housenumber"]: bldg_no,
-        ["building:levels"]: levels,
-      }: Properties = feature.properties;
-
-      const labels = {
-        Building: bldg_no,
-        Levels: levels,
-      };
-
+      const { name, type }: Properties = feature.properties;
+      const labels = labelBuilder(feature.properties!);
       layer
-        .bindTooltip(tooltipTemplate(name, "building", labels), {
+        .bindTooltip(tooltipTemplate(name, type, labels), {
           className: "polygon-label", // optional CSS class
         })
         .on("click", () => {
@@ -174,22 +165,10 @@ function setBenches(benches: Feature[], callback: Function): L.GeoJSON {
       fillOpacity: 0.5,
     },
     onEachFeature: (feature, layer) => {
-      const {
-        ["Estimated Capacity"]: capacity,
-        ["Has roofing"]: roofing,
-        ["Has backrest"]: backrest,
-        ["Has table"]: table,
-      }: Properties = feature.properties;
-
-      const labels = {
-        "Estimated Capacity": capacity,
-        "Has roofing": roofing,
-        "Has backrest": backrest,
-        "Has table": table,
-      };
-
+      const { name, type }: Properties = feature.properties;
+      const labels = labelBuilder(feature.properties!);
       layer
-        .bindTooltip(tooltipTemplate("Benches", "bench", labels), {
+        .bindTooltip(tooltipTemplate(name, type, labels), {
           className: "polygon-label",
         })
         .on("click", () => {
@@ -211,14 +190,10 @@ function setParkingSpaces(
     },
     onEachFeature: (feature, layer) => {
       if (feature.geometry.type === "Polygon") {
-        const { vehicles }: Properties = feature.properties;
-
-        const labels = {
-          Vehicles: vehicles,
-        };
-
+        const { name, type }: Properties = feature.properties;
+        const labels = labelBuilder(feature.properties!);
         layer
-          .bindTooltip(tooltipTemplate("Parking Space", "parking", labels), {
+          .bindTooltip(tooltipTemplate(name, type, labels), {
             className: "polygon-label",
           })
           .on("click", () => {
@@ -242,23 +217,39 @@ function setParkingSpaces(
   return parkingLayer;
 }
 
+function setSportsAreas(sportsAreas: Feature[], callback: Function): L.GeoJSON {
+  return L.geoJSON(sportsAreas, {
+    style: {
+      color: mapTheme.sportsArea,
+      weight: 0,
+      fillOpacity: 0.5,
+    },
+    onEachFeature: (feature, layer) => {
+      const { name, type }: Properties = feature.properties!;
+      const labels = labelBuilder(feature.properties!);
+      layer
+        .bindTooltip(tooltipTemplate(name, type, labels), {
+          className: "polygon-label",
+        })
+        .on("click", () => {
+          callback(feature);
+        });
+    },
+  });
+}
+
 function setRestrooms(restrooms: Feature[], callback: Function): L.GeoJSON {
   let restroomsFiltered = restrooms.filter(
     (feature) => feature.properties!.type === "Restroom"
   );
   return L.geoJSON(restroomsFiltered, {
     pointToLayer: (feature, latlng) => {
-      const { description, level }: Properties = feature.properties!;
-
-      const labels = {
-        Description: description,
-        Level: level,
-      };
-
+      const { name, type }: Properties = feature.properties!;
+      const labels = labelBuilder(feature.properties!);
       return L.marker(latlng, {
         icon: icons.RestroomIcon,
       })
-        .bindTooltip(tooltipTemplate("Restroom", "restroom", labels), {
+        .bindTooltip(tooltipTemplate(name, type, labels), {
           className: "polygon-label", // optional CSS class
         })
         .on("click", () => {
@@ -304,16 +295,12 @@ function setLandmarks(landmarks: Feature[], callback: Function): L.GeoJSON {
   );
   return L.geoJSON(landmarksFiltered, {
     pointToLayer: (feature, latlng) => {
-      const { name, description, level }: Properties = feature.properties!;
-
-      const labels = {
-        Description: description,
-        Level: level,
-      };
+      const { name, type }: Properties = feature.properties;
+      const labels = labelBuilder(feature.properties!);
       return L.marker(latlng, {
         icon: icons.LandmarkIcon,
       })
-        .bindTooltip(tooltipTemplate(name, "landmark", labels), {
+        .bindTooltip(tooltipTemplate(name, type, labels), {
           className: "polygon-label", // optional CSS class
         })
         .on("click", () => {
@@ -332,16 +319,12 @@ function setEventCenters(
   );
   return L.geoJSON(eventCentersFiltered, {
     pointToLayer: (feature, latlng) => {
-      const { name, description, level }: Properties = feature.properties!;
-
-      const labels = {
-        Description: description,
-        Level: level,
-      };
+      const { name, type }: Properties = feature.properties;
+      const labels = labelBuilder(feature.properties!);
       return L.marker(latlng, {
         icon: icons.EventCenterIcon,
       })
-        .bindTooltip(tooltipTemplate(name, "event-center", labels), {
+        .bindTooltip(tooltipTemplate(name, type, labels), {
           className: "polygon-label", // optional CSS class
         })
         .on("click", () => {
@@ -368,34 +351,61 @@ function findCentroid(feature: Feature): LatLngExpression {
 }
 
 function labelBuilder(properties: Properties): Record<string, string> {
-  if (properties) {
-    if (properties.type === "building") {
-      return {
-        Building: properties["addr:housenumber"] || "N/A or unknown",
-        Levels: properties["building:levels"] || "N/A or unknown",
-      };
-    }
-
-    if (properties.type === "bench") {
-      return {
-        "Estimated Capacity": properties["Estimated Capacity"] || "N/A or unknown",
-        "Has roofing": properties["Has roofing"] || "N/A or unknown",
-        "Has backrest": properties["Has backrest"] || "N/A or unknown",
-        "Has table": properties["Has table"] || "N/A or unknown",
-      };
-    }
-
-    if (properties.type === "parking") {
-      return {
-        Vehicles: properties.vehicles || "N/A or unknown",
-      };
-    }
+  if (!properties) {
+    return {
+      Name: "Unknown",
+      Description: "No description available",
+    };
   }
 
-  return {
-    name: properties.name || "Unknown",
-    description: properties.description || "No description available",
-  };
+  const fallback = "N/A or unknown";
+
+  switch (properties.type) {
+    case "building":
+      return {
+        Building: properties["addr:housenumber"] || fallback,
+        Levels: properties["building:levels"] || fallback,
+      };
+
+    case "bench":
+      return {
+        "Estimated Capacity": properties["Estimated Capacity"] || fallback,
+        "Has lighting": properties.Lit || fallback,
+        "Has roofing": properties["Has roofing"] || fallback,
+        "Has backrest": properties["Has backrest"] || fallback,
+        "Has table": properties["Has table"] || fallback,
+      };
+
+    case "parking":
+      return {
+        Vehicles: properties.vehicles || fallback,
+      };
+
+    case "sports":
+      return {
+        Level: properties["building:levels"] || fallback,
+        "Has roofing": properties["Has roofing"] || fallback,
+        Outdoor: properties.Outdoor || fallback,
+        "Has lighting": properties.Lit || fallback,
+        "Sport(s)": properties.Sport || fallback,
+        Surface: properties.Surface || fallback,
+      };
+
+    case "Restroom":
+    case "Event Center":
+    case "Landmark":
+    case "Printing Service":
+      return {
+        Level: properties.level || fallback,
+        Description: properties.description || "No description available",
+      };
+
+    default:
+      return {
+        Name: properties.name || "Unknown",
+        Description: properties.description || "No description available",
+      };
+  }
 }
 
 const controls = {
@@ -412,6 +422,7 @@ const controls = {
   setEventCenters,
   findCentroid,
   labelBuilder,
+  setSportsAreas,
 };
 
 export default controls;
@@ -430,4 +441,5 @@ export {
   setEventCenters,
   findCentroid,
   labelBuilder,
+  setSportsAreas,
 };

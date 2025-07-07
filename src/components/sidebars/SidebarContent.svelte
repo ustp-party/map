@@ -8,6 +8,7 @@
   import sparkleSVG from "$assets/free-icons/sparkle.svg?raw";
   import monumentSVG from "$assets/free-icons/monument.svg?raw";
   import chevronRightSVG from "$assets/material-icons/chevron-right.svg?raw";
+  import basketballSVG from "$assets/free-icons/basketball.svg?raw";
 
   import SearchOption from "$components/buttons/SearchOption.svelte";
   import ResultCards from "./ResultCards.svelte";
@@ -55,6 +56,7 @@
       {@render featured("Parking", "Parking", parkingSVG)}
       {@render featured("Landmarks", "Landmarks", monumentSVG)}
       {@render featured("Events", "Event Center", sparkleSVG)}
+      {@render featured("Sports", "Sports", basketballSVG)}
     </div>
   </div>
   {#if recentlyViewed.length > 0}

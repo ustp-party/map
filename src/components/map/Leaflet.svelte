@@ -24,11 +24,10 @@
   let mapState = getMapState();
   let searchState = getSearchState();
   let mapElement: HTMLDivElement;
-  let dialog: HTMLDialogElement | undefined = $state(undefined);
   let map: L.Map | undefined = $state();
   let view: L.LatLngExpression = $derived(mapState.currentCenter);
   let zoom: number = $derived(mapState.currentZoom);
-  let searchResults = $derived<Feature[]>(searchState.results.slice(0, 5)); // Return only top 5
+  let searchResults = $derived<Feature[]>(searchState.results.slice(0, 10)); // Return only top 5
 
   let allBuildingsLayer: L.GeoJSON | undefined = undefined;
 
@@ -47,6 +46,7 @@
   let printingServicesLayer: L.GeoJSON | undefined = undefined;
   let landmarksLayer: L.GeoJSON | undefined = undefined;
   let eventCentersLayer: L.GeoJSON | undefined = undefined;
+  let sportsAreasLayer: L.GeoJSON | undefined = undefined;
   let currentTileset: L.TileLayer | undefined = $state();
   let {
     children,
@@ -108,32 +108,30 @@
           },
           onEachFeature: (feature, layer) => {
             if (feature.geometry.type === "Polygon") {
-              const {
-                name,
-                type,
-              }: Properties = feature.properties;
-
+              const { name, type }: Properties = feature.properties;
               const labels = controls.labelBuilder(feature.properties);
-
-              layer.bindTooltip(controls.tooltipTemplate(name, type, labels), {
-                className: "polygon-label",
-              });
+              layer
+                .bindTooltip(controls.tooltipTemplate(name, type, labels), {
+                  className: "polygon-label",
+                })
+                .on("click", () => {
+                  setDetailedFeature(feature as MapFeature);
+                });
             }
           },
           pointToLayer: (feature, latlng) => {
-            const { description, type, level }: Properties = feature.properties;
-
-            const labels = {
-              Descripion: description,
-              Level: level,
-            };
-
+            const { name, type }: Properties = feature.properties;
+            const labels = controls.labelBuilder(feature.properties);
             return L.marker(latlng, {
               icon: icons.HighlightIcon,
               pane: SEARCH_RESULTS_PANE_NAME,
-            }).bindTooltip(controls.tooltipTemplate(type, type, labels), {
-              className: "marker-label",
-            });
+            })
+              .bindTooltip(controls.tooltipTemplate(name, type, labels), {
+                className: "marker-label",
+              })
+              .on("click", () => {
+                setDetailedFeature(feature as MapFeature);
+              });
           },
         }).addTo(map!);
       }, 700);
@@ -150,72 +148,99 @@
 
   // Data viz of all buildings
   $effect(() => {
+    // First: Remove existing current tileset
     if (currentTileset) {
       currentTileset.remove();
     }
     currentTileset = tilesetLayer.addTo(map!);
 
+    // Update map reference
     mapState.setMap(map!);
-    if (allBuildingsLayer) {
-      map?.removeLayer(allBuildingsLayer);
-    }
-    if (mapState.enableBuildings) {
-      allBuildingsLayer = controls
-        .setBuildings(mapState.buildings, setDetailedFeature)
-        .addTo(map!);
-    }
 
-    if (parkingLayer) {
-      map?.removeLayer(parkingLayer);
-    }
-    if (mapState.enableParking) {
-      parkingLayer = controls
-        .setParkingSpaces(mapState.parking, setDetailedFeature)
-        .addTo(map!);
-    }
+    // Layer configurations
+    const layerConfigs = [
+      {
+        enabled: mapState.enableBuildings,
+        existingLayer: () => allBuildingsLayer,
+        remove: () => map?.removeLayer(allBuildingsLayer!),
+        create: () =>
+          (allBuildingsLayer = controls
+            .setBuildings(mapState.buildings, setDetailedFeature)
+            .addTo(map!)),
+      },
+      {
+        enabled: mapState.enableParking,
+        existingLayer: () => parkingLayer,
+        remove: () => map?.removeLayer(parkingLayer!),
+        create: () =>
+          (parkingLayer = controls
+            .setParkingSpaces(mapState.parking, setDetailedFeature)
+            .addTo(map!)),
+      },
+      {
+        enabled: mapState.enableSportsAreas,
+        existingLayer: () => sportsAreasLayer,
+        remove: () => map?.removeLayer(sportsAreasLayer!),
+        create: () =>
+          (sportsAreasLayer = controls
+            .setSportsAreas(mapState.sportsAreas, setDetailedFeature)
+            .addTo(map!)),
+      },
+      {
+        enabled: mapState.enableBenches,
+        existingLayer: () => benchesLayer,
+        remove: () => map?.removeLayer(benchesLayer!),
+        create: () =>
+          (benchesLayer = controls
+            .setBenches(mapState.benches, setDetailedFeature)
+            .addTo(map!)),
+      },
+      {
+        enabled: mapState.enableRestrooms,
+        existingLayer: () => restroomsLayer,
+        remove: () => map?.removeLayer(restroomsLayer!),
+        create: () =>
+          (restroomsLayer = controls
+            .setRestrooms(mapState.pointsOfInterest, setDetailedFeature)
+            .addTo(map!)),
+      },
+      {
+        enabled: mapState.enablePrintingServices,
+        existingLayer: () => printingServicesLayer,
+        remove: () => map?.removeLayer(printingServicesLayer!),
+        create: () =>
+          (printingServicesLayer = controls
+            .setPrintingServices(mapState.pointsOfInterest, setDetailedFeature)
+            .addTo(map!)),
+      },
+      {
+        enabled: mapState.enableLandmarks,
+        existingLayer: () => landmarksLayer,
+        remove: () => map?.removeLayer(landmarksLayer!),
+        create: () =>
+          (landmarksLayer = controls
+            .setLandmarks(mapState.pointsOfInterest, setDetailedFeature)
+            .addTo(map!)),
+      },
+      {
+        enabled: mapState.enableEventCenters,
+        existingLayer: () => eventCentersLayer,
+        remove: () => map?.removeLayer(eventCentersLayer!),
+        create: () =>
+          (eventCentersLayer = controls
+            .setEventCenters(mapState.pointsOfInterest, setDetailedFeature)
+            .addTo(map!)),
+      },
+    ];
 
-    if (benchesLayer) {
-      map?.removeLayer(benchesLayer);
-    }
-    if (mapState.enableBenches) {
-      benchesLayer = controls
-        .setBenches(mapState.benches, setDetailedFeature)
-        .addTo(map!);
-    }
-
-    if (restroomsLayer) {
-      map?.removeLayer(restroomsLayer);
-    }
-    if (mapState.enableRestrooms) {
-      restroomsLayer = controls
-        .setRestrooms(mapState.pointsOfInterest, setDetailedFeature)
-        .addTo(map!);
-    }
-
-    if (printingServicesLayer) {
-      map?.removeLayer(printingServicesLayer);
-    }
-    if (mapState.enablePrintingServices) {
-      printingServicesLayer = controls
-        .setPrintingServices(mapState.pointsOfInterest, setDetailedFeature)
-        .addTo(map!);
-    }
-
-    if (landmarksLayer) {
-      map?.removeLayer(landmarksLayer);
-    }
-    if (mapState.enableLandmarks) {
-      landmarksLayer = controls
-        .setLandmarks(mapState.pointsOfInterest, setDetailedFeature)
-        .addTo(map!);
-    }
-    if (eventCentersLayer) {
-      map?.removeLayer(eventCentersLayer);
-    }
-    if (mapState.enableEventCenters) {
-      eventCentersLayer = controls
-        .setEventCenters(mapState.pointsOfInterest, setDetailedFeature)
-        .addTo(map!);
+    // Apply all layers based on configuration
+    for (const config of layerConfigs) {
+      if (config.existingLayer()) {
+        config.remove();
+      }
+      if (config.enabled) {
+        config.create();
+      }
     }
   });
 

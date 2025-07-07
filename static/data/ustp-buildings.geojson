@@ -19,6 +19,7 @@
         "name": "Gymnasium",
         "building:levels": "2",
         "sport": "multi",
+        "last_updated": "2025-06-25 14:56:59",
         "image": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750819151/gym_1_hd_y0kvfr.avif",
         "image_compressed": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750819150/gym_1_comp_kfvxjw.avif",
         "accessibility": ["Wheelchair", "Stairs"]
@@ -49,6 +50,7 @@
         "name": "Learning Resource Center",
         "building:levels": "5",
         "type": "building",
+        "last_updated": "2025-06-25 14:56:59",
         "image": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750777534/lrc_1_hd_gtuvrv.avif",
         "image_compressed": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750777533/lrc_1_comp_jkm3mb.avif",
         "accessibility": ["Elevator", "Stairs"]
@@ -79,6 +81,7 @@
         "addr:housenumber": "24",
         "addr:place": "University of Science and Technology of Southern Philippines",
         "building": "college",
+        "last_updated": "2025-06-25 14:56:59",
         "name": "Girl's Trade Building",
         "building:levels": "1",
         "type": "building"
@@ -110,6 +113,7 @@
         "building": "construction",
         "name": "Sports Complex",
         "type": "building",
+        "last_updated": "2025-06-25 14:56:59",
         "image": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750820440/sports_complex_1_hd_trwcmc.avif",
         "image_compressed": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750820440/sports_complex_1_hd_trwcmc.avif",
         "accessibility": ["Wheelchair"]
@@ -137,6 +141,7 @@
         "building": "university",
         "name": "Culinary Building",
         "type": "building",
+        "last_updated": "2025-06-25 14:56:59",
         "building:levels": "1"
       },
       "geometry": {
@@ -163,6 +168,7 @@
         "building:levels": "1",
         "name": "Science Centrum",
         "type": "building",
+        "last_updated": "2025-06-25 14:56:59",
         "roof:levels": "1"
       },
       "geometry": {
@@ -189,6 +195,7 @@
         "name": "Science Complex",
         "building:levels": 5,
         "type": "building",
+        "last_updated": "2025-06-25 14:56:59",
         "image": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750819648/csm_1_hd_hbuh2f.avif",
         "image_compressed": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750819646/csm_1_comp_aotyzu.avif",
         "accessibility": ["Wheelchair", "Elevator", "Stairs"]
@@ -224,6 +231,7 @@
         "building:levels": "2",
         "name": "Senior High School Building",
         "type": "building",
+        "last_updated": "2025-06-25 14:56:59",
         "image": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750820514/shs_1_hd_pchzcm.avif",
         "image_compressed": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750820512/shs_1_comp_r2usrd.avif"
       },
@@ -254,6 +262,7 @@
         "type": "building",
         "name": "Gymnasium Lobby",
         "building:levels": "1",
+        "last_updated": "2025-06-25 14:56:59",
         "image": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750821418/gym_lobby_1_hd_h1fpiq.avif",
         "image_compressed": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750821417/gym_lobby_1_comp_qc22nj.avif",
         "accessibility": ["Stairs"]
@@ -285,6 +294,7 @@
         "name": "Information and Communications Technology Building",
         "description": "College of Information Technology and Computing (CITC)",
         "type": "building",
+        "last_updated": "2025-06-25 14:56:59",
         "image": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750765872/citc_1_hd_qxcawh.avif",
         "image_compressed": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750765871/citc_1_comp_umshsv.avif",
         "accessibility": ["Wheelchair", "Elevator", "Stairs"]
@@ -347,6 +357,7 @@
         "office": "educational_institution",
         "type": "building",
         "building:levels": "4",
+        "last_updated": "2025-06-25 14:56:59",
         "image": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750767733/admin_1_hd_tkt9zg.avif",
         "image_compressed": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750767730/admin_1_comp_tv7a3k.avif"
       },
@@ -382,6 +393,7 @@
         "addr:housenumber": "5",
         "addr:place": "University of Science and Technology of Southern Philippines",
         "building": "college",
+        "last_updated": "2025-06-25 14:56:59",
         "name": "Old Civil Engineering Building",
         "building:levels": "1",
         "type": "building"
@@ -409,6 +421,7 @@
         "building": "college",
         "name": "Arts and Culture Building",
         "type": "building",
+        "last_updated": "2025-06-25 14:56:59",
         "building:levels": "?"
       },
       "geometry": {
@@ -432,6 +445,7 @@
         "addr:housenumber": "2",
         "addr:place": "University of Science and Technology of Southern Philippines",
         "type": "building",
+        "last_updated": "2025-06-25 14:56:59",
         "name": "Guidance and Testing Center"
       },
       "geometry": {
@@ -457,6 +471,7 @@
         "building": "college",
         "name": "Old Science Building",
         "building:levels": "1",
+        "last_updated": "2025-06-25 14:56:59",
         "type": "building"
       },
       "geometry": {
@@ -485,6 +500,7 @@
         "name": "Food Innovation Center",
         "building:levels": "2",
         "type": "building",
+        "last_updated": "2025-06-25 14:56:59",
         "image": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750767283/fic_1_hd_evvxwu.avif",
         "image_compressed": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750767282/fic_1_comp_jipyqb.avif"
       },
@@ -510,6 +526,7 @@
         "addr:place": "University of Science and Technology of Southern Philippines",
         "building": "university",
         "name": "Scholarship Building",
+        "last_updated": "2025-06-25 14:56:59",
         "type": "building"
       },
       "geometry": {
@@ -538,6 +555,7 @@
         "addr:place": "University of Science and Technology of Southern Philippines",
         "amenity": "clinic",
         "type": "building",
+        "last_updated": "2025-06-25 14:56:59",
         "name": "Old Medical Building"
       },
       "geometry": {
@@ -562,6 +580,7 @@
         "addr:place": "University of Science and Technology of Southern Philippines",
         "building": "college",
         "name": "Student Center",
+        "last_updated": "2025-06-25 14:56:59",
         "type": "building"
       },
       "geometry": {
@@ -586,6 +605,7 @@
         "addr:place": "University of Science and Technology of Southern Philippines",
         "building": "college",
         "name": "BTED",
+        "last_updated": "2025-06-25 14:56:59",
         "type": "building"
       },
       "geometry": {
@@ -612,6 +632,7 @@
         "name": "FAB LAB building",
         "description": "Metals & Engineering Innovation Center",
         "type": "building",
+        "last_updated": "2025-06-25 14:56:59",
         "building:levels": 1
       },
       "geometry": {
@@ -636,6 +657,7 @@
         "addr:place": "University of Science and Technology of Southern Philippines",
         "building": "college",
         "name": "Civil Technology Building",
+        "last_updated": "2025-06-25 14:56:59",
         "type": "building"
       },
       "geometry": {
@@ -662,6 +684,7 @@
         "building": "college",
         "name": "Engineering Complex I",
         "type": "building",
+        "last_updated": "2025-06-25 14:56:59",
         "building:levels": 6,
         "accessibility": ["Wheelchair", "Elevator", "Stairs"]
       },
@@ -694,7 +717,8 @@
         "building:levels": 8,
         "image": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750776559/cea_2_hd_yltqtk.avif",
         "image_compressed": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750776558/cea_2_comp_lbzx2w.avif",
-        "accessibility": ["Wheelchair", "Elevator", "Stairs"]
+        "accessibility": ["Wheelchair", "Elevator", "Stairs"],
+        "last_updated": "2025-06-25 14:56:59"
       },
       "geometry": {
         "type": "Polygon",
@@ -735,6 +759,7 @@
         "name": "Cafeteria",
         "building:levels": "1",
         "type": "building",
+        "last_updated": "2025-06-25 14:56:59",
         "image": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750765871/cafet_1_hd_qx5ly3.avif",
         "image_compressed": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750765871/cafet_1_comp_mugtks.avif",
         "accessibility": ["Wheelchair"]
@@ -788,6 +813,7 @@
         "addr:housenumber": "?",
         "addr:place": "University of Science and Technology of Southern Philippines",
         "type": "building",
+        "last_updated": "2025-06-25 14:56:59",
         "name": "Unfinished Building"
       },
       "geometry": {
@@ -813,7 +839,8 @@
         "type": "building",
         "name": "Unknown Building",
         "addr:place": "University of Science and Technology of Southern Philippines",
-        "addr:housenumber": "?"
+        "addr:housenumber": "?",
+        "last_updated": "2025-06-25 14:56:59"
       },
       "geometry": {
         "type": "Polygon",
@@ -832,30 +859,6 @@
     {
       "type": "Feature",
       "properties": {
-        "@id": "way/427550459",
-        "building": "college",
-        "name": "Unknown Building",
-        "addr:place": "University of Science and Technology of Southern Philippines",
-        "addr:housenumber": "?",
-        "type": "building"
-      },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [124.6551396, 8.4868863],
-            [124.655178, 8.4868068],
-            [124.6552424, 8.4868099],
-            [124.655204, 8.486908],
-            [124.6551396, 8.4868863]
-          ]
-        ]
-      },
-      "id": "way/427550459"
-    },
-    {
-      "type": "Feature",
-      "properties": {
         "@id": "way/427550460",
         "building": "college",
         "name": "Technology Building",
@@ -865,17 +868,20 @@
         "building:levels": 4,
         "image": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750776607/cot_1_hd_kdtpll.avif",
         "image_compressed": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750776605/cot_1_comp_syqzit.avif",
-        "accessibility": ["Stairs"]
+        "accessibility": ["Stairs"],
+        "last_updated": "2025-06-25 14:56:59"
       },
       "geometry": {
         "type": "Polygon",
         "coordinates": [
           [
-            [124.655577, 8.4869183],
-            [124.6551845, 8.4867663],
-            [124.6552545, 8.4866754],
-            [124.6556282, 8.4868222],
-            [124.655577, 8.4869183]
+            [124.6554335, 8.4869859],
+            [124.655418, 8.4870208],
+            [124.655497, 8.4870486],
+            [124.6555839, 8.4868222],
+            [124.6551499, 8.4866555],
+            [124.6550759, 8.4868565],
+            [124.6554335, 8.4869859]
           ]
         ]
       },
@@ -890,6 +896,7 @@
         "addr:place": "University of Science and Technology of Southern Philippines",
         "addr:housenumber": "?",
         "building:levels": "1",
+        "last_updated": "2025-06-25 14:56:59",
         "type": "building"
       },
       "geometry": {
@@ -914,7 +921,8 @@
         "layer": "-1",
         "name": "SPED Center",
         "addr:place": "University of Science and Technology of Southern Philippines",
-        "addr:housenumber": "?"
+        "addr:housenumber": "?",
+        "last_updated": "2025-06-25 14:56:59"
       },
       "geometry": {
         "type": "Polygon",
@@ -940,6 +948,7 @@
         "addr:place": "University of Science and Technology of Southern Philippines",
         "addr:housenumber": "?",
         "building:levels": "?",
+        "last_updated": "2025-06-25 14:56:59",
         "type": "building"
       },
       "geometry": {

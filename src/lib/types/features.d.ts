@@ -28,6 +28,11 @@ export interface Properties {
   "Has table"?: "Yes" | "No";
   vehicles?: "All" | "Motorcycles only" | "Cars only" | "Bicycles only";
   accessibility?: Array<"Wheelchair" | "Elevator" | "Stairs" | "None">;
+  Outdoor?: "Yes" | "No";
+  Lit?: "Yes" | "No";
+  Sport?: string;
+  Surface?: "Dirt" | "Concrete" | "Asphalt" | "Synthetic" | "Other";
+  "last_updated"?: string;
 }
 
 export interface Feature {

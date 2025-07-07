@@ -65,11 +65,28 @@ async function pointsOfInterest(
   }
 }
 
+async function sportsAreas(
+  svelteFetch: Function
+): Promise<FeatureCollection | null> {
+  try {
+    const res = await svelteFetch(`${base}/data/sports-areas.geojson`);
+    if (!res.ok) {
+      throw new Error(`HTTP error ${res.status}`);
+    }
+    const data = await res.json();
+    return data as FeatureCollection;
+  } catch (err) {
+    console.error("Failed to load GeoJSON:", err);
+    return null;
+  }
+}
+
 const featuresCallbacks = {
   buildings: buildings,
   benches: benches,
   parking: parking,
   pointsOfInterest: pointsOfInterest,
+  sportsAreas: sportsAreas
 };
 
 export default featuresCallbacks;

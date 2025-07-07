@@ -8,12 +8,13 @@
         "coordinates": [124.6562165, 8.48595509]
       },
       "properties": {
-        "id": 1,
         "name": "Printing Service",
         "description": "At the building 28 entrance",
         "type": "Printing Service",
+        "last_updated": "2025-06-25 14:56:59",
         "level": "1"
-      }
+      },
+      "id": "printing-service-1"
     },
     {
       "type": "Feature",
@@ -22,15 +23,16 @@
         "coordinates": [124.65581477, 8.48563409]
       },
       "properties": {
-        "id": 2,
         "name": "Printing Service",
         "description": "At the CSM building",
         "type": "Printing Service",
         "level": "1",
         "image": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750775919/print_1_hd_v4ytae.avif",
         "image_compressed": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750775917/print_1_comp_g7bwno.avif",
+        "last_updated": "2025-06-25 14:56:59",
         "accessibility": ["Wheelchair", "Stairs"]
-      }
+      },
+      "id": "printing-service-2"
     },
     {
       "type": "Feature",
@@ -39,12 +41,13 @@
         "coordinates": [124.65728939, 8.48573225]
       },
       "properties": {
-        "id": 3,
         "name": "Printing Service",
         "description": "At the building 5 entrance",
         "type": "Printing Service",
+        "last_updated": "2025-06-25 14:56:59",
         "level": "1"
-      }
+      },
+      "id": "printing-service-3"
     },
     {
       "type": "Feature",
@@ -53,12 +56,13 @@
         "coordinates": [124.65733498, 8.48633475]
       },
       "properties": {
-        "id": 4,
-        "name": "Restroom",
-        "description": "Male & Female restroom",
+        "name": "Male & Female Restrooms",
+        "description": "Male & Female restrooms",
         "type": "Restroom",
+        "last_updated": "2025-06-25 14:56:59",
         "level": "1-4"
-      }
+      },
+      "id": "restroom-1"
     },
     {
       "type": "Feature",
@@ -67,12 +71,13 @@
         "coordinates": [124.65651641, 8.4859259]
       },
       "properties": {
-        "id": 5,
-        "name": "Restroom",
+        "name": "Male Restroom",
         "description": "Male Restroom",
         "type": "Restroom",
+        "last_updated": "2025-06-25 14:56:59",
         "level": "1"
-      }
+      },
+      "id": "restroom-2"
     },
     {
       "type": "Feature",
@@ -81,12 +86,13 @@
         "coordinates": [124.65674758, 8.48601875]
       },
       "properties": {
-        "id": 6,
-        "name": "Restroom",
+        "name": "Female Restroom",
         "description": "Female Restroom",
         "type": "Restroom",
+        "last_updated": "2025-06-25 14:56:59",
         "level": "1"
-      }
+      },
+      "id": "restroom-3"
     },
     {
       "type": "Feature",
@@ -95,12 +101,13 @@
         "coordinates": [124.655691, 8.48652]
       },
       "properties": {
-        "id": 7,
-        "name": "Restroom",
+        "name": "Male Restroom",
         "description": "Male Restroom",
         "type": "Restroom",
+        "last_updated": "2025-06-25 14:56:59",
         "level": "1, 4"
-      }
+      },
+      "id": "restroom-4"
     },
     {
       "type": "Feature",
@@ -109,12 +116,13 @@
         "coordinates": [124.655989, 8.486624]
       },
       "properties": {
-        "id": 7,
-        "name": "Restroom",
+        "name": "Female Restroom",
         "description": "Female Restroom",
         "type": "Restroom",
+        "last_updated": "2025-06-25 14:56:59",
         "level": "1, 4"
-      }
+      },
+      "id": "restroom-5"
     },
     {
       "type": "Feature",
@@ -123,14 +131,15 @@
         "coordinates": [124.65642, 8.485127]
       },
       "properties": {
-        "id": 8,
         "description": "I ♥️ USTP. Near the entrance gate",
         "type": "Landmark",
         "name": "I Love USTP",
         "level": "1",
+        "last_updated": "2025-06-25 14:56:59",
         "image": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750775482/ilu_1_hd_gyvays.avif",
         "image_compressed": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750775481/ilu_1_comp_kpe0mw.avif"
-      }
+      },
+      "id": "i-love-ustp"
     },
     {
       "type": "Feature",
@@ -139,14 +148,15 @@
         "coordinates": [124.656321, 8.486051]
       },
       "properties": {
-        "id": 9,
         "name": "Philippine Flag",
         "description": "In front of the Gym Lobby",
         "type": "Landmark",
         "level": "1",
+        "last_updated": "2025-06-25 14:56:59",
         "image": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750774134/flag_1_hd_pyxa8x.avif",
         "image_compressed": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750774133/flag_1_comp_esiszf.avif"
-      }
+      },
+      "id": "ph-flag"
     },
     {
       "type": "Feature",
@@ -155,14 +165,15 @@
         "coordinates": [124.65715, 8.485931]
       },
       "properties": {
-        "id": 10,
         "name": "Statue",
-        "description": "In front of the Admin build",
+        "description": "In front of the Admin building",
         "type": "Landmark",
         "level": "1",
+        "last_updated": "2025-06-25 14:56:59",
         "image": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750765872/statue_1_hd_p8dzot.avif",
         "image_compressed": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750765871/statue_1_comp_ps8ols.avif"
-      }
+      },
+      "id": "statue-1"
     },
     {
       "type": "Feature",
@@ -171,12 +182,13 @@
         "coordinates": [124.655811, 8.48556]
       },
       "properties": {
-        "id": 11,
-        "name": "Restroom",
+        "name": "Male & Female Restrooms",
         "description": "Male & Female restroom",
         "type": "Restroom",
+        "last_updated": "2025-06-25 14:56:59",
         "level": "1-5"
-      }
+      },
+      "id": "restroom-6"
     },
     {
       "type": "Feature",
@@ -185,12 +197,13 @@
         "coordinates": [124.657016, 8.484841]
       },
       "properties": {
-        "id": 12,
-        "name": "Restroom",
-        "description": "Male & Female restroom",
+        "name": "Male & Female Restrooms",
+        "description": "Male & Female restrooms",
         "type": "Restroom",
+        "last_updated": "2025-06-25 14:56:59",
         "level": "1-5"
-      }
+      },
+      "id": "restroom-7"
     },
     {
       "type": "Feature",
@@ -199,12 +212,13 @@
         "coordinates": [124.655582, 8.486852]
       },
       "properties": {
-        "id": 13,
-        "name": "Restroom",
-        "description": "Male & Female restroom",
+        "name": "Male & Female Restrooms",
+        "description": "Male & Female restrooms",
         "type": "Restroom",
+        "last_updated": "2025-06-25 14:56:59",
         "level": "1-3"
-      }
+      },
+      "id": "restroom-8"
     },
     {
       "type": "Feature",
@@ -213,30 +227,32 @@
         "coordinates": [124.657126, 8.484873]
       },
       "properties": {
-        "id": 14,
         "type": "Event Center",
         "name": "Performance Arts Theater",
         "description": "Located at the 5th floor the Engineering Complex I",
         "long_description": "Performance Arts Theater is a multi-purpose venue for various events, including performances, lectures, and gatherings. It is designed to accommodate a wide range of activities and can be used for both formal and informal events.",
         "level": "5",
+        "last_updated": "2025-06-25 14:56:59",
         "accessibility": ["Elevator", "Stairs"]
-      }
+      },
+      "id": "pat"
     },
     {
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [124.657480, 8.486228]
+        "coordinates": [124.65748, 8.486228]
       },
       "properties": {
-        "id": 15,
         "type": "Event Center",
         "name": "ICT Audio Visual Room",
         "description": "Located at the 4th floor the CITC Bldg",
         "long_description": "ICT Audio Visual Room is a specialized facility designed for audio-visual presentations, lectures, and multimedia events. It is equipped with advanced technology to support various forms of media and communication.",
         "level": "4",
+        "last_updated": "2025-06-25 14:56:59",
         "accessibility": ["Elevator", "Stairs"]
-      }
+      },
+      "id": "ict-avr"
     },
     {
       "type": "Feature",
@@ -245,14 +261,15 @@
         "coordinates": [124.655728, 8.486666]
       },
       "properties": {
-        "id": 16,
         "type": "Event Center",
         "name": "Makerspace",
         "description": "Located at the 4th floor of the LRC Bldg",
         "long_description": "Makerspace is a collaborative workspace equipped with tools and resources for creative projects, prototyping, and innovation. It provides a hands-on environment for individuals to design, build, and experiment with various materials and technologies.",
         "level": "4",
+        "last_updated": "2025-06-25 14:56:59",
         "accessibility": ["Elevator", "Stairs"]
-      }
+      },
+      "id": "makerspace"
     }
   ]
 }

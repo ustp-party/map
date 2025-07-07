@@ -59,6 +59,14 @@
       bind:checked={mapState.enableParking}
     />
     <label for="parking-spaces">Parking Spaces</label>
+    <input
+      type="checkbox"
+      id="sports-areas"
+      name="enabled features"
+      value="Sports Areas"
+      bind:checked={mapState.enableSportsAreas}
+    />
+    <label for="sports-areas">Sports Areas</label>
   </fieldset>
   <fieldset class="content">
     <legend>POINTS</legend>

@@ -28,12 +28,14 @@
     const benches = await featuresCallbacks.benches(fetch);
     const parking = await featuresCallbacks.parking(fetch);
     const pointsOfInterest = await featuresCallbacks.pointsOfInterest(fetch);
+    const sportsAreas = await featuresCallbacks.sportsAreas(fetch);
 
     return {
       buildings,
       benches,
       parking,
       pointsOfInterest,
+      sportsAreas,
     } satisfies PageData;
   })();
   const mapState = getMapState();
@@ -46,11 +48,13 @@
       mapState.benches = data.benches!.features;
       mapState.parking = data.parking!.features;
       mapState.pointsOfInterest = data.pointsOfInterest!.features;
+      mapState.sportsAreas = data.sportsAreas!.features;
 
       let featureArray = data
         .buildings!.features.concat(data.benches!.features)
         .concat(data.parking!.features)
-        .concat(data.pointsOfInterest!.features);
+        .concat(data.pointsOfInterest!.features)
+        .concat(data.sportsAreas!.features);
 
       allFeatures.set(featureArray);
 
@@ -60,6 +64,33 @@
         if (feature) {
           searchState.updateDetailedFeature(feature);
           searchState.updateQuery(feature.properties.name);
+
+          switch (feature.properties.type) {
+            case "building":
+              mapState.enableBuildings = true;
+              break;
+            case "bench":
+              mapState.enableBenches = true;
+              break;
+            case "parking":
+              mapState.enableParking = true;
+              break;
+            case "Landmark":
+              mapState.enableLandmarks = true;
+              break;
+            case "Restroom":
+              mapState.enableRestrooms = true;
+              break;
+            case "sports":
+              mapState.enableSportsAreas = true;
+              break;
+            case "Printing Service":
+              mapState.enablePrintingServices = true;
+              break;
+            case "Event Center":
+              mapState.enableEventCenters = true;
+              break;
+          }
         } else {
           appState.openMissingFeatureDialog = true;
         }
@@ -98,7 +129,9 @@
       {/if}
     </Leaflet>
   </div>
-  <MissingFeature />
+  {#if appState.openMissingFeatureDialog}
+    <MissingFeature />
+  {/if}
 {:catch error}
   <LoadingPage>
     <LoadingError {error} />

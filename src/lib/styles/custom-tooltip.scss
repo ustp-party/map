@@ -70,6 +70,12 @@
   }
 }
 
+.sports {
+  .tooltip-title::before {
+    background-image: url("/data/free-icons/basketball.svg");
+  }
+}
+
 @mixin flexo() {
   display: flex;
   align-items: center;
