@@ -351,74 +351,61 @@ function findCentroid(feature: Feature): LatLngExpression {
 }
 
 function labelBuilder(properties: Properties): Record<string, string> {
-  if (properties) {
-    if (properties.type === "building") {
-      return {
-        Building: properties["addr:housenumber"] || "N/A or unknown",
-        Levels: properties["building:levels"] || "N/A or unknown",
-      };
-    }
-
-    if (properties.type === "bench") {
-      return {
-        "Estimated Capacity":
-        properties["Estimated Capacity"] || "N/A or unknown",
-        "Has lighting": properties.Lit || "N/A or unknown",
-        "Has roofing": properties["Has roofing"] || "N/A or unknown",
-        "Has backrest": properties["Has backrest"] || "N/A or unknown",
-        "Has table": properties["Has table"] || "N/A or unknown",
-      };
-    }
-
-    if (properties.type === "parking") {
-      return {
-        Vehicles: properties.vehicles || "N/A or unknown",
-      };
-    }
-
-    if (properties.type === "sports") {
-      return {
-        Level: properties["building:levels"] || "N/A or unknown",
-        "Has roofing": properties["Has roofing"] || "N/A or unknown",
-        Outdoor: properties.Outdoor || "N/A or unknown",
-        "Has lighting": properties.Lit || "N/A or unknown",
-        "Sport(s)": properties.Sport || "N/A or unknown",
-        Surface: properties.Surface || "N/A or unknown",
-      };
-    }
-
-    if (properties.type === "Restroom") {
-      return {
-        Level: properties.level || "N/A or unknown",
-      };
-    }
-
-    if (properties.type === "Event Center") {
-      return {
-        Level: properties.level || "N/A or unknown",
-        Description: properties.description || "No description available",
-      };
-    }
-
-    if (properties.type === "Landmark") {
-      return {
-        Level: properties.level || "N/A or unknown",
-        Description: properties.description || "No description available",
-      };
-    }
-
-    if (properties.type === "Printing Service") {
-      return {
-        Level: properties.level || "N/A or unknown",
-        Description: properties.description || "No description available",
-      };
-    }
+  if (!properties) {
+    return {
+      Name: "Unknown",
+      Description: "No description available",
+    };
   }
 
-  return {
-    Name: properties.name || "Unknown",
-    Description: properties.description || "No description available",
-  };
+  const fallback = "N/A or unknown";
+
+  switch (properties.type) {
+    case "building":
+      return {
+        Building: properties["addr:housenumber"] || fallback,
+        Levels: properties["building:levels"] || fallback,
+      };
+
+    case "bench":
+      return {
+        "Estimated Capacity": properties["Estimated Capacity"] || fallback,
+        "Has lighting": properties.Lit || fallback,
+        "Has roofing": properties["Has roofing"] || fallback,
+        "Has backrest": properties["Has backrest"] || fallback,
+        "Has table": properties["Has table"] || fallback,
+      };
+
+    case "parking":
+      return {
+        Vehicles: properties.vehicles || fallback,
+      };
+
+    case "sports":
+      return {
+        Level: properties["building:levels"] || fallback,
+        "Has roofing": properties["Has roofing"] || fallback,
+        Outdoor: properties.Outdoor || fallback,
+        "Has lighting": properties.Lit || fallback,
+        "Sport(s)": properties.Sport || fallback,
+        Surface: properties.Surface || fallback,
+      };
+
+    case "Restroom":
+    case "Event Center":
+    case "Landmark":
+    case "Printing Service":
+      return {
+        Level: properties.level || fallback,
+        Description: properties.description || "No description available",
+      };
+
+    default:
+      return {
+        Name: properties.name || "Unknown",
+        Description: properties.description || "No description available",
+      };
+  }
 }
 
 const controls = {
