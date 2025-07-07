@@ -121,17 +121,12 @@
             }
           },
           pointToLayer: (feature, latlng) => {
-            const { description, type, level }: Properties = feature.properties;
-
-            const labels = {
-              Descripion: description,
-              Level: level,
-            };
-
+            const { name, type }: Properties = feature.properties;
+            const labels = controls.labelBuilder(feature.properties);
             return L.marker(latlng, {
               icon: icons.HighlightIcon,
               pane: SEARCH_RESULTS_PANE_NAME,
-            }).bindTooltip(controls.tooltipTemplate(type, type, labels), {
+            }).bindTooltip(controls.tooltipTemplate(name, type, labels), {
               className: "marker-label",
             });
           },
