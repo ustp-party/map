@@ -2,7 +2,7 @@
   "type": "FeatureCollection",
   "generator": "overpass-turbo",
   "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL.",
-  "timestamp": "2025-06-05T14:51:41Z",
+  "timestamp": "2025-07-07T09:33:45Z",
   "features": [
     {
       "type": "Feature",
@@ -10,28 +10,251 @@
         "@id": "way/427550449",
         "addr:place": "University of Science and Technology of Southern Philippines",
         "type": "bench",
-        "name": "Benches",
+        "name": "Picnic Shelter",
         "description": "Near the cafeteria",
         "Estimated Capacity": "100",
         "Has roofing": "Yes",
         "Has backrest": "No",
         "Has table": "Yes",
+        "Lit": "Yes",
         "image": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750819058/benches_1_hd_pphjav.avif",
         "image_compressed": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750819057/benches_1_comp_iuqsbz.avif"
       },
       "geometry": {
         "type": "Polygon",
         "coordinates": [
-            [
-                [124.65682469, 8.48540031],
-                [124.65693902, 8.48542982],
-                [124.65699568, 8.48522257],
-                [124.65689812, 8.48518344],
-                [124.65682469, 8.48540031]
-            ]
+          [
+            [124.65682469, 8.48540031],
+            [124.65693902, 8.48542982],
+            [124.65699568, 8.48522257],
+            [124.65689812, 8.48518344],
+            [124.65682469, 8.48540031]
+          ]
         ]
-        }
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1410491469",
+        "type": "bench",
+        "name": "Picnic Shelter",
+        "amenity": "shelter",
+        "building": "yes",
+        "Lit": "Yes",
+        "Estimated Capacity": "100",
+        "Has roofing": "Yes",
+        "Has backrest": "No",
+        "Has table": "Yes",
+        "shelter_type": "picnic_shelter",
+        "image": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750819424/benches_3_hd_owkdbq.avif",
+        "image_compressed": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750819422/benches_3_comp_gptal5.avif"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [124.6568844, 8.4859667],
+            [124.6569649, 8.4857685],
+            [124.6570006, 8.4857855],
+            [124.6569376, 8.4859487],
+            [124.6570153, 8.4859765],
+            [124.6569996, 8.4860096],
+            [124.6568844, 8.4859667]
+          ]
+        ]
+      },
+      "id": "way/1410491469"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1410491474",
+        "type": "bench",
+        "name": "Picnic Shelter",
+        "description": "At the campus park",
+        "amenity": "shelter",
+        "building": "yes",
+        "Lit": "Yes",
+        "Estimated Capacity": "100",
+        "Has roofing": "Yes",
+        "Has backrest": "No",
+        "Has table": "Yes",
+        "shelter_type": "picnic_shelter",
+        "image": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750819278/benches_2_hd_cggdoe.avif",
+        "image_compressed": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750819277/benches_2_comp_a3o68a.avif"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [124.6564004, 8.4854115],
+            [124.6564112, 8.4854632],
+            [124.6563106, 8.4854844],
+            [124.6562341, 8.4854725],
+            [124.6561872, 8.4854513],
+            [124.6561537, 8.4854194],
+            [124.6561168, 8.4853584],
+            [124.6561205, 8.4852961],
+            [124.6561385, 8.4852513],
+            [124.6561646, 8.4852066],
+            [124.6562108, 8.4851618],
+            [124.6562649, 8.4851238],
+            [124.6562885, 8.4851699],
+            [124.6562452, 8.4852044],
+            [124.6562036, 8.4852485],
+            [124.656178, 8.4852902],
+            [124.6561751, 8.4853412],
+            [124.6562037, 8.4853859],
+            [124.6562435, 8.4854168],
+            [124.6563079, 8.4854327],
+            [124.6564004, 8.4854115]
+          ]
+        ]
+      },
+      "id": "way/1410491474"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1410495726",
+        "type": "bench",
+        "name": "Picnic Shelter",
+        "amenity": "shelter",
+        "building": "yes",
+        "shelter_type": "picnic_shelter",
+        "Estimated Capacity": "6",
+        "Has roofing": "Yes",
+        "Has backrest": "No",
+        "Has table": "Yes"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [124.657944, 8.4859015],
+            [124.6578823, 8.4858922],
+            [124.6578863, 8.485863],
+            [124.6579494, 8.4858723],
+            [124.657944, 8.4859015]
+          ]
+        ]
+      },
+      "id": "way/1410495726"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1410495725",
+        "amenity": "shelter",
+        "building": "yes",
+        "shelter_type": "picnic_shelter",
+        "type": "bench",
+        "name": "Picnic Shelter",
+        "Estimated Capacity": "6",
+        "Has roofing": "Yes",
+        "Has backrest": "No",
+        "Has table": "Yes"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [124.6576972, 8.4860302],
+            [124.6577576, 8.4860474],
+            [124.6577361, 8.4861429],
+            [124.6576758, 8.4861283],
+            [124.6576972, 8.4860302]
+          ]
+        ]
+      },
+      "id": "way/1410495725"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1410491477",
+        "amenity": "shelter",
+        "building": "yes",
+        "shelter_type": "picnic_shelter",
+        "type": "bench",
+        "name": "Picnic Shelter",
+        "Estimated Capacity": "6",
+        "Has roofing": "Yes",
+        "Has backrest": "No",
+        "Has table": "Yes"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [124.6554697, 8.4865098],
+            [124.6554134, 8.4864872],
+            [124.6554536, 8.4863864],
+            [124.6555113, 8.4864076],
+            [124.6554697, 8.4865098]
+          ]
+        ]
+      },
+      "id": "way/1410491477"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1410491476",
+        "amenity": "shelter",
+        "building": "yes",
+        "shelter_type": "picnic_shelter",
+        "type": "bench",
+        "name": "Picnic Shelter",
+        "Estimated Capacity": "4",
+        "Has roofing": "Yes",
+        "Has backrest": "No",
+        "Has table": "Yes",
+        "Lit": "No"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [124.6562408, 8.4864222],
+            [124.6561885, 8.4864036],
+            [124.6562087, 8.4863546],
+            [124.6562583, 8.4863758],
+            [124.6562408, 8.4864222]
+          ]
+        ]
+      },
+      "id": "way/1410491476"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1410491475",
+        "amenity": "shelter",
+        "building": "yes",
+        "shelter_type": "picnic_shelter",
+        "type": "bench",
+        "name": "Picnic Shelter",
+        "Estimated Capacity": "6",
+        "Has roofing": "Yes",
+        "Has backrest": "No",
+        "Has table": "Yes",
+        "Lit": "No"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [124.6562663, 8.486214],
+            [124.6563173, 8.4862339],
+            [124.6563025, 8.4862803],
+            [124.6562502, 8.4862591],
+            [124.6562663, 8.486214]
+          ]
+        ]
+      },
+      "id": "way/1410491475"
     }
   ]
-
 }

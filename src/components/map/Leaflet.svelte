@@ -27,7 +27,7 @@
   let map: L.Map | undefined = $state();
   let view: L.LatLngExpression = $derived(mapState.currentCenter);
   let zoom: number = $derived(mapState.currentZoom);
-  let searchResults = $derived<Feature[]>(searchState.results.slice(0, 5)); // Return only top 5
+  let searchResults = $derived<Feature[]>(searchState.results.slice(0, 10)); // Return only top 5
 
   let allBuildingsLayer: L.GeoJSON | undefined = undefined;
 

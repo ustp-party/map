@@ -362,7 +362,8 @@ function labelBuilder(properties: Properties): Record<string, string> {
     if (properties.type === "bench") {
       return {
         "Estimated Capacity":
-          properties["Estimated Capacity"] || "N/A or unknown",
+        properties["Estimated Capacity"] || "N/A or unknown",
+        "Has lighting": properties.Lit || "N/A or unknown",
         "Has roofing": properties["Has roofing"] || "N/A or unknown",
         "Has backrest": properties["Has backrest"] || "N/A or unknown",
         "Has table": properties["Has table"] || "N/A or unknown",
