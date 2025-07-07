@@ -148,80 +148,99 @@
 
   // Data viz of all buildings
   $effect(() => {
+    // First: Remove existing current tileset
     if (currentTileset) {
       currentTileset.remove();
     }
     currentTileset = tilesetLayer.addTo(map!);
 
+    // Update map reference
     mapState.setMap(map!);
-    if (allBuildingsLayer) {
-      map?.removeLayer(allBuildingsLayer);
-    }
-    if (mapState.enableBuildings) {
-      allBuildingsLayer = controls
-        .setBuildings(mapState.buildings, setDetailedFeature)
-        .addTo(map!);
-    }
 
-    if (parkingLayer) {
-      map?.removeLayer(parkingLayer);
-    }
-    if (mapState.enableParking) {
-      parkingLayer = controls
-        .setParkingSpaces(mapState.parking, setDetailedFeature)
-        .addTo(map!);
-    }
-    if (sportsAreasLayer) {
-      map?.removeLayer(sportsAreasLayer);
-    }
-    if (mapState.enableSportsAreas) {
-      sportsAreasLayer = controls
-        .setSportsAreas(mapState.sportsAreas, setDetailedFeature)
-        .addTo(map!);
-    }
+    // Layer configurations
+    const layerConfigs = [
+      {
+        enabled: mapState.enableBuildings,
+        existingLayer: () => allBuildingsLayer,
+        remove: () => map?.removeLayer(allBuildingsLayer!),
+        create: () =>
+          (allBuildingsLayer = controls
+            .setBuildings(mapState.buildings, setDetailedFeature)
+            .addTo(map!)),
+      },
+      {
+        enabled: mapState.enableParking,
+        existingLayer: () => parkingLayer,
+        remove: () => map?.removeLayer(parkingLayer!),
+        create: () =>
+          (parkingLayer = controls
+            .setParkingSpaces(mapState.parking, setDetailedFeature)
+            .addTo(map!)),
+      },
+      {
+        enabled: mapState.enableSportsAreas,
+        existingLayer: () => sportsAreasLayer,
+        remove: () => map?.removeLayer(sportsAreasLayer!),
+        create: () =>
+          (sportsAreasLayer = controls
+            .setSportsAreas(mapState.sportsAreas, setDetailedFeature)
+            .addTo(map!)),
+      },
+      {
+        enabled: mapState.enableBenches,
+        existingLayer: () => benchesLayer,
+        remove: () => map?.removeLayer(benchesLayer!),
+        create: () =>
+          (benchesLayer = controls
+            .setBenches(mapState.benches, setDetailedFeature)
+            .addTo(map!)),
+      },
+      {
+        enabled: mapState.enableRestrooms,
+        existingLayer: () => restroomsLayer,
+        remove: () => map?.removeLayer(restroomsLayer!),
+        create: () =>
+          (restroomsLayer = controls
+            .setRestrooms(mapState.pointsOfInterest, setDetailedFeature)
+            .addTo(map!)),
+      },
+      {
+        enabled: mapState.enablePrintingServices,
+        existingLayer: () => printingServicesLayer,
+        remove: () => map?.removeLayer(printingServicesLayer!),
+        create: () =>
+          (printingServicesLayer = controls
+            .setPrintingServices(mapState.pointsOfInterest, setDetailedFeature)
+            .addTo(map!)),
+      },
+      {
+        enabled: mapState.enableLandmarks,
+        existingLayer: () => landmarksLayer,
+        remove: () => map?.removeLayer(landmarksLayer!),
+        create: () =>
+          (landmarksLayer = controls
+            .setLandmarks(mapState.pointsOfInterest, setDetailedFeature)
+            .addTo(map!)),
+      },
+      {
+        enabled: mapState.enableEventCenters,
+        existingLayer: () => eventCentersLayer,
+        remove: () => map?.removeLayer(eventCentersLayer!),
+        create: () =>
+          (eventCentersLayer = controls
+            .setEventCenters(mapState.pointsOfInterest, setDetailedFeature)
+            .addTo(map!)),
+      },
+    ];
 
-    if (benchesLayer) {
-      map?.removeLayer(benchesLayer);
-    }
-    if (mapState.enableBenches) {
-      benchesLayer = controls
-        .setBenches(mapState.benches, setDetailedFeature)
-        .addTo(map!);
-    }
-
-    if (restroomsLayer) {
-      map?.removeLayer(restroomsLayer);
-    }
-    if (mapState.enableRestrooms) {
-      restroomsLayer = controls
-        .setRestrooms(mapState.pointsOfInterest, setDetailedFeature)
-        .addTo(map!);
-    }
-
-    if (printingServicesLayer) {
-      map?.removeLayer(printingServicesLayer);
-    }
-    if (mapState.enablePrintingServices) {
-      printingServicesLayer = controls
-        .setPrintingServices(mapState.pointsOfInterest, setDetailedFeature)
-        .addTo(map!);
-    }
-
-    if (landmarksLayer) {
-      map?.removeLayer(landmarksLayer);
-    }
-    if (mapState.enableLandmarks) {
-      landmarksLayer = controls
-        .setLandmarks(mapState.pointsOfInterest, setDetailedFeature)
-        .addTo(map!);
-    }
-    if (eventCentersLayer) {
-      map?.removeLayer(eventCentersLayer);
-    }
-    if (mapState.enableEventCenters) {
-      eventCentersLayer = controls
-        .setEventCenters(mapState.pointsOfInterest, setDetailedFeature)
-        .addTo(map!);
+    // Apply all layers based on configuration
+    for (const config of layerConfigs) {
+      if (config.existingLayer()) {
+        config.remove();
+      }
+      if (config.enabled) {
+        config.create();
+      }
     }
   });
 
