@@ -274,17 +274,14 @@ function setRestrooms(restrooms: Feature[], callback: Function): L.GeoJSON {
   );
   return L.geoJSON(restroomsFiltered, {
     pointToLayer: (feature, latlng) => {
-      const { description, level }: Properties = feature.properties!;
+      const { name, type }: Properties = feature.properties!;
 
-      const labels = {
-        Description: description,
-        Level: level,
-      };
+      const labels = labelBuilder(feature.properties!);
 
       return L.marker(latlng, {
         icon: icons.RestroomIcon,
       })
-        .bindTooltip(tooltipTemplate("Restroom", "restroom", labels), {
+        .bindTooltip(tooltipTemplate(name, type, labels), {
           className: "polygon-label", // optional CSS class
         })
         .on("click", () => {
@@ -423,11 +420,17 @@ function labelBuilder(properties: Properties): Record<string, string> {
         Level: properties["building:levels"] || "N/A or unknown",
       };
     }
+
+    if (properties.type === "Restroom") {
+      return {
+        Level: properties.level || "N/A or unknown",
+      };
+    }
   }
 
   return {
-    name: properties.name || "Unknown",
-    description: properties.description || "No description available",
+    Name: properties.name || "Unknown",
+    Description: properties.description || "No description available",
   };
 }
 

@@ -54,8 +54,8 @@
       },
       "properties": {
         "id": 4,
-        "name": "Restroom",
-        "description": "Male & Female restroom",
+        "name": "Male & Female Restrooms",
+        "description": "Male & Female restrooms",
         "type": "Restroom",
         "level": "1-4"
       }
@@ -68,7 +68,7 @@
       },
       "properties": {
         "id": 5,
-        "name": "Restroom",
+        "name": "Male Restroom",
         "description": "Male Restroom",
         "type": "Restroom",
         "level": "1"
@@ -82,7 +82,7 @@
       },
       "properties": {
         "id": 6,
-        "name": "Restroom",
+        "name": "Female Restroom",
         "description": "Female Restroom",
         "type": "Restroom",
         "level": "1"
@@ -96,7 +96,7 @@
       },
       "properties": {
         "id": 7,
-        "name": "Restroom",
+        "name": "Male Restroom",
         "description": "Male Restroom",
         "type": "Restroom",
         "level": "1, 4"
@@ -110,7 +110,7 @@
       },
       "properties": {
         "id": 7,
-        "name": "Restroom",
+        "name": "Female Restroom",
         "description": "Female Restroom",
         "type": "Restroom",
         "level": "1, 4"
@@ -172,7 +172,7 @@
       },
       "properties": {
         "id": 11,
-        "name": "Restroom",
+        "name": "Male & Female Restrooms",
         "description": "Male & Female restroom",
         "type": "Restroom",
         "level": "1-5"
@@ -186,8 +186,8 @@
       },
       "properties": {
         "id": 12,
-        "name": "Restroom",
-        "description": "Male & Female restroom",
+        "name": "Male & Female Restrooms",
+        "description": "Male & Female restrooms",
         "type": "Restroom",
         "level": "1-5"
       }
@@ -200,8 +200,8 @@
       },
       "properties": {
         "id": 13,
-        "name": "Restroom",
-        "description": "Male & Female restroom",
+        "name": "Male & Female Restrooms",
+        "description": "Male & Female restrooms",
         "type": "Restroom",
         "level": "1-3"
       }
