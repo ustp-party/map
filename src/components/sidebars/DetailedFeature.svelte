@@ -303,7 +303,7 @@
       header {
         display: flex;
         flex-direction: column;
-        gap: 16px;
+        gap: 0.4em;
 
         button {
           all: unset;
@@ -311,6 +311,7 @@
           user-select: none;
           width: fit-content;
           color: var(--text-subtle);
+          margin-top: 1rem;
           &:hover {
             text-decoration: underline;
             color: var(--text);
