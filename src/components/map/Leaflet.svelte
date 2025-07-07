@@ -108,13 +108,8 @@
           },
           onEachFeature: (feature, layer) => {
             if (feature.geometry.type === "Polygon") {
-              const {
-                name,
-                type,
-              }: Properties = feature.properties;
-
+              const { name, type }: Properties = feature.properties;
               const labels = controls.labelBuilder(feature.properties);
-
               layer.bindTooltip(controls.tooltipTemplate(name, type, labels), {
                 className: "polygon-label",
               });
