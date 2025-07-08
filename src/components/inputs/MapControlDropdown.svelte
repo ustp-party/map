@@ -55,6 +55,7 @@
     />
     <label for="dark">Dark</label>
   </fieldset>
+  <div class="divider"></div>
   <fieldset>
     <legend>AREAS</legend>
     <input
@@ -92,6 +93,7 @@
       >Sports Areas{@render divLegend(mapTheme.sportsArea)}</label
     >
   </fieldset>
+  <div class="divider"></div>
   <fieldset>
     <legend>POINTS</legend>
     <input
@@ -197,15 +199,38 @@
     display: flex;
     flex-direction: column;
     gap: 0.8em;
+    z-index: 1000;
+
+    .divider {
+      position: absolute;
+      display: none;
+      user-select: none;
+    }
+
+    @media (max-height: 599px) {
+      flex-direction: row;
+
+      .divider {
+        display: block;
+        position: relative;
+        width: 1px;
+        background-color: var(--text-placeholder);
+      }
+    }
 
     fieldset {
       border: none;
       border-top: 1px solid var(--text-placeholder);
       display: grid;
       grid-template-columns: min-content 1fr;
-      gap: 4px;
+      row-gap: 4px;
       column-gap: 0;
 
+      @media (max-height: 599px) {
+        border-top: none;
+        column-gap: 2px;
+        row-gap: 0;
+      }
       legend {
         font-weight: 600;
         font-size: 0.8rem;
