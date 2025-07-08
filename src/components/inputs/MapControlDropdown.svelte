@@ -102,7 +102,7 @@
     />
     <label for="labels"
       >Labels{@render divLegend(
-        "var(--bg-accent)",
+        "transparent",
         "1em",
         "A",
         "0.8em",
@@ -147,7 +147,7 @@
     />
     <label for="Landmarks"
       >Landmarks{@render divLegend(
-        "var(--bg-accent)",
+        "transparent",
         "1em",
         landmarkSVG,
         "0.8em",
@@ -220,6 +220,12 @@
         justify-content: space-between;
         align-items: center;
         gap: 1em;
+        cursor: pointer;
+        border-radius: 0.2em;
+
+        &:hover {
+          background-color: var(--bg-accent-hover);
+        }
       }
     }
 
