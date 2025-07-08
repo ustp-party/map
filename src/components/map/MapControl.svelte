@@ -44,7 +44,7 @@
   }
 
   onMount(() => {
-    if (appState.mobileView) {
+    if (appState.viewportWidth < 800) {
       appState.openMapControlDropdown = false; // Close dropdown on mobile by default
     } else {
       appState.openMapControlDropdown = true; // Open dropdown on desktop on default
