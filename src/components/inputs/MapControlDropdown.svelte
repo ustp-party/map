@@ -19,7 +19,7 @@
 )}
   <div
     class="legend"
-    style="width: {size}; height: {size}; background-color: {color}; border-radius: 10%;"
+    style="width: {size}; height: {size}; background-color: {color}; border-radius: 0.2em;"
   >
     {#if icon}
       <SvgIcon size={iconSize} color={iconColor}>{@html icon}</SvgIcon>
