@@ -3,23 +3,23 @@
 
   let {
     children,
-    size = 24,
+    size = "1em",
     alt,
-    fixed = false,
+    color = "var(--icon-color)",
   }: {
     children: Snippet;
-    size?: number;
+    size?: string;
     alt?: string | undefined;
-    fixed?: boolean;
+    color?: string;
   } = $props();
 
-  const style = fixed ? "color: var(--icon-color);" : ""
+  const colorStyle = `color: ${color};`;
 </script>
 
 <div
   class="svg-icon"
   aria-label={alt}
-  style="width: {size}px; height: {size}px; {style}"
+  style="width: {size}; height: {size}; {colorStyle}"
 >
   {@render children()}
 </div>

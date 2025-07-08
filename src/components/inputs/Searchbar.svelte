@@ -73,7 +73,7 @@
     <div transition:fade={{ duration: 200 }}>
       <abbr title="Go back">
         <button class="clear-input" aria-label="Go back" onclick={handleGoBack}>
-          <SvgIcon alt="Go back" fixed>
+          <SvgIcon size="24px" alt="Go back">
             {@html arrowBackSVG}
           </SvgIcon>
         </button>
@@ -86,11 +86,9 @@
     placeholder="Search"
     bind:value={searchState.query}
   />
-  <button aria-label="Search">
-    <SvgIcon size={24} alt="Search" fixed>
-      {@html searchSVG}
-    </SvgIcon>
-  </button>
+  <SvgIcon size="24px" alt="Search" color="var(--icon-subtle)">
+    {@html searchSVG}
+  </SvgIcon>
   {#if searchState.query.length > 0}
     <div transition:fade={{ duration: 200 }}>
       <abbr title="Clear search input">
@@ -99,7 +97,7 @@
           aria-label="Clear search input"
           onclick={() => searchState.updateQuery("")}
         >
-          <SvgIcon size={24} alt="Clear search input">
+          <SvgIcon size="24px" alt="Clear search input">
             {@html closeSVG}
           </SvgIcon>
         </button>
