@@ -12,14 +12,14 @@
 
 {#snippet divLegend(
   color: string = "transparent",
-  size: string = "1em",
+  size: string = "1rem",
   icon: string | undefined = undefined,
-  iconSize: string = "0.8em",
+  iconSize: string = "0.8rem",
   iconColor: string = "var(--icon-color)"
 )}
   <div
     class="legend"
-    style="width: {size}; height: {size}; background-color: {color}; border-radius: 0.2em;"
+    style="width: {size}; height: {size}; background-color: {color}; border-radius: 0.2rem;"
   >
     {#if icon}
       <SvgIcon size={iconSize} color={iconColor}>{@html icon}</SvgIcon>
@@ -107,7 +107,7 @@
         "transparent",
         "1em",
         "A",
-        "0.8em",
+        "0.8rem",
         "var(--text)"
       )}</label
     >
@@ -120,9 +120,9 @@
     <label for="Restrooms"
       >Restrooms{@render divLegend(
         "rgb(22, 85, 141)",
-        "1em",
+        "1rem",
         restroomSVG,
-        "0.8em",
+        "0.75rem",
         "white"
       )}</label
     >
@@ -135,9 +135,9 @@
     <label for="printing-stations"
       >Printing Services{@render divLegend(
         "white",
-        "1em",
+        "1rem",
         printerSVG,
-        "0.8em",
+        "0.8rem",
         "#333333"
       )}</label
     >
@@ -150,9 +150,9 @@
     <label for="Landmarks"
       >Landmarks{@render divLegend(
         "transparent",
-        "1em",
+        "1rem",
         landmarkSVG,
-        "0.8em",
+        "0.875rem",
         "#f03a3a"
       )}</label
     >
@@ -174,8 +174,8 @@
 <style lang="scss">
   .event-center-icon {
     .tooltip-svg {
-      width: 1em;
-      height: 1em;
+      width: 1rem;
+      height: 1rem;
       clip-path: path(
         "M 8.2324 0.4685 Q 7.9982 0.0334 7.4962 0 Q 6.9942 0.0334 6.7599 0.4685 L 4.7855 4.7855 L 4.7855 4.7855 L 0.4685 6.7599 L 0.4685 6.7599 Q 0.0334 6.9942 0 7.4962 Q 0.0334 7.9982 0.4685 8.2324 L 4.7855 10.2069 L 4.7855 10.2069 L 6.7599 14.5238 L 6.7599 14.5238 Q 6.9942 14.9589 7.4962 14.9924 Q 7.9982 14.9589 8.2324 14.5238 L 10.2069 10.2069 L 10.2069 10.2069 L 14.5238 8.2324 L 14.5238 8.2324 Q 14.9589 7.9982 14.9924 7.4962 Q 14.9589 6.9942 14.5238 6.7599 L 10.2069 4.7855 L 10.2069 4.7855 L 8.2324 0.4685 L 8.2324 0.4685 Z"
       );
