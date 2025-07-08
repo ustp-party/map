@@ -1,7 +1,24 @@
 .polygon-text {
   text-align: center;
   font-size: small;
+  color: rgb(0, 80, 157);
+   text-shadow:
+    -0.05rem -0.05rem 0 rgb(212, 212, 212),
+     0.05rem -0.05rem 0 rgb(212, 212, 212),
+    -0.05rem  0.05rem 0 rgb(212, 212, 212),
+     0.05rem  0.05rem 0 rgb(212, 212, 212);
 }
+
+.polygon-text.dark {
+  color: rgb(202, 240, 248);
+     text-shadow:
+    -0.05rem -0.05rem 0 rgb(25, 28, 39),
+     0.05rem -0.05rem 0 rgb(25, 28, 39),
+    -0.05rem  0.05rem 0 rgb(25, 28, 39),
+     0.05rem  0.05rem 0 rgb(25, 28, 39);
+}
+
+
 
 @mixin circle() {
   display: flex;

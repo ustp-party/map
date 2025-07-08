@@ -163,10 +163,12 @@
         enabled: mapState.enableBuildings,
         existingLayer: () => allBuildingsLayer,
         remove: () => map?.removeLayer(allBuildingsLayer!),
-        create: () =>
-          (allBuildingsLayer = controls
-            .setBuildings(mapState.buildings, setDetailedFeature)
-            .addTo(map!)),
+        create: () => {
+          const darkMode = mapState.tileset === mapState.tilesets["dark"];
+          allBuildingsLayer = controls
+            .setBuildings(mapState.buildings, setDetailedFeature, darkMode)
+            .addTo(map!);
+        },
       },
       {
         enabled: mapState.enableParking,

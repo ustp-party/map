@@ -120,7 +120,8 @@ function geometricCentroid(coordinates: Position[]): [number, number] {
 
 function setBuildings(
   allbuildings: Feature[],
-  callback: Function
+  callback: Function,
+  darkMode?: boolean
 ): L.FeatureGroup {
   let buildingslayer = L.geoJSON(allbuildings, {
     style: {
@@ -162,9 +163,12 @@ function setBuildings(
       const { name, ["addr:housenumber"]: number } =
         feature.properties as Properties;
 
+      let className = "polygon-text ";
+      className += darkMode ? "dark" : "";
+      console.log(className);
       const marker = L.marker(centroid, {
         icon: L.divIcon({
-          className: "polygon-text",
+          className: className,
           html: `(${number}) ${name}`,
           iconSize: L.point(100, 30), // Adjust size as needed
         }),
