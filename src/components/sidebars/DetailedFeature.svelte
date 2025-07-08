@@ -53,7 +53,7 @@
       return;
     }
 
-    if (appState.viewportWidth < 600) {
+    if (appState.mobileView) {
       appState.collapsedSidebar = true;
     }
 
