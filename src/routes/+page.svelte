@@ -120,11 +120,11 @@
         <ZoomControl />
       {/if}
       <div class="bottom-bar">
-        {#if appState.viewportWidth < 600}
+        {#if appState.mobileView}
           <MapControl />
         {/if}
       </div>
-      {#if appState.viewportWidth < 600}
+      {#if appState.mobileView}
         <Drawer />
       {/if}
     </Leaflet>

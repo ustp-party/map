@@ -29,7 +29,7 @@
   let zoom: number = $derived(mapState.currentZoom);
   let searchResults = $derived<Feature[]>(searchState.results.slice(0, 10)); // Return only top 5
 
-  let allBuildingsLayer: L.GeoJSON | undefined = undefined;
+  let allBuildingsLayer: L.FeatureGroup | undefined = undefined;
 
   let tilesetLayer: L.TileLayer | undefined = $derived(
     L.tileLayer(mapState.tileset, {
@@ -163,10 +163,17 @@
         enabled: mapState.enableBuildings,
         existingLayer: () => allBuildingsLayer,
         remove: () => map?.removeLayer(allBuildingsLayer!),
-        create: () =>
-          (allBuildingsLayer = controls
-            .setBuildings(mapState.buildings, setDetailedFeature)
-            .addTo(map!)),
+        create: () => {
+          const darkMode = mapState.tileset === mapState.tilesets["dark"];
+          allBuildingsLayer = controls
+            .setBuildings(
+              mapState.buildings,
+              setDetailedFeature,
+              darkMode,
+              mapState.enableLabels
+            )
+            .addTo(map!);
+        },
       },
       {
         enabled: mapState.enableParking,

@@ -17,12 +17,12 @@ export interface MapState {
   enableBuildings: boolean;
   enableBenches: boolean;
   enableParking: boolean;
-  enableSportsAreas: boolean;
-  enablePointsOfInterest: boolean;
   enableRestrooms: boolean;
   enablePrintingServices: boolean;
   enableLandmarks: boolean;
   enableEventCenters: boolean;
+  enableSportsAreas: boolean;
+  enableLabels: boolean;
 }
 
 export interface Tilesets {

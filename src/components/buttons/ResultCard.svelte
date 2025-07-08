@@ -68,7 +68,7 @@
   }
 
   function hoverHandler() {
-    if (appState.viewportWidth < 600) {
+    if (appState.mobileView) {
       return; // Don't show hover image on small screens
     }
 
@@ -80,7 +80,7 @@
   }
 
   function unhoverHandler() {
-    if (appState.viewportWidth < 600) {
+    if (appState.mobileView) {
       return; // Don't hide hover image on small screens
     }
     if (imageContainer) {
