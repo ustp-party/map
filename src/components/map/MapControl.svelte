@@ -9,6 +9,7 @@
   import SvgIcon from "$components/icons/SVGIcon.svelte";
   import { getAppState } from "$lib/stores/appState.svelte";
   import { getMapState } from "$lib/stores/mapState.svelte";
+  import { onMount } from "svelte";
 
   const mapState = getMapState();
   const appState = getAppState();
@@ -41,6 +42,14 @@
   function handleDropdown() {
     appState.openMapControlDropdown = !appState.openMapControlDropdown;
   }
+
+  onMount(() => {
+    if (appState.mobileView) {
+      appState.openMapControlDropdown = false; // Close dropdown on mobile by default
+    } else {
+      appState.openMapControlDropdown = true; // Open dropdown on desktop on default
+    }
+  });
 </script>
 
 <ul class="control-panel">
@@ -52,7 +61,7 @@
         onclick={locateUserHandler}
       >
         {#if loading}
-          <SvgIcon size={24} alt="Loading user location">
+          <SvgIcon size="24px" alt="Loading user location">
             {@html spinnerSVG}
           </SvgIcon>
         {:else}
