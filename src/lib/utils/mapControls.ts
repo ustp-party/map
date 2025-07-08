@@ -4,6 +4,7 @@ import type { Feature, Position } from "geojson";
 import type { Properties } from "$lib/types/features";
 import type { LatLngExpression } from "leaflet";
 import { mapTheme } from "$lib/theme";
+import "leaflet.markercluster";
 
 function tooltipTemplate(
   title: string,
@@ -117,7 +118,10 @@ function geometricCentroid(coordinates: Position[]): [number, number] {
   return [meanLat, meanLng];
 }
 
-function setBuildings(allbuildings: Feature[], callback: Function): L.GeoJSON {
+function setBuildings(
+  allbuildings: Feature[],
+  callback: Function
+): L.FeatureGroup {
   let buildingslayer = L.geoJSON(allbuildings, {
     style: {
       color: mapTheme.building,
@@ -137,24 +141,40 @@ function setBuildings(allbuildings: Feature[], callback: Function): L.GeoJSON {
     },
   });
 
-  // Add building numbers
+  const clusterGroup = L.markerClusterGroup({
+    showCoverageOnHover: true,
+    maxClusterRadius: 50,
+    iconCreateFunction: (cluster) => {
+      const markersCount = cluster.getChildCount();
+      return L.divIcon({
+        html: `<div><div>${markersCount}</div></div>`,
+        className: "cluster-icon",
+        iconSize: L.point(32, 32),
+        iconAnchor: L.point(16, 16),
+      });
+    },
+  });
+
   allbuildings.forEach((feature) => {
     if (feature.geometry.type === "Polygon") {
       const coords: Position[][] = feature.geometry.coordinates;
       const centroid: LatLngExpression = geometricCentroid(coords[0]);
-      const { ["addr:housenumber"]: bldg_no } =
+      const { name, ["addr:housenumber"]: number } =
         feature.properties as Properties;
 
-      L.marker(centroid, {
+      const marker = L.marker(centroid, {
         icon: L.divIcon({
           className: "polygon-text",
-          html: bldg_no,
+          html: `(${number}) ${name}`,
+          iconSize: L.point(100, 30), // Adjust size as needed
         }),
-      }).addTo(buildingslayer);
+      });
+
+      clusterGroup.addLayer(marker);
     }
   });
 
-  return buildingslayer;
+  return L.featureGroup([buildingslayer, clusterGroup]);
 }
 
 function setBenches(benches: Feature[], callback: Function): L.GeoJSON {

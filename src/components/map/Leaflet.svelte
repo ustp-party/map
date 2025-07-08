@@ -29,7 +29,7 @@
   let zoom: number = $derived(mapState.currentZoom);
   let searchResults = $derived<Feature[]>(searchState.results.slice(0, 10)); // Return only top 5
 
-  let allBuildingsLayer: L.GeoJSON | undefined = undefined;
+  let allBuildingsLayer: L.FeatureGroup | undefined = undefined;
 
   let tilesetLayer: L.TileLayer | undefined = $derived(
     L.tileLayer(mapState.tileset, {
