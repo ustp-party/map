@@ -148,7 +148,7 @@
 <div class="image-container" bind:this={imageContainer}>
   {#if loadingImage}
     <div class="loading-container" bind:this={loadingContainer}>
-      <SvgIcon size={56} alt="Loading image">
+      <SvgIcon size="56px" alt="Loading image">
         {@html spinnerSVG}
       </SvgIcon>
     </div>

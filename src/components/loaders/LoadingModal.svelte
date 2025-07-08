@@ -17,7 +17,7 @@
 </script>
 
 <div>
-  <SvgIcon size={60}>
+  <SvgIcon size="60px">
     {@html spinnerSVG}
   </SvgIcon>
 </div>

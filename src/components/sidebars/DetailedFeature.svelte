@@ -184,7 +184,7 @@
             <abbr title="Find and zoom to this location on the map">
               <button id="locate-btn" class="menu-item" onclick={handleFind}>
                 <div class="icon-container">
-                  <SvgIcon>{@html exploreIcon}</SvgIcon>
+                  <SvgIcon size="24px">{@html exploreIcon}</SvgIcon>
                 </div>
                 <label for="locate-btn">Find</label></button
               >
@@ -207,7 +207,7 @@
                 popovertarget="clipboard-notification"
               >
                 <div class="icon-container">
-                  <SvgIcon>{@html shareIcon}</SvgIcon>
+                  <SvgIcon size="24px">{@html shareIcon}</SvgIcon>
                 </div>
                 <label for="share-btn">Share</label></button
               >
@@ -223,7 +223,7 @@
           {#each p.accessibility as option}
             <li>
               <abbr title="Accessible by {option}">
-                <SvgIcon>
+                <SvgIcon size="24px">
                   {@html accessibility[option] || ""}
                 </SvgIcon>
               </abbr>

@@ -30,7 +30,7 @@
 <div class="container" aria-label="Error Page Container">
   <div class="box" aria-label="Error Box">
     <div class="icon" aria-label="Error Icon">
-      <SvgIcon size={56} alt="Error Icon">
+      <SvgIcon size="56px" alt="Error Icon">
         {@html errorSVG}
       </SvgIcon>
     </div>
