@@ -39,7 +39,6 @@
       type="checkbox"
       id="Buildings"
       name="enabled features"
-      value="Buildings"
       bind:checked={mapState.enableBuildings}
     />
     <label for="Buildings">Buildings</label>
@@ -47,7 +46,6 @@
       type="checkbox"
       id="Benches"
       name="enabled features"
-      value="Benches"
       bind:checked={mapState.enableBenches}
     />
     <label for="Benches">Benches</label>
@@ -55,7 +53,6 @@
       type="checkbox"
       id="parking-spaces"
       name="enabled features"
-      value="Parking Spaces"
       bind:checked={mapState.enableParking}
     />
     <label for="parking-spaces">Parking Spaces</label>
@@ -63,7 +60,6 @@
       type="checkbox"
       id="sports-areas"
       name="enabled features"
-      value="Sports Areas"
       bind:checked={mapState.enableSportsAreas}
     />
     <label for="sports-areas">Sports Areas</label>
@@ -74,7 +70,6 @@
       type="checkbox"
       id="Restrooms"
       name="enabled features"
-      value="Restrooms"
       bind:checked={mapState.enableRestrooms}
     />
     <label for="Restrooms">Restrooms</label>
@@ -82,7 +77,6 @@
       type="checkbox"
       id="printing-stations"
       name="enabled features"
-      value="Printing Stations"
       bind:checked={mapState.enablePrintingServices}
     />
     <label for="printing-stations">Printing Services</label>
@@ -90,7 +84,6 @@
       type="checkbox"
       id="Landmarks"
       name="enabled features"
-      value="Landmarks"
       bind:checked={mapState.enableLandmarks}
     />
     <label for="Landmarks">Landmarks</label>
@@ -98,7 +91,6 @@
       type="checkbox"
       id="event-centers"
       name="enabled features"
-      value="Event Centers"
       bind:checked={mapState.enableEventCenters}
     />
     <label for="event-centers">Event Centers</label>
