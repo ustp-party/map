@@ -166,7 +166,12 @@
         create: () => {
           const darkMode = mapState.tileset === mapState.tilesets["dark"];
           allBuildingsLayer = controls
-            .setBuildings(mapState.buildings, setDetailedFeature, darkMode)
+            .setBuildings(
+              mapState.buildings,
+              setDetailedFeature,
+              darkMode,
+              mapState.enableLabels
+            )
             .addTo(map!);
         },
       },

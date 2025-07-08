@@ -41,6 +41,7 @@ class MapStateClass implements MapState {
   enablePrintingServices = $state<boolean>(false);
   enableLandmarks = $state<boolean>(true);
   enableEventCenters = $state<boolean>(true);
+  enableLabels = $state<boolean>(true);
 }
 
 const DEFAULT_KEY = "$_map_state";

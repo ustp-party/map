@@ -121,7 +121,8 @@ function geometricCentroid(coordinates: Position[]): [number, number] {
 function setBuildings(
   allbuildings: Feature[],
   callback: Function,
-  darkMode?: boolean
+  darkMode: boolean = false,
+  enableLabels: boolean = true
 ): L.FeatureGroup {
   let buildingslayer = L.geoJSON(allbuildings, {
     style: {
@@ -142,43 +143,46 @@ function setBuildings(
     },
   });
 
-  const clusterGroup = L.markerClusterGroup({
-    showCoverageOnHover: true,
-    maxClusterRadius: 50,
-    iconCreateFunction: (cluster) => {
-      const markersCount = cluster.getChildCount();
-      return L.divIcon({
-        html: `<div><div>${markersCount}</div></div>`,
-        className: "cluster-icon",
-        iconSize: L.point(32, 32),
-        iconAnchor: L.point(16, 16),
-      });
-    },
-  });
+  if (enableLabels) {
+    const clusterGroup = L.markerClusterGroup({
+      showCoverageOnHover: true,
+      maxClusterRadius: 50,
+      iconCreateFunction: (cluster) => {
+        const markersCount = cluster.getChildCount();
+        return L.divIcon({
+          html: `<div><div>${markersCount}</div></div>`,
+          className: "cluster-icon",
+          iconSize: L.point(32, 32),
+          iconAnchor: L.point(16, 16),
+        });
+      },
+    });
 
-  allbuildings.forEach((feature) => {
-    if (feature.geometry.type === "Polygon") {
-      const coords: Position[][] = feature.geometry.coordinates;
-      const centroid: LatLngExpression = geometricCentroid(coords[0]);
-      const { name, ["addr:housenumber"]: number } =
-        feature.properties as Properties;
+    allbuildings.forEach((feature) => {
+      if (feature.geometry.type === "Polygon") {
+        const coords: Position[][] = feature.geometry.coordinates;
+        const centroid: LatLngExpression = geometricCentroid(coords[0]);
+        const { name, ["addr:housenumber"]: number } =
+          feature.properties as Properties;
 
-      let className = "polygon-text ";
-      className += darkMode ? "dark" : "";
-      console.log(className);
-      const marker = L.marker(centroid, {
-        icon: L.divIcon({
-          className: className,
-          html: `(${number}) ${name}`,
-          iconSize: L.point(100, 30), // Adjust size as needed
-        }),
-      });
+        let className = "polygon-text ";
+        className += darkMode ? "dark" : "";
+        console.log(className);
+        const marker = L.marker(centroid, {
+          icon: L.divIcon({
+            className: className,
+            html: `(${number}) ${name}`,
+            iconSize: L.point(100, 30), // Adjust size as needed
+          }),
+        });
 
-      clusterGroup.addLayer(marker);
-    }
-  });
+        clusterGroup.addLayer(marker);
+      }
+    });
+    return L.featureGroup([buildingslayer, clusterGroup]);
+  }
 
-  return L.featureGroup([buildingslayer, clusterGroup]);
+  return L.featureGroup([buildingslayer]);
 }
 
 function setBenches(benches: Feature[], callback: Function): L.GeoJSON {

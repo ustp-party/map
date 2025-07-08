@@ -68,6 +68,13 @@
     <legend>POINTS</legend>
     <input
       type="checkbox"
+      id="labels"
+      name="enabled features"
+      bind:checked={mapState.enableLabels}
+    />
+    <label for="labels">Labels</label>
+    <input
+      type="checkbox"
       id="Restrooms"
       name="enabled features"
       bind:checked={mapState.enableRestrooms}

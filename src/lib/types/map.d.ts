@@ -22,6 +22,7 @@ export interface MapState {
   enableLandmarks: boolean;
   enableEventCenters: boolean;
   enableSportsAreas: boolean;
+  enableLabels: boolean;
 }
 
 export interface Tilesets {
