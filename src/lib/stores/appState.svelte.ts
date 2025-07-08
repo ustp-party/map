@@ -7,6 +7,7 @@ interface AppState {
   updateViewportWidth: () => void;
   collapsedSidebar: boolean;
   openMissingFeatureDialog: boolean;
+  mobileView: boolean;
 }
 
 class AppStateClass implements AppState {
@@ -18,6 +19,7 @@ class AppStateClass implements AppState {
   };
   collapsedSidebar = $state(false);
   openMissingFeatureDialog = $state(false);
+  mobileView = $derived(this.viewportWidth < 600);
 }
 
 const DEFAULT_KEY = "$_app_state";
