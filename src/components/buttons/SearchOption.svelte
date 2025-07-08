@@ -33,7 +33,7 @@
   .option {
     user-select: none;
     font-weight: 600;
-    font-size: 0.8em;
+    font-size: 0.8rem;
     text-wrap: nowrap;
     color: var(--text);
     fill: var(--text);
