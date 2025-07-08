@@ -167,7 +167,6 @@ function setBuildings(
 
         let className = "polygon-text ";
         className += darkMode ? "dark" : "";
-        console.log(className);
         const marker = L.marker(centroid, {
           icon: L.divIcon({
             className: className,
