@@ -275,7 +275,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [124.656552, 8.484886]
+        "coordinates": [124.656530, 8.484883]
       },
       "properties": {
         "type": "Essential",
@@ -284,7 +284,7 @@
         "last_updated": "2025-06-25 14:56:59",
         "custom_properties": {
           "Vehicle access": "Yes",
-          "Vehicle height limit": "None"
+          "Vehicle height limit": "~5 meters"
         },
         "long_description": "If you are a <b>visitor/student</b> from another campus, you can enter by <u>logging your details on a logbook</u> at the entrance gate.",
         "image": "https://res.cloudinary.com/dosy82nwb/image/upload/v1752025004/gate_1_hd_wcae4j.avif",
@@ -358,7 +358,7 @@
         "type": "Essential",
         "name": "Office of Student Affairs",
         "description": "a.k.a OSA",
-        "level": "1",
+        "level": "2",
         "last_updated": "2025-06-25 14:56:59",
         "accessibility": ["Wheelchair", "Stairs"]
       },
@@ -368,7 +368,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [124.656115, 8.485666]
+        "coordinates": [124.655900, 8.485616]
       },
       "properties": {
         "type": "Essential",
