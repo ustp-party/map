@@ -47,6 +47,7 @@
   let landmarksLayer: L.GeoJSON | undefined = undefined;
   let eventCentersLayer: L.GeoJSON | undefined = undefined;
   let sportsAreasLayer: L.GeoJSON | undefined = undefined;
+  let essentialsLayer: L.GeoJSON | undefined = undefined;
   let currentTileset: L.TileLayer | undefined = $state();
   let {
     children,
@@ -236,6 +237,15 @@
         create: () =>
           (eventCentersLayer = controls
             .setEventCenters(mapState.pointsOfInterest, setDetailedFeature)
+            .addTo(map!)),
+      },
+      {
+        enabled: mapState.enableEssentials,
+        existingLayer: () => essentialsLayer,
+        remove: () => map?.removeLayer(essentialsLayer!),
+        create: () =>
+          (essentialsLayer = controls
+            .setEssentials(mapState.pointsOfInterest, setDetailedFeature)
             .addTo(map!)),
       },
     ];

@@ -5,7 +5,8 @@ import ripples from "$assets/animated/ripples.svg?raw";
 import restroomSVG from "$assets/free-icons/restroom.svg?raw";
 import parkingSVG from "$assets/free-icons/parking.svg?raw";
 import printerSVG from "$assets/free-icons/printer.svg?raw";
-import monumentSVG from "$assets/free-icons/monument.svg?raw"
+import monumentSVG from "$assets/free-icons/monument.svg?raw";
+import informationSVG from "$assets/free-icons/circle-info.svg?raw";
 
 interface CustomIcons {
   LocationCrosshairs: L.Icon;
@@ -63,6 +64,13 @@ const icons = {
     html: `<div class="tooltip-svg"></div>`,
     // iconSize: [24, 24],
     iconAnchor: [9, 9],
+    popupAnchor: [0, 0],
+  }),
+  EssentialsIcon: L.divIcon({
+    className: "essential-icon",
+    html: `<div class="tooltip-svg">${informationSVG}</div>`,
+    iconSize: [24, 24],
+    iconAnchor: [12, 12],
     popupAnchor: [0, 0],
   }),
 };

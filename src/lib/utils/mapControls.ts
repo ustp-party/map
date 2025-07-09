@@ -361,6 +361,42 @@ function setEventCenters(
   });
 }
 
+function setEssentials(
+  essentials: Feature[],
+  callback: (feature: Feature) => void
+): L.GeoJSON {
+  const essentialsFiltered = essentials.filter(
+    (feature) => feature.properties?.type === "Essential"
+  );
+
+  return L.geoJSON(essentialsFiltered, {
+    pointToLayer: (feature, latlng) => {
+      const { name, type, iconParams }: Properties = feature.properties!;
+      const labels = labelBuilder(feature.properties!);
+      let marker;
+
+      if (iconParams) {
+        marker = L.marker(latlng, {
+          icon: L.icon({ ...iconParams }),
+        });
+      } else {
+        marker = L.marker(latlng, {
+          icon: icons.EssentialsIcon,
+        });
+      }
+      marker.bindTooltip(tooltipTemplate(name, type, labels), {
+        className: "polygon-label",
+      });
+
+      marker.on("click", () => {
+        callback(feature);
+      });
+
+      return marker;
+    },
+  });
+}
+
 function findCentroid(feature: Feature): LatLngExpression {
   let centroid: LatLngExpression = [0, 0];
   if (feature.geometry.type === "Point") {
@@ -450,6 +486,7 @@ const controls = {
   findCentroid,
   labelBuilder,
   setSportsAreas,
+  setEssentials,
 };
 
 export default controls;
@@ -469,4 +506,5 @@ export {
   findCentroid,
   labelBuilder,
   setSportsAreas,
+  setEssentials,
 };

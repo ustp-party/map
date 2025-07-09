@@ -37,11 +37,12 @@ class MapStateClass implements MapState {
   enableBenches = $state<boolean>(false);
   enableParking = $state<boolean>(true);
   enableSportsAreas = $state<boolean>(false);
-  enableRestrooms = $state<boolean>(true);
+  enableRestrooms = $state<boolean>(false);
   enablePrintingServices = $state<boolean>(false);
   enableLandmarks = $state<boolean>(true);
   enableEventCenters = $state<boolean>(true);
   enableLabels = $state<boolean>(true);
+  enableEssentials = $state<boolean>(true);
 }
 
 const DEFAULT_KEY = "$_map_state";

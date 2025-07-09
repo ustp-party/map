@@ -2,6 +2,7 @@
   import restroomSVG from "$assets/free-icons/restroom.svg?raw";
   import printerSVG from "$assets/free-icons/printer.svg?raw";
   import landmarkSVG from "$assets/free-icons/monument.svg?raw";
+  import informationSVG from "$assets/free-icons/circle-info.svg?raw";
   import SvgIcon from "$components/icons/SVGIcon.svelte";
   import { getMapState } from "$lib/stores/mapState.svelte";
   import { slide } from "svelte/transition";
@@ -109,6 +110,22 @@
         "A",
         "0.8rem",
         "var(--text)"
+      )}</label
+    >
+    <input
+      type="checkbox"
+      id="essentials"
+      name="enabled features"
+      bind:checked={mapState.enableEssentials}
+    />
+    <label for="essentials"
+      >Essentials
+      {@render divLegend(
+        "transparent",
+        "1rem",
+        informationSVG,
+        "0.875rem",
+        "var(--icon-color)"
       )}</label
     >
     <input
