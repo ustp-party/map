@@ -352,10 +352,7 @@ function setEventCenters(
   });
 }
 
-function setEssentials(
-  essentials: Feature[],
-  callback: (feature: Feature) => void
-): L.GeoJSON {
+function setEssentials(essentials: Feature[], callback: Function): L.GeoJSON {
   const essentialsFiltered = essentials.filter(
     (feature) => feature.properties?.type === "Essential"
   );
