@@ -232,17 +232,6 @@ function setParkingSpaces(
     },
   });
 
-  // parkingSpaces.forEach((feature) => {
-  //   if (feature.geometry.type === "Polygon") {
-  //     const coords: Position[][] = feature.geometry.coordinates;
-  //     const centroid: LatLngExpression = geometricCentroid(coords[0]);
-
-  //     L.marker(centroid, {
-  //       icon: icons.ParkingIcon,
-  //     }).addTo(parkingLayer);
-  //   }
-  // });
-
   return parkingLayer;
 }
 
