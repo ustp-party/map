@@ -79,7 +79,7 @@
       disabled={scrollLeft === 0}
     >
       <abbr title="Scroll left">
-        <SvgIcon size="24px" alt="Scroll Left" color="var(--bg-accent)">
+        <SvgIcon size="1.5rem" alt="Scroll Left" color="var(--bg-accent)">
           {@html chevronLeftSVG}
         </SvgIcon>
       </abbr>
@@ -114,7 +114,7 @@
       disabled={scrollLeft + divRef!.clientWidth == divRef!.scrollWidth}
     >
       <abbr title="Scroll right">
-        <SvgIcon size="24px" alt="Scroll Right" color="var(--bg-accent)">
+        <SvgIcon size="1.5rem" alt="Scroll Right" color="var(--bg-accent)">
           {@html chevronRightSVG}
         </SvgIcon>
       </abbr>
