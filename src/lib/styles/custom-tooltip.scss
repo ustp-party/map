@@ -187,10 +187,10 @@
 .essential-icon {
   text-align: center;
   .tooltip-svg {
-    @include flexo();
-    color: rgb(0, 80, 157);
-    background-color: rgb(255, 255, 255);
-    border-radius: 50%;
+    @include circle();
+    background-color: rgb(34, 112, 185);
+    color: white;
+    border: 1px solid rgb(34, 112, 185);
   }
 }
 

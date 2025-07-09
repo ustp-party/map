@@ -13,15 +13,12 @@
 
 {#snippet divLegend(
   color: string = "transparent",
-  size: string = "1rem",
   icon: string | undefined = undefined,
   iconSize: string = "0.8rem",
-  iconColor: string = "var(--icon-color)"
+  iconColor: string = "var(--icon-color)",
+  className: string = ""
 )}
-  <div
-    class="legend"
-    style="width: {size}; height: {size}; background-color: {color}; border-radius: 0.2rem;"
-  >
+  <div class="legend {className}" style="background-color: {color};">
     {#if icon}
       <SvgIcon size={iconSize} color={iconColor}>{@html icon}</SvgIcon>
     {/if}
@@ -106,7 +103,6 @@
     <label for="labels"
       >Labels{@render divLegend(
         "transparent",
-        "1em",
         "A",
         "0.8rem",
         "var(--text)"
@@ -121,11 +117,11 @@
     <label for="essentials"
       >Essentials
       {@render divLegend(
-        "transparent",
-        "1rem",
+        "rgb(34, 112, 185)",
         informationSVG,
         "0.875rem",
-        "var(--icon-color)"
+        "white",
+        "essential"
       )}</label
     >
     <input
@@ -137,7 +133,6 @@
     <label for="Restrooms"
       >Restrooms{@render divLegend(
         "rgb(22, 85, 141)",
-        "1rem",
         restroomSVG,
         "0.75rem",
         "white"
@@ -152,10 +147,10 @@
     <label for="printing-stations"
       >Printing Services{@render divLegend(
         "white",
-        "1rem",
         printerSVG,
-        "0.8rem",
-        "#333333"
+        "0.6rem",
+        "#333333",
+        "printing"
       )}</label
     >
     <input
@@ -167,7 +162,6 @@
     <label for="Landmarks"
       >Landmarks{@render divLegend(
         "transparent",
-        "1rem",
         landmarkSVG,
         "0.875rem",
         "#f03a3a"
@@ -202,6 +196,17 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 20%;
+  }
+
+  .legend.essential {
+    border-radius: 50%;
+  }
+
+  .legend.printing {
+    border: 1px solid #333333;
   }
 
   .dropdown-menu {
