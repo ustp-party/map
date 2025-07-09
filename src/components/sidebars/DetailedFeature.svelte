@@ -166,7 +166,7 @@
     <main>
       <p>
         {#if p.long_description}
-          {p.long_description}
+          {@html p.long_description}
         {:else}
           <em>No detailed description available.</em>
         {/if}

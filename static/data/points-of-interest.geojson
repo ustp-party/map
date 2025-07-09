@@ -241,7 +241,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [124.65748, 8.486228]
+        "coordinates": [124.657474, 8.486117]
       },
       "properties": {
         "type": "Event Center",
@@ -270,6 +270,115 @@
         "accessibility": ["Elevator", "Stairs"]
       },
       "id": "makerspace"
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [124.656530, 8.484883]
+      },
+      "properties": {
+        "type": "Essential",
+        "name": "USTP Entrance Gate",
+        "level": "1",
+        "last_updated": "2025-06-25 14:56:59",
+        "custom_properties": {
+          "Vehicle access": "Yes",
+          "Vehicle height limit": "~5 meters"
+        },
+        "long_description": "If you are a <b>visitor/student</b> from another campus, you can enter by <u>logging your details on a logbook</u> at the entrance gate.",
+        "image": "https://res.cloudinary.com/dosy82nwb/image/upload/v1752025004/gate_1_hd_wcae4j.avif",
+        "image_compressed": "https://res.cloudinary.com/dosy82nwb/image/upload/v1752025003/gate_1_comp_ilha7e.avif",
+        "accessibility": ["Wheelchair"],
+        "iconParams": {
+          "iconUrl": "/images/icons/custom/entrance_gate.avif",
+          "iconSize": [50.56, 16],
+          "iconAnchor": [25.28, 8],
+          "popupAnchor": [0, 0]
+        }
+      },
+      "id": "entrance-gate"
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [124.65678, 8.486255]
+      },
+      "properties": {
+        "type": "Essential",
+        "name": "Display Center",
+        "level": "1",
+        "last_updated": "2025-06-25 14:56:59",
+        "image": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750821549/display_center_1_hd_qk2udy.avif",
+        "image_compressed": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750821547/display_center_1_comp_eieopj.avif",
+        "accessibility": ["Stairs"]
+      },
+      "id": "display-center"
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [124.656801, 8.48622]
+      },
+      "properties": {
+        "type": "Essential",
+        "name": "Cashier",
+        "level": "1",
+        "last_updated": "2025-06-25 14:56:59",
+        "image": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750821549/display_center_1_hd_qk2udy.avif",
+        "image_compressed": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750821547/display_center_1_comp_eieopj.avif",
+        "accessibility": ["Stairs"]
+      },
+      "id": "cashier"
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [124.657204, 8.486297]
+      },
+      "properties": {
+        "type": "Essential",
+        "name": "Dean's Office",
+        "level": "2",
+        "last_updated": "2025-06-25 14:56:59",
+        "accessibility": ["Wheelchair", "Elevator", "Stairs"]
+      },
+      "id": "deans-office"
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [124.655675, 8.485987]
+      },
+      "properties": {
+        "type": "Essential",
+        "name": "Office of Student Affairs",
+        "description": "a.k.a OSA",
+        "level": "2",
+        "last_updated": "2025-06-25 14:56:59",
+        "accessibility": ["Wheelchair", "Stairs"]
+      },
+      "id": "osa"
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [124.655900, 8.485616]
+      },
+      "properties": {
+        "type": "Essential",
+        "name": "Admission and Scholarship Office",
+        "description": "a.k.a ASO",
+        "level": "1",
+        "last_updated": "2025-06-25 14:56:59",
+        "accessibility": ["Wheelchair", "Elevator", "Stairs"]
+      },
+      "id": "aso"
     }
   ]
 }

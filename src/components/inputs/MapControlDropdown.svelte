@@ -2,6 +2,7 @@
   import restroomSVG from "$assets/free-icons/restroom.svg?raw";
   import printerSVG from "$assets/free-icons/printer.svg?raw";
   import landmarkSVG from "$assets/free-icons/monument.svg?raw";
+  import informationSVG from "$assets/free-icons/circle-info.svg?raw";
   import SvgIcon from "$components/icons/SVGIcon.svelte";
   import { getMapState } from "$lib/stores/mapState.svelte";
   import { slide } from "svelte/transition";
@@ -12,15 +13,12 @@
 
 {#snippet divLegend(
   color: string = "transparent",
-  size: string = "1em",
   icon: string | undefined = undefined,
-  iconSize: string = "0.8em",
-  iconColor: string = "var(--icon-color)"
+  iconSize: string = "0.8rem",
+  iconColor: string = "var(--icon-color)",
+  className: string = ""
 )}
-  <div
-    class="legend"
-    style="width: {size}; height: {size}; background-color: {color}; border-radius: 0.2em;"
-  >
+  <div class="legend {className}" style="background-color: {color};">
     {#if icon}
       <SvgIcon size={iconSize} color={iconColor}>{@html icon}</SvgIcon>
     {/if}
@@ -105,10 +103,25 @@
     <label for="labels"
       >Labels{@render divLegend(
         "transparent",
-        "1em",
         "A",
-        "0.8em",
+        "0.8rem",
         "var(--text)"
+      )}</label
+    >
+    <input
+      type="checkbox"
+      id="essentials"
+      name="enabled features"
+      bind:checked={mapState.enableEssentials}
+    />
+    <label for="essentials"
+      >Essentials
+      {@render divLegend(
+        "rgb(34, 112, 185)",
+        informationSVG,
+        "0.875rem",
+        "white",
+        "essential"
       )}</label
     >
     <input
@@ -120,9 +133,8 @@
     <label for="Restrooms"
       >Restrooms{@render divLegend(
         "rgb(22, 85, 141)",
-        "1em",
         restroomSVG,
-        "0.8em",
+        "0.75rem",
         "white"
       )}</label
     >
@@ -135,10 +147,10 @@
     <label for="printing-stations"
       >Printing Services{@render divLegend(
         "white",
-        "1em",
         printerSVG,
-        "0.8em",
-        "#333333"
+        "0.6rem",
+        "#333333",
+        "printing"
       )}</label
     >
     <input
@@ -150,9 +162,8 @@
     <label for="Landmarks"
       >Landmarks{@render divLegend(
         "transparent",
-        "1em",
         landmarkSVG,
-        "0.8em",
+        "0.875rem",
         "#f03a3a"
       )}</label
     >
@@ -174,8 +185,8 @@
 <style lang="scss">
   .event-center-icon {
     .tooltip-svg {
-      width: 1em;
-      height: 1em;
+      width: 1rem;
+      height: 1rem;
       clip-path: path(
         "M 8.2324 0.4685 Q 7.9982 0.0334 7.4962 0 Q 6.9942 0.0334 6.7599 0.4685 L 4.7855 4.7855 L 4.7855 4.7855 L 0.4685 6.7599 L 0.4685 6.7599 Q 0.0334 6.9942 0 7.4962 Q 0.0334 7.9982 0.4685 8.2324 L 4.7855 10.2069 L 4.7855 10.2069 L 6.7599 14.5238 L 6.7599 14.5238 Q 6.9942 14.9589 7.4962 14.9924 Q 7.9982 14.9589 8.2324 14.5238 L 10.2069 10.2069 L 10.2069 10.2069 L 14.5238 8.2324 L 14.5238 8.2324 Q 14.9589 7.9982 14.9924 7.4962 Q 14.9589 6.9942 14.5238 6.7599 L 10.2069 4.7855 L 10.2069 4.7855 L 8.2324 0.4685 L 8.2324 0.4685 Z"
       );
@@ -185,6 +196,17 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 20%;
+  }
+
+  .legend.essential {
+    border-radius: 50%;
+  }
+
+  .legend.printing {
+    border: 1px solid #333333;
   }
 
   .dropdown-menu {

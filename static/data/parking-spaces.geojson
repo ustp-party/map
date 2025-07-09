@@ -12,7 +12,9 @@
         "type": "parking",
         "name": "Vehicle Parking",
         "last_updated": "2025-06-25 14:56:59",
-        "vehicles": "All"
+        "vehicles": "All",
+        "Fee": "No",
+        "Surface": "Paved"
       },
       "geometry": {
         "type": "Polygon",
@@ -43,7 +45,9 @@
         "type": "parking",
         "name": "Motorcycle Parking",
         "last_updated": "2025-06-25 14:56:59",
-        "vehicles": "Motorcycles only"
+        "vehicles": "Motorcycles only",
+        "Fee": "No",
+        "Surface": "Dirt"
       },
       "geometry": {
         "type": "Polygon",
@@ -60,6 +64,60 @@
           ]
         ]
       }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1410494547",
+        "amenity": "parking",
+        "type": "parking",
+        "name": "USTP Parking Lot",
+        "Fee": "No",
+        "Surface": "Paved",
+        "last_updated": "2025-06-25 14:56:59",
+        "vehicles": "All"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [124.6572225, 8.4861423],
+            [124.6571903, 8.4860999],
+            [124.6573634, 8.4859885],
+            [124.6573848, 8.4860243],
+            [124.6572225, 8.4861423]
+          ]
+        ]
+      },
+      "id": "way/1410494547"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/920716650",
+        "access": "customers",
+        "amenity": "parking",
+        "Fee": "No",
+        "type": "parking",
+        "name": "USTP Parking Lot",
+        "Surface": "Paved",
+        "vehicles": "All",
+        "last_updated": "2025-06-25 14:56:59"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [124.6566631, 8.4850909],
+            [124.6566054, 8.4852567],
+            [124.6565699, 8.4852395],
+            [124.6565491, 8.4851267],
+            [124.6565769, 8.4850574],
+            [124.6566631, 8.4850909]
+          ]
+        ]
+      },
+      "id": "way/920716650"
     }
   ]
 }

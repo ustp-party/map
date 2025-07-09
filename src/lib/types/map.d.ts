@@ -23,6 +23,7 @@ export interface MapState {
   enableEventCenters: boolean;
   enableSportsAreas: boolean;
   enableLabels: boolean;
+  enableEssentials: boolean;
 }
 
 export interface Tilesets {

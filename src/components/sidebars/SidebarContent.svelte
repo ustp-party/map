@@ -40,9 +40,9 @@
 {:else}
   <div class="introduction">
     {#if localStorageState.firstVisit}
-      <h3>Are you a visitor?</h3>
+      <h2>Are you a visitor?</h2>
     {:else}
-      <h3>Welcome back!</h3>
+      <h2>Welcome back!</h2>
     {/if}
     <p class="message">You might be looking for...</p>
     <div class="search-options" aria-label="visitor oriented search options">
