@@ -50,7 +50,9 @@ export interface Properties {
     iconAnchor: [number, number];
     popupAnchor: [number, number];
   };
-  [key: string]: any; // Allow additional properties
+  custom_properties?: {
+    [key: string]: string | number | boolean | null; // Custom properties can be of various types
+  };
 }
 
 export interface Feature {

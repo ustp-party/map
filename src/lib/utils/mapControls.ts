@@ -372,7 +372,7 @@ function setEssentials(
   return L.geoJSON(essentialsFiltered, {
     pointToLayer: (feature, latlng) => {
       const { name, type, iconParams }: Properties = feature.properties!;
-      const labels = labelBuilder(feature.properties!);
+      const labels = labelBuilder(feature.properties);
       let marker;
 
       if (iconParams) {
@@ -421,6 +421,10 @@ function labelBuilder(properties: Properties): Record<string, string> {
     };
   }
 
+  if (properties.custom_properties) {
+    return properties.custom_properties as Record<string, string>;
+  }
+
   const fallback = "N/A or unknown";
 
   switch (properties.type) {
@@ -458,6 +462,7 @@ function labelBuilder(properties: Properties): Record<string, string> {
     case "Event Center":
     case "Landmark":
     case "Printing Service":
+    case "Essential":
       return {
         Level: properties.level || fallback,
         Description: properties.description || "No description available",
