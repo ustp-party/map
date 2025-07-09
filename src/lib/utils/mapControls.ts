@@ -75,22 +75,21 @@ async function locateMe(
   }
 }
 
-// This is a ChatGPT implementation of weighted centroid, seems like a wrong implementation
-// We'll be using geometric centroid for polygons since it is easier to implement
-// https://en.wikipedia.org/wiki/Centroid
-function polygonCentroid(coords: Position[]): LatLngExpression {
+function polygonCentroid(coords: Position[]): [number, number] {
+  // https://mathworld.wolfram.com/PolygonCentroid.html
   let x = 0,
     y = 0,
     area = 0;
 
+  // Summation
   for (let i = 0, j = coords.length - 1; i < coords.length; j = i++) {
-    const [xi, yi] = coords[i];
-    const [xj, yj] = coords[j];
+    const [xi, yi] = coords[i]; // [[a, b]
+    const [xj, yj] = coords[j]; //  [c, d]]
 
-    const f = xi * yj - xj * yi;
-    area += f;
-    x += (xi + xj) * f;
-    y += (yi + yj) * f;
+    const determinant = xi * yj - xj * yi;
+    area += determinant; // https://mathworld.wolfram.com/PolygonArea.html
+    x += (xi + xj) * determinant;
+    y += (yi + yj) * determinant;
   }
 
   area *= 0.5;
@@ -172,7 +171,10 @@ function setBuildings(
             className: className,
             html: `(${number}) ${name}`,
             iconSize: L.point(100, 30), // Adjust size as needed
+            iconAnchor: L.point(50, 15), // Center the text
           }),
+        }).on("click", () => {
+          callback(feature);
         });
 
         clusterGroup.addLayer(marker);
