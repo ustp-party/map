@@ -39,7 +39,7 @@ class MapStateClass implements MapState {
   enableSportsAreas = $state<boolean>(false);
   enableRestrooms = $state<boolean>(false);
   enablePrintingServices = $state<boolean>(false);
-  enableLandmarks = $state<boolean>(true);
+  enableLandmarks = $state<boolean>(false);
   enableEventCenters = $state<boolean>(true);
   enableLabels = $state<boolean>(true);
   enableEssentials = $state<boolean>(true);
