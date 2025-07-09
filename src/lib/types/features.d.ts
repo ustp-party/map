@@ -42,6 +42,7 @@ export interface Properties {
   Outdoor?: "Yes" | "No";
   Lit?: "Yes" | "No";
   Sport?: string;
+  Fee?: "Yes" | "No";
   Surface?: "Dirt" | "Concrete" | "Asphalt" | "Synthetic" | "Other";
   last_updated?: string;
   iconParams?: {

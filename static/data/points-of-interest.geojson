@@ -241,7 +241,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [124.65748, 8.486228]
+        "coordinates": [124.657474, 8.486117]
       },
       "properties": {
         "type": "Event Center",
@@ -337,7 +337,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [124.657225, 8.486329]
+        "coordinates": [124.657204, 8.486297]
       },
       "properties": {
         "type": "Essential",

@@ -230,16 +230,16 @@ function setParkingSpaces(
     },
   });
 
-  parkingSpaces.forEach((feature) => {
-    if (feature.geometry.type === "Polygon") {
-      const coords: Position[][] = feature.geometry.coordinates;
-      const centroid: LatLngExpression = geometricCentroid(coords[0]);
+  // parkingSpaces.forEach((feature) => {
+  //   if (feature.geometry.type === "Polygon") {
+  //     const coords: Position[][] = feature.geometry.coordinates;
+  //     const centroid: LatLngExpression = geometricCentroid(coords[0]);
 
-      L.marker(centroid, {
-        icon: icons.ParkingIcon,
-      }).addTo(parkingLayer);
-    }
-  });
+  //     L.marker(centroid, {
+  //       icon: icons.ParkingIcon,
+  //     }).addTo(parkingLayer);
+  //   }
+  // });
 
   return parkingLayer;
 }
@@ -446,6 +446,8 @@ function labelBuilder(properties: Properties): Record<string, string> {
     case "parking":
       return {
         Vehicles: properties.vehicles || fallback,
+        Surface: properties.Surface || fallback,
+        Fee: properties.Fee || fallback,
       };
 
     case "sports":
