@@ -230,7 +230,7 @@
         "type": "Event Center",
         "name": "Performance Arts Theater",
         "description": "Located at the 5th floor the Engineering Complex I",
-        "long_description": "Performance Arts Theater is a multi-purpose venue for various events, including performances, lectures, and gatherings. It is designed to accommodate a wide range of activities and can be used for both formal and informal events.",
+        "long_description": "Performance Arts Theater is a multi-purpose venue for various events, including performances, lectures, and gatherings. It is designed to accommodate a wide range of activities and can be used for both formal and informal events. Can seats up to 300 people.",
         "level": "5",
         "last_updated": "2025-06-25 14:56:59",
         "accessibility": ["Elevator", "Stairs"]
@@ -264,7 +264,7 @@
         "type": "Event Center",
         "name": "Makerspace",
         "description": "Located at the 4th floor of the LRC Bldg",
-        "long_description": "Makerspace is a collaborative workspace equipped with tools and resources for creative projects, prototyping, and innovation. It provides a hands-on environment for individuals to design, build, and experiment with various materials and technologies.",
+        "long_description": "A venue where innovators and entrepreneurs can meet, collaborate, and create.",
         "level": "4",
         "last_updated": "2025-06-25 14:56:59",
         "accessibility": ["Elevator", "Stairs"]
