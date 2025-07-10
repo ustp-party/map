@@ -38,29 +38,19 @@
 
   function handleFind() {
     let centroid: LatLngExpression;
+    let zoom: number;
 
     if (feature.geometry.type === "Point") {
       let coords = feature.geometry.coordinates as Array<number>;
       let lat = coords[1];
       let lng = coords[0];
       centroid = [lat, lng];
-
-      mapState.currentCenter = centroid;
-      mapState.currentZoom = 20;
-      mapState.map!.setView(centroid, 20, {
-        animate: true,
-        duration: 0.8,
-      });
+      zoom = 20;
     } else if (feature.geometry.type === "Polygon") {
       centroid = geometricCentroid(
         feature.geometry.coordinates[0] as Position[]
       );
-      mapState.currentCenter = centroid;
-      mapState.currentZoom = 19;
-      mapState.map!.setView(centroid, 19, {
-        animate: true,
-        duration: 0.8,
-      });
+      zoom = 19;
     } else {
       console.warn("Unsupported geometry type:", feature.geometry.type);
       return;
@@ -69,6 +59,12 @@
     if (appState.mobileView) {
       appState.collapsedSidebar = true;
     }
+    mapState.currentCenter = centroid;
+    mapState.currentZoom = zoom;
+    mapState.map!.setView(centroid, zoom, {
+      animate: true,
+      duration: 0.8,
+    });
   }
 
   function handleShare() {
