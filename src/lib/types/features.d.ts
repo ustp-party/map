@@ -1,4 +1,4 @@
-import type { Geometry } from "geojson";
+import type { Geometry, Position } from "geojson";
 import type { LatLng, LatLngExpression } from "leaflet";
 
 export interface MapGeometry extends Geometry {

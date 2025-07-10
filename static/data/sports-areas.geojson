@@ -8,7 +8,7 @@
       "properties": {
         "type": "sports",
         "name": "Reserve Officers' Training Corps (ROTC) Parade Ground",
-        "addr:place": "University of Science and Technology of Southern Philippines",
+
         "addr:housenumber": "?",
         "building:levels": "1",
         "image": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750820935/rotc_field_1_hd_hmxuaq.avif",
@@ -41,7 +41,7 @@
       "properties": {
         "type": "sports",
         "name": "Sport Pitch",
-        "addr:place": "University of Science and Technology of Southern Philippines",
+
         "building:levels": "1",
         "image": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750820728/opcourt_1_hd_auidao.avif",
         "image_compressed": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750820726/opcourt_1_comp_xqrxbo.avif",
@@ -73,7 +73,7 @@
       "properties": {
         "type": "sports",
         "name": "Sport Pitch",
-        "addr:place": "University of Science and Technology of Southern Philippines",
+
         "building:levels": "1",
         "description": "Located inside the Gymnasium",
         "Has roofing": "Yes",

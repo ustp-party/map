@@ -159,10 +159,17 @@ function setBuildings(
 
     allbuildings.forEach((feature) => {
       if (feature.geometry.type === "Polygon") {
-        const coords: Position[][] = feature.geometry.coordinates;
-        const centroid: LatLngExpression = geometricCentroid(coords[0]);
         const { name, ["addr:housenumber"]: number } =
           feature.properties as Properties;
+        let centroid: LatLngExpression;
+
+        if (feature.geometry.centroid) {
+          let [long, lat] = feature.geometry.centroid;
+          centroid = [lat, long];
+        } else {
+          const coords: Position[][] = feature.geometry.coordinates;
+          centroid = geometricCentroid(coords[0]);
+        }
 
         let className = "polygon-text ";
         className += darkMode ? "dark" : "";
