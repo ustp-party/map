@@ -180,8 +180,7 @@ function setBuildings(
             iconSize: L.point(100, 30), // Adjust size as needed
             iconAnchor: L.point(50, 15), // Center the text
           }),
-        }).on("click", () => {
-          callback(feature);
+          interactive: false,
         });
 
         clusterGroup.addLayer(marker);
