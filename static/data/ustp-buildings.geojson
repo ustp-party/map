@@ -500,9 +500,7 @@
         "name": "Food Innovation Center",
         "building:levels": "2",
         "type": "building",
-        "last_updated": "2025-06-25 14:56:59",
-        "image": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750767283/fic_1_hd_evvxwu.avif",
-        "image_compressed": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750767282/fic_1_comp_jipyqb.avif"
+        "last_updated": "2025-06-25 14:56:59"
       },
       "geometry": {
         "type": "Polygon",
@@ -525,9 +523,11 @@
         "addr:housenumber": "26",
         "addr:place": "University of Science and Technology of Southern Philippines",
         "building": "university",
-        "name": "Scholarship Building",
+        "name": "Food Innovation Center",
         "last_updated": "2025-06-25 14:56:59",
-        "type": "building"
+        "type": "building",
+        "image": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750767283/fic_1_hd_evvxwu.avif",
+        "image_compressed": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750767282/fic_1_comp_jipyqb.avif"
       },
       "geometry": {
         "type": "Polygon",
@@ -579,7 +579,7 @@
         "addr:housenumber": "36",
         "addr:place": "University of Science and Technology of Southern Philippines",
         "building": "college",
-        "name": "Student Center",
+        "name": "Old Student Center",
         "last_updated": "2025-06-25 14:56:59",
         "type": "building"
       },
@@ -604,7 +604,7 @@
         "addr:housenumber": "35",
         "addr:place": "University of Science and Technology of Southern Philippines",
         "building": "college",
-        "name": "BTED",
+        "name": "Old Education Building",
         "last_updated": "2025-06-25 14:56:59",
         "type": "building"
       },
@@ -648,31 +648,6 @@
         ]
       },
       "id": "way/427550457"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "@id": "way/427550458",
-        "addr:housenumber": "38",
-        "addr:place": "University of Science and Technology of Southern Philippines",
-        "building": "college",
-        "name": "Civil Technology Building",
-        "last_updated": "2025-06-25 14:56:59",
-        "type": "building"
-      },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [124.6549074, 8.4866354],
-            [124.6549703, 8.486658],
-            [124.6549589, 8.4866892],
-            [124.6548959, 8.4866667],
-            [124.6549074, 8.4866354]
-          ]
-        ]
-      },
-      "id": "way/427550458"
     },
     {
       "type": "Feature",
@@ -863,7 +838,7 @@
         "building": "college",
         "name": "Technology Building",
         "addr:place": "University of Science and Technology of Southern Philippines",
-        "addr:housenumber": "?",
+        "addr:housenumber": "47",
         "type": "building",
         "building:levels": 4,
         "image": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750776607/cot_1_hd_kdtpll.avif",
@@ -894,7 +869,7 @@
         "building": "college",
         "name": "Sump pit",
         "addr:place": "University of Science and Technology of Southern Philippines",
-        "addr:housenumber": "?",
+        "addr:housenumber": "52",
         "building:levels": "1",
         "last_updated": "2025-06-25 14:56:59",
         "type": "building"
@@ -966,6 +941,35 @@
         ]
       },
       "id": "way/1136349250"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1410492261",
+        "construction": "building",
+        "type": "building",
+        "name": "Dormitory Building",
+        "landuse": "construction",
+        "addr:housenumber": "51",
+        "description": "This building is under construction and is intended to be a dormitory.",
+        "last_updated": "2025-06-25 14:56:59",
+        "note": "This might be the dormitory building."
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [124.6562623, 8.4871544],
+            [124.6562972, 8.4872406],
+            [124.6560236, 8.487368],
+            [124.6560263, 8.4875298],
+            [124.655912, 8.4875341],
+            [124.6559026, 8.4873199],
+            [124.6562623, 8.4871544]
+          ]
+        ]
+      },
+      "id": "way/1410492261"
     }
   ]
 }
