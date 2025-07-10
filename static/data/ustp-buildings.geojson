@@ -292,7 +292,7 @@
         "building": "college",
         "building:levels": "4",
         "name": "Information and Communications Technology Building",
-        "description": "a.k.a College of Information Technology and Computing, CITC",
+        "description": "ICT, CITC",
         "type": "building",
         "last_updated": "2025-06-25 14:56:59",
         "image": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750765872/citc_1_hd_qxcawh.avif",
@@ -564,7 +564,7 @@
         "coordinates": [
           [
             [124.655536, 8.485879],
-            [124.655500, 8.485972],
+            [124.6555, 8.485972],
             [124.655742, 8.486065],
             [124.655777, 8.485971]
           ]
@@ -896,7 +896,7 @@
         "layer": "-1",
         "name": "SPED Center",
 
-        "addr:housenumber": "?",
+        "addr:housenumber": "6",
         "last_updated": "2025-06-25 14:56:59"
       },
       "geometry": {
@@ -919,9 +919,10 @@
       "properties": {
         "@id": "way/1136349250",
         "building": "college",
-        "name": "ITB BUILDING",
+        "name": "Integrated Technology Building",
+        "description": "a.k.a ITB BUILDING",
 
-        "addr:housenumber": "?",
+        "addr:housenumber": "3",
         "building:levels": "?",
         "last_updated": "2025-06-25 14:56:59",
         "type": "building"
@@ -953,7 +954,9 @@
         "addr:housenumber": "51",
         "description": "This building is under construction and is intended to be a dormitory.",
         "last_updated": "2025-06-25 14:56:59",
-        "note": "This might be the dormitory building."
+        "note": "This might be the dormitory building.",
+        "image": "https://res.cloudinary.com/dosy82nwb/image/upload/v1752112178/dorm_1_hd_emk189.avif",
+        "image_compressed": "https://res.cloudinary.com/dosy82nwb/image/upload/v1752112177/dorm_1_comp_uiomwf.avif"
       },
       "geometry": {
         "type": "Polygon",

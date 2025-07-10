@@ -90,7 +90,7 @@
     mapState.enablePrintingServices = true;
   })}
   {@render featured(
-    "CITC Bldg",
+    "ICT Bldg",
     "Information and Communications Technology Building",
     BuildingSVG
   )}
