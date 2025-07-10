@@ -65,6 +65,38 @@
       animate: true,
       duration: 0.8,
     });
+
+    switch (p.type) {
+      case "building":
+        mapState.enableBuildings = true;
+        break;
+      case "Restroom":
+        mapState.enableRestrooms = true;
+        break;
+      case "Printing Service":
+        mapState.enablePrintingServices = true;
+        break;
+      case "Landmark":
+        mapState.enableLandmarks = true;
+        break;
+      case "parking":
+        mapState.enableParking = true;
+        break;
+      case "bench":
+        mapState.enableBenches = true;
+        break;
+      case "Event Center":
+        mapState.enableEventCenters = true;
+        break;
+      case "sports":
+        mapState.enableSportsAreas = true;
+        break;
+      case "Essential":
+        mapState.enableEssentials = true;
+        break;
+      default:
+        console.warn(`Unknown feature type: ${p.type}`);
+    }
   }
 
   function handleShare() {
