@@ -56,7 +56,8 @@
     if (appState.mobileView) {
       appState.collapsedSidebar = true;
     }
-
+    mapState.currentCenter = centroid;
+    mapState.currentZoom = 19;
     mapState.map!.setView(centroid, 19, {
       animate: true,
       duration: 0.8,

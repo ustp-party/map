@@ -1,7 +1,5 @@
 <script lang="ts">
-  import { darkTheme, lightTheme } from "$lib/theme";
   import iconRaw from "$icons/arrow-left-24.svg?raw";
-  import { darkMode } from "$lib/stores/theme";
 
   let props = $props<{
     size?: number;
