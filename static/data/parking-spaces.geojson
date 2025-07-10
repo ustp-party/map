@@ -8,7 +8,7 @@
       "type": "Feature",
       "properties": {
         "@id": "way/427550470",
-        "addr:place": "University of Science and Technology of Southern Philippines",
+
         "type": "parking",
         "name": "Vehicle Parking",
         "last_updated": "2025-06-25 14:56:59",
@@ -41,7 +41,7 @@
       "type": "Feature",
       "properties": {
         "@id": "way/427550471",
-        "addr:place": "University of Science and Technology of Southern Philippines",
+
         "type": "parking",
         "name": "Motorcycle Parking",
         "last_updated": "2025-06-25 14:56:59",

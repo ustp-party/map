@@ -9,16 +9,14 @@
       "properties": {
         "@id": "way/190362066",
         "addr:housenumber": "16",
-        "addr:place": "University of Science and Technology of Southern Philippines",
+
         "amenity": "community_centre",
         "type": "building",
         "building": "roof",
         "community_centre": "events_place",
         "layer": "1",
-        "leisure": "sports_hall",
         "name": "Gymnasium",
         "building:levels": "2",
-        "sport": "multi",
         "last_updated": "2025-06-25 14:56:59",
         "image": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750819151/gym_1_hd_y0kvfr.avif",
         "image_compressed": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750819150/gym_1_comp_kfvxjw.avif",
@@ -45,7 +43,7 @@
       "properties": {
         "@id": "way/190362153",
         "addr:housenumber": "23",
-        "addr:place": "University of Science and Technology of Southern Philippines",
+
         "building": "university",
         "name": "Learning Resource Center",
         "building:levels": "5",
@@ -79,7 +77,7 @@
       "properties": {
         "@id": "way/190362204",
         "addr:housenumber": "24",
-        "addr:place": "University of Science and Technology of Southern Philippines",
+
         "building": "college",
         "last_updated": "2025-06-25 14:56:59",
         "name": "Girl's Trade Building",
@@ -109,7 +107,7 @@
       "properties": {
         "@id": "way/190362205",
         "addr:housenumber": "13",
-        "addr:place": "University of Science and Technology of Southern Philippines",
+
         "building": "construction",
         "name": "Sports Complex",
         "type": "building",
@@ -137,7 +135,7 @@
       "properties": {
         "@id": "way/427545397",
         "addr:housenumber": "18",
-        "addr:place": "University of Science and Technology of Southern Philippines",
+
         "building": "university",
         "name": "Culinary Building",
         "type": "building",
@@ -163,7 +161,7 @@
       "properties": {
         "@id": "way/427545398",
         "addr:housenumber": "19",
-        "addr:place": "University of Science and Technology of Southern Philippines",
+
         "building": "college",
         "building:levels": "1",
         "name": "Science Centrum",
@@ -190,7 +188,7 @@
       "properties": {
         "@id": "way/427545401",
         "addr:housenumber": "41",
-        "addr:place": "University of Science and Technology of Southern Philippines",
+
         "building": "university",
         "name": "Science Complex",
         "building:levels": 5,
@@ -226,7 +224,7 @@
       "properties": {
         "@id": "way/427545403",
         "addr:housenumber": "14",
-        "addr:place": "University of Science and Technology of Southern Philippines",
+
         "building": "university",
         "building:levels": "2",
         "name": "Senior High School Building",
@@ -258,7 +256,7 @@
       "properties": {
         "@id": "way/427545405",
         "addr:housenumber": "15",
-        "addr:place": "University of Science and Technology of Southern Philippines",
+
         "type": "building",
         "name": "Gymnasium Lobby",
         "building:levels": "1",
@@ -288,7 +286,7 @@
       "properties": {
         "@id": "way/427545406",
         "addr:housenumber": "9",
-        "addr:place": "University of Science and Technology of Southern Philippines",
+
         "building": "college",
         "building:levels": "4",
         "name": "Information and Communications Technology Building",
@@ -351,7 +349,7 @@
       "properties": {
         "@id": "way/427545407",
         "addr:housenumber": "10",
-        "addr:place": "University of Science and Technology of Southern Philippines",
+
         "building": "office",
         "name": "Administration Building",
         "office": "educational_institution",
@@ -391,7 +389,7 @@
       "properties": {
         "@id": "way/427545408",
         "addr:housenumber": "5",
-        "addr:place": "University of Science and Technology of Southern Philippines",
+
         "building": "college",
         "last_updated": "2025-06-25 14:56:59",
         "name": "Old Civil Engineering Building",
@@ -417,7 +415,7 @@
       "properties": {
         "@id": "way/427545410",
         "addr:housenumber": "1",
-        "addr:place": "University of Science and Technology of Southern Philippines",
+
         "building": "college",
         "name": "Arts and Culture Building",
         "type": "building",
@@ -443,7 +441,7 @@
       "properties": {
         "@id": "way/427545411",
         "addr:housenumber": "2",
-        "addr:place": "University of Science and Technology of Southern Philippines",
+
         "type": "building",
         "last_updated": "2025-06-25 14:56:59",
         "name": "Guidance and Testing Center"
@@ -467,7 +465,7 @@
       "properties": {
         "@id": "way/427550449",
         "addr:housenumber": "28",
-        "addr:place": "University of Science and Technology of Southern Philippines",
+
         "building": "college",
         "name": "Old Science Building",
         "building:levels": "1",
@@ -495,7 +493,7 @@
       "properties": {
         "@id": "way/427550451",
         "addr:housenumber": "25",
-        "addr:place": "University of Science and Technology of Southern Philippines",
+
         "building": "college",
         "name": "Food Innovation Center",
         "building:levels": "2",
@@ -521,7 +519,7 @@
       "properties": {
         "@id": "way/427550452",
         "addr:housenumber": "26",
-        "addr:place": "University of Science and Technology of Southern Philippines",
+
         "building": "university",
         "name": "Food Innovation Center",
         "last_updated": "2025-06-25 14:56:59",
@@ -552,7 +550,7 @@
       "properties": {
         "@id": "way/427550454",
         "addr:housenumber": "27",
-        "addr:place": "University of Science and Technology of Southern Philippines",
+
         "amenity": "clinic",
         "type": "building",
         "last_updated": "2025-06-25 14:56:59",
@@ -577,7 +575,7 @@
       "properties": {
         "@id": "way/427550455",
         "addr:housenumber": "36",
-        "addr:place": "University of Science and Technology of Southern Philippines",
+
         "building": "college",
         "name": "Old Student Center",
         "last_updated": "2025-06-25 14:56:59",
@@ -602,7 +600,7 @@
       "properties": {
         "@id": "way/427550456",
         "addr:housenumber": "35",
-        "addr:place": "University of Science and Technology of Southern Philippines",
+
         "building": "college",
         "name": "Old Education Building",
         "last_updated": "2025-06-25 14:56:59",
@@ -627,7 +625,7 @@
       "properties": {
         "@id": "way/427550457",
         "addr:housenumber": 45,
-        "addr:place": "University of Science and Technology of Southern Philippines",
+
         "building": "college",
         "name": "FAB LAB building",
         "description": "Metals & Engineering Innovation Center",
@@ -655,7 +653,7 @@
         "@id": "way/427550464",
         "addr:housename": "CEA Building",
         "addr:housenumber": "42",
-        "addr:place": "University of Science and Technology of Southern Philippines",
+
         "building": "college",
         "name": "Engineering Complex I",
         "type": "building",
@@ -685,7 +683,7 @@
       "properties": {
         "@id": "way/427550465",
         "addr:housenumber": "43",
-        "addr:place": "University of Science and Technology of Southern Philippines",
+
         "building": "college",
         "name": "Engineering Complex II",
         "type": "building",
@@ -728,7 +726,7 @@
       "properties": {
         "@id": "way/427550466",
         "addr:housenumber": "20",
-        "addr:place": "University of Science and Technology of Southern Philippines",
+
         "amenity": "food_court",
         "building": "college",
         "name": "Cafeteria",
@@ -761,7 +759,7 @@
       "properties": {
         "@id": "way/1182410487",
         "addr:housenumber": "?",
-        "addr:place": "University of Science and Technology of Southern Philippines",
+
         "type": "building",
         "name": "Unfinished Building"
       },
@@ -786,7 +784,7 @@
       "properties": {
         "@id": "way/1182410488",
         "addr:housenumber": "?",
-        "addr:place": "University of Science and Technology of Southern Philippines",
+
         "type": "building",
         "last_updated": "2025-06-25 14:56:59",
         "name": "Unfinished Building"
@@ -813,7 +811,7 @@
         "@id": "way/868872754",
         "type": "building",
         "name": "Unknown Building",
-        "addr:place": "University of Science and Technology of Southern Philippines",
+
         "addr:housenumber": "?",
         "last_updated": "2025-06-25 14:56:59"
       },
@@ -837,7 +835,7 @@
         "@id": "way/427550460",
         "building": "college",
         "name": "Technology Building",
-        "addr:place": "University of Science and Technology of Southern Philippines",
+
         "addr:housenumber": "47",
         "type": "building",
         "building:levels": 4,
@@ -868,7 +866,7 @@
         "@id": "way/427550461",
         "building": "college",
         "name": "Sump pit",
-        "addr:place": "University of Science and Technology of Southern Philippines",
+
         "addr:housenumber": "52",
         "building:levels": "1",
         "last_updated": "2025-06-25 14:56:59",
@@ -895,7 +893,7 @@
         "type": "building",
         "layer": "-1",
         "name": "SPED Center",
-        "addr:place": "University of Science and Technology of Southern Philippines",
+
         "addr:housenumber": "?",
         "last_updated": "2025-06-25 14:56:59"
       },
@@ -920,7 +918,7 @@
         "@id": "way/1136349250",
         "building": "college",
         "name": "ITB BUILDING",
-        "addr:place": "University of Science and Technology of Southern Philippines",
+
         "addr:housenumber": "?",
         "building:levels": "?",
         "last_updated": "2025-06-25 14:56:59",
