@@ -44,10 +44,23 @@
       let lat = coords[1];
       let lng = coords[0];
       centroid = [lat, lng];
+
+      mapState.currentCenter = centroid;
+      mapState.currentZoom = 20;
+      mapState.map!.setView(centroid, 20, {
+        animate: true,
+        duration: 0.8,
+      });
     } else if (feature.geometry.type === "Polygon") {
       centroid = geometricCentroid(
         feature.geometry.coordinates[0] as Position[]
       );
+      mapState.currentCenter = centroid;
+      mapState.currentZoom = 19;
+      mapState.map!.setView(centroid, 19, {
+        animate: true,
+        duration: 0.8,
+      });
     } else {
       console.warn("Unsupported geometry type:", feature.geometry.type);
       return;
@@ -56,12 +69,6 @@
     if (appState.mobileView) {
       appState.collapsedSidebar = true;
     }
-    mapState.currentCenter = centroid;
-    mapState.currentZoom = 19;
-    mapState.map!.setView(centroid, 19, {
-      animate: true,
-      duration: 0.8,
-    });
   }
 
   function handleShare() {
