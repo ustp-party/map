@@ -16,8 +16,10 @@
   import SvgIcon from "$components/icons/SVGIcon.svelte";
 
   import { getSearchState } from "$lib/stores/SearchState.svelte";
+  import { getMapState } from "$lib/stores/mapState.svelte";
   import { getLocalStorageState } from "$lib/stores/localStorage.svelte";
 
+  const mapState = getMapState();
   const searchState = getSearchState();
   const localStorageState = getLocalStorageState();
   let queryLength = $derived(searchState.query.length > 0);
@@ -52,11 +54,21 @@
       {@render featured("ICT-AVR", "ICT Audio Visual Room", sparkleSVG)}
       {@render featured("Makerspace", "Makerspace", StarSVG)}
       {@render featured("LRC Bldg", "Learning Resource Center", BuildingSVG)}
-      {@render featured("Restrooms", "Restroom", RestroomSVG)}
-      {@render featured("Parking", "Parking", parkingSVG)}
-      {@render featured("Landmarks", "Landmarks", monumentSVG)}
-      {@render featured("Events", "Event Center", sparkleSVG)}
-      {@render featured("Sports", "Sports", basketballSVG)}
+      {@render featured("Restrooms", "Restroom", RestroomSVG, () => {
+        mapState.enableRestrooms = true;
+      })}
+      {@render featured("Parking", "Parking", parkingSVG, () => {
+        mapState.enableParking = true;
+      })}
+      {@render featured("Landmarks", "Landmarks", monumentSVG, () => {
+        mapState.enableLandmarks = true;
+      })}
+      {@render featured("Events", "Event Center", sparkleSVG, () => {
+        mapState.enableEventCenters = true;
+      })}
+      {@render featured("Sports", "Sports", basketballSVG, () => {
+        mapState.enableSportsAreas = true;
+      })}
     </div>
   </div>
   {#if recentlyViewed.length > 0}
@@ -76,8 +88,13 @@
 
 <Footer />
 
-{#snippet featured(name: string, value: string, icon: string)}
-  <SearchOption {name} {value}>
+{#snippet featured(
+  name: string,
+  value: string,
+  icon: string,
+  callback?: () => void
+)}
+  <SearchOption {name} {value} {callback}>
     {@html icon}
   </SearchOption>
 {/snippet}

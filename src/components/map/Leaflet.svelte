@@ -28,6 +28,9 @@
   let view: L.LatLngExpression = $derived(mapState.currentCenter);
   let zoom: number = $derived(mapState.currentZoom);
   let searchResults = $derived<Feature[]>(searchState.results.slice(0, 10)); // Return only top 5
+  let isDarkModeMapTheme = $derived(
+    mapState.tileset === mapState.tilesets["dark"]
+  );
 
   let allBuildingsLayer: L.FeatureGroup | undefined = undefined;
 
@@ -165,12 +168,11 @@
         existingLayer: () => allBuildingsLayer,
         remove: () => map?.removeLayer(allBuildingsLayer!),
         create: () => {
-          const darkMode = mapState.tileset === mapState.tilesets["dark"];
           allBuildingsLayer = controls
             .setBuildings(
               mapState.buildings,
               setDetailedFeature,
-              darkMode,
+              isDarkModeMapTheme,
               mapState.enableLabels
             )
             .addTo(map!);
@@ -277,7 +279,11 @@
   });
 </script>
 
-<div bind:this={mapElement} id="map"></div>
+<div
+  bind:this={mapElement}
+  id="map"
+  class={isDarkModeMapTheme ? "dark" : ""}
+></div>
 {#if map}
   {@render children()}
 {/if}
@@ -291,5 +297,10 @@
     position: absolute;
     top: 0;
     left: 0;
+    background-color: white;
+  }
+
+  #map.dark {
+    background-color: black;
   }
 </style>

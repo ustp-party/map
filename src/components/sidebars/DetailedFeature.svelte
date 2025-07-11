@@ -38,16 +38,19 @@
 
   function handleFind() {
     let centroid: LatLngExpression;
+    let zoom: number;
 
     if (feature.geometry.type === "Point") {
       let coords = feature.geometry.coordinates as Array<number>;
       let lat = coords[1];
       let lng = coords[0];
       centroid = [lat, lng];
+      zoom = 20;
     } else if (feature.geometry.type === "Polygon") {
       centroid = geometricCentroid(
         feature.geometry.coordinates[0] as Position[]
       );
+      zoom = 19;
     } else {
       console.warn("Unsupported geometry type:", feature.geometry.type);
       return;
@@ -57,11 +60,43 @@
       appState.collapsedSidebar = true;
     }
     mapState.currentCenter = centroid;
-    mapState.currentZoom = 19;
-    mapState.map!.setView(centroid, 19, {
+    mapState.currentZoom = zoom;
+    mapState.map!.setView(centroid, zoom, {
       animate: true,
       duration: 0.8,
     });
+
+    switch (p.type) {
+      case "building":
+        mapState.enableBuildings = true;
+        break;
+      case "Restroom":
+        mapState.enableRestrooms = true;
+        break;
+      case "Printing Service":
+        mapState.enablePrintingServices = true;
+        break;
+      case "Landmark":
+        mapState.enableLandmarks = true;
+        break;
+      case "parking":
+        mapState.enableParking = true;
+        break;
+      case "bench":
+        mapState.enableBenches = true;
+        break;
+      case "Event Center":
+        mapState.enableEventCenters = true;
+        break;
+      case "sports":
+        mapState.enableSportsAreas = true;
+        break;
+      case "Essential":
+        mapState.enableEssentials = true;
+        break;
+      default:
+        console.warn(`Unknown feature type: ${p.type}`);
+    }
   }
 
   function handleShare() {
