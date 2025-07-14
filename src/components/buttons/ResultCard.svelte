@@ -194,6 +194,9 @@
       left: 0;
       background-color: gray;
       max-height: var(--viewport-height);
+      z-index: 401;
+      border-radius: 0.4em;
+      box-shadow: var(--box-shadow);
     }
   }
 

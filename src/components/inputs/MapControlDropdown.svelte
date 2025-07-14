@@ -221,7 +221,6 @@
     display: flex;
     flex-direction: column;
     gap: 0.8em;
-    z-index: 1000;
 
     .divider {
       position: absolute;
