@@ -28,30 +28,16 @@
 <form class="dropdown-menu" transition:slide={{ duration: 100 }}>
   <fieldset>
     <legend>MAP THEME</legend>
-    <input
-      type="radio"
-      id="voyager"
-      name="tileset"
-      value={mapState.tilesets["voyager"]}
-      bind:group={mapState.tileset}
-    />
-    <label for="voyager">Voyager</label>
-    <input
-      type="radio"
-      id="light"
-      name="tileset"
-      value={mapState.tilesets["light"]}
-      bind:group={mapState.tileset}
-    />
-    <label for="light">Light</label>
-    <input
-      type="radio"
-      id="dark"
-      name="tileset"
-      value={mapState.tilesets["dark"]}
-      bind:group={mapState.tileset}
-    />
-    <label for="dark">Dark</label>
+    {#each Object.entries(mapState.tilesets) as [ label, value ]}
+      <input
+        type="radio"
+        id={`${label}-tileset`}
+        name="tileset"
+        value={value}
+        bind:group={mapState.tileset}
+      />
+      <label for={`${label}-tileset`}>{label}</label>
+    {/each}
   </fieldset>
   <div class="divider"></div>
   <fieldset>

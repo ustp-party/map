@@ -1,3 +1,8 @@
+<script lang="ts">
+  import { getMapState } from "$lib/stores/mapState.svelte";
+  const mapState = getMapState();
+</script>
+
 <footer class="footer">
   <div>
     Not what you were looking for or the data is wrong?<br />Contact us by
@@ -20,8 +25,9 @@
   </div>
   <span class="attribution" aria-label="Map attribution">
     <a href="https://leafletjs.com/">Leaflet</a> | &copy;
-    <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>
-    contributors | &copy; <a href="https://carto.com/attributions">CARTO</a>
+    <a href="https://github.com/ustp-party">ustp.party</a>
+    | &copy;
+    <a href={mapState.tileset.attributionURL} target="_blank" rel="noopener noreferrer">{mapState.tileset.attribution}</a>
   </span>
 </footer>
 
@@ -30,7 +36,6 @@
     &:hover {
       color: var(--info);
       text-decoration: underline;
-
     }
   }
 
@@ -86,6 +91,5 @@
         }
       }
     }
-
   }
 </style>

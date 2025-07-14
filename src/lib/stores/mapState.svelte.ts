@@ -19,15 +19,43 @@ class MapStateClass implements MapState {
   parking = $state([]);
   pointsOfInterest = $state([]);
   sportsAreas = $state([]);
-  tileset = $state(
-    "https://{s}.basemaps.cartocdn.com/rastertiles/light_all/{z}/{x}/{y}{r}.png"
-  );
+  tileset = $state({
+    url: "https://{s}.basemaps.cartocdn.com/rastertiles/dark_all/{z}/{x}/{y}{r}.png",
+    attribution: "CARTO",
+    attributionURL: "https://carto.com/attributions",
+    theme: "dark",
+  });
   tilesets = {
-    voyager:
-      "https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png",
-    light:
-      "https://{s}.basemaps.cartocdn.com/rastertiles/light_all/{z}/{x}/{y}{r}.png",
-    dark: "https://{s}.basemaps.cartocdn.com/rastertiles/dark_all/{z}/{x}/{y}{r}.png",
+    Light: {
+      url: "https://{s}.basemaps.cartocdn.com/rastertiles/light_all/{z}/{x}/{y}{r}.png",
+      attribution: "CARTO",
+      attributionURL: "https://carto.com/attributions",
+      theme: "light",
+    },
+    Dark: {
+      url: "https://{s}.basemaps.cartocdn.com/rastertiles/dark_all/{z}/{x}/{y}{r}.png",
+      attribution: "CARTO",
+      attributionURL: "https://carto.com/attributions",
+      theme: "dark",
+    },
+    Voyager: {
+      url: "https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png",
+      attribution: "CARTO",
+      attributionURL: "https://carto.com/attributions",
+      theme: "light",
+    },
+    OpenStreetMap: {
+      url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+      attribution: "OpenStreetMap",
+      attributionURL: "https://www.openstreetmap.org/copyright",
+      theme: "light",
+    },
+    Satellite: {
+      url: "https://tiles.stadiamaps.com/tiles/alidade_satellite/{z}/{x}/{y}{r}.jpg",
+      attribution: "Stadia Maps",
+      attributionURL: "https://stadiamaps.com",
+      theme: "satellite",
+    }
   };
   map = $state<Map | undefined>(undefined);
   setMap = (map: Map) => {

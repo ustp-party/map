@@ -28,10 +28,10 @@
   onMount(() => {
     if (prefersDarkMode()) {
       darkMode.set(true);
-      mapState.tileset = mapState.tilesets.dark;
+      mapState.tileset = mapState.tilesets.Dark;
     } else {
       darkMode.set(false);
-      mapState.tileset = mapState.tilesets.light;
+      mapState.tileset = mapState.tilesets.Light;
     }
 
     // Set initial viewport height, useful for mobile browsers

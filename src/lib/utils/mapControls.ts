@@ -144,7 +144,7 @@ function setBuildings(
 
 function setLabels(
   allbuildings: Feature[],
-  darkMode: boolean = false
+  theme: "light" | "dark" | "satellite" = "light",
 ): L.FeatureGroup{
   const clusterGroup = L.markerClusterGroup({
     showCoverageOnHover: true,
@@ -174,8 +174,7 @@ function setLabels(
         centroid = geometricCentroid(coords[0]);
       }
 
-      let className = "polygon-text ";
-      className += darkMode ? "dark" : "";
+      let className = `polygon-text ${theme}`;
       const marker = L.marker(centroid, {
         icon: L.divIcon({
           className: className,
