@@ -27,7 +27,7 @@
     <a href="https://leafletjs.com/">Leaflet</a> | &copy;
     <a href="https://github.com/ustp-party">ustp.party</a>
     | &copy;
-    <a href={mapState.tileset.attributionURL}>{mapState.tileset.attribution}</a>
+    <a href={mapState.tileset.attributionURL} target="_blank" rel="noopener noreferrer">{mapState.tileset.attribution}</a>
   </span>
 </footer>
 
