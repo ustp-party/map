@@ -10,7 +10,7 @@ export interface MapState {
   parking: Feature[] | [];
   pointsOfInterest: Feature[] | [];
   sportsAreas: Feature[] | [];
-  tileset: string;
+  tileset: TilesetConfig;
   tilesets: Tilesets;
   map: Map | undefined;
   setMap: (map: Map) => void;
@@ -26,9 +26,17 @@ export interface MapState {
   enableEssentials: boolean;
 }
 
+type TilesetConfig = {
+  url: string;
+  attribution?: string;
+  attributionURL?: string;
+  theme: string;
+};
+
 export interface Tilesets {
-  voyager: string;
-  light: string;
-  dark: string;
-  osm_classic: string;
+  Voyager: TilesetConfig;
+  Light: TilesetConfig;
+  Dark: TilesetConfig;
+  OpenStreetMap: TilesetConfig;
+  Satellite: TilesetConfig;
 }

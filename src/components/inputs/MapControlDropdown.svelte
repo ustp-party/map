@@ -28,72 +28,50 @@
 <form class="dropdown-menu" transition:slide={{ duration: 100 }}>
   <fieldset>
     <legend>MAP THEME</legend>
-    <input
-    type="radio"
-    id="light"
-    name="tileset"
-    value={mapState.tilesets["light"]}
-    bind:group={mapState.tileset}
-    />
-    <label for="light">Light</label>
-    <input
-    type="radio"
-    id="dark"
-    name="tileset"
-    value={mapState.tilesets["dark"]}
-    bind:group={mapState.tileset}
-    />
-    <label for="dark">Dark</label>
-    <input
-      type="radio"
-      id="voyager"
-      name="tileset"
-      value={mapState.tilesets["voyager"]}
-      bind:group={mapState.tileset}
-    />
-    <label for="voyager">Voyager</label>
-    <input
-      type="radio"
-      id="osm_classic"
-      name="tileset"
-      value={mapState.tilesets["osm_classic"]}
-      bind:group={mapState.tileset}
-    />
-    <label for="osm_classic">OpenStreetMap</label>
+    {#each Object.entries(mapState.tilesets) as [ label, value ]}
+      <input
+        type="radio"
+        id={`${label}-tileset`}
+        name="tileset"
+        value={value}
+        bind:group={mapState.tileset}
+      />
+      <label for={`${label}-tileset`}>{label}</label>
+    {/each}
   </fieldset>
   <div class="divider"></div>
   <fieldset>
     <legend>AREAS</legend>
     <input
-    type="checkbox"
-    id="Buildings"
-    name="enabled features"
-    bind:checked={mapState.enableBuildings}
+      type="checkbox"
+      id="Buildings"
+      name="enabled features"
+      bind:checked={mapState.enableBuildings}
     />
     <label for="Buildings"
-    >Buildings{@render divLegend(mapTheme.building)}</label
+      >Buildings{@render divLegend(mapTheme.building)}</label
     >
     <input
-    type="checkbox"
-    id="Benches"
-    name="enabled features"
-    bind:checked={mapState.enableBenches}
+      type="checkbox"
+      id="Benches"
+      name="enabled features"
+      bind:checked={mapState.enableBenches}
     />
     <label for="Benches">Benches{@render divLegend(mapTheme.bench)}</label>
     <input
-    type="checkbox"
-    id="parking-spaces"
-    name="enabled features"
-    bind:checked={mapState.enableParking}
+      type="checkbox"
+      id="parking-spaces"
+      name="enabled features"
+      bind:checked={mapState.enableParking}
     />
     <label for="parking-spaces"
-    >Parking Spaces{@render divLegend(mapTheme.parking)}</label
+      >Parking Spaces{@render divLegend(mapTheme.parking)}</label
     >
     <input
-    type="checkbox"
-    id="sports-areas"
-    name="enabled features"
-    bind:checked={mapState.enableSportsAreas}
+      type="checkbox"
+      id="sports-areas"
+      name="enabled features"
+      bind:checked={mapState.enableSportsAreas}
     />
     <label for="sports-areas"
       >Sports Areas{@render divLegend(mapTheme.sportsArea)}</label

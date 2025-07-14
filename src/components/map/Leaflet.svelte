@@ -29,15 +29,12 @@
   let view: L.LatLngExpression = $derived(mapState.currentCenter);
   let zoom: number = $derived(mapState.currentZoom);
   let searchResults = $derived<Feature[]>(searchState.results.slice(0, 10)); // Return only top 5
-  let isDarkModeMapTheme = $derived(
-    mapState.tileset === mapState.tilesets["dark"]
-  );
 
   let allBuildingsLayer: L.GeoJSON | undefined = undefined;
   let labelsLayer: L.FeatureGroup | undefined = undefined;
 
   let tilesetLayer: L.TileLayer | undefined = $derived(
-    L.tileLayer(mapState.tileset, {
+    L.tileLayer(mapState.tileset.url, {
       maxZoom: 20,
       keepBuffer: 6,
     })
@@ -126,7 +123,7 @@
         remove: () => map?.removeLayer(labelsLayer!),
         create: () => {
           labelsLayer = controls
-            .setLabels(mapState.buildings, isDarkModeMapTheme)
+            .setLabels(mapState.buildings, mapState.tileset.theme)
             .addTo(map!);
         },
       },
@@ -288,7 +285,7 @@
 <div
   bind:this={mapElement}
   id="map"
-  class={isDarkModeMapTheme ? "dark" : ""}
+  class={mapState.tileset.theme}
 ></div>
 {#if map}
   {@render children()}
