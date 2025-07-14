@@ -27,7 +27,7 @@
     position: absolute;
     top: 50%;
     height: 50px;
-    z-index: 998;
+    z-index: 499;
     border-radius: 0 8px 8px 0;
     background-color: var(--bg);
     cursor: pointer;
