@@ -144,7 +144,7 @@ function setBuildings(
 
 function setLabels(
   allbuildings: Feature[],
-  theme: string = "light",
+  theme: "light" | "dark" | "satellite" = "light",
 ): L.FeatureGroup{
   const clusterGroup = L.markerClusterGroup({
     showCoverageOnHover: true,
