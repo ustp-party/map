@@ -25,6 +25,7 @@ class MapStateClass implements MapState {
   tilesets = {
     voyager:
       "https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png",
+    osm_classic: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
     light:
       "https://{s}.basemaps.cartocdn.com/rastertiles/light_all/{z}/{x}/{y}{r}.png",
     dark: "https://{s}.basemaps.cartocdn.com/rastertiles/dark_all/{z}/{x}/{y}{r}.png",

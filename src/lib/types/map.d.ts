@@ -30,4 +30,5 @@ export interface Tilesets {
   voyager: string;
   light: string;
   dark: string;
+  osm_classic: string;
 }
