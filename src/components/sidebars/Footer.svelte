@@ -18,12 +18,19 @@
     >
     <a href="https://liberapay.com/iragca/donate">Donate</a>
   </div>
+  <span class="attribution" aria-label="Map attribution">
+    <a href="https://leafletjs.com/">Leaflet</a> | &copy;
+    <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>
+    contributors | &copy; <a href="https://carto.com/attributions">CARTO</a>
+  </span>
 </footer>
 
 <style lang="scss">
   a {
     &:hover {
       color: var(--info);
+      text-decoration: underline;
+
     }
   }
 
@@ -64,5 +71,21 @@
         }
       }
     }
+
+    .attribution {
+      font-size: small;
+      color: var(--text-secondary);
+      opacity: 0.8;
+      a {
+        font-weight: 400;
+        color: var(--text-secondary);
+        text-decoration: none;
+        &:hover {
+          color: var(--info);
+          text-decoration: underline;
+        }
+      }
+    }
+
   }
 </style>

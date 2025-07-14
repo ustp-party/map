@@ -38,8 +38,6 @@
 
   let tilesetLayer: L.TileLayer | undefined = $derived(
     L.tileLayer(mapState.tileset, {
-      attribution:
-        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors | &copy; <a href="https://carto.com/attributions">CARTO</a>',
       maxZoom: 20,
       keepBuffer: 6,
     })
@@ -65,6 +63,7 @@
 
   onMount(() => {
     map = L.map(mapElement, { zoomControl: false });
+    map.attributionControl.setPrefix(false)
 
     map.createPane(SEARCH_RESULTS_PANE_NAME);
     map.getPane(SEARCH_RESULTS_PANE_NAME)!.style.zIndex =
