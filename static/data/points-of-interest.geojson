@@ -275,7 +275,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [124.656530, 8.484883]
+        "coordinates": [124.65653, 8.484883]
       },
       "properties": {
         "type": "Essential",
@@ -368,7 +368,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [124.655900, 8.485616]
+        "coordinates": [124.6559, 8.485616]
       },
       "properties": {
         "type": "Essential",
@@ -379,6 +379,21 @@
         "accessibility": ["Wheelchair", "Elevator", "Stairs"]
       },
       "id": "aso"
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [124.656659, 8.485918]
+      },
+      "properties": {
+        "type": "Event Center",
+        "name": "Dr. Ricardo Rotoras Memorial Hall",
+        "level": "1",
+        "last_updated": "2025-06-25 14:56:59",
+        "accessibility": ["Wheelchair", "Stairs"]
+      },
+      "id": "memorial-hall"
     }
   ]
 }
