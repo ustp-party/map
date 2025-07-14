@@ -37,7 +37,7 @@
     max-width: 438px;
     overflow: auto;
     height: 100%;
-    z-index: 999;
+    z-index: 500;
     background-color: var(--bg);
     // border-right: 2px solid rgba(0, 0, 0, 0.1);
     display: flex;
