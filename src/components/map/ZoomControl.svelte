@@ -50,7 +50,7 @@
     display: flex;
     flex-direction: column;
     gap: 2px;
-    z-index: 999;
+    z-index: 400;
   }
 
   .zoom {

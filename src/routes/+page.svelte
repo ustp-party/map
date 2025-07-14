@@ -151,7 +151,7 @@
     top: 0;
     display: flex;
     background-color: none;
-    z-index: 1000;
+    z-index: 400;
     padding-top: clamp(4px, 2vw, 8px);
     width: 100%;
 

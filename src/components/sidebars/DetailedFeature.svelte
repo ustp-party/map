@@ -470,6 +470,8 @@
     transform: translate(-50%, -50%);
     background-color: transparent;
     overflow: hidden;
+    border-radius: 0.4em;
+    box-shadow: var(--box-shadow);
 
     img {
       max-width: max(calc(95vw - 300px), 95vw);
