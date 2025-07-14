@@ -5,6 +5,7 @@
   import { goto } from "$app/navigation";
 
   import type { Properties, Feature as MapFeature } from "$lib/types/features";
+  import "leaflet.markercluster";
   import type { Snippet } from "svelte";
   import type { Feature } from "geojson";
 
@@ -32,7 +33,8 @@
     mapState.tileset === mapState.tilesets["dark"]
   );
 
-  let allBuildingsLayer: L.FeatureGroup | undefined = undefined;
+  let allBuildingsLayer: L.GeoJSON | undefined = undefined;
+  let labelsLayer: L.FeatureGroup | undefined = undefined;
 
   let tilesetLayer: L.TileLayer | undefined = $derived(
     L.tileLayer(mapState.tileset, {
@@ -88,60 +90,6 @@
     }
   });
 
-  // Update map when there are search results
-  let debounceTimer: ReturnType<typeof setTimeout> | undefined = undefined;
-  $effect(() => {
-    if (searchResults) {
-      // Clear previous timer
-      if (debounceTimer) {
-        clearTimeout(debounceTimer);
-      }
-
-      // Set debounce to update after 700ms of inactivity
-      debounceTimer = setTimeout(() => {
-        if (resultsLayer) {
-          map?.removeLayer(resultsLayer);
-        }
-
-        resultsLayer = L.geoJSON(searchResults, {
-          style: {
-            color: mapTheme.highlight,
-            weight: 2,
-            fillOpacity: 0.2,
-            stroke: true,
-          },
-          onEachFeature: (feature, layer) => {
-            if (feature.geometry.type === "Polygon") {
-              const { name, type }: Properties = feature.properties;
-              const labels = controls.labelBuilder(feature.properties);
-              layer
-                .bindTooltip(controls.tooltipTemplate(name, type, labels), {
-                  className: "polygon-label",
-                })
-                .on("click", () => {
-                  setDetailedFeature(feature as MapFeature);
-                });
-            }
-          },
-          pointToLayer: (feature, latlng) => {
-            const { name, type }: Properties = feature.properties;
-            const labels = controls.labelBuilder(feature.properties);
-            return L.marker(latlng, {
-              icon: icons.HighlightIcon,
-              pane: SEARCH_RESULTS_PANE_NAME,
-            })
-              .bindTooltip(controls.tooltipTemplate(name, type, labels), {
-                className: "marker-label",
-              })
-              .on("click", () => {
-                setDetailedFeature(feature as MapFeature);
-              });
-          },
-        }).addTo(map!);
-      }, 700);
-    }
-  });
-
   function setDetailedFeature(feature: MapFeature): void {
     if (feature.id) {
       goto(`?id=${encodeURIComponent(feature.id)}`, { replaceState: true });
@@ -169,12 +117,17 @@
         remove: () => map?.removeLayer(allBuildingsLayer!),
         create: () => {
           allBuildingsLayer = controls
-            .setBuildings(
-              mapState.buildings,
-              setDetailedFeature,
-              isDarkModeMapTheme,
-              mapState.enableLabels
-            )
+            .setBuildings(mapState.buildings, setDetailedFeature)
+            .addTo(map!);
+        },
+      },
+      {
+        enabled: mapState.enableLabels,
+        existingLayer: () => labelsLayer,
+        remove: () => map?.removeLayer(labelsLayer!),
+        create: () => {
+          labelsLayer = controls
+            .setLabels(mapState.buildings, isDarkModeMapTheme)
             .addTo(map!);
         },
       },
@@ -260,6 +213,60 @@
       if (config.enabled) {
         config.create();
       }
+    }
+  });
+
+  // Update map when there are search results
+  let debounceTimer: ReturnType<typeof setTimeout> | undefined = undefined;
+  $effect(() => {
+    if (searchResults) {
+      // Clear previous timer
+      if (debounceTimer) {
+        clearTimeout(debounceTimer);
+      }
+
+      // Set debounce to update after 700ms of inactivity
+      debounceTimer = setTimeout(() => {
+        if (resultsLayer) {
+          map?.removeLayer(resultsLayer);
+        }
+
+        resultsLayer = L.geoJSON(searchResults, {
+          style: {
+            color: mapTheme.highlight,
+            weight: 2,
+            fillOpacity: 0.2,
+            stroke: true,
+          },
+          onEachFeature: (feature, layer) => {
+            if (feature.geometry.type === "Polygon") {
+              const { name, type }: Properties = feature.properties;
+              const labels = controls.labelBuilder(feature.properties);
+              layer
+                .bindTooltip(controls.tooltipTemplate(name, type, labels), {
+                  className: "polygon-label",
+                })
+                .on("click", () => {
+                  setDetailedFeature(feature as MapFeature);
+                });
+            }
+          },
+          pointToLayer: (feature, latlng) => {
+            const { name, type }: Properties = feature.properties;
+            const labels = controls.labelBuilder(feature.properties);
+            return L.marker(latlng, {
+              icon: icons.HighlightIcon,
+              pane: SEARCH_RESULTS_PANE_NAME,
+            })
+              .bindTooltip(controls.tooltipTemplate(name, type, labels), {
+                className: "marker-label",
+              })
+              .on("click", () => {
+                setDetailedFeature(feature as MapFeature);
+              });
+          },
+        }).addTo(map!);
+      }, 700);
     }
   });
 

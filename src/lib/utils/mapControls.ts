@@ -120,9 +120,7 @@ function geometricCentroid(coordinates: Position[]): [number, number] {
 function setBuildings(
   allbuildings: Feature[],
   callback: Function,
-  darkMode: boolean = false,
-  enableLabels: boolean = true
-): L.FeatureGroup {
+): L.GeoJSON {
   let buildingslayer = L.geoJSON(allbuildings, {
     style: {
       color: mapTheme.building,
@@ -141,55 +139,57 @@ function setBuildings(
         });
     },
   });
+  return buildingslayer;
+}
 
-  if (enableLabels) {
-    const clusterGroup = L.markerClusterGroup({
-      showCoverageOnHover: true,
-      maxClusterRadius: 50,
-      iconCreateFunction: (cluster) => {
-        const markersCount = cluster.getChildCount();
-        return L.divIcon({
-          html: `<div><div>${markersCount}</div></div>`,
-          className: "cluster-icon",
-          iconSize: L.point(32, 32),
-          iconAnchor: L.point(16, 16),
-        });
-      },
-    });
+function setLabels(
+  allbuildings: Feature[],
+  darkMode: boolean = false
+): L.FeatureGroup{
+  const clusterGroup = L.markerClusterGroup({
+    showCoverageOnHover: true,
+    maxClusterRadius: 50,
+    iconCreateFunction: (cluster) => {
+      const markersCount = cluster.getChildCount();
+      return L.divIcon({
+        html: `<div><div>${markersCount}</div></div>`,
+        className: "cluster-icon",
+        iconSize: L.point(32, 32),
+        iconAnchor: L.point(16, 16),
+      });
+    },
+  });
 
-    allbuildings.forEach((feature) => {
-      if (feature.geometry.type === "Polygon") {
-        const { name, ["addr:housenumber"]: number } =
-          feature.properties as Properties;
-        let centroid: LatLngExpression;
+  allbuildings.forEach((feature) => {
+    if (feature.geometry.type === "Polygon") {
+      const { name, ["addr:housenumber"]: number } =
+        feature.properties as Properties;
+      let centroid: LatLngExpression;
 
-        if (feature.geometry.centroid) {
-          let [long, lat] = feature.geometry.centroid;
-          centroid = [lat, long];
-        } else {
-          const coords: Position[][] = feature.geometry.coordinates;
-          centroid = geometricCentroid(coords[0]);
-        }
-
-        let className = "polygon-text ";
-        className += darkMode ? "dark" : "";
-        const marker = L.marker(centroid, {
-          icon: L.divIcon({
-            className: className,
-            html: `(${number}) ${name}`,
-            iconSize: L.point(100, 30), // Adjust size as needed
-            iconAnchor: L.point(50, 15), // Center the text
-          }),
-          interactive: false,
-        });
-
-        clusterGroup.addLayer(marker);
+      if (feature.geometry.centroid) {
+        let [long, lat] = feature.geometry.centroid;
+        centroid = [lat, long];
+      } else {
+        const coords: Position[][] = feature.geometry.coordinates;
+        centroid = geometricCentroid(coords[0]);
       }
-    });
-    return L.featureGroup([buildingslayer, clusterGroup]);
-  }
 
-  return L.featureGroup([buildingslayer]);
+      let className = "polygon-text ";
+      className += darkMode ? "dark" : "";
+      const marker = L.marker(centroid, {
+        icon: L.divIcon({
+          className: className,
+          html: `(${number}) ${name}`,
+          iconSize: L.point(100, 30), // Adjust size as needed
+          iconAnchor: L.point(50, 15), // Center the text
+        }),
+        interactive: false,
+      });
+
+      clusterGroup.addLayer(marker);
+    }
+  });
+  return L.featureGroup([clusterGroup]);
 }
 
 function setBenches(benches: Feature[], callback: Function): L.GeoJSON {
@@ -478,6 +478,7 @@ const controls = {
   geometricCentroid,
   tooltipTemplate,
   setBuildings,
+  setLabels,
   setBenches,
   setParkingSpaces,
   setRestrooms,
@@ -498,6 +499,7 @@ export {
   geometricCentroid,
   tooltipTemplate,
   setBuildings,
+  setLabels,
   setBenches,
   setParkingSpaces,
   setRestrooms,
