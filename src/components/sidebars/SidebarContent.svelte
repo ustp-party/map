@@ -9,6 +9,7 @@
   import monumentSVG from "$assets/free-icons/monument.svg?raw";
   import chevronRightSVG from "$assets/material-icons/chevron-right.svg?raw";
   import basketballSVG from "$assets/free-icons/basketball.svg?raw";
+  import localATMSVG from "$assets/material-icons/local_atm.svg?raw";
 
   import SearchOption from "$components/buttons/SearchOption.svelte";
   import ResultCards from "./ResultCards.svelte";
@@ -68,6 +69,9 @@
       })}
       {@render featured("Sports", "Sports", basketballSVG, () => {
         mapState.enableSportsAreas = true;
+      })}
+      {@render featured("ATMs", "ATMs", localATMSVG, () => {
+        mapState.enableATMs = true;
       })}
     </div>
   </div>
