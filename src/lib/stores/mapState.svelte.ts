@@ -71,6 +71,7 @@ class MapStateClass implements MapState {
   enableEventCenters = $state<boolean>(true);
   enableLabels = $state<boolean>(true);
   enableEssentials = $state<boolean>(true);
+  enableATMs = $state<boolean>(false);
 }
 
 const DEFAULT_KEY = "$_map_state";

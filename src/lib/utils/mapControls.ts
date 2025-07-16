@@ -390,6 +390,31 @@ function setEssentials(essentials: Feature[], callback: Function): L.GeoJSON {
   });
 }
 
+function setATMs(
+  atms: Feature[],
+  callback: Function
+): L.GeoJSON {
+  const atmsFiltered = atms.filter(
+    (feature) => feature.properties?.type === "ATM"
+  );
+
+  return L.geoJSON(atmsFiltered, {
+    pointToLayer: (feature, latlng) => {
+      const { name, type }: Properties = feature.properties!;
+      const labels = labelBuilder(feature.properties!);
+      return L.marker(latlng, {
+        icon: icons.ATMIcon,
+      })
+        .bindTooltip(tooltipTemplate(name, type, labels), {
+          className: "polygon-label",
+        })
+        .on("click", () => {
+          callback(feature);
+        });
+    },
+  });
+}
+
 function findCentroid(feature: Feature): LatLngExpression {
   let centroid: LatLngExpression = [0, 0];
   if (feature.geometry.type === "Point") {
@@ -488,6 +513,7 @@ const controls = {
   labelBuilder,
   setSportsAreas,
   setEssentials,
+  setATMs,
 };
 
 export default controls;
@@ -509,4 +535,5 @@ export {
   labelBuilder,
   setSportsAreas,
   setEssentials,
+  setATMs,
 };

@@ -394,6 +394,21 @@
         "accessibility": ["Wheelchair", "Stairs"]
       },
       "id": "memorial-hall"
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [124.656522, 8.486135]
+      },
+      "properties": {
+        "type": "ATM",
+        "name": "ATM",
+        "level": "1",
+        "last_updated": "2025-06-25 14:56:59"
+      },
+      "id": "atm-1"
     }
+
   ]
 }

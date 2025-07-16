@@ -48,6 +48,7 @@
   let eventCentersLayer: L.GeoJSON | undefined = undefined;
   let sportsAreasLayer: L.GeoJSON | undefined = undefined;
   let essentialsLayer: L.GeoJSON | undefined = undefined;
+  let atmsLayer: L.GeoJSON | undefined = undefined;
   let currentTileset: L.TileLayer | undefined = $state();
   let {
     children,
@@ -197,6 +198,15 @@
         create: () =>
           (essentialsLayer = controls
             .setEssentials(mapState.pointsOfInterest, setDetailedFeature)
+            .addTo(map!)),
+      },
+      {
+        enabled: mapState.enableATMs,
+        existingLayer: () => atmsLayer,
+        remove: () => map?.removeLayer(atmsLayer!),
+        create: () =>
+          (atmsLayer = controls
+            .setATMs(mapState.pointsOfInterest, setDetailedFeature)
             .addTo(map!)),
       },
     ];
