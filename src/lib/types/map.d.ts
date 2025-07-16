@@ -35,7 +35,6 @@ type TilesetConfig = {
 };
 
 export interface Tilesets {
-  Voyager: TilesetConfig;
   Light: TilesetConfig;
   Dark: TilesetConfig;
   OpenStreetMap: TilesetConfig;
