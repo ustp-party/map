@@ -134,6 +134,12 @@
   }
 }
 
+.atm {
+  .tooltip-title::before {
+    background-image: url("/images/icons/material-icons/local_atm.svg");
+  }
+}
+
 @mixin flexo() {
   display: flex;
   align-items: center;
