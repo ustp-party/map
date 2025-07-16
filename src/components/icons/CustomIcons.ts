@@ -7,6 +7,7 @@ import parkingSVG from "$assets/free-icons/parking.svg?raw";
 import printerSVG from "$assets/free-icons/printer.svg?raw";
 import monumentSVG from "$assets/free-icons/monument.svg?raw";
 import informationSVG from "$assets/free-icons/circle-info.svg?raw";
+import localATMSVG from "$assets/material-icons/local_atm.svg?raw";
 
 interface CustomIcons {
   LocationCrosshairs: L.Icon;
@@ -14,6 +15,7 @@ interface CustomIcons {
   RestroomIcon: L.Icon;
   PrintingServiceIcon: L.Icon;
   LandmarkIcon: L.Icon;
+  ATMIcon: L.Icon;
 }
 
 const icons = {
@@ -69,6 +71,13 @@ const icons = {
   EssentialsIcon: L.divIcon({
     className: "essential-icon",
     html: `<div class="tooltip-svg">${informationSVG}</div>`,
+    iconSize: [24, 24],
+    iconAnchor: [12, 12],
+    popupAnchor: [0, 0],
+  }),
+  ATMIcon: L.divIcon({
+    className: "atm-icon",
+    html: `<div class="tooltip-svg">${localATMSVG}</div>`,
     iconSize: [24, 24],
     iconAnchor: [12, 12],
     popupAnchor: [0, 0],

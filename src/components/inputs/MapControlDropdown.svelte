@@ -4,6 +4,7 @@
   import landmarkSVG from "$assets/free-icons/monument.svg?raw";
   import informationSVG from "$assets/free-icons/circle-info.svg?raw";
   import SvgIcon from "$components/icons/SVGIcon.svelte";
+  import localATMSVG from "$assets/material-icons/local_atm.svg?raw";
   import { getMapState } from "$lib/stores/mapState.svelte";
   import { slide } from "svelte/transition";
   import { mapTheme } from "$lib/theme";
@@ -28,12 +29,12 @@
 <form class="dropdown-menu" transition:slide={{ duration: 100 }}>
   <fieldset>
     <legend>MAP THEME</legend>
-    {#each Object.entries(mapState.tilesets) as [ label, value ]}
+    {#each Object.entries(mapState.tilesets) as [label, value]}
       <input
         type="radio"
         id={`${label}-tileset`}
         name="tileset"
-        value={value}
+        {value}
         bind:group={mapState.tileset}
       />
       <label for={`${label}-tileset`}>{label}</label>
@@ -164,6 +165,20 @@
       <div class="event-center-icon">
         <div class="tooltip-svg"></div>
       </div></label
+    >
+    <input
+      type="checkbox"
+      id="ATMs"
+      name="enabled features"
+      bind:checked={mapState.enableATMs}
+    />
+    <label for="ATMs"
+      >ATMs{@render divLegend(
+        "white",
+        localATMSVG,
+        "0.875rem",
+        "#1b5815"
+      )}</label
     >
   </fieldset>
 </form>

@@ -12,6 +12,7 @@
   import monumentSVG from "$assets/free-icons/monument.svg?raw";
   import basketballSVG from "$assets/free-icons/basketball.svg?raw";
   import essentialSVG from "$assets/free-icons/circle-info.svg?raw";
+  import localATMSVG from "$assets/material-icons/local_atm.svg?raw";
 
   import { getAppState } from "$lib/stores/appState.svelte";
   import { getLocalStorageState } from "$lib/stores/localStorage.svelte";
@@ -105,6 +106,7 @@
     "Event Center": sparkleSVG,
     sports: basketballSVG,
     Essential: essentialSVG,
+    ATM: localATMSVG,
   };
 
   onDestroy(() => {

@@ -1,11 +1,21 @@
 $blue: #2873fd;
 
 .location-crosshairs svg {
-    fill: none;
-    color: $blue;
-
+  fill: none;
+  color: $blue;
 }
 
 .highlight-icon svg {
-    color: var(--poi-highlight);
+  color: var(--poi-highlight);
+}
+
+.atm-icon {
+  color: #1b5815;
+  .tooltip-svg {
+    background-color: rgb(255, 255, 255);
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
+    border: 1px solid #1b5815;
+  }
 }

@@ -38,12 +38,6 @@ class MapStateClass implements MapState {
       attributionURL: "https://carto.com/attributions",
       theme: "dark",
     },
-    Voyager: {
-      url: "https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png",
-      attribution: "CARTO",
-      attributionURL: "https://carto.com/attributions",
-      theme: "light",
-    },
     OpenStreetMap: {
       url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
       attribution: "OpenStreetMap",
@@ -71,6 +65,7 @@ class MapStateClass implements MapState {
   enableEventCenters = $state<boolean>(true);
   enableLabels = $state<boolean>(true);
   enableEssentials = $state<boolean>(true);
+  enableATMs = $state<boolean>(false);
 }
 
 const DEFAULT_KEY = "$_map_state";
