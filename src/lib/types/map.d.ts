@@ -24,13 +24,14 @@ export interface MapState {
   enableSportsAreas: boolean;
   enableLabels: boolean;
   enableEssentials: boolean;
+  enableATMs: boolean;
 }
 
 type TilesetConfig = {
   url: string;
   attribution?: string;
   attributionURL?: string;
-  theme: string;
+  theme:  "light" | "dark" | "satellite" | string;
 };
 
 export interface Tilesets {
