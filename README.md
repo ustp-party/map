@@ -52,5 +52,5 @@ npm run preview
 
 | User Pic                                                                     | Name / Username                | Email                          | Role                             |
 | ---------------------------------------------------------------------------- | ------------------------------ | ------------------------------ | -------------------------------- |
-| <img src="https://avatars.githubusercontent.com/u/187070330?v=4" width="40"> | Chris Irag / @iragca           | chrisandrei.irag@1.ustp.edu.ph | Data Gathering, Developer, UI/UX |
-| <img src="https://avatars.githubusercontent.com/u/117415481?v=4" width="40"> | Hernel Juanico / @rocketwolf98 | juanico.hernel064@gmail.com | Beta Testing, UI                 |
+| <img src="https://avatars.githubusercontent.com/u/187070330?v=4" width="40"> | Chris Irag / [@iragca](https://github.com/iragca)          | chrisandrei.irag@1.ustp.edu.ph | Data Gathering, Developer, UI/UX |
+| <img src="https://avatars.githubusercontent.com/u/117415481?v=4" width="40"> | Hernel Juanico / [@rocketwolf98](https://github.com/rocketwolf98) | juanico.hernel064@gmail.com | Beta Testing, UI                 |
