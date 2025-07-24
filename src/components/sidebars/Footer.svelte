@@ -25,7 +25,7 @@
   </div>
   <span class="attribution" aria-label="Map attribution">
     <a href="https://leafletjs.com/">Leaflet</a> | &copy;
-    <a href="https://github.com/ustp-party">ustp.party</a>
+    <a href="https://github.com/ustp-party/map?tab=readme-ov-file#contributors">ustp.party</a>
     | &copy;
     <a href={mapState.tileset.attributionURL} target="_blank" rel="noopener noreferrer">{mapState.tileset.attribution}</a>
   </span>
