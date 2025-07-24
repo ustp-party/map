@@ -6,7 +6,6 @@
 </h1>
 <h3 align="center" >Unofficial community made interactive map of USTP-CDO</h3>
 
-
 ## Quick Links
 
 - [How to Contribute](/.github/CONTRIBUTING.md)
@@ -48,3 +47,10 @@ npm run build
 ```bash
 npm run preview
 ```
+
+## Contributors
+
+| User Pic                                                                     | Name / Username                | Email                          | Role                             |
+| ---------------------------------------------------------------------------- | ------------------------------ | ------------------------------ | -------------------------------- |
+| <img src="https://avatars.githubusercontent.com/u/187070330?v=4" width="40"> | Chris Irag / @iragca           | chrisandrei.irag@1.ustp.edu.ph | Data Gathering, Developer, UI/UX |
+| <img src="https://avatars.githubusercontent.com/u/117415481?v=4" width="40"> | Hernel Juanico / @rocketwolf98 | juanico.hernel064@gmail.com | Beta Testing, UI                 |
