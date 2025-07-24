@@ -7,7 +7,7 @@
   <div>
     Not what you were looking for or the data is wrong?<br />Contact us by
     posting an
-    <a href="https://github.com/ustp-party/map/issues/new/choose" target="_blank">issue</a>
+    <a href="https://github.com/ustp-party/map/issues/new/choose" target="_blank" rel="noopener noreferrer">issue</a>
     or by sending an email to
     <a href="mailto:chrisandrei.irag@1.ustp.edu.ph"
       >chrisandrei.irag@1.ustp.edu.ph</a
@@ -15,17 +15,17 @@
   </div>
   <div class="other-links">
     <a
-      href="https://github.com/ustp-party/map/blob/master/.github/CONTRIBUTING.md" target="_blank"
+      href="https://github.com/ustp-party/map/blob/master/.github/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer"
       >Contribute</a
     >
-    <a href="https://www.ustp.edu.ph/cdeo/ustp-cagayan-de-oro-360-virtual-tour/" target="_blank"
+    <a href="https://www.ustp.edu.ph/cdeo/ustp-cagayan-de-oro-360-virtual-tour/" target="_blank" rel="noopener noreferrer"
       >Official 360 Virtual Tour</a
     >
-    <a href="https://liberapay.com/iragca/donate" target="_blank">Donate</a>
+    <a href="https://liberapay.com/iragca/donate" target="_blank" rel="noopener noreferrer">Donate</a>
   </div>
   <span class="attribution" aria-label="Map attribution">
-    <a href="https://leafletjs.com/" target="_blank">Leaflet</a> | &copy;
-    <a href="https://github.com/ustp-party/map?tab=readme-ov-file#contributors" target="_blank">ustp.party</a>
+    <a href="https://leafletjs.com/" target="_blank" rel="noopener noreferrer">Leaflet</a> | &copy;
+    <a href="https://github.com/ustp-party/map?tab=readme-ov-file#contributors" target="_blank" rel="noopener noreferrer">ustp.party</a>
     | &copy;
     <a href={mapState.tileset.attributionURL} target="_blank" rel="noopener noreferrer">{mapState.tileset.attribution}</a>
   </span>
