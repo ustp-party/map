@@ -25,6 +25,7 @@
 ## Tech Stack
 
 - Frontend: [Svelte](https://svelte.dev/) with Cloudflare Pages
+- CDN: [Cloudinary](https://cloudinary.com/)
 - Backend: None
 - Development: [Node.js](https://github.com/nvm-sh/nvm) and [npm](https://www.npmjs.com/)
 
