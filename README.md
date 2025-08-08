@@ -10,6 +10,17 @@
 
 - [How to Contribute](/.github/CONTRIBUTING.md)
 
+## Features
+<img width="1878" height="1034" alt="features" src="https://github.com/user-attachments/assets/74d2ef22-ac03-4aa7-9cca-2d6f4bf3c425" />
+1. Location URL sharing
+2. Fuzzy searching
+3. Live location lookup (GPS)
+4. Legend and label settings
+5. Map zoom
+6. Quick searches
+7. Location metadata and information
+
+
 ## Tech Stack
 
 - Frontend: [Svelte](https://svelte.dev/) with Cloudflare Pages
