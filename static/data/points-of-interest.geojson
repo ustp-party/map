@@ -231,7 +231,7 @@
         "name": "Performance Arts Theater",
         "description": "Located at the 5th floor the Engineering Complex I",
         "long_description": "Performance Arts Theater is a multi-purpose venue for various events, including performances, lectures, and gatherings. It is designed to accommodate a wide range of activities and can be used for both formal and informal events. Can seat up to 300 people.",
-        "level": "5",
+        "level": "6",
         "last_updated": "2025-06-25 14:56:59",
         "accessibility": ["Elevator", "Stairs"]
       },
@@ -342,7 +342,7 @@
       "properties": {
         "type": "Essential",
         "name": "Dean's Office",
-        "level": "2",
+        "level": "1",
         "last_updated": "2025-06-25 14:56:59",
         "accessibility": ["Wheelchair", "Elevator", "Stairs"]
       },
@@ -408,7 +408,21 @@
         "last_updated": "2025-06-25 14:56:59"
       },
       "id": "atm-1"
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [124.65689, 8.48478]
+      },
+      "properties": {
+        "type": "ATM",
+        "name": "ATM",
+        "level": "1",
+        "long_description": "Can be accessed only outside the campus.",
+        "last_updated": "2025-06-25 14:56:59"
+      },
+      "id": "atm-2"
     }
-
   ]
 }
