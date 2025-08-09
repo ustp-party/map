@@ -341,7 +341,7 @@
       },
       "properties": {
         "type": "Essential",
-        "name": "Dean's Office",
+        "name": "CITC Dean's Office",
         "level": "1",
         "last_updated": "2025-06-25 14:56:59",
         "accessibility": ["Wheelchair", "Elevator", "Stairs"]
