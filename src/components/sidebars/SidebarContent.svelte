@@ -15,6 +15,7 @@
   import ResultCards from "./ResultCards.svelte";
   import DetailedFeature from "./DetailedFeature.svelte";
   import SvgIcon from "$components/icons/SVGIcon.svelte";
+  import InformationBanner from "./InformationBanner.svelte";
 
   import { getSearchState } from "$lib/stores/SearchState.svelte";
   import { getMapState } from "$lib/stores/mapState.svelte";
@@ -73,6 +74,14 @@
       {@render featured("ATMs", "ATMs", localATMSVG, () => {
         mapState.enableATMs = true;
       })}
+    </div>
+    <div class="banners">
+      <InformationBanner
+      message="Information about the <b>College of Medicine</b> is currently missing."
+      />
+      <InformationBanner
+      message='Information about Movable Classrooms are still being gathered. Currently, they are located in the <a href="https://map.ustp.party/?id=way%2F190362205">Sports Complex</a>.'
+      />
     </div>
   </div>
   {#if recentlyViewed.length > 0}
@@ -165,6 +174,13 @@
       flex-wrap: wrap;
       gap: 4px;
       margin-top: 16px;
+    }
+
+    .banners {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 1rem;
     }
   }
 </style>
