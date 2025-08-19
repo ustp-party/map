@@ -472,7 +472,6 @@ function labelBuilder(properties: Properties): Record<string, string> {
         Surface: properties.Surface || fallback,
       };
 
-    case "Essential":
     case "Event Center":
     case "Restroom":
     case "Landmark":
