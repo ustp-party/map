@@ -58,7 +58,9 @@ abbr {
   --warning-accent-active: hsl(54, 100%, 60%);
   --success: oklch(0.5 0.17 160);
   --success-bg: oklch(92.81% 0.05264 164.253);
-  --info: oklch(45.333% 0.31241 264.094);
+  --info: #64b5f6;
+  --info-bg: #f1f7fc;
+  --hyperlink: oklch(45.333% 0.31241 264.094);
 
   font-family: "Roboto", "Arial", sans-serif;
   color: var(--text);
@@ -122,5 +124,8 @@ a {
     --success: oklch(0.7 0.17 160);
     --success-bg: oklch(37.067% 0.03461 169.936);
     --info: oklch(0.7 0.17 260);
+    --hyperlink: oklch(0.7 0.17 260);
+    --info-bg: oklch(37.99% 0.052 258.316);
+    
   }
 }

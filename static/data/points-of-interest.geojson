@@ -230,7 +230,8 @@
         "type": "Event Center",
         "name": "Performance Arts Theater",
         "description": "Located at the 6th floor of the Engineering Complex I",
-        "long_description": "Performance Arts Theater is a multi-purpose venue for various events, including performances, lectures, and gatherings. It is designed to accommodate a wide range of activities and can be used for both formal and informal events. Can seat up to 300 people.",
+        "long_description": "Performance Arts Theater is a multi-purpose venue for various events, including performances, lectures, and gatherings. It is designed to accommodate a wide range of activities and can be used for both formal and informal events.",
+        "Capacity": "~300",
         "level": "6",
         "last_updated": "2025-06-25 14:56:59",
         "accessibility": ["Elevator", "Stairs"]
@@ -423,6 +424,39 @@
         "last_updated": "2025-06-25 14:56:59"
       },
       "id": "atm-2"
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [124.655715, 8.486555]
+      },
+      "properties": {
+        "type": "Essential",
+        "name": "Electronic Library",
+        "level": "2",
+        "description": "a.k.a E-Library, E-Lib, Elib",
+        "long_description": "<b>Desktop Computers are avaiable for students to use.</b> So long as you have a <b>valid USTP ID</b>, you can use the computers for free. <br><br>There are spaces for students who have personal laptops as well, with access to free wifi.",
+        "last_updated": "2025-08-19 18:12:59",
+        "Capacity": "~100",
+        "accessibility": ["Elevator", "Stairs"]
+
+      },
+      "id": "elib"
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [124.655927, 8.486632]
+      },
+      "properties": {
+        "type": "Essential",
+        "name": "Main Library",
+        "level": "2",
+        "last_updated": "2025-08-19 18:12:59"
+      },
+      "id": "mainlib"
     }
   ]
 }

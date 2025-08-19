@@ -34,7 +34,7 @@
 <style lang="scss">
   a {
     &:hover {
-      color: var(--info);
+      color: var(--hyperlink);
       text-decoration: underline;
     }
   }
@@ -72,7 +72,7 @@
         &:hover,
         &:active {
           text-decoration: underline;
-          color: var(--info);
+          color: var(--hyperlink);
         }
       }
     }
@@ -86,7 +86,7 @@
         color: var(--text-secondary);
         text-decoration: none;
         &:hover {
-          color: var(--info);
+          color: var(--hyperlink);
           text-decoration: underline;
         }
       }

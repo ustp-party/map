@@ -117,10 +117,7 @@ function geometricCentroid(coordinates: Position[]): [number, number] {
   return [meanLat, meanLng];
 }
 
-function setBuildings(
-  allbuildings: Feature[],
-  callback: Function,
-): L.GeoJSON {
+function setBuildings(allbuildings: Feature[], callback: Function): L.GeoJSON {
   let buildingslayer = L.geoJSON(allbuildings, {
     style: {
       color: mapTheme.building,
@@ -144,8 +141,8 @@ function setBuildings(
 
 function setLabels(
   allbuildings: Feature[],
-  theme: "light" | "dark" | "satellite" | string = "light",
-): L.FeatureGroup{
+  theme: "light" | "dark" | "satellite" | string = "light"
+): L.FeatureGroup {
   const clusterGroup = L.markerClusterGroup({
     showCoverageOnHover: true,
     maxClusterRadius: 50,
@@ -390,10 +387,7 @@ function setEssentials(essentials: Feature[], callback: Function): L.GeoJSON {
   });
 }
 
-function setATMs(
-  atms: Feature[],
-  callback: Function
-): L.GeoJSON {
+function setATMs(atms: Feature[], callback: Function): L.GeoJSON {
   const atmsFiltered = atms.filter(
     (feature) => feature.properties?.type === "ATM"
   );
@@ -478,11 +472,19 @@ function labelBuilder(properties: Properties): Record<string, string> {
         Surface: properties.Surface || fallback,
       };
 
-    case "Restroom":
+    case "Essential":
     case "Event Center":
+    case "Restroom":
     case "Landmark":
     case "Printing Service":
     case "Essential":
+      if (properties.Capacity) {
+        return {
+          Level: properties.level || fallback,
+          Capacity: properties.Capacity || fallback,
+          Description: properties.description || "No description available",
+        };
+      }
       return {
         Level: properties.level || fallback,
         Description: properties.description || "No description available",
