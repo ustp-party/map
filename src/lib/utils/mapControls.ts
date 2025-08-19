@@ -478,8 +478,14 @@ function labelBuilder(properties: Properties): Record<string, string> {
         Surface: properties.Surface || fallback,
       };
 
-    case "Restroom":
+    case "Essential":
     case "Event Center":
+      return {
+        Level: properties.level || fallback,
+        Capacity: properties.Capacity || fallback,
+      }
+
+    case "Restroom":
     case "Landmark":
     case "Printing Service":
     case "Essential":
