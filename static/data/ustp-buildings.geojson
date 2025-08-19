@@ -113,6 +113,7 @@
         "type": "building",
         "last_updated": "2025-06-25 14:56:59",
         "image": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750820440/sports_complex_1_hd_trwcmc.avif",
+        "description": "Movable Classrooms are found here.",
         "image_compressed": "https://res.cloudinary.com/dosy82nwb/image/upload/v1750820440/sports_complex_1_hd_trwcmc.avif",
         "accessibility": ["Wheelchair"]
       },
