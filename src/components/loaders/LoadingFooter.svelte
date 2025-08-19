@@ -51,7 +51,7 @@
       &:hover,
       &:active {
         text-decoration: underline;
-        color: var(--info);
+        color: var(--hyperlink);
       }
     }
   }
