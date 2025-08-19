@@ -436,7 +436,7 @@
         "name": "Electronic Library",
         "level": "2",
         "description": "a.k.a E-Library, E-Lib, Elib",
-        "long_description": "<b>Desktop Computers are avaiable for students to use.</b> So long as you have a <b>valid USTP ID</b>, you can use the computers for free. <br><br>There are spaces for students who have personal laptops as well, with access to free wifi.",
+        "long_description": "<b>Desktop Computers are available for students to use.</b> So long as you have a <b>valid USTP ID</b>, you can use the computers for free. <br><br>There are spaces for students who have personal laptops as well, with access to free wifi.",
         "last_updated": "2025-08-19 18:12:59",
         "Capacity": "~100",
         "accessibility": ["Elevator", "Stairs"]
