@@ -44,6 +44,7 @@ export interface Properties {
   Sport?: string;
   Fee?: "Yes" | "No";
   Surface?: "Dirt" | "Concrete" | "Asphalt" | "Synthetic" | "Other";
+  Capacity?: string;
   last_updated?: string;
   iconParams?: {
     iconUrl: string;
