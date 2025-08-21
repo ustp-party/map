@@ -82,7 +82,9 @@
         "Sport": "Basketball, Volleyball, Tennis",
         "Surface": "Concrete",
         "last_updated": "2025-07-07 15:45:00",
-        "accessibility": ["Wheelchair", "Stairs"]
+        "accessibility": ["Wheelchair", "Stairs"],
+        "image": "https://res.cloudinary.com/dosy82nwb/image/upload/v1755769599/IMG_3887_1080p_m4txxj.avif",
+        "image_compressed": "https://res.cloudinary.com/dosy82nwb/image/upload/v1755769596/IMG_3887_1080p_comp_small_f812mk.avif"
       },
       "geometry": {
         "type": "Polygon",

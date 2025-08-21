@@ -82,6 +82,8 @@
         "last_updated": "2025-06-25 14:56:59",
         "name": "Girl's Trade Building",
         "building:levels": "1",
+        "image_compressed": "https://res.cloudinary.com/dosy82nwb/image/upload/v1755759058/IMG_3905_1080p_comp_small_o6hulm.avif",
+        "image": "https://res.cloudinary.com/dosy82nwb/image/upload/v1755759059/IMG_3905_1080p_bgkzt0.avif",
         "type": "building"
       },
       "geometry": {
@@ -141,6 +143,8 @@
         "name": "Culinary Building",
         "type": "building",
         "last_updated": "2025-06-25 14:56:59",
+        "image_compressed": "https://res.cloudinary.com/dosy82nwb/image/upload/v1755760394/IMG_4034_1080p_comp_small_whrdu8.avif",
+        "image": "https://res.cloudinary.com/dosy82nwb/image/upload/v1755760395/IMG_4034_1080p_x7aml8.avif",
         "building:levels": "1"
       },
       "geometry": {
@@ -398,6 +402,8 @@
         "last_updated": "2025-06-25 14:56:59",
         "name": "Old Civil Engineering Building",
         "building:levels": "1",
+        "image": "https://res.cloudinary.com/dosy82nwb/image/upload/v1755760379/IMG_4028_1080p_sw9asm.avif",
+        "image_compressed": "https://res.cloudinary.com/dosy82nwb/image/upload/v1755760376/IMG_4028_1080p_comp_small_tsqfgt.avif",
         "type": "building"
       },
       "geometry": {
@@ -474,7 +480,9 @@
         "name": "Old Science Building",
         "building:levels": "1",
         "last_updated": "2025-06-25 14:56:59",
-        "type": "building"
+        "type": "building",
+        "image": "https://res.cloudinary.com/dosy82nwb/image/upload/v1755767082/IMG_3889_1080p_oqr6jh.avif",
+        "image_compressed": "https://res.cloudinary.com/dosy82nwb/image/upload/v1755767079/IMG_3889_1080p_comp_small_ipk90e.avif"
       },
       "geometry": {
         "type": "Polygon",
@@ -502,7 +510,9 @@
         "name": "Food Innovation Center",
         "building:levels": "2",
         "type": "building",
-        "last_updated": "2025-06-25 14:56:59"
+        "last_updated": "2025-06-25 14:56:59",
+        "image": "https://res.cloudinary.com/dosy82nwb/image/upload/v1755766361/IMG_3903_1080p_n7ytkn.avif",
+        "image_compressed": "https://res.cloudinary.com/dosy82nwb/image/upload/v1755766362/IMG_3903_1080p_comp_tdcikd.avif"
       },
       "geometry": {
         "type": "Polygon",
@@ -558,7 +568,9 @@
         "amenity": "clinic",
         "type": "building",
         "last_updated": "2025-06-25 14:56:59",
-        "name": "Medical Building"
+        "name": "Medical Building",
+        "image_compressed": "https://res.cloudinary.com/dosy82nwb/image/upload/v1755759190/IMG_3901_1080p_comp_small_dhc54i.avif",
+        "image": "https://res.cloudinary.com/dosy82nwb/image/upload/v1755759236/IMG_3901_1080p_e91nsp.avif"
       },
       "geometry": {
         "type": "Polygon",
@@ -582,7 +594,9 @@
         "building": "college",
         "name": "Old Student Center",
         "last_updated": "2025-06-25 14:56:59",
-        "type": "building"
+        "type": "building",
+        "image": "https://res.cloudinary.com/dosy82nwb/image/upload/v1755766056/IMG_3909_1080p_vpok7x.avif",
+        "image_compressed": "https://res.cloudinary.com/dosy82nwb/image/upload/v1755766053/IMG_3909_1080p_comp_small_grqwos.avif"
       },
       "geometry": {
         "type": "Polygon",
@@ -634,7 +648,9 @@
         "description": "Metals & Engineering Innovation Center",
         "type": "building",
         "last_updated": "2025-06-25 14:56:59",
-        "building:levels": 1
+        "building:levels": 1,
+        "image": "https://res.cloudinary.com/dosy82nwb/image/upload/v1755763108/IMG_3914_1080p_hi9vek.avif",
+        "image_compressed": "https://res.cloudinary.com/dosy82nwb/image/upload/v1755763107/IMG_3914_1080p_comp_small_qjzdqc.avif"
       },
       "geometry": {
         "type": "Polygon",
@@ -662,6 +678,8 @@
         "type": "building",
         "last_updated": "2025-06-25 14:56:59",
         "building:levels": 6,
+        "image": "https://res.cloudinary.com/dosy82nwb/image/upload/v1755760412/IMG_4040_1080p_huxwef.avif",
+        "image_compressed": "https://res.cloudinary.com/dosy82nwb/image/upload/v1755760409/IMG_4040_1080p_comp_small_bidzvy.avif",
         "accessibility": ["Wheelchair", "Elevator", "Stairs"]
       },
       "geometry": {
@@ -764,7 +782,9 @@
         "addr:housenumber": "?",
 
         "type": "building",
-        "name": "Unfinished Building"
+        "name": "Unfinished Building",
+        "image": "https://res.cloudinary.com/dosy82nwb/image/upload/v1755768120/IMG_4045_1080p_y0gwxr.avif",
+        "image_compressed": "https://res.cloudinary.com/dosy82nwb/image/upload/v1755768118/IMG_4045_1080p_comp_small_nqxqus.avif"
       },
       "geometry": {
         "type": "Polygon",
@@ -790,7 +810,9 @@
 
         "type": "building",
         "last_updated": "2025-06-25 14:56:59",
-        "name": "Unfinished Building"
+        "name": "Unfinished Building",
+        "image": "https://res.cloudinary.com/dosy82nwb/image/upload/v1755768120/IMG_4045_1080p_y0gwxr.avif",
+        "image_compressed": "https://res.cloudinary.com/dosy82nwb/image/upload/v1755768118/IMG_4045_1080p_comp_small_nqxqus.avif"
       },
       "geometry": {
         "type": "Polygon",

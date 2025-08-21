@@ -75,7 +75,9 @@
         "Fee": "No",
         "Surface": "Paved",
         "last_updated": "2025-06-25 14:56:59",
-        "vehicles": "All"
+        "vehicles": "All",
+        "image": "https://res.cloudinary.com/dosy82nwb/image/upload/v1755760346/IMG_3986_1080p_powemj.avif",
+        "image_compressed": "https://res.cloudinary.com/dosy82nwb/image/upload/v1755760343/IMG_3986_1080p_comp_small_zccfht.avif"
       },
       "geometry": {
         "type": "Polygon",
@@ -102,7 +104,9 @@
         "name": "USTP Parking Lot",
         "Surface": "Paved",
         "vehicles": "All",
-        "last_updated": "2025-06-25 14:56:59"
+        "last_updated": "2025-06-25 14:56:59",
+        "image": "https://res.cloudinary.com/dosy82nwb/image/upload/v1755766858/IMG_3873_1080p_hhzvng.avif",
+        "image_compressed": "https://res.cloudinary.com/dosy82nwb/image/upload/v1755766857/IMG_3873_1080p_comp_small_a8zcyx.avif"
       },
       "geometry": {
         "type": "Polygon",
