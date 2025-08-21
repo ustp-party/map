@@ -60,7 +60,9 @@
         "description": "Male & Female restrooms",
         "type": "Restroom",
         "last_updated": "2025-06-25 14:56:59",
-        "level": "1-4"
+        "level": "1-4",
+        "image": "https://res.cloudinary.com/dosy82nwb/image/upload/v1755760354/IMG_3997_1080p_zttor3.avif",
+        "image_compressed": "https://res.cloudinary.com/dosy82nwb/image/upload/v1755760352/IMG_3997_1080p_comp_small_pimam6.avif"
       },
       "id": "restroom-1"
     },
@@ -75,7 +77,9 @@
         "description": "Male Restroom",
         "type": "Restroom",
         "last_updated": "2025-06-25 14:56:59",
-        "level": "1"
+        "level": "1",
+        "image": "https://res.cloudinary.com/dosy82nwb/image/upload/v1755767719/IMG_3877_1080p_ot1ovk.avif",
+        "image_compressed": "https://res.cloudinary.com/dosy82nwb/image/upload/v1755767718/IMG_3877_1080p_comp_small_cjiyag.avif"
       },
       "id": "restroom-2"
     },
@@ -90,7 +94,9 @@
         "description": "Female Restroom",
         "type": "Restroom",
         "last_updated": "2025-06-25 14:56:59",
-        "level": "1"
+        "level": "1",
+        "image": "https://res.cloudinary.com/dosy82nwb/image/upload/v1755767456/IMG_3879_1080p_lytwcv.avif",
+        "image_compressed": "https://res.cloudinary.com/dosy82nwb/image/upload/v1755767456/IMG_3879_1080p_lytwcv.avif"
       },
       "id": "restroom-3"
     },
@@ -105,7 +111,9 @@
         "description": "Male Restroom",
         "type": "Restroom",
         "last_updated": "2025-06-25 14:56:59",
-        "level": "1, 4"
+        "level": "1, 4",
+        "image": "https://res.cloudinary.com/dosy82nwb/image/upload/v1755760300/IMG_3931_1080p_hyte9h.avif",
+        "image_compressed": "https://res.cloudinary.com/dosy82nwb/image/upload/v1755760298/IMG_3931_1080p_comp_small_dkqlvu.avif"
       },
       "id": "restroom-4"
     },
@@ -120,7 +128,9 @@
         "description": "Female Restroom",
         "type": "Restroom",
         "last_updated": "2025-06-25 14:56:59",
-        "level": "1, 4"
+        "level": "1, 4",
+        "image": "https://res.cloudinary.com/dosy82nwb/image/upload/v1755765676/IMG_3926_1080p_m1cnkh.avif",
+        "image_compressed": "https://res.cloudinary.com/dosy82nwb/image/upload/v1755765675/IMG_3926_1080p_comp_small_wxyqu8.avif"
       },
       "id": "restroom-5"
     },
@@ -268,7 +278,9 @@
         "long_description": "A venue where innovators and entrepreneurs can meet, collaborate, and create.",
         "level": "4",
         "last_updated": "2025-06-25 14:56:59",
-        "accessibility": ["Elevator", "Stairs"]
+        "accessibility": ["Elevator", "Stairs"],
+        "image": "https://res.cloudinary.com/dosy82nwb/image/upload/v1755763847/IMG_3920_1080p_in91n1.avif",
+        "image_compressed": "https://res.cloudinary.com/dosy82nwb/image/upload/v1755763847/IMG_3920_1080p_comp_small_khjgcn.avif"
       },
       "id": "makerspace"
     },
@@ -392,7 +404,9 @@
         "name": "Dr. Ricardo Rotoras Memorial Hall",
         "level": "1",
         "last_updated": "2025-06-25 14:56:59",
-        "accessibility": ["Wheelchair", "Stairs"]
+        "accessibility": ["Wheelchair", "Stairs"],
+        "image": "https://res.cloudinary.com/dosy82nwb/image/upload/v1755765057/IMG_3883_1080p_esbsyd.avif",
+        "image_compressed": "https://res.cloudinary.com/dosy82nwb/image/upload/v1755765056/IMG_3883_1080p_comp_small_nsi6tr.avif"
       },
       "id": "memorial-hall"
     },
@@ -406,7 +420,9 @@
         "type": "ATM",
         "name": "ATM",
         "level": "1",
-        "last_updated": "2025-06-25 14:56:59"
+        "last_updated": "2025-06-25 14:56:59",
+        "image": "https://res.cloudinary.com/dosy82nwb/image/upload/v1755760252/IMG_3899_1080p_vwrxxy.avif",
+        "image_compressed": "https://res.cloudinary.com/dosy82nwb/image/upload/v1755760250/IMG_3899_1080p_comp_small_rtkpxr.avif"
       },
       "id": "atm-1"
     },
@@ -421,7 +437,9 @@
         "name": "ATM",
         "level": "1",
         "long_description": "Can only be accessed from outside the campus.",
-        "last_updated": "2025-06-25 14:56:59"
+        "last_updated": "2025-06-25 14:56:59",
+        "image": "https://res.cloudinary.com/dosy82nwb/image/upload/v1755759421/IMG_3871_1080p_gw2hea.avif",
+        "image_compressed": "https://res.cloudinary.com/dosy82nwb/image/upload/v1755759422/IMG_3871_1080p_comp_small_n1ysyf.avif"
       },
       "id": "atm-2"
     },
@@ -439,6 +457,8 @@
         "long_description": "<b>Desktop Computers are available for students to use.</b> So long as you have a <b>valid USTP ID</b>, you can use the computers for free. <br><br>There are spaces for students who have personal laptops as well, with access to free wifi.",
         "last_updated": "2025-08-19 18:12:59",
         "Capacity": "~100",
+        "image": "https://res.cloudinary.com/dosy82nwb/image/upload/v1755758648/IMG_3918_1080p_rxbdmg.avif",
+        "image_compressed": "https://res.cloudinary.com/dosy82nwb/image/upload/v1755758277/IMG_3918_1080p_comp_small_fqsaqg.avif",
         "accessibility": ["Elevator", "Stairs"]
       },
       "id": "elib"
@@ -453,9 +473,28 @@
         "type": "Essential",
         "name": "Main Library",
         "level": "2",
-        "last_updated": "2025-08-19 18:12:59"
+        "last_updated": "2025-08-19 18:12:59",
+        "image": "https://res.cloudinary.com/dosy82nwb/image/upload/v1755760276/IMG_3925_1080p_p6zxqe.avif",
+        "image_compressed": "https://res.cloudinary.com/dosy82nwb/image/upload/v1755760274/IMG_3925_1080p_comp_small_vi5spw.avif"
       },
       "id": "mainlib"
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [124.655811, 8.486581]
+      },
+      "properties": {
+        "type": "Essential",
+        "name": "Office of the Registrar",
+        "level": "1",
+        "last_updated": "2025-08-19 18:12:59",
+        "description": "Registrar's Office",
+        "image": "https://res.cloudinary.com/dosy82nwb/image/upload/v1755770528/IMG_3929_1080p_ynjg9a.avif",
+        "image_compressed": "https://res.cloudinary.com/dosy82nwb/image/upload/v1755770521/IMG_3929_1080p_comp_small_fipcjq.avif"
+      },
+      "id": "registrar"
     }
   ]
 }
