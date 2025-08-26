@@ -357,7 +357,9 @@
         "name": "CITC Dean's Office",
         "level": "1",
         "last_updated": "2025-06-25 14:56:59",
-        "accessibility": ["Wheelchair", "Elevator", "Stairs"]
+        "accessibility": ["Wheelchair", "Elevator", "Stairs"],
+        "image_compressed": "https://res.cloudinary.com/dosy82nwb/image/upload/v1756207663/IMG_3994_1080p_small_mnj2pq.avif",
+        "image": "https://res.cloudinary.com/dosy82nwb/image/upload/v1756207663/IMG_3994_1080p_nkljds.avif"
       },
       "id": "deans-office"
     },
@@ -495,6 +497,60 @@
         "image_compressed": "https://res.cloudinary.com/dosy82nwb/image/upload/v1755770521/IMG_3929_1080p_comp_small_fipcjq.avif"
       },
       "id": "registrar"
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [124.657147, 8.485146]
+      },
+      "properties": {
+        "type": "Essential",
+        "name": "ROTC Office",
+        "level": "1",
+        "last_updated": "2025-08-26 17:21:59",
+        "description": "ROTC Office",
+        "image": "https://res.cloudinary.com/dosy82nwb/image/upload/v1755760403/IMG_4037_1080p_rmcs8j.avif",
+        "image_compressed": "https://res.cloudinary.com/dosy82nwb/image/upload/v1755760401/IMG_4037_1080p_comp_small_driv7z.avif",
+        "accessibility": ["Wheelchair"]
+      },
+      "id": "rotc-office"
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [124.657153, 8.485037]
+      },
+      "properties": {
+        "type": "Essential",
+        "name": "NSTP Office",
+        "level": "1",
+        "last_updated": "2025-08-26 17:21:59",
+        "description": "NSTP Office",
+        "image": "https://res.cloudinary.com/dosy82nwb/image/upload/v1756202275/IMG_4038_1080p_wxzdpq.avif",
+        "image_compressed": "https://res.cloudinary.com/dosy82nwb/image/upload/v1756202275/IMG_4038_1080p_small_f3yswo.avif",
+        "accessibility": ["Wheelchair"]
+      },
+      "id": "nstp-office"
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [124.657174, 8.486353]
+      },
+      "properties": {
+        "type": "Essential",
+        "name": "Department of Transormation",
+        "level": "2",
+        "last_updated": "2025-08-26 17:21:59",
+        "description": "a.k.a DTO",
+        "image": "https://res.cloudinary.com/dosy82nwb/image/upload/v1756206267/IMG_4000_1080p_zn1sbo.avif",
+        "image_compressed": "https://res.cloudinary.com/dosy82nwb/image/upload/v1756206265/IMG_4000_1080p_small_nfhyoh.avif",
+        "accessibility": ["Elevator", "Stairs"]
+      },
+      "id": "dto"
     }
   ]
 }
