@@ -77,9 +77,6 @@
     </div>
     <div class="banners">
       <InformationBanner
-      message="Information about the <b>College of Medicine</b> is currently missing."
-      />
-      <InformationBanner
       message='Information about Movable Classrooms are still being gathered. Currently, they are located in the <a href="https://map.ustp.party/?id=way%2F190362205">Sports Complex</a>.'
       />
     </div>
