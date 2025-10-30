@@ -942,13 +942,13 @@
       "properties": {
         "@id": "way/1136349250",
         "building": "college",
-        "name": "Integrated Technology Building",
-        "description": "a.k.a ITB BUILDING",
-
+        "name": "College of Medicine",
         "addr:housenumber": "3",
-        "building:levels": "?",
-        "last_updated": "2025-06-25 14:56:59",
-        "type": "building"
+        "building:levels": "2",
+        "last_updated": "2025-10-30 20:38:45",
+        "type": "building",
+        "image": "https://res.cloudinary.com/dosy82nwb/image/upload/v1761827751/20251030_142147_1920x1080_jyppfi.avif",
+        "image_compressed": "https://res.cloudinary.com/dosy82nwb/image/upload/v1761827758/20251030_142147_preview_128x128_eg5krh.avif"
       },
       "geometry": {
         "type": "Polygon",

@@ -12,6 +12,7 @@
 
   import { getAppState } from "$lib/stores/appState.svelte";
   import { getMapState } from "$lib/stores/mapState.svelte";
+  import { featureGroup } from "leaflet";
 
   let divRef: HTMLDivElement | undefined = $state(undefined);
   let isOverflowing = $state(false);
@@ -85,6 +86,7 @@
       </abbr>
     </button>
   {/if}
+  {@render featured("COM Bldg", "College of Medicine", BuildingSVG)}
   {@render featured("Cafeteria", "Cafeteria", burgerSodaSVG)}
   {@render featured("Printing", "Printing Services", printerSVG, () => {
     mapState.enablePrintingServices = true;
